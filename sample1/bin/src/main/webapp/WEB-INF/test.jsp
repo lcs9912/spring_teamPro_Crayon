@@ -24,7 +24,7 @@
 <body>
 <div id="app">
 	<div>
-		{{list[0].test}}hh
+		{{list[0].test}}
 	</div>
 </div>
 </body>
