@@ -94,8 +94,8 @@ input[type="submit"]:hover {
 </style>
 
 </head>
-<%@ include file="header.jsp"%>
-<%@ include file="logo.jsp"%>
+<%@ include file="../header.jsp"%>
+<%@ include file="../logo.jsp"%>
 <hr>
 <body>
 
@@ -182,4 +182,5 @@ input[type="submit"]:hover {
 		</table>
 	</form>
 </body>
+<%@ include file="../footer.jsp"%>
 </html>

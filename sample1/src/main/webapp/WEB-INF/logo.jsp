@@ -25,7 +25,6 @@
 }
 </style>
 </head>
-
 <span id="logo">
 	<a href="main.do"> <img src="../logoimg/logo.png"></a>
 </span>

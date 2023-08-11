@@ -24,7 +24,6 @@
 </head>
 <header>
 <span class="headermenu2">
-
         <span><a href="#">SHOP</a></span>
         <span><a href="#">STYLE</a></span>
         <span><a href="#">HOME</a></span>

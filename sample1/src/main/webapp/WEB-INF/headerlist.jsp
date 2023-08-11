@@ -158,7 +158,6 @@ nav ul li a {
 					</div></li>
 
 				<li><a href="#">리뷰</a></li>
-
 				<li><a href="#">고객센터</a>
 					<div class="dropdown-content">
 						<!-- 고객센터 -->

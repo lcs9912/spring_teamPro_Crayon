@@ -120,7 +120,6 @@ footer {
 
 </head>
 <body>
-
 	<div class="wrap">
 		<footer>
 		<div class="servicearea">
@@ -166,6 +165,5 @@ footer {
 		</div>
 	</footer>
 	</div>
-
 </body>
 </html>

@@ -30,14 +30,11 @@ header {
 </head>
 <body>
 <header>
-
 	<span id="headermenu">
-
 			<span class="loginbtn"><a href="plogin.do">로그인</a></span>
 			<span class="#"><a href="#">장바구니</a></span>
 			<span class="#"><a href="#">관심상품</a></span>
 			<span class="#"><a href="#">마이페이지</a></span>
-
 	</span>
 </header>
 </body>

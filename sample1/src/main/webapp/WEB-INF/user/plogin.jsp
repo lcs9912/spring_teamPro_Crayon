@@ -148,7 +148,6 @@ main {
 	<main class="mainw">
 
 		<section class="loginsection">
-
 			<!-- <div class="loginlogo">
 				<a href="main.do" class="logo"> <img src="../logoimg/logo.png"></a>
 			</div> -->
