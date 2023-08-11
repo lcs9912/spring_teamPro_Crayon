@@ -3,5 +3,18 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.sample1.mapper.UserMapper">
+	<!-- 회원가입 -->
+	<insert id="insert" parameterType="hashmap">
+		INSERT INTO T1_USER_TBL (USER_ID, USER_PWD, USER_NAME, USER_EMAIL, USER_PHONE, USER_GENDER, PWD_HINT, PWD_ANSWER, USER_JOINDATE, USER_UPDATE)
+		VALUES (#{userId}, #{userPwd1}, #{userName}, 
+			#{userEmail}, #{userPhone}, #{userGender}, 
+			#{userPwdHint}, #{userPwdAnswer}, NOW(), NOW())
+	</insert>
 	
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) AS CNT
+		FROM T1_USER_TBL
+		WHERE USER_ID = #{userId}
+	</select>
 </mapper>
