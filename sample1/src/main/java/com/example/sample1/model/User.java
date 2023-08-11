@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class User {
+
 	
 	// T1_TBL_USER_TBL
 	private String userId; // 회원 아이디
@@ -152,5 +153,6 @@ public class User {
 	}
 	
 	
+
 	
 }
