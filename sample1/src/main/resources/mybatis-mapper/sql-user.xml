@@ -17,4 +17,36 @@
 		FROM T1_USER_TBL
 		WHERE USER_ID = #{userId}
 	</select>
+	
+	
+	<!-- 로그인 아이디 비번 조회 -->
+	<select id="selectUserLoginAllCheck" parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+			SELECT *
+			FROM T1_USER_TBL
+			WHERE USER_ID = #{uId} AND USER_PWD = #{pwd}
+	</select>
+	
+	<!-- 로그인 아이디 조회 -->
+	<select id="selectUserLoginIdCheck" parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+			SELECT *
+			FROM T1_USER_TBL
+			WHERE USER_ID = #{uId}
+	</select>
+	
+	<!-- 로그인 횟수 + 1 -->
+	<update id="updateUserLoginCnt" parameterType="hashmap" > 
+   			UPDATE T1_USER_TBL
+				SET USER_LOGIN_CNT = USER_LOGIN_CNT+1
+			WHERE USER_ID = #{uId} 
+   </update>
+   
+   
+   <!-- 로그인 성공시 횟수 초기화 -->
+   <update id="updateUserLoginCntReset" parameterType="hashmap" > 
+   	 		UPDATE T1_USER_TBL
+				SET USER_LOGIN_CNT = 0
+			WHERE USER_ID = #{uId} 
+   </update>
 </mapper>

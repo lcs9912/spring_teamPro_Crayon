@@ -50,9 +50,7 @@ nav {
 	margin:10px 0;
 	}	
 	
-	
-	
-	
+
 .sailcontainer {float:left;}
 	.profilearea {
 		width:900px; height:150px; border:2px solid #f8f8f8; border-radius:10px;

@@ -13,6 +13,7 @@ public class User {
 	private String userEmail; // 회원 이메일
 	private String userPhone; // 회원 연락처
 	private String userGender; // 회원 성별
+	
 	private String pwdHint; // 회원 비밀번호 힌트
 	private String pwdAnswer; // 회원 비밀번호 답
 	private String userJoindate; // 회원 회원가입 날짜
@@ -31,6 +32,9 @@ public class User {
 	private int userPoint;  // 회원 포인트
 	private String userAccount;  // 회원 계좌번호
 	
+	
+	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -152,6 +156,8 @@ public class User {
 		this.userAccount = userAccount;
 	}
 	
+	
+
 	
 
 	

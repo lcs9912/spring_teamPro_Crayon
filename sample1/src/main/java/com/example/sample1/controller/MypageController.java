@@ -33,10 +33,10 @@ public class MypageController {
     }
 	
 	// 마이페이지 본인정보
-		@RequestMapping("/mypagelogininfo.do") 
-	    public String mypagelogininfo(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	        return "/mypage/mypagelogininfo";
-	    }
+	@RequestMapping("/mypagelogininfo.do") 
+	public String mypagelogininfo(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+	return "/mypage/mypagelogininfo";
+	}
 	
 	
 	
