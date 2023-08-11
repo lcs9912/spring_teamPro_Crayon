@@ -9,7 +9,7 @@
 <style>
 header {
 	color: #fff;
-	padding: 20px;
+	padding: 10px, 20px;
 }
 
 

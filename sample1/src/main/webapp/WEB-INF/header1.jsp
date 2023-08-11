@@ -21,8 +21,6 @@ header {
 	text-decoration: none;
 }
 
-
-
 .headermenu span {
 	margin-right: 15px;
 }

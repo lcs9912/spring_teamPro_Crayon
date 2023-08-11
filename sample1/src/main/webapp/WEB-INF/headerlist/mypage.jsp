@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 <script src="../js/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style>
@@ -137,25 +137,25 @@ nav {
 	<div class="wrap">
 		<nav>
 		<div class="myinfo">
-			<h2>¸¶ÀÌ ÆäÀÌÁö</h2>
-			<h3>¼îÇÎ Á¤º¸</h3>
+			<h2>ë§ˆì´ íŽ˜ì´ì§€</h2>
+			<h3>ì‡¼í•‘ ì •ë³´</h3>
 			<ul>
-				<li><a href="#">±¸¸Å ³»¿ª</a></li>
-				<li><a href="#">ÆÇ¸Å ³»¿ª</a></li>
-				<li><a href="#">º¸°ü ÆÇ¸Å</a></li>
-				<li><a href="#">°ü½É »óÇ°</a></li>
+				<li><a href="#">êµ¬ë§¤ ë‚´ì—­</a></li>
+				<li><a href="#">íŒë§¤ ë‚´ì—­</a></li>
+				<li><a href="#">ë³´ê´€ íŒë§¤</a></li>
+				<li><a href="#">ê´€ì‹¬ ìƒí’ˆ</a></li>
 			</ul>
 		</div>
 		<div class="myinfo">
-			<h3>³» Á¤º¸</h3>
+			<h3>ë‚´ ì •ë³´</h3>
 			<ul>
-				<li><a href="#">·Î±×ÀÎ Á¤º¸</a></li>
-				<li><a href="#">ÇÁ·ÎÇÊ °ü¸®</a></li>
-				<li><a href="#">ÁÖ¼Ò·Ï</a></li>
-				<li><a href="#">°áÁ¦ Á¤º¸</a></li>
-				<li><a href="#">ÆÇ¸Å Á¤»ê °èÁÂ</a></li>
-				<li><a href="#">Çö±Ý¿µ¼öÁõ Á¤º¸</a></li>
-				<li><a href="#">Æ÷ÀÎÆ®</a></li>
+				<li><a href="#">ë¡œê·¸ì¸ ì •ë³´</a></li>
+				<li><a href="#">í”„ë¡œí•„ ê´€ë¦¬</a></li>
+				<li><a href="#">ì£¼ì†Œë¡</a></li>
+				<li><a href="#">ê²°ì œ ì •ë³´</a></li>
+				<li><a href="#">íŒë§¤ ì •ì‚° ê³„ì¢Œ</a></li>
+				<li><a href="#">í˜„ê¸ˆì˜ìˆ˜ì¦ ì •ë³´</a></li>
+				<li><a href="#">í¬ì¸íŠ¸</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -165,87 +165,87 @@ nav {
 					<img src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png">
 				</div>
 				<div class="profileinner2">
-					<strong>»ç¿ëÀÚ¾ÆÀÌµð</strong>
+					<strong>ì‚¬ìš©ìžì•„ì´ë””</strong>
 					<p>E***********@email.com</p>
-					<a href="#" type="button">ÇÁ·ÎÇÊ °ü¸®</a>
-					<a href="#" type="button">³» ½ºÅ¸ÀÏ</a>
+					<a href="#" type="button">í”„ë¡œí•„ ê´€ë¦¬</a>
+					<a href="#" type="button">ë‚´ ìŠ¤íƒ€ì¼</a>
 				</div>
 				<div class="profileinner3">
 					<p>0P</p>
-					<p>Æ÷ÀÎÆ®</p>
+					<p>í¬ì¸íŠ¸</p>
 				</div>
 				<div class="profileinner4">
-					<p>ÀÏ¹ÝÈ¸¿ø</p>
-					<p>È¸¿øµî±Þ</p>
+					<p>ì¼ë°˜íšŒì›</p>
+					<p>íšŒì›ë“±ê¸‰</p>
 				</div>
 				
 			</div>
 			<div class="mylist">
 				<div class="listhead">
-				<h2>±¸¸Å³»¿ª</h2>
-				<span><a href="#">´õº¸±â ></a></span>
+				<h2>êµ¬ë§¤ë‚´ì—­</h2>
+				<span><a href="#">ë”ë³´ê¸° ></a></span>
 				</div>
 				<div class="viewdv">
 				<ul class="listul">
 					<li>
-						<p>ÀüÃ¼</p>
+						<p>ì „ì²´</p>
 						<p>0</p>
 					</li>
 					<li>
-						<p>ÀÔÂû Áß</p>
+						<p>ìž…ì°° ì¤‘</p>
 						<p>0</p>
 					</li>
 					<li>
-						<p>ÁøÇà Áß</p>
+						<p>ì§„í–‰ ì¤‘</p>
 						<p>0</p>
 					</li>
 					<li>
-						<p>Á¾·á</p>
+						<p>ì¢…ë£Œ</p>
 						<p>0</p>
 					</li>
 				</ul>
 				</div>
 				<div class="listdv">
-					<p>°Å·¡³»¿ªÀÌ ¾ø½À´Ï´Ù</p>
+					<p>ê±°ëž˜ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤</p>
 				</div>
 			</div>
 			<div class="mylist">
 				<div class="listhead">
-				<h2>ÆÇ¸Å³»¿ª</h2>
-				<span><a href="#">´õº¸±â ></a></span>
+				<h2>íŒë§¤ë‚´ì—­</h2>
+				<span><a href="#">ë”ë³´ê¸° ></a></span>
 				</div>
 				<div class="viewdv">
 				<ul class="listul">
 					<li>
-						<p>ÀüÃ¼</p>
+						<p>ì „ì²´</p>
 						<p>0</p>
 					</li>
 					<li>
-						<p>ÀÔÂû Áß</p>
+						<p>ìž…ì°° ì¤‘</p>
 						<p>0</p>
 					</li>
 					<li>
-						<p>ÁøÇà Áß</p>
+						<p>ì§„í–‰ ì¤‘</p>
 						<p>0</p>
 					</li>
 					<li>
-						<p>Á¾·á</p>
+						<p>ì¢…ë£Œ</p>
 						<p>0</p>
 					</li>
 				</ul>
 				</div>
 				<div class="listdv">
-					<p>°Å·¡³»¿ªÀÌ ¾ø½À´Ï´Ù</p>
+					<p>ê±°ëž˜ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤</p>
 				</div>
 			</div>
 			<div class="mylist">
 				<div class="listhead">
-				<h2>°ü½É»óÇ°</h2>
-				<span><a href="#">´õº¸±â ></a></span>
+				<h2>ê´€ì‹¬ìƒí’ˆ</h2>
+				<span><a href="#">ë”ë³´ê¸° ></a></span>
 				</div>
 				<div class="joygooddv">
-					<p>Ãß°¡ÇÏ½Å °ü½É»óÇ°ÀÌ ¾ø½À´Ï´Ù.</p>
-					<button><a href="#">shop ¹Ù·Î°¡±â</a></button>
+					<p>ì¶”ê°€í•˜ì‹  ê´€ì‹¬ìƒí’ˆì´ ì—†ìŠµë‹ˆë‹¤.</p>
+					<button><a href="#">shop ë°”ë¡œê°€ê¸°</a></button>
 				</div>
 			</div>
 		</div>
