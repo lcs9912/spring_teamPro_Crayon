@@ -48,32 +48,31 @@ main {
 	margin-left: 50px;
 }
 /* 로그인 회원가입버튼 */
-.loginsection button {
+.loginsection button{
 	width: 60%;
 	padding: 20px;
 	background-color: #D2CECE;
 	color: #fff;
-	cursor: pointer;
 	border-radius: 10px;
 	border: 0px;
 	margin-top: 30px;
-	margin-right: 40px;
+	margin-right: 22px;
+}
+.loginwindow button {
+	cursor: pointer;
+	
 }
 
-.loginsection button:hover {
+
+.loginwindow button:hover {
 	background-color: #333;
 }
 
-.loginsection button {
-	width: 60%;
-	padding: 20px;
-	background-color: #D2CECE;
-	color: #fff;
-	cursor: pointer;
-	border-radius: 10px;
-	border: 0px;
-	margin-top: 30px;
-	margin-right: 40px;
+
+
+.loginwindownot {
+	text-align: center;
+	padding-top: 10px;
 }
 
 .loginwindow {
@@ -122,7 +121,7 @@ main {
 
 .logindownmenu {
 	text-align: center;
-	margin-right: 80px;
+	margin-right: 4px;
 	margin-top: 50px;
 }
 
@@ -138,7 +137,10 @@ main {
     position: relative;
 }
 
-
+#loginbox{
+	border: 1px solid black;
+	border-radius: 30px;
+}
 
 .icon {
     position: absolute;
@@ -159,7 +161,7 @@ main {
 	<header> </header>
 
 	<main class="mainw">
-
+	
 		<section class="loginsection">
 			<!-- <div class="loginlogo">
 				<a href="main.do" class="logo"> <img src="../logoimg/logo.png"></a>
@@ -167,13 +169,13 @@ main {
 
 
 			<!-- 로그인클릭후 이동파일 -->
+			<div id="loginbox">  <!-- 로그인 입력부분 테두리 -->
 			
-
 				<div class="idpwdwhere">
 					<span class="idpwd" >아이디</span>
 				</div>
 				<div class="input-container">
-					<input type="text" id="id" v-model="uId" @keyup.enter="fnEnter" autofocus placeholder="아이디" ref="idInput">
+					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
 					<i class="fa-solid fa-user icon"></i>
 				</div>
 				<div v-if="idflg">
@@ -181,28 +183,28 @@ main {
 						<span class="idpwd" >비밀번호</span>
 					</div>
 					<div  class="input-container">
-						<input type="password" id="pwd" v-model="pwd" @keyup.enter="fnLogin" ref="pwdInput">
+						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
 						<i class="fa-solid fa-lock icon"></i>
 						
 					</div>
 				</div>
 			
-			<div class="loginwindow" v-if="!pwdflg">
+			<div class="loginwindownot" v-if="!pwdflg">
 				<button class="loginbtn" >로그인</button> 
 			</div>
-			<div class="loginwindow">
+			<div class="loginwindow" v-else>
 				<button class="loginbtn"  @click="fnLogin">로그인</button> 
 			</div>
-		<div class="logindownmenu">
+			<div class="logindownmenu">
 				<ul>
 
-					<span><a href="#">아이디찾기|</a></span>
-					<span><a href="#">비밀번호찾기|</a></span>
-					<span><a href="insertuser.do">회원가입</a></span>
+					<span><a href="#">아이디찾기 |</a></span>
+					<span><a href="#">비밀번호찾기 |</a></span>
+					<span><a href="join.do">회원가입</a></span>
 
 				</ul>
 			</div>
-			</div>
+		</div>
 
 			<!-- 아이디찾기 비밀번호찾기 회원가입 -->
 			
@@ -242,22 +244,38 @@ var app = new Vue({
         },
         fnLogin : function(){
 			var self = this;
-			var param = {};
-			console.log("로그인 클릭됨");
+			var param = {uId : self.uId, pwd : self.pwd};
 			$.ajax({
                 url : "/login.dox",
                 dataType:"json",	
                 type : "POST",
                 data : param,
                 success : function(data) { 
-                	
+                	if(data.success){ 
+                		alert(data.message);
+                		location.href ="/mypage.do";
+                	} else {
+                		alert(data.message);
+                		self.$nextTick(() => {
+                            self.$refs.pwdInput.focus();
+                        });
+                	}
                 	
                 }
             }); 
 		},
+		
+		fnbut : function(){
+			var self = this;
+			if(self.pwd.length>0){
+				self.pwdflg = true;
+			}else{
+				self.pwdflg = false;
+			}
+		},
         fnjoin : function(){
         	location.href ="/join.do";
-        }
+        },
         
 	},
 	created : function() {

@@ -25,10 +25,21 @@ public class UserController {
 	
 	@Autowired
 	HttpSession session;
-	
+	// 로그인
 	@RequestMapping("/login.do") 
     public String login(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/user/login";
+    }
+	//  회원가입
+	@RequestMapping("/join.do") 
+    public String join(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/user/join";
+    }
+	
+	// 로그인 이찬신
+	@RequestMapping("/loginLCS.do") 
+    public String loginLCS(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/user/login_LCS";
     }
 	
 	@RequestMapping("/header.do") 
@@ -46,10 +57,7 @@ public class UserController {
         return "/footer";
     }
 	
-	@RequestMapping("/join.do") 
-    public String join(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/user/join";
-    }
+	
 	
 	//회원가입 
 	@RequestMapping(value = "/user/insert.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -82,6 +90,7 @@ public class UserController {
 				session.setAttribute("sessionId", user.getUserId()); // 세션 에다가 user 안에 getId 넣기
 				session.setAttribute("sessionName", user.getUserName());
 				session.setAttribute("sessionStatus", user.getUserState()); 
+				session.setAttribute("sessionEmail", user.getUserEmail()); 
 			}
 			return new Gson().toJson(resultMap);
 		}

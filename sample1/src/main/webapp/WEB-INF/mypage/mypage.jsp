@@ -166,7 +166,7 @@ nav {
 				</div>
 				<div class="profileinner2">
 					<strong>사용자아이디</strong>
-					<p>E***********@email.com</p>
+					<p>{{sessionEmail}}</p> <!-- email -->
 					<a href="#" type="button">프로필 관리</a>
 					<a href="#" type="button">내 스타일</a>
 				</div>
@@ -258,7 +258,8 @@ nav {
 	var app = new Vue({
 		el : '#app',
 		data : {
-			list : []
+			list : [],
+			sessionEmail : "${sessionEmail}"
 		},// data
 		methods : {
 			fnGetList : function() {
