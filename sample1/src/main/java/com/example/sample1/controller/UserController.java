@@ -36,13 +36,8 @@ public class UserController {
         return "/user/join";
     }
 	
-	// 로그인 이찬신
-	@RequestMapping("/loginLCS.do") 
-    public String loginLCS(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/user/login_LCS";
-    }
 	
-	@RequestMapping("/header.do") 
+	@RequestMapping("/header.do")
     public String header(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/header";
     }
@@ -80,18 +75,18 @@ public class UserController {
 	}
 	
 	// 로그인 
-		@RequestMapping(value = "/login.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-		@ResponseBody
-		public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-			HashMap<String, Object> resultMap = new HashMap<String, Object>();
-			resultMap = userService.searchUserLoginAllCheck(map);
-			if(resultMap.containsKey("user")) {// 키값이 있다면 true 리턴 없다면 false 리턴
-				User user = (User) resultMap.get("user"); // 다운캐스팅
-				session.setAttribute("sessionId", user.getUserId()); // 세션 에다가 user 안에 getId 넣기
-				session.setAttribute("sessionName", user.getUserName());
-				session.setAttribute("sessionStatus", user.getUserState()); 
-				session.setAttribute("sessionEmail", user.getUserEmail()); 
-			}
-			return new Gson().toJson(resultMap);
+	@RequestMapping(value = "/login.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = userService.searchUserLoginAllCheck(map);
+		if(resultMap.containsKey("user")) {// 키값이 있다면 true 리턴 없다면 false 리턴
+			User user = (User) resultMap.get("user"); // 다운캐스팅
+			session.setAttribute("sessionId", user.getUserId()); // 세션 에다가 user 안에 getId 넣기
+			session.setAttribute("sessionName", user.getUserName());
+			session.setAttribute("sessionStatus", user.getUserState()); 
+			session.setAttribute("sessionEmail", user.getUserEmail()); 
 		}
+		return new Gson().toJson(resultMap);
+	}
 }

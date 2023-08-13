@@ -124,13 +124,14 @@ input[type="submit"]:hover {
 			<tr>
 				<th>비밀번호 찾기 힌트</th>
 				<td>
-					<input type="text" id="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+					<!-- pwd 힌트랑 정답 id 이름이 같다고 콘솔창에서 주위문구 뜨길래 class 로 바궜음  -->
 				</td>
 			</tr>
 			<tr>
 				<th>비밀번호 찾기 힌트 정답</th>
 				<td>
-					<input type="text" id="passwordhint" name="passwordhint" v-model="user.userPwdAnswer">
+					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdAnswer">
 				</td>
 			</tr>
 			<tr>
@@ -162,7 +163,7 @@ input[type="submit"]:hover {
 			<tr>
 				<td colspan="2" style="text-align: center;">
 					<button @click="fnJoin">가입</button>
-					<button 	>취소</button>
+					<button>취소</button>
 					<!-- <input type="submit" value="가입">
 					<input type="submit" value="취소"> -->
 				</td>
@@ -235,6 +236,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	alert("축하드립니다! 회원가입이 완료되었습니다!");
+                	location.href ="/login.do";
                 }
             });
 		},
