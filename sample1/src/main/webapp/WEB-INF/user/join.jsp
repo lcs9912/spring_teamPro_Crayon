@@ -242,14 +242,14 @@ var app = new Vue({
 		},
 		fnCheck : function(){
 			var self = this;
-			var nparmap = {userId : self.user.userId};
+			var nparmap = {uId : self.user.userId};
             $.ajax({
-                url : "/user/check.dox",
-                dataType:"json",	
-                type : "POST", 
+                url : "/user/selectId.dox",
+                dataType:"json",
+                type : "POST",
                 data : nparmap,
                 success : function(data) { 
-                	if(data.cnt > 0){
+                	if(data.info != undefined){
                 		alert("중복된 아이디가 있습니다");
                 	} else {
                 		alert("사용 가능한 아이디입니다.");

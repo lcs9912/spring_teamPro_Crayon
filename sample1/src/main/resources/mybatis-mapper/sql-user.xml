@@ -11,14 +11,6 @@
 			#{userPwdHint}, #{userPwdAnswer}, NOW(), NOW())
 	</insert>
 	
-	<!-- 아이디 중복체크 -->
-	<select id="idCheck" parameterType="hashmap" resultType="int">
-		SELECT COUNT(*) AS CNT
-		FROM T1_USER_TBL
-		WHERE USER_ID = #{userId}
-	</select>
-	
-	
 	<!-- 로그인 아이디 비번 조회 -->
 	<select id="selectUserLoginAllCheck" parameterType="hashmap"
 		resultType="com.example.sample1.model.User">
@@ -27,13 +19,14 @@
 			WHERE USER_ID = #{uId} AND USER_PWD = #{pwd}
 	</select>
 	
-	<!-- 로그인 아이디 조회 -->
+	<!-- 로그인 아이디 조회 (중복체크)-->
 	<select id="selectUserLoginIdCheck" parameterType="hashmap"
 		resultType="com.example.sample1.model.User">
 			SELECT *
 			FROM T1_USER_TBL
 			WHERE USER_ID = #{uId}
 	</select>
+	
 	
 	<!-- 로그인 횟수 + 1 -->
 	<update id="updateUserLoginCnt" parameterType="hashmap" > 

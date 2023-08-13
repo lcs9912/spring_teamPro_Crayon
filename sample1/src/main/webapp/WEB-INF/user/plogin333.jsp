@@ -155,7 +155,6 @@ main {
 
 			<!-- 로그인클릭후 이동파일 -->
 			
-
 				<div class="idpwdwhere">
 					<span class="idpwd" >아이디</span>
 				</div>

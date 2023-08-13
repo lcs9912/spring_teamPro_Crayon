@@ -19,12 +19,6 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userMapper.insert(map);
 	}
-
-	@Override //아이디 중복체크
-	public int userIdCheck(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return userMapper.idCheck(map);
-	}
 	
 	@Override //로그인 시 아이디 비밀번호 체크
 	public HashMap<String, Object> searchUserLoginAllCheck(HashMap<String, Object> map) {
@@ -59,6 +53,13 @@ public class UserServiceImpl implements UserService{
 			}
 		}
 		return resultMap;
+	}
+
+	// 아이디 중복 체크
+	@Override
+	public User searchUserLoginIdCheck(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserLoginIdCheck(map);
 	}
 
 }

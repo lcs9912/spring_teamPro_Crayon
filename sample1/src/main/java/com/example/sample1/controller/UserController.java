@@ -28,18 +28,23 @@ public class UserController {
 	// 로그인
 	@RequestMapping("/login.do") 
     public String login(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/user/login";
+        
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/login";
     }
 	//  회원가입
 	@RequestMapping("/join.do") 
     public String join(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/user/join";
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/join";
     }
 	
 	
-	@RequestMapping("/header.do")
+	
+	@RequestMapping("/header1.do")
     public String header(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/header";
+        return "/header1";
     }
 	
 	@RequestMapping("/header2.do") 
@@ -64,13 +69,13 @@ public class UserController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	//아이디 중복체크
-	@RequestMapping(value = "/user/check.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	// select where id 
+	@RequestMapping(value = "/user/selectId.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		int cnt = userService.userIdCheck(map);
-		resultMap.put("cnt", cnt);
+		User user = userService.searchUserLoginIdCheck(map);
+		resultMap.put("info", user);
 		return new Gson().toJson(resultMap);
 	}
 	

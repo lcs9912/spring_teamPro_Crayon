@@ -99,8 +99,8 @@
 			<h2>마이 페이지</h2>
 			<h3>쇼핑 정보</h3>
 			<ul>
-				<li><a href="#">구매 내역</a></li>
-				<li><a href="#">판매 내역</a></li>
+				<li><a href="mypagebuylist.do">구매 내역</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>
 				<li><a href="#">보관 판매</a></li>
 				<li><a href="#">관심 상품</a></li>
 			</ul>
@@ -108,7 +108,7 @@
 		<div class="myinfo">
 			<h3>내 정보</h3>
 			<ul>
-				<li><a href="#">로그인 정보</a></li>
+				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
 				<li><a href="#">프로필 관리</a></li>
 				<li><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
@@ -188,25 +188,25 @@
 </body>
 <%@ include file="../footer.jsp"%>
 </html>
-
 <script>
 	var app = new Vue({
 		el : '#app',
 		data : {
-			list : []
+			info : {},
+			sessionId : "${sessionId}",
 		},// data
 		methods : {
-			fnGetList : function() {
+			fnGetInfo : function() {
 				var self = this;
-				var param = {};
+				var param = {uId : self.sessionId};
 				$.ajax({
-					url : "footer.dox",
+					url : "/user/selectId.dox",
 					dataType : "json",
 					type : "POST",
 					data : param,
 					success : function(data) {
-						self.list = data.list;
-						console.log(self.list);
+						self.info = data.info;
+						console.log(self.info);
 					}
 				});
 			}
@@ -214,7 +214,7 @@
 		}, // methods
 		created : function() {
 			var self = this;
-			self.fnGetList();
+			self.fnGetInfo();
 		}// created
 	});
 </script>

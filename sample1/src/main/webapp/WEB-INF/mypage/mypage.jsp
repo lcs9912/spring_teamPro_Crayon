@@ -140,8 +140,8 @@ nav {
 			<h2>마이 페이지</h2>
 			<h3>쇼핑 정보</h3>
 			<ul>
-				<li><a href="#">구매 내역</a></li>
-				<li><a href="#">판매 내역</a></li>
+				<li><a href="/mypagebuylist.do">구매 내역</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>
 				<li><a href="#">보관 판매</a></li>
 				<li><a href="#">관심 상품</a></li>
 			</ul>
@@ -149,7 +149,7 @@ nav {
 		<div class="myinfo">
 			<h3>내 정보</h3>
 			<ul>
-				<li><a href="#">로그인 정보</a></li>
+				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
 				<li><a href="#">프로필 관리</a></li>
 				<li><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
@@ -163,15 +163,16 @@ nav {
 			<div class="profilearea">
 				<div class="profileinner1">
 					<img src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png">
+					<!-- 유저 프로필사진 -->
 				</div>
 				<div class="profileinner2">
 					<strong>사용자아이디</strong>
-					<p>{{sessionEmail}}</p> <!-- email -->
+					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
 					<a href="#" type="button">프로필 관리</a>
 					<a href="#" type="button">내 스타일</a>
 				</div>
 				<div class="profileinner3">
-					<p>0P</p>
+					<p>{{info.userPoint}}P</p> <!-- 유저포인트 -->
 					<p>포인트</p>
 				</div>
 				<div class="profileinner4">
@@ -258,21 +259,21 @@ nav {
 	var app = new Vue({
 		el : '#app',
 		data : {
-			list : [],
-			sessionEmail : "${sessionEmail}"
+			info : {},
+			sessionId : "${sessionId}"
 		},// data
 		methods : {
-			fnGetList : function() {
+			fnGetInfo : function() {
 				var self = this;
-				var param = {};
+				var param = {uId : self.sessionId};
 				$.ajax({
-					url : "footer.dox",
+					url : "/user/selectId.dox",
 					dataType : "json",
 					type : "POST",
 					data : param,
 					success : function(data) {
-						self.list = data.list;
-						console.log(self.list);
+						self.info = data.info;
+						console.log(self.info);
 					}
 				});
 			}
@@ -280,7 +281,7 @@ nav {
 		}, // methods
 		created : function() {
 			var self = this;
-		
+			self.fnGetInfo();
 		}// created
 	});
 </script>

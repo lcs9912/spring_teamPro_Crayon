@@ -38,6 +38,12 @@ public class MypageController {
 	return "/mypage/mypagelogininfo";
 	}
 	
+	// 마이페이지 본인정보
+	@RequestMapping("/mypageselllist.do") 
+	public String mypageselllist(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+	return "/mypage/mypageselllist";
+	}
+	
 	
 	
 }
