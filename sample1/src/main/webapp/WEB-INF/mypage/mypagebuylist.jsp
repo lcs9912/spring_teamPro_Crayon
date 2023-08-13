@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<script src="../js/jquery.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <meta charset="UTF-8">
 <title>프로젝트 마이페이지 구매내역 페이지</title>
 

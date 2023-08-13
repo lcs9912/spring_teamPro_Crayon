@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="../js/jquery.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<meta charset="UTF-8">
 	<title>회원가입페이지</title>
 <style>
