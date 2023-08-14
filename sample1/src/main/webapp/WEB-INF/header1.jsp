@@ -29,15 +29,45 @@ header {
 </style>
 </head>
 <body>
+<div id="headerApp">
 <header>
 
 	<span id="headermenu">
-			<span class="loginbtn" ><a href="login.do">로그인</a></span>
+			<span v-if=' ${sessionId} != ""'><a href="login.do">로그아웃</a></span>
+			<span class="loginbtn" v-else><a href="login.do">로그인</a></span>
 			<span class="#"><a href="#">장바구니</a></span>
 			<span class="#"><a href="#">관심상품</a></span>
 			<span class="#"><a href="mypage.do">마이페이지</a></span>
 	</span>
 
 </header>
+</div>
 </body>
 </html>
+<script>
+var app = new Vue({
+	el : '#headerApp',
+	data : {
+		loginOut : "${sessionId}"
+	},// data
+	methods : {
+		fnCheck : function(){
+			var self = this;
+			var nparmap = {}
+			  $.ajax({
+	                url:"list.dox", 
+	                dataType:"json", 
+	                type : "POST",  
+	                data : nparmap, 
+	                success : function(data) {  
+						
+	                }
+	            });  
+		},
+	}, // methods
+	created : function() {
+		var self = this;
+		
+	}// created
+});
+</script>
