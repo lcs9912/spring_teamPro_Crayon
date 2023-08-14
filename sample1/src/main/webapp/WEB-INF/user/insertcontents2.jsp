@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <script src="../js/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <meta charset="EUC-KR">
+    <meta charset="UTF-8">
     <title>Insert title here</title>
  
 </head>
@@ -27,58 +27,58 @@ text-align : center;
 
 
 <body>
-<h1>°³ÀÎÁ¤º¸ ¼öÁý ¹× ÀÌ¿ë</h1>
+<h1>ê°œì¸ì •ë³´ ìˆ˜ì§‘ ë° ì´ìš©</h1>
 <br><br>
-Å©·¹¿ë(ÁÖ)(ÀÌÇÏ È¸»ç)´Â ¼­ºñ½º Á¦°øÀ» À§ÇÏ¿© ¾Æ·¡¿Í °°ÀÌ °³ÀÎÁ¤º¸¸¦ ¼öÁý ¹× ÀÌ¿ë ¹× Á¦°øÇÕ´Ï´Ù.
+í¬ë ˆìš©(ì£¼)(ì´í•˜ íšŒì‚¬)ëŠ” ì„œë¹„ìŠ¤ ì œê³µì„ ìœ„í•˜ì—¬ ì•„ëž˜ì™€ ê°™ì´ ê°œì¸ì •ë³´ë¥¼ ìˆ˜ì§‘ ë° ì´ìš© ë° ì œê³µí•©ë‹ˆë‹¤.
 <br><br>
 <table>
 <tr>
-	<th>Ç×¸ñ</th>
-	<th>¼öÁý ¹× ÀÌ¿ë¸ñÀû</th>
-	<th>ÇÊ¼ö ¿©ºÎ</th>
-	<th>º¸À¯ ¹× ÀÌ¿ë±â°£</th>
+	<th>í•­ëª©</th>
+	<th>ìˆ˜ì§‘ ë° ì´ìš©ëª©ì </th>
+	<th>í•„ìˆ˜ ì—¬ë¶€</th>
+	<th>ë³´ìœ  ë° ì´ìš©ê¸°ê°„</th>
 </tr>
 
 <tr>
-	<td>NAVER È¸¿ø: ÀÌ¿ëÀÚ ½Äº°ÀÚ<br>
-	APPLE È¸¿ø: ÀÌ¿ëÀÚ ½Äº°ÀÚ<br>
-	ÀÌ¸ÞÀÏ È¸¿ø: ID(ÀÌ¸ÞÀÏ ÁÖ¼Ò), ºñ¹Ð¹øÈ£, ÀÌ¸§, ÈÞ´ëÆù¹øÈ£, ¼ºº°, »ý³â¿ùÀÏ, CI/DI</td>
-	<td rowspan="2">È¸¿ø °¡ÀÔ ¹× ÇÁ·ÎÇÊ °ü¸®</td>
-	<td>ÇÊ¼ö</td>
-	<td rowspan="3">È¸¿ø Å»Åð ¶Ç´Â ¼­ºñ½º Á¾·á ½Ã±îÁö</td>
+	<td>NAVER íšŒì›: ì´ìš©ìž ì‹ë³„ìž<br>
+	APPLE íšŒì›: ì´ìš©ìž ì‹ë³„ìž<br>
+	ì´ë©”ì¼ íšŒì›: ID(ì´ë©”ì¼ ì£¼ì†Œ), ë¹„ë°€ë²ˆí˜¸, ì´ë¦„, íœ´ëŒ€í°ë²ˆí˜¸, ì„±ë³„, ìƒë…„ì›”ì¼, CI/DI</td>
+	<td rowspan="2">íšŒì› ê°€ìž… ë° í”„ë¡œí•„ ê´€ë¦¬</td>
+	<td>í•„ìˆ˜</td>
+	<td rowspan="3">íšŒì› íƒˆí‡´ ë˜ëŠ” ì„œë¹„ìŠ¤ ì¢…ë£Œ ì‹œê¹Œì§€</td>
 </tr>
 <tr>
-	<td>(°øÅë) º°¸í, ÇÁ·ÎÇÊ »çÁø, ½Å¹ß »çÀÌÁî, ¹è¼Û ÁÖ¼Ò, Ä«µå Á¤º¸, °Å·¡ ÀºÇà ¹× °èÁÂ¹øÈ£</td>
-	<td>¼±ÅÃ</td>
+	<td>(ê³µí†µ) ë³„ëª…, í”„ë¡œí•„ ì‚¬ì§„, ì‹ ë°œ ì‚¬ì´ì¦ˆ, ë°°ì†¡ ì£¼ì†Œ, ì¹´ë“œ ì •ë³´, ê±°ëž˜ ì€í–‰ ë° ê³„ì¢Œë²ˆí˜¸</td>
+	<td>ì„ íƒ</td>
 </tr>
 <tr>
-	<td>°³ÀÎ: ÀÌ¸§, ÁÖ¼Ò, ÈÞ´ëÆù¹øÈ£, ÀÌ¸ÞÀÏ, ÀÔ±Ý°èÁÂ Á¤º¸(°èÁÂ¹øÈ£, ¿¹±ÝÁÖ¸í), ½ÅºÐÁõ »çº»
+	<td>ê°œì¸: ì´ë¦„, ì£¼ì†Œ, íœ´ëŒ€í°ë²ˆí˜¸, ì´ë©”ì¼, ìž…ê¸ˆê³„ì¢Œ ì •ë³´(ê³„ì¢Œë²ˆí˜¸, ì˜ˆê¸ˆì£¼ëª…), ì‹ ë¶„ì¦ ì‚¬ë³¸
 <br>
-»ç¾÷ÀÚ: ÀÌ¸§, ÁÖ¼Ò, ÈÞ´ëÆù¹øÈ£, ÀÌ¸ÞÀÏ, ÀÔ±Ý°èÁÂ Á¤º¸(°èÁÂ¹øÈ£, ¿¹±ÝÁÖ¸í), »ç¾÷ÀÚµî·ÏÁõ, ÀÔ±Ý°èÁÂ ½Å°í¼­</td>
-	<td>¸ÅÀÔ/¸ÅÃâ °Å·¡Ã³ µî·Ï</td>
-	<td>ÇÊ¼ö</td>
+ì‚¬ì—…ìž: ì´ë¦„, ì£¼ì†Œ, íœ´ëŒ€í°ë²ˆí˜¸, ì´ë©”ì¼, ìž…ê¸ˆê³„ì¢Œ ì •ë³´(ê³„ì¢Œë²ˆí˜¸, ì˜ˆê¸ˆì£¼ëª…), ì‚¬ì—…ìžë“±ë¡ì¦, ìž…ê¸ˆê³„ì¢Œ ì‹ ê³ ì„œ</td>
+	<td>ë§¤ìž…/ë§¤ì¶œ ê±°ëž˜ì²˜ ë“±ë¡</td>
+	<td>í•„ìˆ˜</td>
 </tr>
 
 <tr>
-	<td>ÈÞ´ëÆù¹øÈ£</td>
-	<td>ID Ã£±â</td>
-	<td>ÇÊ¼ö</td>
-	<td>ID Ã£±â ÀÌ¿ë ½Ã ±îÁö</td>
+	<td>íœ´ëŒ€í°ë²ˆí˜¸</td>
+	<td>ID ì°¾ê¸°</td>
+	<td>í•„ìˆ˜</td>
+	<td>ID ì°¾ê¸° ì´ìš© ì‹œ ê¹Œì§€</td>
 </tr>
 
 <tr>
-	<td>ÈÞ´ëÆù¹øÈ£,ÀÌ¸ÞÀÏÁÖ¼Ò</td>
-	<td>ºñ¹Ð¹øÈ£ Ã£±â</td>
-	<td>ÇÊ¼ö</td>
-	<td>ºñ¹Ð¹øÈ£ Ã£±â ÀÌ¿ë ½Ã ±îÁö</td>
+	<td>íœ´ëŒ€í°ë²ˆí˜¸,ì´ë©”ì¼ì£¼ì†Œ</td>
+	<td>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</td>
+	<td>í•„ìˆ˜</td>
+	<td>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ì´ìš© ì‹œ ê¹Œì§€</td>
 </tr>
 
 </table>
 <br><br>
-°³ÀÎÁ¤º¸ÀÇ ¼öÁý ¹× ÀÌ¿ë¿¡ ´ëÇÑ µ¿ÀÇ¸¦ °ÅºÎÇÏ½Ã´õ¶óµµ ¼­ºñ½ºÀÇ ÀÌ¿ëÀº °¡´ÉÇÕ´Ï´Ù.
+ê°œì¸ì •ë³´ì˜ ìˆ˜ì§‘ ë° ì´ìš©ì— ëŒ€í•œ ë™ì˜ë¥¼ ê±°ë¶€í•˜ì‹œë”ë¼ë„ ì„œë¹„ìŠ¤ì˜ ì´ìš©ì€ ê°€ëŠ¥í•©ë‹ˆë‹¤.
 
-<h3>´Ù¸¸, ¼öÁý ¹× ÀÌ¿ëÀ» °ÅºÎÇÏ½Å Á¤º¸¿Í ¿¬°èµÈ ¼­ºñ½º(È¸¿ø °¡ÀÔ ¹× ÇÁ·ÎÇÊ °ü¸®, ¸ÅÀÔ/¸ÅÃâ °Å·¡Ã³ µî·Ï, ID/ºñ¹Ð¹øÈ£ Ã£±â)´Â µ¿ÀÇ Àü±îÁö ÀÏºÎ ¶Ç´Â ÀüÃ¼¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.</h3>
+<h3>ë‹¤ë§Œ, ìˆ˜ì§‘ ë° ì´ìš©ì„ ê±°ë¶€í•˜ì‹  ì •ë³´ì™€ ì—°ê³„ëœ ì„œë¹„ìŠ¤(íšŒì› ê°€ìž… ë° í”„ë¡œí•„ ê´€ë¦¬, ë§¤ìž…/ë§¤ì¶œ ê±°ëž˜ì²˜ ë“±ë¡, ID/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°)ëŠ” ë™ì˜ ì „ê¹Œì§€ ì¼ë¶€ ë˜ëŠ” ì „ì²´ë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.</h3>
 <br><br>
-<a href="#">°³ÀÎÁ¤º¸ Ã³¸®¹æÄ§ Àü¹® º¸±â</a>
+<a href="#">ê°œì¸ì •ë³´ ì²˜ë¦¬ë°©ì¹¨ ì „ë¬¸ ë³´ê¸°</a>
 </body>
 </html>

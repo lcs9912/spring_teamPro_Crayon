@@ -40,7 +40,12 @@ public class UserController {
 		return "/user/join";
     }
 	
-	
+	@RequestMapping("/loginLcs.do") 
+    public String loginLCS(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/login_LCS";
+    }
 	
 	@RequestMapping("/header1.do")
     public String header(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{

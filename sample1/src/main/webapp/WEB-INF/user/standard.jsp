@@ -78,6 +78,7 @@ margin-right : 200px;
 </style>
 
 </head>
+<%@ include file="../header1.jsp"%>
 <body>
 	<div id="app">
 	<div class="customerwrap">
