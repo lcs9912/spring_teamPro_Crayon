@@ -94,7 +94,7 @@
 	<div class="mypagewrap">
 		<nav class="myinfonav">
 		<div class="myinfo">
-			<h2>마이 페이지</h2>
+			<h2><a href="mypage.do">마이 페이지</a></h2>
 			<h3>쇼핑 정보</h3>
 			<ul>
 				<li><a href="mypagebuylist.do">구매 내역</a></li>

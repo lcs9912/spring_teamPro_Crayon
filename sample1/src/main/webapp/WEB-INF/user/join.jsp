@@ -3,73 +3,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://kit.fontawesome.com/2c370f498b.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/2c370f498b.js" crossorigin="anonymous"></script>
 	<script src="../js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<meta charset="UTF-8">
 	<title>회원가입페이지</title>
 <style>
 body {
-	background-color: #white;
-	margin: 0;
-	padding: 0;
+   background-color: #white;
+   margin: 0;
+   padding: 0;
 }
 .logo img {
-	padding-bottom: 30px;
-	padding-top: 0px; 
+   padding-bottom: 30px;
+   padding-top: 0px; 
 }
 
 h1 {
-	text-align: center;
-	padding: 20px 0;
-	color: #333;
+   text-align: center;
+   padding: 20px 0;
+   color: #333;
 }
 
 table {
 table-layout: fixed;
-	width: 800px;
-	margin: 0 auto;
-	padding: 20px;
-
-	background-color: #white;
-border-radius: 30px;
+   width: 800px;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: #white;
+   border-radius: 10px;
+   border: 1px solid #black;
 }
 
 table td {
-	padding-top: 10px;
-	padding-bottom: 10px;
+   padding: 10px;
 }
 
-th, td {
-
-	border-collapse: collapse;
+table, th, td {
+   border: 1px solid #262626;
+   border-collapse: collapse;
 }
 
 th {
-border-radius: 30px;
-	background-color: #eee;
-	padding : 10px;
-	width : 30%;
+   background-color: #eee;
+   padding : 10px;
+   width : 30%;
 }
 button.btnhover{
-	width: 20%;
-	padding: 10px;
-	background-color: #8A8484;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	margin-top : 20px;
-	margin-bottom : 20px;
+   width: 20%;
+   padding: 10px;
+   background-color: #8A8484;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   margin-top : 20px;
+   margin-bottom : 20px;
 }
 button.btnhover:hover {
-	background-color: #262626;
+   background-color: #262626;
 }
 input[type="text"], input[type="password"], select {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-sizing: border-box;
+   width: 100%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-sizing: border-box;
 }
 input[type="checkbox"]{
 width: 35px; 
@@ -84,37 +82,37 @@ margin-right: 5px;
 }
 
 input[type="submit"] {
-	width: 30%;
-	padding: 10px;
-	background-color: #8A8484;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
+   width: 30%;
+   padding: 10px;
+   background-color: #8A8484;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
 }
 
 input[type="submit"]:hover {
-	background-color: #262626;
+   background-color: #262626;
 }
 
 #username {
-	width: 70%;
+   width: 70%;
 }
 
 #idcheckbtn {
-	width: 25%;
-	height: 30%;
+   width: 25%;
+   height: 30%;
 }
 
 #year {
-	width: 32%;
+   width: 32%;
 }
 
 #month {
-	width: 32%;
+   width: 32%;
 }
 
 #day {
-	width: 32%;
+   width: 32%;
 }
 
 .aaButton{
@@ -150,37 +148,17 @@ font-size : 20px;
 text-align:center;
 }
 #idcheckbtn{
-	width: 29%;
-	padding: 10px;
-	background-color: #8A8484;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	
+   width: 27%;
+   padding: 10px;
+   background-color: #8A8484;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
 }
 #idcheckbtn:hover{
-	background-color: #262626;
-}
-.idsection{
-width : 1200px;
-display: inline-block;
-margin-left : 17%;
-border: 1px solid black;
-padding : 10px;
-border-radius: 30px;
+   background-color: #262626;
 }
 
-tbody{
-border: 1px solid black;
-}
-.selectgender{
-text-align:center;
-}
-
-#pwdhint{
-color: #8A8484;
-text-align:center;
-}
 </style>
 
 </head>
@@ -190,85 +168,74 @@ text-align:center;
 <hr>
 <body>
 <div id="app">
-	<h1>회원가입</h1>
-<section class="idsection">
-		<table>
-<tbody>
+   <h1>회원가입</h1>
+      <table>
+         <tr>
+            <th>아이디*</th>
+            <td><input type="text" id="username" name="username" v-model="user.userId" >
+               <button id="idcheckbtn" @click="fnCheck">중복확인</button>
+            </td>
+         </tr>
+         <tr class="pwdmsg">
+            <th>비밀번호*</th>
+            <td>
+            <input type="password" id="password" name="password" v-model="user.userPwd1" @keyup="fnPwdCheck">
+            <span style="color:red;" v-if="user.userPwd1 != ''">{{message}}</span>
+            </td>
+         </tr>
 			<tr>
-		
-				<td><input type="text" id="username" name="username" v-model="user.userId" placeholder="아이디">
-					<button id="idcheckbtn" @click="fnCheck">중복확인</button>
-				</td>
-			</tr>
-			
-			</section>
-			
-			<tr class="pwdmsg">
-
+				<th>비밀번호 확인*</th>
 				<td>
-				<input type="password" id="password" name="password" v-model="user.userPwd1" @keyup="fnPwdCheck" placeholder="비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.">
-				<span style="color:red;" v-if="user.userPwd1 != ''">{{message}}</span>
-				</td>
-			</tr>
-			<tr>
-
-				<td>
-					<input type="password" id="password2" name="password2" v-model="user.userPwd2" placeholder="비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.">
-				</td>
-			</tr>
-			<tr class="hintinput">
-				<td>
-					<select name="language" id="pwdhint"class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
-				<option disabled selected>비밀번호 찾기 질문</option>
-				  <option value="1">가장 좋아하는 동물은?</option>
-				  <option value="2">가장 좋아하는 음식은?</option>
-				  <option value="3">가장 좋아하는 색은?</option>
-				  <option value="4">가장 좋아하는 운동선수이름은?</option>
-				  <option value="5">자신의 취미나 특기는?</option>
-				  <option value="6">가장 좋아하는 운동은?</option>
-				  <option value="7">가장 좋아하는 티비프로그램은?</option>
-				  <option value="8">가장 좋아하는 책은?</option>
-				  <option value="9">가장 좋아하는 영화는?</option>
-					</select>
+					<input type="password" id="password2" name="password2" v-model="user.userPwd2" >
 				</td>
 			</tr>
 			<tr>
-
+				<th>비밀번호 찾기 힌트</th>
 				<td>
-					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdAnswer" placeholder="비밀번호 찾기 힌트 정답">
+					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+					<!-- pwd 힌트랑 정답 id 이름이 같다고 콘솔창에서 주위문구 뜨길래 class 로 바궜음  -->
+				</td>
+			</tr>
+			<tr>
+				<th>비밀번호 찾기 힌트 정답</th>
+				<td>
+					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdAnswer">
 				</td>
 			</tr>
 			<tr class="namemsg">
-
+				<th>이름*</th>
 				<td>
-					<input type="text" id="name" name="name" v-model="user.userName" placeholder="이름">
+					<input type="text" id="name" name="name" v-model="user.userName" @keyup="fnNameCheck">
+					<span style="color:red;" v-if="user.userName != ''">{{message}}</span>
 				</td>
 			</tr>
 			
-			<tr class="selectgender">
-
+			<tr>
+				<th>성별*</th>
 				<td><input type="radio" id="male" name="gender" value="남성" v-model="user.userGender" >
 					<label for="male">남성</label>
 					<input type="radio" id="female" name="gender" value="여성" v-model="user.userGender" >
 					<label for="female">여성</label>
 				</td>
 			</tr>
-			<tr>
-
+			<tr class="phonemsg">
+				<th>휴대전화</th>
 				<td>
-					<input type="text" id="phone" name="phone" v-model="user.userPhone" placeholder="휴대전화">
+					<input type="text" id="phone" name="phone" v-model="user.userPhone" @keyup="fnPhoneCheck">
+					<span style="color:red;" v-if="user.userPhone != ''">{{message}}</span>
 				</td>
 			</tr>
-			<tr>
-
+			<tr class="emailmsg">
+				<th>이메일*</th>
 				<td>
-					<input type="text" id="email" name="email" v-model="user.userEmail" placeholder="이메일">
+					<input type="text" id="email" name="email" v-model="user.userEmail" @keyup="fnEmailCheck">
+					<span style="color:red;" v-if="user.userEmail != ''">{{message}}</span>
 				</td>
 			</tr>
 			<tr>
 
 		</tr>	
-		</tbody>
+		
 		
 
 		</table>
@@ -303,7 +270,7 @@ text-align:center;
 		<div class="btnwhere">
 		<td colspan="2" style="text-align: center;">
 		<button @click="fnJoin" class="btnhover">가입</button>
-		<a href="login.do" ><button class="btnhover">취소</button></a>
+	<a href="login.do" ><button class="btnhover">취소</button></a>
 		</td>
 		</div>
 </div>
@@ -332,10 +299,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const pwdHintSelect = document.getElementById("pwdhint");
-    pwdHintSelect.selectedIndex = 0;
-});
-document.addEventListener("DOMContentLoaded", function() {
     const selectCheckboxLabel = document.getElementById("selectCheckboxLabel");
     const selectCheckboxIcons = selectCheckboxLabel.querySelectorAll(".fa-solid");
     const bbElement = document.querySelector(".bb");
@@ -353,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function() {
 var app = new Vue({
 	el : '#app',
 	data : {
-		info : {},
 		user : {
 			userId : "",
 			userPwd1 : "",
@@ -443,21 +405,19 @@ var app = new Vue({
 		},
 		fnCheck : function(){
 			var self = this;
-			var nparmap = {uId : self.user.userId};
-			console.log(self.user.userId);
-			$.ajax({
-                url : "/user/selectId.dox",
+			var nparmap = {userId : self.user.userId};
+            $.ajax({
+                url : "/user/check.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) { 
-                	console.log(data.info);
-                	if(data.info != undefined){
+                	if(data.cnt > 0){
                 		alert("중복된 아이디가 있습니다");
                 	} else {
                 		alert("사용 가능한 아이디입니다.");
                 		self.joinFlg = true;
-                	}  
+                	}
                 }
             });
 		},
@@ -470,8 +430,34 @@ var app = new Vue({
 			}else {
 				self.message = "";
 			}
+		},
+		fnNameCheck : function() {
+			var self = this;
+			var regex = /^[가-힣]{2,8}$/;
+			if(!regex.test(self.user.userName)){
+				self.message = "정신 안차려? 너 니 이름도 몰라? 당신 이름 다시 똑바로 적을 수 있도록!";
+			}else {
+				self.message = "";
+			}
+		},
+		fnPhoneCheck : function() {
+			var self = this;
+			var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+			if(!regex.test(self.user.userPhone)){
+				self.message = "아무번호나 입력하지말고 휴대전화번호 적으세요 제발";
+			}else {
+				self.message = "";
+			}
+		},
+		fnEmailCheck : function() {
+			var self = this;
+			var regex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			if(!regex.test(self.user.userEmail)){
+				self.message = "이메일 적어주세요 이메일! 아이디 말고";
+			}else {
+				self.message = "";
+			}
 		}
-		
 	}, // methods
 	created : function() {
 		var self = this;
