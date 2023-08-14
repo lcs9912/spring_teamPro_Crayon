@@ -178,7 +178,7 @@ main {
 				</div>
 				<div v-if="idflg">
 					<div class="idpwdwhere">
-						<span class="idpwd" >비밀번호</span>
+						<span class="idpwd" >비밀번호</span> 
 					</div>
 					<div  class="input-container">
 						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
