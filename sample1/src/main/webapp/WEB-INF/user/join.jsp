@@ -75,7 +75,7 @@ font-size : 25px;
 margin-top : 30px;
 }
 input[type="radio"] {
-	margin-right: 5px;
+margin-right: 5px;
 }
 
 input[type="submit"] {
@@ -225,27 +225,27 @@ text-align:center;
 <div class="allCheckbox">
 
 <div class="requiredCheckbox">
-    <input type="checkbox" class="styled-checkbox">
+    <input type="checkbox" class="styled-checkbox" v-model="allAaChecked">
     <label class="checkbox-label" id="requiredCheckboxLabel">[필수] 만 14세 이상이며 모두 동의합니다.
     <i class="fa-solid fa-plus" style="cursor: pointer;"></i></label>
 </div>
 <div class="aa" id="aaElement" hidden>
-    <label><input type="checkbox" class="aaCheckbox">이용약관 동의</label>
+    <label><input type="checkbox" class="aaCheckbox" v-model="aaChecked[0]">이용약관 동의</label>
     <button class="aaButton" onclick="openPopup('insertcontents.do')">내용보기</button><br>
-    <label><input type="checkbox" class="aaCheckbox">개인정보 수집 및 이용 동의</label>
+    <label><input type="checkbox" class="aaCheckbox" v-model="aaChecked[1]">개인정보 수집 및 이용 동의</label>
     <button class="aaButton" onclick="openPopup('insertcontents2.do')">내용보기</button>
 </div>
 
 <div class="selectcheckbox">
-    <input type="checkbox" class="styled-checkbox">
+    <input type="checkbox" class="styled-checkbox" v-model="allAaChecked2">
     <label class="checkbox-label" id="selectCheckboxLabel">[선택] 광고성 정보 수신에 모두 동의합니다.
     <i class="fa-solid fa-plus" style="cursor: pointer;"></i></label>
 </div>
 
 <div class="bb" id="bbElement" hidden>
-    <label><input type="checkbox" class="bbCheckbox" >앱 푸시</label><br>
-    <label><input type="checkbox" class="bbCheckbox">문자 메세지</label><br>
-    <label><input type="checkbox" class="bbCheckbox">이메일</label>
+    <label><input type="checkbox" class="bbCheckbox" v-model="bbChecked[0]">앱 푸시</label><br>
+    <label><input type="checkbox" class="bbCheckbox" v-model="bbChecked[1]">문자 메세지</label><br>
+    <label><input type="checkbox" class="bbCheckbox" v-model="bbChecked[2]">이메일</label>
 </div>
 </div>
 
@@ -309,9 +309,29 @@ var app = new Vue({
 			userPhone : "",
 			userEmail : ""
 			},
+			 allAaChecked: false,
+			 aaChecked: [false, false],
+			 allAaChecked2: false,
+			 bbChecked: [false, false, false],
 		joinFlg : false,
+		
 		message : ""
 	},// data
+	watch: {
+	    allAaChecked: function (newValue) {
+	        this.aaChecked = newValue ? [true, true] : [false, false];
+	    },
+	    allAaChecked2: function (newValue) {
+	        this.bbChecked = newValue ? [true, true, true] : [false, false, false];
+	    }
+	},
+	fnJoin: function () {
+	    var self = this;
+	    if (!self.allAaChecked) {
+	        alert("필수 동의사항에 모두 동의해주세요.");
+	        return;
+	    }
+	},
 	methods : {
 		fnJoin : function(){
 			var self = this;
@@ -348,7 +368,11 @@ var app = new Vue({
 				alert("핸드폰을 입력해주세요");
 				return;
 			}
-			
+			var self = this;
+		    if (!self.allAaChecked) {
+		        alert("필수 동의사항에 모두 동의해주세요.");
+		        return;
+		    }
 		 	var nparmap = self.user;
             $.ajax({
                 url : "/user/insert.dox",
