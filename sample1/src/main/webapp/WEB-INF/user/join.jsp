@@ -176,6 +176,11 @@ border: 1px solid black;
 .selectgender{
 text-align:center;
 }
+
+#pwdhint{
+color: #8A8484;
+text-align:center;
+}
 </style>
 
 </head>
@@ -211,11 +216,20 @@ text-align:center;
 					<input type="password" id="password2" name="password2" v-model="user.userPwd2" placeholder="비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.">
 				</td>
 			</tr>
-			<tr>
-
+			<tr class="hintinput">
 				<td>
-					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdHint" placeholder="비밀번호 찾기 힌트">
-					<!-- pwd 힌트랑 정답 id 이름이 같다고 콘솔창에서 주위문구 뜨길래 class 로 바궜음  -->
+					<select name="language" id="pwdhint"class="passwordhint" name="passwordhint" v-model="user.userPwdHint" >
+				<option disabled selected>비밀번호 찾기 질문</option>
+				  <option value="1">가장 좋아하는 동물은?</option>
+				  <option value="2">가장 좋아하는 음식은?</option>
+				  <option value="3">가장 좋아하는 색은?</option>
+				  <option value="4">가장 좋아하는 운동선수이름은?</option>
+				  <option value="5">자신의 취미나 특기는?</option>
+				  <option value="6">가장 좋아하는 운동은?</option>
+				  <option value="7">가장 좋아하는 티비프로그램은?</option>
+				  <option value="8">가장 좋아하는 책은?</option>
+				  <option value="9">가장 좋아하는 영화는?</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -318,6 +332,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    const pwdHintSelect = document.getElementById("pwdhint");
+    pwdHintSelect.selectedIndex = 0;
+});
+document.addEventListener("DOMContentLoaded", function() {
     const selectCheckboxLabel = document.getElementById("selectCheckboxLabel");
     const selectCheckboxIcons = selectCheckboxLabel.querySelectorAll(".fa-solid");
     const bbElement = document.querySelector(".bb");
@@ -335,6 +353,7 @@ document.addEventListener("DOMContentLoaded", function() {
 var app = new Vue({
 	el : '#app',
 	data : {
+		info : {},
 		user : {
 			userId : "",
 			userPwd1 : "",
@@ -424,19 +443,21 @@ var app = new Vue({
 		},
 		fnCheck : function(){
 			var self = this;
-			var nparmap = {userId : self.user.userId};
-            $.ajax({
-                url : "/user/check.dox",
+			var nparmap = {uId : self.user.userId};
+			console.log(self.user.userId);
+			$.ajax({
+                url : "/user/selectId.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) { 
-                	if(data.cnt > 0){
+                	console.log(data.info);
+                	if(data.info != undefined){
                 		alert("중복된 아이디가 있습니다");
                 	} else {
                 		alert("사용 가능한 아이디입니다.");
                 		self.joinFlg = true;
-                	}
+                	}  
                 }
             });
 		},

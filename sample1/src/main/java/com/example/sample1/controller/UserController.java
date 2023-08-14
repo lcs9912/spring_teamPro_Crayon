@@ -36,7 +36,7 @@ public class UserController {
 	@RequestMapping("/join.do") 
     public String join(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/join";
     }
 	
@@ -63,45 +63,45 @@ public class UserController {
 	@RequestMapping("/insertcontents.do") 
     public String insertcontents(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/insertcontents";
     }
 	@RequestMapping("/insertcontents2.do") 
     public String insertcontents2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/insertcontents2";
     }
 	@RequestMapping("/standard.do") 
     public String standard(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/standard";
     }
 	
 	@RequestMapping("/idsearch.do") 
     public String idsearch(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/idsearch";
     }
 	
 	@RequestMapping("/pwdsearch.do") 
     public String pwdsearch(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/pwdsearch";
     }
 	@RequestMapping("/idresult.do") 
     public String idresult(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/idresult";
     }
 	@RequestMapping("/pwdresult.do") 
     public String pwdresult(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
-		session.invalidate(); // 전체 세션 삭제
+
 		return "/user/pwdresult";
     }
 

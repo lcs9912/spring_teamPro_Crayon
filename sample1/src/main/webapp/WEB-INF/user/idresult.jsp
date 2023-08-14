@@ -27,7 +27,7 @@ text-align:center;
 
 <body>
 <div class="idsearchsection">
-<h1>비밀번호 찾기</h1>
+<h1>아이디 찾기</h1>
 
 
 <section class="idsearchsection1">
