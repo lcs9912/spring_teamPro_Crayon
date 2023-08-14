@@ -8,7 +8,4 @@ import com.example.sample1.mapper.ProductMapper;
 @Service
 public class ProductServiceImpl implements ProductService{
 
-	@Autowired
-	ProductMapper productMapper;
-
 }

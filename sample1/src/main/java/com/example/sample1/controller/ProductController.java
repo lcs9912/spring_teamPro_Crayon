@@ -20,9 +20,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class ProductController {
 	
-	@Autowired
-	ProductService productService;
-	
 	// 상품상세 페이지
 	@RequestMapping("/product.do") 
     public String info(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{

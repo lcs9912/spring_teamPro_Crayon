@@ -8,5 +8,5 @@ import com.example.sample1.model.Test;
 
 @Mapper
 public interface TestMapper {
-	List<Test> selectTest();
+	
 }

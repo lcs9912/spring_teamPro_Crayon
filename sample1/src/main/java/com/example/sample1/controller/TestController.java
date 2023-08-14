@@ -20,21 +20,10 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class TestController {
 	
-
-	@Autowired
-	TestService testService;
-	
 	@RequestMapping("/test.do") 
     public String test(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/test";
     }
 	
-	@RequestMapping(value = "/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String boardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Test> list = testService.searchTest();
-		resultMap.put("list", list);
-		return new Gson().toJson(resultMap);
-	}
+	
 }

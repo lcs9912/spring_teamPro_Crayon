@@ -30,23 +30,10 @@ var app = new Vue({
 		list : [],
 	},// data
 	methods : {
-		fnGetList : function(){
-            var self = this;
-            var nparmap = {};
-            $.ajax({
-                url : "list.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) { 
-                	self.list = data.list;
-                }
-            }); 
-        }
+		
 	}, // methods
 	created : function() {
 		var self = this;
-		self.fnGetList();
 	}// created
 });
 </script>
