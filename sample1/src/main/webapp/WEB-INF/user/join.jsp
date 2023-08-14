@@ -218,7 +218,7 @@ text-align:center;
 			</tr>
 			<tr class="hintinput">
 				<td>
-					<select name="language" id="pwdhint"class="passwordhint" name="passwordhint" v-model="user.userPwdHint" >
+					<select name="language" id="pwdhint"class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
 				<option disabled selected>비밀번호 찾기 질문</option>
 				  <option value="1">가장 좋아하는 동물은?</option>
 				  <option value="2">가장 좋아하는 음식은?</option>

@@ -147,7 +147,17 @@ main {
     left: 310px; 
     transform: translateY(-50%);
 }
+#pwdhint{
+text-align:center;
+margin-left: 20%;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+color: #A8A5A5;
+}
+.hintinput{
+text-align:center;
 
+}
 </style>
 
 </head>
@@ -186,10 +196,26 @@ main {
 				</div>
 				<div>
 					<div class="emailpwdwhere">
-						<span class="idpwd" >생년월일</span> 
+						<span class="idpwd" >비밀번호찾기 질문</span> 
 					</div>
+					<tr class="hintinput">
+				<td>
+					<select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+				<option disabled selected>비밀번호 찾기 질문</option>
+				  <option value="1">가장 좋아하는 동물은?</option>
+				  <option value="2">가장 좋아하는 음식은?</option>
+				  <option value="3">가장 좋아하는 색은?</option>
+				  <option value="4">가장 좋아하는 운동선수이름은?</option>
+				  <option value="5">자신의 취미나 특기는?</option>
+				  <option value="6">가장 좋아하는 운동은?</option>
+				  <option value="7">가장 좋아하는 티비프로그램은?</option>
+				  <option value="8">가장 좋아하는 책은?</option>
+				  <option value="9">가장 좋아하는 영화는?</option>
+					</select>
+				</td>
+			</tr>
 					<div class="input-container">
-					<input type="text" id="birth" autofocus @keyup.enter="fnEnter"  placeholder="생년월일" ref="idInput">
+					<input type="text" id="birth" autofocus @keyup.enter="fnEnter"  placeholder="비밀번호찾기 정답" ref="idInput">
 
 				</div>
 
@@ -226,4 +252,8 @@ function openPopup(url) {
     const popup = window.open(url, 'popupWindow', 'width=600,height=300,scrollbars=yes');
     popup.focus();
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const pwdHintSelect = document.getElementById("pwdhint");
+    pwdHintSelect.selectedIndex = 0;
+});
 </script>
