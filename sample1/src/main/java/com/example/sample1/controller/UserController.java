@@ -79,7 +79,32 @@ public class UserController {
 		return "/user/standard";
     }
 	
+	@RequestMapping("/idsearch.do") 
+    public String idsearch(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/idsearch";
+    }
 	
+	@RequestMapping("/pwdsearch.do") 
+    public String pwdsearch(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/pwdsearch";
+    }
+	@RequestMapping("/idresult.do") 
+    public String idresult(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/idresult";
+    }
+	@RequestMapping("/pwdresult.do") 
+    public String pwdresult(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/pwdresult";
+    }
+
 	
 	//회원가입 
 	@RequestMapping(value = "/user/insert.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

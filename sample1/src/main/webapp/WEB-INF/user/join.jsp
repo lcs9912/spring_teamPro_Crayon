@@ -26,25 +26,30 @@ h1 {
 }
 
 table {
+table-layout: fixed;
 	width: 800px;
 	margin: 0 auto;
 	padding: 20px;
+
 	background-color: #white;
-	border-radius: 10px;
-	border: 1px solid #black;
+border-radius: 30px;
 }
 
 table td {
-	padding: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
-table, th, td {
-	border: 1px solid #262626;
+th, td {
+
 	border-collapse: collapse;
 }
 
 th {
+border-radius: 30px;
 	background-color: #eee;
+	padding : 10px;
+	width : 30%;
 }
 button.btnhover{
 	width: 20%;
@@ -135,15 +140,42 @@ text-align: center;
 font-size : 25px;
 margin-top : 30px;
 }
-
+th{
+height : 80px;
+}
 .requiredCheckbox,
 .selectcheckbox{
 font-weight: bold;
 font-size : 20px;
 text-align:center;
 }
+#idcheckbtn{
+	width: 29%;
+	padding: 10px;
+	background-color: #8A8484;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	
+}
+#idcheckbtn:hover{
+	background-color: #262626;
+}
+.idsection{
+width : 1200px;
+display: inline-block;
+margin-left : 17%;
+border: 1px solid black;
+padding : 10px;
+border-radius: 30px;
+}
 
-
+tbody{
+border: 1px solid black;
+}
+.selectgender{
+text-align:center;
+}
 </style>
 
 </head>
@@ -154,48 +186,53 @@ text-align:center;
 <body>
 <div id="app">
 	<h1>회원가입</h1>
+<section class="idsection">
 		<table>
+<tbody>
 			<tr>
-				<th>아이디*</th>
-				<td><input type="text" id="username" name="username" v-model="user.userId" >
+		
+				<td><input type="text" id="username" name="username" v-model="user.userId" placeholder="아이디">
 					<button id="idcheckbtn" @click="fnCheck">중복확인</button>
 				</td>
 			</tr>
-			<tr>
-				<th>비밀번호*</th>
+			
+			</section>
+			
+			<tr class="pwdmsg">
+
 				<td>
-				<input type="password" id="password" name="password" v-model="user.userPwd1" @keyup="fnPwdCheck">
+				<input type="password" id="password" name="password" v-model="user.userPwd1" @keyup="fnPwdCheck" placeholder="비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.">
 				<span style="color:red;" v-if="user.userPwd1 != ''">{{message}}</span>
 				</td>
 			</tr>
 			<tr>
-				<th>비밀번호 확인*</th>
+
 				<td>
-					<input type="password" id="password2" name="password2" v-model="user.userPwd2" >
+					<input type="password" id="password2" name="password2" v-model="user.userPwd2" placeholder="비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.">
 				</td>
 			</tr>
 			<tr>
-				<th>비밀번호 찾기 힌트</th>
+
 				<td>
-					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdHint" placeholder="비밀번호 찾기 힌트">
 					<!-- pwd 힌트랑 정답 id 이름이 같다고 콘솔창에서 주위문구 뜨길래 class 로 바궜음  -->
 				</td>
 			</tr>
 			<tr>
-				<th>비밀번호 찾기 힌트 정답</th>
+
 				<td>
-					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdAnswer">
+					<input type="text" class="passwordhint" name="passwordhint" v-model="user.userPwdAnswer" placeholder="비밀번호 찾기 힌트 정답">
 				</td>
 			</tr>
-			<tr>
-				<th>이름*</th>
+			<tr class="namemsg">
+
 				<td>
-					<input type="text" id="name" name="name" v-model="user.userName" >
+					<input type="text" id="name" name="name" v-model="user.userName" placeholder="이름">
 				</td>
 			</tr>
 			
-			<tr>
-				<th>성별*</th>
+			<tr class="selectgender">
+
 				<td><input type="radio" id="male" name="gender" value="남성" v-model="user.userGender" >
 					<label for="male">남성</label>
 					<input type="radio" id="female" name="gender" value="여성" v-model="user.userGender" >
@@ -203,21 +240,21 @@ text-align:center;
 				</td>
 			</tr>
 			<tr>
-				<th>휴대전화</th>
+
 				<td>
-					<input type="text" id="phone" name="phone" v-model="user.userPhone">
+					<input type="text" id="phone" name="phone" v-model="user.userPhone" placeholder="휴대전화">
 				</td>
 			</tr>
 			<tr>
-				<th>이메일*</th>
+
 				<td>
-					<input type="text" id="email" name="email" v-model="user.userEmail">
+					<input type="text" id="email" name="email" v-model="user.userEmail" placeholder="이메일">
 				</td>
 			</tr>
 			<tr>
 
 		</tr>	
-		
+		</tbody>
 		
 
 		</table>
@@ -252,7 +289,7 @@ text-align:center;
 		<div class="btnwhere">
 		<td colspan="2" style="text-align: center;">
 		<button @click="fnJoin" class="btnhover">가입</button>
-	<a href="login.do" ><button class="btnhover">취소</button></a>
+		<a href="login.do" ><button class="btnhover">취소</button></a>
 		</td>
 		</div>
 </div>

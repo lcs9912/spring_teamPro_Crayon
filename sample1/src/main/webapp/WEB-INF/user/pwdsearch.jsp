@@ -112,7 +112,7 @@ main {
 	padding-top: 100px;
 }
 
-.idpwdwhere {
+.emailpwdwhere {
 	padding-top: 30px;
 	font-weight: bold;
 	color : black;
@@ -136,7 +136,7 @@ main {
     position: relative;
 }
 
-#loginbox{
+#searchidbox{
 	border: 1px solid black;
 	border-radius: 30px;
 }
@@ -167,37 +167,42 @@ main {
 
 
 			<!-- 로그인클릭후 이동파일 -->
-			<div id="loginbox">  <!-- 로그인 입력부분 테두리 -->
+			<div id="searchidbox">  <!-- 로그인 입력부분 테두리 -->
 			
-				<div class="idpwdwhere">
-					<span class="idpwd" >아이디</span>
+				<div class="emailpwdwhere">
+					<span class="idpwd">아이디</span>
 				</div>
 				<div class="input-container">
-					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
-					<i class="fa-solid fa-user icon"></i>
+					<input type="text" id="id"  autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
+
 				</div>
-				<div v-if="idflg">
-					<div class="idpwdwhere">
-						<span class="idpwd" >비밀번호</span> 
+				<div>
+					<div class="emailpwdwhere">
+						<span class="idpwd" >이름</span> 
 					</div>
-					<div  class="input-container">
-						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
-						<i class="fa-solid fa-lock icon"></i>
-						
+					<div class="input-container">
+					<input type="text" id="name" autofocus @keyup.enter="fnEnter"  placeholder="이름" ref="idInput">
+
+				</div>
+				<div>
+					<div class="emailpwdwhere">
+						<span class="idpwd" >생년월일</span> 
 					</div>
+					<div class="input-container">
+					<input type="text" id="birth" autofocus @keyup.enter="fnEnter"  placeholder="생년월일" ref="idInput">
+
+				</div>
+
 				</div>
 			
-			<div class="loginwindownot" v-if="!pwdflg">
-				<button class="loginbtn" >로그인</button> 
-			</div>
-			<div class="loginwindow" v-else>
-				<button class="loginbtn"  @click="fnLogin">로그인</button> 
+			<div class="loginwindownot">
+				<button class="loginbtn" @keyup.enter="fnEnter" onclick="openPopup('pwdresult.do')">비밀번호 찾기</button> 
 			</div>
 			<div class="logindownmenu">
 				<ul>
 
-					<span><a href="idsearch.do">아이디찾기 |</a></span>
-					<span><a href="pwdsearch.do">비밀번호찾기 |</a></span>
+					<span><a href="idsearch.do">아이디찾기</a> |</span>
+					<span><a href="pwdsearch.do" style="font-weight: bold;">비밀번호찾기</a> |</span>
 					<span><a href="join.do">회원가입</a></span>
 
 				</ul>
@@ -217,68 +222,8 @@ main {
 <%@ include file="../footer.jsp"%>
 </html>
 <script>
-var app = new Vue({
-	el : '#app',
-	data : {
-		uId : "",
-		pwd : "",
-		idflg : false, // 아이디 인풋 length
-		pwdflg : false, // 아이디 인풋 length
-		
-	},
-	methods : {
-		fnEnter : function(){
-            var self = this;
-           
-          if(self.uId.length > 0){
-        	  self.idflg = true;
-        	  this.$nextTick(() => {
-                  this.$refs.pwdInput.focus();
-              });
-          }else{  
-        	  self.idflg = false;
-          } 
-           
-        },
-        fnLogin : function(){
-			var self = this;
-			var param = {uId : self.uId, pwd : self.pwd};
-			$.ajax({
-                url : "/login.dox",
-                dataType:"json",	
-                type : "POST",
-                data : param,
-                success : function(data) { 
-                	if(data.success){ 
-                		alert(data.message);
-                		location.href ="/mypage.do";
-                	} else {
-                		alert(data.message);
-                		self.$nextTick(() => {
-                            self.$refs.pwdInput.focus();
-                        });
-                	}
-                	
-                }
-            }); 
-		},
-		
-		fnbut : function(){
-			var self = this;
-			if(self.pwd.length>0){
-				self.pwdflg = true;
-			}else{
-				self.pwdflg = false;
-			}
-		},
-        fnjoin : function(){
-        	location.href ="/join.do";
-        },
-        
-	},
-	created : function() {
-		var self = this;
-		
-	}
-})
+function openPopup(url) {
+    const popup = window.open(url, 'popupWindow', 'width=600,height=300,scrollbars=yes');
+    popup.focus();
+}
 </script>

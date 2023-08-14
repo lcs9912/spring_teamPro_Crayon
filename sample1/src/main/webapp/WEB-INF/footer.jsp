@@ -12,17 +12,10 @@ padding:0;
 box-sizing : border-box;
 }
 
-li{list-style:none;}
-table {
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
+li{
+list-style:none;
 }
 
-th, td {
-	border: 1px solid black;
-	padding: 5px 10px;
-	}
 
 a {	text-decoration:none;
 	color: inherit;
