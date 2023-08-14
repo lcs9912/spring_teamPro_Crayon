@@ -33,8 +33,8 @@ header {
 <header>
 
 	<span id="headermenu">
-			<span v-if=' ${sessionId} != ""'><a href="login.do">로그아웃</a></span>
-			<span class="loginbtn" v-else><a href="login.do">로그인</a></span>
+			
+			<span class="loginbtn"><a href="login.do">로그인</a></span>
 			<span class="#"><a href="#">장바구니</a></span>
 			<span class="#"><a href="#">관심상품</a></span>
 			<span class="#"><a href="mypage.do">마이페이지</a></span>
