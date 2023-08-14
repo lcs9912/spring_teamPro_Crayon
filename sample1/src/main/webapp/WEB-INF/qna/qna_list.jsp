@@ -10,8 +10,8 @@
 </style>
 
 </head>
-<%@ include file="../header1.jsp"%>
-<%@ include file="../header2.jsp"%>
+<%@ include file="../header/header1.jsp"%>
+<%@ include file="../header/header2.jsp"%>
 <body>
 <div id="app">
 	<div style="margin-bottom : 5px; margin-left : 2px;">
