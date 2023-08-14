@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/2c370f498b.js" crossorigin="anonymous"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<meta charset="UTF-8">
 	<title>회원가입페이지</title>
 <style>
@@ -43,7 +46,19 @@ table, th, td {
 th {
 	background-color: #eee;
 }
-
+button.btnhover{
+	width: 20%;
+	padding: 10px;
+	background-color: #8A8484;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin-top : 20px;
+	margin-bottom : 20px;
+}
+button.btnhover:hover {
+	background-color: #262626;
+}
 input[type="text"], input[type="password"], select {
 	width: 100%;
 	padding: 10px;
@@ -51,7 +66,14 @@ input[type="text"], input[type="password"], select {
 	border-radius: 5px;
 	box-sizing: border-box;
 }
-
+input[type="checkbox"]{
+width: 35px; 
+height: 15px; 
+}
+.styled-checkbox{
+font-size : 25px;
+margin-top : 30px;
+}
 input[type="radio"] {
 	margin-right: 5px;
 }
@@ -89,6 +111,39 @@ input[type="submit"]:hover {
 #day {
 	width: 32%;
 }
+
+.aaButton{
+background-color: white;
+border : none;
+color : #9e9e9e;
+text-decoration: underline;
+cursor: pointer;
+padding-top : 10px;
+}
+.bb label{
+padding-top : 10px;
+}
+.allCheckbox{
+text-align:center;
+
+}
+.btnwhere{
+text-align: center;
+
+}
+.styled-checkbox{
+font-size : 25px;
+margin-top : 30px;
+}
+
+.requiredCheckbox,
+.selectcheckbox{
+font-weight: bold;
+font-size : 20px;
+text-align:center;
+}
+
+
 </style>
 
 </head>
@@ -138,6 +193,7 @@ input[type="submit"]:hover {
 					<input type="text" id="name" name="name" v-model="user.userName" >
 				</td>
 			</tr>
+			
 			<tr>
 				<th>성별*</th>
 				<td><input type="radio" id="male" name="gender" value="남성" v-model="user.userGender" >
@@ -159,19 +215,86 @@ input[type="submit"]:hover {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: center;">
-					<button @click="fnJoin">가입</button>
-					<button>취소</button>
-					<!-- <input type="submit" value="가입">
-					<input type="submit" value="취소"> -->
-				</td>
-			</tr>
+
+		</tr>	
+		
+		
+
 		</table>
+		
+<div class="allCheckbox">
+
+<div class="requiredCheckbox">
+    <input type="checkbox" class="styled-checkbox">
+    <label class="checkbox-label" id="requiredCheckboxLabel">[필수] 만 14세 이상이며 모두 동의합니다.
+    <i class="fa-solid fa-plus" style="cursor: pointer;"></i></label>
+</div>
+<div class="aa" id="aaElement" hidden>
+    <label><input type="checkbox" class="aaCheckbox">이용약관 동의</label>
+    <button class="aaButton" onclick="openPopup('insertcontents.do')">내용보기</button><br>
+    <label><input type="checkbox" class="aaCheckbox">개인정보 수집 및 이용 동의</label>
+    <button class="aaButton" onclick="openPopup('insertcontents2.do')">내용보기</button>
+</div>
+
+<div class="selectcheckbox">
+    <input type="checkbox" class="styled-checkbox">
+    <label class="checkbox-label" id="selectCheckboxLabel">[선택] 광고성 정보 수신에 모두 동의합니다.
+    <i class="fa-solid fa-plus" style="cursor: pointer;"></i></label>
+</div>
+
+<div class="bb" id="bbElement" hidden>
+    <label><input type="checkbox" class="bbCheckbox" >앱 푸시</label><br>
+    <label><input type="checkbox" class="bbCheckbox">문자 메세지</label><br>
+    <label><input type="checkbox" class="bbCheckbox">이메일</label>
+</div>
+</div>
+
+		<div class="btnwhere">
+		<td colspan="2" style="text-align: center;">
+		<button @click="fnJoin" class="btnhover">가입</button>
+	<a href="login.do" ><button class="btnhover">취소</button></a>
+		</td>
+		</div>
 </div>
 </body>
 <%@ include file="../footer.jsp"%>
 </html>
 <script>
+
+function openPopup(url) {
+    const popup = window.open(url, 'popupWindow', 'width=800,height=600,scrollbars=yes');
+    popup.focus();
+}
+document.addEventListener("DOMContentLoaded", function() {
+    const requiredCheckboxLabel = document.getElementById("requiredCheckboxLabel");
+    const requiredCheckboxIcons = requiredCheckboxLabel.querySelectorAll(".fa-solid");
+    const aaElement = document.querySelector(".aa");
+
+    requiredCheckboxLabel.addEventListener("click", function() {
+        requiredCheckboxIcons.forEach(icon => {
+            icon.classList.toggle("fa-plus");
+            icon.classList.toggle("fa-minus");
+        });
+
+        aaElement.style.display = aaElement.style.display === "inline" ? "none" : "inline";
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const selectCheckboxLabel = document.getElementById("selectCheckboxLabel");
+    const selectCheckboxIcons = selectCheckboxLabel.querySelectorAll(".fa-solid");
+    const bbElement = document.querySelector(".bb");
+
+    selectCheckboxLabel.addEventListener("click", function() {
+        selectCheckboxIcons.forEach(icon => {
+            icon.classList.toggle("fa-plus");
+            icon.classList.toggle("fa-minus");
+        });
+
+        bbElement.style.display = bbElement.style.display === "inline" ? "none" : "inline";
+    });
+});
+
 var app = new Vue({
 	el : '#app',
 	data : {
@@ -240,14 +363,14 @@ var app = new Vue({
 		},
 		fnCheck : function(){
 			var self = this;
-			var nparmap = {uId : self.user.userId};
+			var nparmap = {userId : self.user.userId};
             $.ajax({
-                url : "/user/selectId.dox",
-                dataType:"json",
-                type : "POST",
+                url : "/user/check.dox",
+                dataType:"json",	
+                type : "POST", 
                 data : nparmap,
                 success : function(data) { 
-                	if(data.info != undefined){
+                	if(data.cnt > 0){
                 		alert("중복된 아이디가 있습니다");
                 	} else {
                 		alert("사용 가능한 아이디입니다.");

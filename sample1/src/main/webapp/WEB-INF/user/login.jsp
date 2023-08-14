@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="../js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
 crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- 아이디인풋 아이콘 -->
 <meta charset="UTF-8">
@@ -59,7 +60,7 @@ main {
 }
 .loginwindow button {
 	cursor: pointer;
-	
+	background-color: #333;
 }
 
 
@@ -77,6 +78,7 @@ main {
 .loginwindow {
 	text-align: center;
 }
+
 
 .loginsection input[type="text"]:hover, .loginsection input[type="password"]:hover
 	{
@@ -155,23 +157,23 @@ main {
 <%@ include file="../header2.jsp"%>
 <%@ include file="../headerlist.jsp"%>
 
-<body>		
+<body>
 <div id="app">
 	<header> </header>
-			
+
 	<main class="mainw">
-			
+	
 		<section class="loginsection">
-		   <!-- <div class="loginlogo">
+			<!-- <div class="loginlogo">
 				<a href="main.do" class="logo"> <img src="../logoimg/logo.png"></a>
 			</div> -->
-			
-			
+
+
 			<!-- 로그인클릭후 이동파일 -->
 			<div id="loginbox">  <!-- 로그인 입력부분 테두리 -->
 			
 				<div class="idpwdwhere">
-					<span class="idpwd">아이디</span>
+					<span class="idpwd" >아이디</span>
 				</div>
 				<div class="input-container">
 					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
@@ -184,6 +186,7 @@ main {
 					<div  class="input-container">
 						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
 						<i class="fa-solid fa-lock icon"></i>
+						
 					</div>
 				</div>
 			
@@ -193,16 +196,20 @@ main {
 			<div class="loginwindow" v-else>
 				<button class="loginbtn"  @click="fnLogin">로그인</button> 
 			</div>
-			
-			<!-- 아이디찾기 비밀번호찾기 회원가입 -->
 			<div class="logindownmenu">
 				<ul>
+
 					<span><a href="#">아이디찾기 |</a></span>
 					<span><a href="#">비밀번호찾기 |</a></span>
 					<span><a href="join.do">회원가입</a></span>
+
 				</ul>
 			</div>
 		</div>
+
+			<!-- 아이디찾기 비밀번호찾기 회원가입 -->
+			
+
 		</section>
 
 	</main>

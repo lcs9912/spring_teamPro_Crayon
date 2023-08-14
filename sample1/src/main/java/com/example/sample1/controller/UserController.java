@@ -52,9 +52,32 @@ public class UserController {
         return "/header2";
     }
 	
+	@RequestMapping("/faq.do") 
+    public String faq(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/faq";
+    }
+	
 	@RequestMapping("/footer.do") 
     public String footer(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/footer";
+    }
+	@RequestMapping("/insertcontents.do") 
+    public String insertcontents(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/insertcontents";
+    }
+	@RequestMapping("/insertcontents2.do") 
+    public String insertcontents2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/insertcontents2";
+    }
+	@RequestMapping("/standard.do") 
+    public String standard(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+		session.invalidate(); // 전체 세션 삭제
+		return "/user/standard";
     }
 	
 	
