@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <script src="../js/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <style>
 header {
@@ -36,9 +37,11 @@ header {
 			
 			<span class="loginbtn" v-if="loginOut != '' "><a href="login.do">로그아웃</a></span>
 			<span class="loginbtn" v-else><a href="login.do">로그인</a></span>
+			<span class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></a></i></span>
 			<span class="#"><a href="#">장바구니</a></span>
 			<span class="#"><a href="#">관심상품</a></span>
 			<span class="#"><a href="mypage.do">마이페이지</a></span>
+			
 	</span>
 
 </header>

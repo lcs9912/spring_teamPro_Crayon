@@ -40,11 +40,6 @@ public class UserController {
 		return "/user/join";
     }
 	
-	@RequestMapping("/search.do") 
-    public String search(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        	
-		return "/search";
-    }
 	
 	@RequestMapping("/header1.do")
     public String header(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
