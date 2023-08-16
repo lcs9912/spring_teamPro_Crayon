@@ -21,4 +21,22 @@ public class QnaServiceImpl implements QnaService{
 		return qnaMapper.selectQnaList(map);
 	}
 
+	@Override
+	public int addQna(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.insertQna(map);
+	}
+
+	@Override
+	public Qna searchQnaInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.selectQnaInfo(map);
+	}
+
+	@Override
+	public int updateQna(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.updateQna(map);
+	}
+
 }

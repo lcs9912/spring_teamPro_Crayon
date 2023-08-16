@@ -36,12 +36,14 @@
 		<tr v-for="item in list">
 			<td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
 			<td>{{item.qnaNumber}}</td>
-			<td >[{{item.qnaTypeName}}] {{item.qnaTitle}}</td>
+			<td><a @click="fnlistView(item)" href="javascript:;" >[{{item.qnaTypeName}}] 
+			{{item.qnaTitle}}</a></a><a v-if="item.comCnt >0">({{item.comCnt}})</a></td>
 			<td>{{item.userId}}</td>
 			<td>{{item.qnaCnt}}</td>
 			<td>{{item.qnaDate}}</td>
 		</tr>
 	</table>
+	<button @click="fnQnaAdd()"> 게시물 작성</button>
 
 </div>
 </body>
@@ -71,6 +73,14 @@ var app = new Vue({
                 	console.log(self.list);
                 }
             }); 
+        },
+        fnQnaAdd : function(){
+        	var self =this;
+        	location.href ="/qna/add.do"
+        },
+        fnlistView : function(item){
+        	var self = this;
+        	$.pageChange("/qna/view.do", {qnaNumber :item.qnaNumber});
         }
        
         
