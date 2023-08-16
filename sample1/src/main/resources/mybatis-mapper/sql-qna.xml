@@ -15,7 +15,7 @@
 				GROUP BY Q_NUMBER
 			) C ON Q.QNA_NUMBER = C.Q_NUMBER
 			INNER JOIN T1_QNA_CATEGORIE G ON Q.QNA_TYPE = G.QNA_TYPE_NUMBER
-			ORDER BY Q_NUMBER DESC
+			ORDER BY QNA_NUMBER ASC
 	</select>
 	
 	<!-- 게시글 등록하기 -->
@@ -43,7 +43,7 @@
 			QNA_TITLE=#{qnaTitle},
 			QNA_CONTENTS =#{qnaContents},
 			QNA_TYPE =#{qnaType},
-			QNA_UDATE = SYSDATE
+			QNA_UPDATE = CURDATE()
 		WHERE QNA_NUMBER = #{qnaNumber} 
 	</update>
 	
