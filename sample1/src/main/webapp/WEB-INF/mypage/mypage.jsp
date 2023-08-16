@@ -28,10 +28,11 @@ a {	text-decoration:none;
 	color: inherit;
 	}
 
-.wrap {
+.mypagewrap {
 	width:1200px; margin:0 auto;
+	clear:both; margin-top:150px; margin-bottom:50px;
 	}
-nav {
+.mypagenav {
 	float:left; width:200px; color:#000;
 	}
 	
@@ -84,17 +85,19 @@ nav {
 	.mylist{
 		width:1000px; 
 		}
+		.listhead::after {
+		    content: "";
+		    display: table;
+		    clear: both;
+		}
+	
 		.listhead h2{
-			display:inline-block; float:left; margin:30px 0 10px 0;
+			display:inline-block; float:left; margin:25px 0 10px 0;
 		}	
 		.listhead span {
 			display:inline-block; float:right; margin-top:35px;
 		}
-		.listhead:after {
-		    clear: both;
-		    content: '';
-		    display: block;
-    	}
+	
 		.viewdv{
 			height:100px; background-color:rgb(248,248,248);
 			border-radius:20px;
@@ -132,8 +135,8 @@ nav {
 <%@ include file="../header/header2.jsp"%>
 <body>
 	<div id="app">
-	<div class="wrap">
-		<nav>
+	<div class="mypagewrap">
+		<nav class="mypagenav">
 		<div class="myinfo">
 			<h2><a href="mypage.do">마이 페이지</a></h2>
 			<h3>쇼핑 정보</h3>

@@ -16,12 +16,12 @@
 	.headerwrap{/* 헤더 로고 및 메뉴 영역 CSS 시작*/
 		width:100%; height:120px; 
 		padding-bottom:120px; position:fixed;
-		left:0; right:0; top:0; z-index:2;
+		left:0; right:0; top:0; z-index:2;		
 	}
 
 	.headerwrap header {/*헤더 로그인 역역 CSS*/
 		width:1200px; height:120px;
-		margin:0 auto; 
+		margin:0 auto; background:#fff;
 	}
 	.loginmenulist {position:relative; width:1200px; height:20px;}
 		.loginmenulist ul{
@@ -56,7 +56,10 @@
     	.headermenu>li>a {
 			display:block;
 			color: black;			    
-    	}/*헤더 헤더메뉴 역역 CSS 끝*/    
+    	}
+    
+  
+    	/*헤더 헤더메뉴 역역 CSS 끝*/    
 		/* 헤더 로고 및 메뉴 영역 CSS 종료*/
 </style>
 </head>
