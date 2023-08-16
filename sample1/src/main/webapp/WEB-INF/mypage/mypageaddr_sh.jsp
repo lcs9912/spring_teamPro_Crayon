@@ -90,7 +90,7 @@ a {	text-decoration:none;
 				<li><a href="#">보관 판매</a></li>
 				<li><a href="#">관심 상품</a></li>
 			</ul>
-		</div>
+		</div> 
 		<div class="myinfo">
 			<h3>내 정보</h3>
 			<ul>
