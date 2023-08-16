@@ -150,6 +150,9 @@ background-color : white;
 font-weight: bold;
 cursor: pointer;
 }
+.onetoonehead{
+background-color : #eee;
+}
 </style>
 
 </head>
@@ -186,7 +189,7 @@ cursor: pointer;
 				<tr v-for="item in list">
 				<td><input type="checkbox"  :value="item.qnaNumber" v-model="selectComment"></td>
 				<td>{{item.qnaNumber}}</td>
-				<td align="left"><a href="javascript:;">[{{item.qnaTypeName}}] {{item.qnaTitle}}</td>
+				<td align="left"><a href="javascript:;"><span style="font-weight: bold;">[{{item.qnaTypeName}}]</span> {{item.qnaTitle}}</a></td>
 				<td>{{item.userId}}</td>
 				<td>{{item.qnaDate}}</td>
 				<td>{{item.qnaCnt}}</td>
@@ -205,7 +208,7 @@ cursor: pointer;
 				
 				<div class="movebtn">
 				<button><i class="fa-solid fa-chevron-left"></i></button>
-				<button style="background-color: #ccc; font-weight: bold;">0</button>
+				<button style="background-color: #ececec; font-weight: bold;">0</button>
 				<button><i class="fa-solid fa-chevron-right"></i></button>
 				</div>
 				
