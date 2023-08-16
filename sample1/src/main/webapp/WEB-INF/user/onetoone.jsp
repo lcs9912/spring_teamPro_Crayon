@@ -25,12 +25,6 @@ th, td {
 
 }
 
-tr{
-
-}
-td{
-
-}
 
 
 .customerwrap {
@@ -81,7 +75,7 @@ border-bottom : 1px solid #eee;
 margin-left : 200px;
 margin-right : 200px;
 }
-.onetooneEditbtn{
+.onetooneEditbtn {
 background-color : white;
 border : 1px solid #A2A2A2;
 padding : 5px;
@@ -89,6 +83,46 @@ font-weight: bold;
 margin-top : 5px;
 cursor: pointer;
 }
+.qnadeletbtn {
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+margin-right : 1px;
+}
+.qnaallselect{
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+margin-right : 1px;
+}
+
+.qnaallselectnot{
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+margin-right : 1px;
+}
+
+
+.qnaeditbtn{
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+margin-right : 1px;
+}
+
 td a:link {
   color : black;
   text-decoration: none;
@@ -135,9 +169,12 @@ cursor: pointer;
 				<div class="contentsarea"><h3>1:1 문의 게시판</h3></div>
 
 <table>
+				<button class="qnaallselect">전체선택</button>
+				<button class="qnaallselectnot">선택해제</button>
 				<tbody>
 				
 				<tr class="onetoonehead">
+				<th>선택</th>
 				<th><div align="center">번 호</div></th>
 				<th><div align="center"></a>제 목</div></th>
 				<th><div align="center">작성자</div></th>
@@ -146,19 +183,26 @@ cursor: pointer;
 				<th><div align="center">처리상태</div></th>
 				</tr>
 				
-				<tr>
-				<td>1</td>
-				<td align="left"><a href="javascript:;">제목제목제목제목제목제목제목제목제목</td>
-				<td>작성자</td>
-				<td>sysdate</td>
-				<td>comcnt</td>
-				<td>status</td>
+				<tr v-for="item in list">
+				<td><input type="checkbox"  :value="item.qnaNumber" v-model="selectComment"></td>
+				<td>{{item.qnaNumber}}</td>
+				<td align="left"><a href="javascript:;">[{{item.qnaTypeName}}] {{item.qnaTitle}}</td>
+				<td>{{item.userId}}</td>
+				<td>{{item.qnaDate}}</td>
+				<td>{{item.qnaCnt}}</td>
+				<td>처리좀</td>
 				</tr>
  
 				</tbody>
 				</table>
 				
-				<div align="right" style="width:1000px;"><button class="onetooneEditbtn">글쓰기</button></div>
+
+				<div align="right" style="width:1000px;">
+				<button class="qnaeditbtn">수정</button>
+				<button class="qnadeletbtn">삭제</button>
+				<button class="onetooneEditbtn">글쓰기</button>
+				</div>
+				
 				<div class="movebtn">
 				<button><i class="fa-solid fa-chevron-left"></i></button>
 				<button style="background-color: #ccc; font-weight: bold;">0</button>
@@ -174,5 +218,37 @@ cursor: pointer;
 </body>
 </html>
 <script>
-
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],		
+		qnaNumber :"",
+		uId : "${sessionId}",
+		Name : "${sessionName}",
+		status : "${sessionStatus}",
+		selectComment : [] 
+	},// data
+	methods : {
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url : "/qna/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.list = data.list;
+                	console.log(self.list);
+                }
+            }); 
+        }
+       
+        
+	}, // methods
+	created : function() {
+		var self = this;
+		self.fnGetList();
+	}// created
+});
 </script>
