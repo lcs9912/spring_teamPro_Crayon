@@ -139,9 +139,10 @@ td a:active {
   color : black;
   text-decoration: none;
 }
-.movebtn{
-text-align:center;
-
+.movebtn {
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 .movebtn button{
 width : 40px;
@@ -149,10 +150,23 @@ height: 30px;
 background-color : white;
 font-weight: bold;
 cursor: pointer;
+border : 1px solid #eee;
 }
 .onetoonehead{
 background-color : #eee;
 }
+
+
+.selectpagebtn:hover {
+  background-color: #808080;;
+  border: 1px solid black;
+}
+
+.selectpagebtn:hover .selectpagenum {
+  color: #eee;
+}
+
+
 </style>
 
 </head>
@@ -172,6 +186,7 @@ background-color : #eee;
 				<div class="contentsarea"><h3>1:1 문의 게시판</h3></div>
 
 <table>
+<tbody>
 				<button class="qnaallselect">전체선택</button>
 				<button class="qnaallselectnot">선택해제</button>
 				<tbody>
@@ -179,22 +194,27 @@ background-color : #eee;
 				<tr class="onetoonehead">
 				<th>선택</th>
 				<th><div align="center">번 호</div></th>
-				<th><div align="center"></a>제 목</div></th>
+				<th><div align="center">제 목</div></th>
 				<th><div align="center">작성자</div></th>
 				<th><div align="center">작성일</div></th>
 				<th><div align="center">조회수</div></th>
 				<th><div align="center">처리상태</div></th>
 				</tr>
 				
-				<tr v-for="item in list">
-				<td><input type="checkbox"  :value="item.qnaNumber" v-model="selectComment"></td>
-				<td>{{item.qnaNumber}}</td>
-				<td align="left"><a href="javascript:;"><span style="font-weight: bold;">[{{item.qnaTypeName}}]</span> {{item.qnaTitle}}</a></td>
-				<td>{{item.userId}}</td>
-				<td>{{item.qnaDate}}</td>
-				<td>{{item.qnaCnt}}</td>
-				<td>처리좀</td>
-				</tr>
+				
+				<tr v-for="item in paginatedList" :key="item.qnaNumber">
+				  <td><input type="checkbox" :value="item.qnaNumber"></td>
+				  <td>{{ item.qnaNumber }}</td>
+				  <td align="left">
+				    <a href="javascript:;">
+				      <span style="font-weight: bold;">[{{ item.qnaTypeName }}]</span> {{ item.qnaTitle }}
+				    </a>
+				  </td>
+				  <td>{{ item.userId }}</td>
+				  <td>{{ item.qnaDate }}</td>
+				  <td>{{ item.qnaCnt }}</td>
+				  <td>처리좀</td>
+</tr>
  
 				</tbody>
 				</table>
@@ -206,11 +226,22 @@ background-color : #eee;
 				<button class="onetooneEditbtn">글쓰기</button>
 				</div>
 				
-				<div class="movebtn">
-				<button><i class="fa-solid fa-chevron-left"></i></button>
-				<button style="background-color: #ececec; font-weight: bold;">0</button>
-				<button><i class="fa-solid fa-chevron-right"></i></button>
-				</div>
+		<div class="movebtn">
+				  <button @click="changePage(-1)">
+				    <i class="fa-solid fa-chevron-left"></i>
+				  </button>
+				  
+				  <button class="selectpagebtn"
+				  v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+				  :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+				  :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+				  {{ pageNumber }}
+				 </button>
+				
+				  <button @click="changePage(1)">
+				    <i class="fa-solid fa-chevron-right"></i>
+				  </button>
+		</div>
 				
 	</div>
 
@@ -222,36 +253,59 @@ background-color : #eee;
 </html>
 <script>
 var app = new Vue({
-	el : '#app',
-	data : {
-		list : [],		
-		qnaNumber :"",
-		uId : "${sessionId}",
-		Name : "${sessionName}",
-		status : "${sessionStatus}",
-		selectComment : [] 
-	},// data
-	methods : {
-		fnGetList : function(){
-            var self = this;
-            var nparmap = {};
-            $.ajax({
-                url : "/qna/list.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) { 
-                	self.list = data.list;
-                	console.log(self.list);
-                }
-            }); 
-        }
-       
-        
-	}, // methods
-	created : function() {
-		var self = this;
-		self.fnGetList();
-	}// created
+  el: '#app',
+  data: {
+    list: [],
+    qnaNumber: "",
+    uId: "${sessionId}",
+    Name: "${sessionName}",
+    status: "${sessionStatus}",
+    selectComment: [],
+    currentPage: 1,
+    itemsPerPage: 15,
+  },
+  methods: {
+    fnGetList: function () {
+      var self = this;
+      var nparmap = {};
+      $.ajax({
+        url: "/qna/list.dox",
+        dataType: "json",
+        type: "POST",
+        data: nparmap,
+        success: function (data) {
+          self.list = data.list;
+          console.log(self.list);
+        },
+      });
+    },
+    changePage: function (offset) {
+      this.currentPage += offset;
+      if (this.currentPage < 1) {
+        this.currentPage = 1;
+      } else if (this.currentPage > this.totalPages) {
+        this.currentPage = this.totalPages;
+      }
+      this.fnGetList();
+    },
+    goToPage: function (pageNumber) {
+      this.currentPage = pageNumber;
+      this.fnGetList();
+    },
+  },
+  computed: {
+    totalPages: function () {
+      return Math.ceil(this.list.length / this.itemsPerPage);
+    },
+    paginatedList: function () {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return this.list.slice(startIndex, endIndex);
+    },
+  },
+  created: function () {
+    var self = this;
+    self.fnGetList();
+  },
 });
 </script>
