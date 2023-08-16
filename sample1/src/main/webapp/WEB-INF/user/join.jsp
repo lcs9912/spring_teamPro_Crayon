@@ -181,6 +181,9 @@ text-align:center;
 color: #8A8484;
 text-align:center;
 }
+#app h1{
+display:block;
+}
 </style>
 
 </head>
