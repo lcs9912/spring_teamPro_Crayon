@@ -154,8 +154,8 @@
 </style>
 
 </head>
-<%@ include file="../header1.jsp"%>
-<%@ include file="../header2.jsp"%>
+<%@ include file="../header/header1.jsp"%>
+<%@ include file="../header/header2.jsp"%>
 <body>
 	<div id="app">
 	<div class="wrap">
@@ -240,7 +240,7 @@
 	</div>
 	</div>
 </body>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../header/footer.jsp"%>
 </html>
 
 <script>

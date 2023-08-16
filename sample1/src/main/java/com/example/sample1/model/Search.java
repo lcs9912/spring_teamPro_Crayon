@@ -8,4 +8,9 @@ public class Search {
 	private String searchCnt; // 검색횟수
 	private String searchDate; // 검색 날짜
 	private String searchEnd; // 만료 날짜
+	private String searchRemove; // 만료 날짜
+	private String userId; // 만료 날짜
+	
+	private String productName;
+	private String productBrand;
 }

@@ -3,7 +3,72 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.sample1.mapper.SearchMapper">
-	<select id="selectSearchAll" resultType="com.example.sample1.model.Search">
-		SELECT * FROM TBL_TEST
+	
+	<!-- 검색 테이블 정보 -->
+	<select id="selectSearchAll" parameterType="hashmap"
+		resultType="com.example.sample1.model.Search">
+		SELECT * FROM T1_SEARCH
+		ORDER BY SEARCH_CNT DESC
 	</select>
+	
+	<!-- 검색내역 체크 검색 -->
+	<select id="selectSearchName" parameterType="hashmap"
+		resultType="com.example.sample1.model.Search">
+		SELECT * 
+		FROM T1_SEARCH
+		WHERE SEARCH_NAME = #{searchName}
+	</select>
+	
+	<!-- 유저의 검색 기록 -->
+	<select id="selectUserSearch" parameterType="hashmap"
+		resultType="com.example.sample1.model.Search">
+		SELECT * 
+		FROM T1_SEARCH
+		WHERE USER_ID = #{uId}
+		ORDER BY SEARCH_DATE DESC
+	</select>
+	
+	<!-- 검색어 저장 -->
+	<insert id="insertSearchName" parameterType="hashmap">
+		INSERT INTO T1_SEARCH
+		VALUES (#{searchName}, 0, NOW(), NOW() + INTERVAL 24 HOUR, 'N', #{uId})
+	</insert>
+	
+	<!-- 검색어 cnt +1 -->
+	<update id="updateSearchCnt" parameterType="hashmap">
+		UPDATE T1_SEARCH
+		SET	
+			SEARCH_CNT = SEARCH_CNT +1,
+			SEARCH_REMOVE = 'N',
+			SEARCH_DATE = NOW()
+		WHERE SEARCH_NAME = #{searchName}
+	</update>
+	
+	<!-- 유저의 검색기록 삭제여부 -->
+	<update id="deleteSearchUser" parameterType="hashmap">
+		UPDATE T1_SEARCH
+		SET
+			SEARCH_REMOVE = 'Y'
+		WHERE USER_ID = #{uId} AND SEARCH_NAME = #{searchName}
+	</update>
+	
+	<!-- 유저의 모든검색기록 삭제 -->
+	<update id="deleteSearchAllUser" parameterType="hashmap">
+		UPDATE T1_SEARCH
+		SET
+			SEARCH_REMOVE = 'Y'
+		WHERE USER_ID = #{uId}
+	</update>
+	
+	<!-- 임시!!  -->
+	<!-- 임식 물폼목록 검색 -->
+	<select id="selectProductSearchList" parameterType="hashmap"
+		resultType="com.example.sample1.model.Search">
+		SELECT * 
+		FROM T1_PRODUCT_UPDATE
+		WHERE PRODUCT_NAME LIKE CONCAT('%',#{searchName},'%')
+		OR PRODUCT_BRAND LIKE  CONCAT('%',#{searchName},'%')
+	</select>
+	
+	
 </mapper>

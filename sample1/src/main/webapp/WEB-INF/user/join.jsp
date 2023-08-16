@@ -184,8 +184,8 @@ text-align:center;
 </style>
 
 </head>
-<%@ include file="../header1.jsp"%>
-<%@ include file="../header2.jsp"%>
+<%@ include file="../header/header1.jsp"%>
+<%@ include file="../header/header2.jsp"%>
 <%-- <%@ include file="../logo.jsp"%> --%>
 <hr>
 <body>
@@ -308,7 +308,7 @@ text-align:center;
 		</div>
 </div>
 </body>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 

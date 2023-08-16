@@ -151,8 +151,8 @@ main {
 </style>
 
 </head>
-<%@ include file="../header1.jsp"%>
-<%@ include file="../header2.jsp"%>
+<%@ include file="../header/header1.jsp"%>
+<%@ include file="../header/header2.jsp"%>
 
 <body>
 <div id="app">
@@ -211,7 +211,7 @@ main {
 </div>
 
 </body>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 function openPopup(url) {
