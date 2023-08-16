@@ -286,7 +286,7 @@ a {	text-decoration:none;
 			if(self.sessionId !=""){
 				self.fnGetInfo();
 			}else{
-				alert("로그인 이후 이용이 가능합니다 시발");
+				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";
 			}
 			
