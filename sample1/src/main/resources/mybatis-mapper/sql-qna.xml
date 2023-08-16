@@ -10,14 +10,42 @@
 			SELECT *
 			FROM T1_QNA Q
 			LEFT JOIN (
-				SELECT COUNT(*) ,Q_NUMBER
+				SELECT COUNT(*)COM_CNT ,Q_NUMBER
 				FROM T1_QNA_COMMENT
 				GROUP BY Q_NUMBER
 			) C ON Q.QNA_NUMBER = C.Q_NUMBER
 			INNER JOIN T1_QNA_CATEGORIE G ON Q.QNA_TYPE = G.QNA_TYPE_NUMBER
-			ORDER BY Q_NUMBER DESC
-			
+			ORDER BY QNA_NUMBER ASC
 	</select>
+	
+	<!-- 게시글 등록하기 -->
+	<insert id="insertQna" parameterType="hashmap">
+		INSERT INTO T1_QNA VALUES
+		(NULL,#{qnaType},#{title},#{name},#{contents},CURDATE(),CURDATE(),'N','0','N')
+	</insert>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="selectQnaInfo" parameterType="hashmap" resultType="com.example.sample1.model.Qna">
+		SELECT *
+		FROM T1_QNA Q
+		LEFT JOIN (
+		SELECT COUNT(*) COM_CNT, Q_NUMBER
+		FROM T1_QNA_COMMENT
+		GROUP BY Q_NUMBER
+		) C ON Q.QNA_NUMBER =C.Q_NUMBER
+		WHERE QNA_NUMBER = #{qnaNumber}
+	</select>
+	
+	<!-- 게시글 수정하기 -->
+	<update id="updateQna" parameterType="hashmap" >
+		UPDATE T1_QNA
+		SET
+			QNA_TITLE=#{qnaTitle},
+			QNA_CONTENTS =#{qnaContents},
+			QNA_TYPE =#{qnaType},
+			QNA_UPDATE = CURDATE()
+		WHERE QNA_NUMBER = #{qnaNumber} 
+	</update>
 	
 	
 </mapper>

@@ -6,6 +6,7 @@ import lombok.Data;
 public class Qna {
 	private String qnaNumber; // 게시판번호 시퀀스
 	private String qnaTypeName; // 게시글종류
+	private String qnaType; // 게시글종류번호
 	private String qnaTitle; // 게시글 제목
 	private String userId; // 작성자
 	private String qnaContents; // 게시글 내용
@@ -14,7 +15,8 @@ public class Qna {
 	private String qnaAnsweryn; // 답변완료여부  
 	private String qnaCnt; // 게시글 조회수
 	private String qnaDelyn; // 게시글 삭제여부 
-	 
+	private int  comCnt; // 게시글 조회수
+
 	 
 	
 	private String commentNumber; // 댓글번호 시퀀스

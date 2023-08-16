@@ -41,6 +41,7 @@ header {
 			<span class="#"><a href="#">장바구니</a></span>
 			<span class="#"><a href="#">관심상품</a></span>
 			<span class="#"><a href="mypage.do">마이페이지</a></span>
+			<span class="#"><a href="faq.do">고객센터</a></span>
 			
 	</span>
 
