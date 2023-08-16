@@ -48,6 +48,12 @@ public class MypageController {
 	return "/mypage/mypageselllist";
 	}
 	
+	// 마이페이지 로그인정보 > 이메일정보 수정 팝업
+	@RequestMapping("/mypageEditUserEmailPopup.do") 
+	public String mypageEditUserEmailPopup(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+	return "/mypage/mypageEditUserEmailPopup";
+	}
+	
 	
 	
 }

@@ -52,7 +52,7 @@
 			margin-bottom:25px; margin-top:30px;
 		}
 		.editebox {
-			width:480px; height:70px; border-bottom: 1px solid #e9e9e9;
+			width:480px; height:55px; border-bottom: 1px solid #e9e9e9;
 		}
 
 		.editebox h6 {
@@ -84,6 +84,9 @@
 				border:0px solid #e9e9e9; background-color: #fff; border-radius: 10px; width:70px; height:30px;	
 				color:#777; font-size: 15px; margin-top: 30px; text-decoration-line: underline;
 			}	
+			.spanBut button{
+				float: right;
+			}
 </style>
 
 </head>
@@ -123,18 +126,19 @@
 				<div class="loginedit">				
 					<div class="editinner">
 						<h4>내 계정</h4>
-						<div class="editebox">
+						<div class="editebox spanBut">
 							<h6>이메일 주소</h6>
-							<div class="emailedit">
-								<input type="text" placeholder="e*********@gmail.com" name="{{info.userName}}"class="editinput">
+							
+								<span class="editinput">{{info.userEmail}}</span>
 								<button class="editbtn"><a href="#">변경</a></button>
-							</div>
+						
 						</div>
 					
 						<div class="editebox">
 							<h6>비밀번호</h6>
-							<div class="pwdedit">
-								<input type="password" placeholder="**********" class="editinput">
+							<div class="pwdedit spanBut">
+								<span class="editinput">{{info.userPwd}}</span>
+								<!-- <input type="password" placeholder="**********" class="editinput"> -->
 								<button class="editbtn"><a href="#">변경</a></button>
 							</div>
 						</div>
@@ -143,15 +147,17 @@
 						<h4>개인정보</h4>
 						<div class="editebox">
 							<h6>휴대폰 번호</h6>
-							<div class="phonenumedit">
-								<input type="text" class="editinput" placeholder="010-****-****">
+							<div class="phonenumedit spanBut">
+								<span class="editinput">{{info.userPwd}}</span>
+								<!-- <input type="text" class="editinput" placeholder="010-****-****"> -->
 								<button class="editbtn"><a href="#">변경</a></button>
 							</div>
 						</div>
 						<div class="editebox">
 							<h6>신발사이즈</h6>
-							<div class="shoessizeedit">
-								<input type="text" class="editinput" placeholder="350">
+							<div class="shoessizeedit spanBut">
+								<span class="editinput">{{info.userSize}}</span>
+								<!-- <input type="text" class="editinput" placeholder="350"> -->
 								<button class="editbtn"><a href="#">변경</a></button>
 							</div>
 						</div>
