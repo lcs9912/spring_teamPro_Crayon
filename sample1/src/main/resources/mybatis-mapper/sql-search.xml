@@ -4,10 +4,12 @@
 
 <mapper namespace="com.example.sample1.mapper.SearchMapper">
 	
-	<!-- 검색 테이블 정보 -->
+	<!-- 인기 검색어 -->
 	<select id="selectSearchAll" parameterType="hashmap"
 		resultType="com.example.sample1.model.Search">
-		SELECT * FROM T1_SEARCH
+		SELECT * 
+		FROM T1_SEARCH
+		<![CDATA[WHERE SEARCH_DATE >= NOW() - INTERVAL 24 HOUR]]>
 		ORDER BY SEARCH_CNT DESC
 	</select>
 	

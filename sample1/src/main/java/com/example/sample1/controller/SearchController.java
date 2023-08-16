@@ -29,7 +29,7 @@ public class SearchController {
 	@RequestMapping("/search.do") 
     public String search(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         	
-		return "/search_LCS";
+		return "/search";
     }
 	
 	// 물품정보 리스트 (임시)
