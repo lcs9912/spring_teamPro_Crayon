@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 여러분들 죄송하고 감사합니다 
+ 	테스트 
 </body>
 </html>
