@@ -76,6 +76,9 @@ margin-left : 200px;
 margin-right : 200px;
 }
 
+a{
+text-decoration : none;
+}
 </style>
 
 </head>
@@ -87,7 +90,7 @@ margin-right : 200px;
 			<h2>고객센터</h2>
 			<ul>
 				<li><a href="faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
-				<li><a href="faq.do" style="color: black;">1:1문의</a></li>
+				<li><a href="onetoone.do" style="color: black;">1:1 문의 게시판</a></li>
 			</ul>
 		</div>
 		</customernav>
@@ -103,8 +106,8 @@ margin-right : 200px;
 				<td style="cursor:pointer">자주묻는 질문</td>
 				</tr>
 				
-				<tr>
-				<td style="cursor:pointer">1:1문의</td>
+				<tr class="onetooneselect">
+				<td style="cursor:pointer"><a href="onetoone.do" style="color : #A2A2A2;">1:1문의</a></td>
 				<td></td>
 				<td></td>
 				</tr>

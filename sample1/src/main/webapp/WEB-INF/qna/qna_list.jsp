@@ -2,13 +2,21 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+<script src="../js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>QnA</title>
 <style>
-
+	table{
+		border: 1px solid black;
+		border-collapse: collapse;
+		text-align: center;
+	} 
+	th,td{
+		border: 1px solid black;
+		pedding : 5px 10px ;
+	}
 </style>
-
 </head>
 <%@ include file="../header/header1.jsp"%>
 <%@ include file="../header/header2.jsp"%>
@@ -26,16 +34,14 @@
 			<th>등록날짜</th>
 		</tr>
 		<tr v-for="item in list">
-			<td><input type="checkbox" :value="item.no" v-model="selectComment"></td>
-			<td>{{item.no}}</td>
-			<td ><a @click="fnView(item)" href="javascript:;"> {{item.title}} </a><a v-if="item.commCnt >0">({{item.commCnt}})</a></td>
-			<td>{{item.buser}}</td>
-			<td>{{item.cnt}}</td>
-			<td>{{item.cdatetime}}</td>
+			<td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
+			<td>{{item.qnaNumber}}</td>
+			<td >[{{item.qnaTypeName}}] {{item.qnaTitle}}</td>
+			<td>{{item.userId}}</td>
+			<td>{{item.qnaCnt}}</td>
+			<td>{{item.qnaDate}}</td>
 		</tr>
 	</table>
-	<button @click="fnBoardAdd"> 글쓰기</button>
-	<button @click="fnRemove"> 삭제</button>
 
 </div>
 </body>
@@ -45,7 +51,7 @@ var app = new Vue({
 	el : '#app',
 	data : {
 		list : [],		
-		no :"",
+		qnaNumber :"",
 		uId : "${sessionId}",
 		Name : "${sessionName}",
 		status : "${sessionStatus}",
@@ -56,7 +62,7 @@ var app = new Vue({
             var self = this;
             var nparmap = {};
             $.ajax({
-                url : "list.dox",
+                url : "/qna/list.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
@@ -65,35 +71,8 @@ var app = new Vue({
                 	console.log(self.list);
                 }
             }); 
-        },
-        fnView : function(item){
-        	var self = this;
-        	$.pageChange("view.do", {no :item.no});
-        },
-        fnBoardAdd : function(){
-        	var self = this;
-        	location.href = "add.do";
-        },
-        fnRemove : function(){
-        	var self = this;
-        	if(!confirm("정말 삭제할거냐")){
-         		 return;
-         	 }        
-        	var noList = JSON.stringify(self.selectComment);
-        	var nparmap = {text : "테스트 문자열" , selectComment : noList };
-        	 $.ajax({
-                 url : "delete.dox",
-                 dataType:"json",	
-                 type : "POST", 
-                 data : nparmap,
-                 success : function(data) { 
-                	alert("삭제되었다");
-                	self.fnGetList();
-                	self.selectItem = [];
-                 	
-                 }
-             }); 
         }
+       
         
 	}, // methods
 	created : function() {
