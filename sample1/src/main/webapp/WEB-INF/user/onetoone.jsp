@@ -154,7 +154,7 @@ cursor: pointer;
 				<td>comcnt</td>
 				<td>status</td>
 				</tr>
-
+ 
 				</tbody>
 				</table>
 				
