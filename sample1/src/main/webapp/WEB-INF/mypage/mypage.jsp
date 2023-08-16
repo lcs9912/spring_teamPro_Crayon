@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 
 <style>
-* {margin:0; padding:0;}
+* {margin:0; padding:0; box-sizing : border-box;}
 
 table {
 	border: 1px solid black;
@@ -51,7 +51,7 @@ nav {
 
 .sailcontainer {float:left;}
 	.profilearea {
-		width:900px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
+		width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
 		}
 		.profileinner1{
 			float:left; width: 100px; height:100px; margin:25px 40px;
@@ -82,12 +82,12 @@ nav {
 		
 
 	.mylist{
-		width:900px; 
+		width:1000px; 
 		}
-		.mylist h2{
-			display:inline-block; float:left; margin:25px 0 10px 0;
+		.listhead h2{
+			display:inline-block; float:left; margin:30px 0 10px 0;
 		}	
-		.mylist span {
+		.listhead span {
 			display:inline-block; float:right; margin-top:35px;
 		}
 		.listhead:after {
@@ -101,7 +101,7 @@ nav {
 		}
 			
 		.listul li{
-			float:left; width:225px; text-align:center; margin-top:0;
+			float:left; width:250px; text-align:center; margin-top:0;
 		}
 			.listul li p:nth-child(1){line-height:2.5; font-size:15px; font-weight:bold; margin:15 0 0 0;}
 			.listul li p:nth-child(2){line-height:1; margin-top:2px; font-size:20px;}
@@ -111,11 +111,11 @@ nav {
 		    display: block;
     	}
     	.listdv{
-    		height:300px; margin:0; text-align:center; line-height:200px;
+    		height:325px; margin:0; text-align:center; line-height:200px;
      	}
      	
      	.joygooddv {
-     		height:300px; margin:0; text-align:center; line-height:100px;
+     		height:325px; margin:0; text-align:center; line-height:100px;
      		background-color:rgb(248,248,248); border-radius:20px;
      	}
      	
@@ -250,8 +250,9 @@ nav {
 		</div>
 	</div>
 	</div>
+
 </body>
-<%@ include file="../header/footer.jsp"%>
+	<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 	var app = new Vue({

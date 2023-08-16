@@ -6,112 +6,115 @@
 <title>Insert title here</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing : border-box;
-}
-
-li{
-list-style:none;
-}
-
-
-a {	text-decoration:none;
-	color: inherit;
+	*{
+		margin:0;
+		padding:0;
+		box-sizing : border-box;
 	}
-
-.wrap{
-	margin:0 auto;
-	border-top:1px solid #999;
-	width:1200px; height:442px;
 	
-}
-
-footer {
-	padding:50px 40px;
-}
+	li{
+		list-style:none;
+	}
 	
-.servicearea {
-	margin-bottom:30px;
-}
-
-.customerinfo {
-	width:300px; float:right; 
-	font-size:13px; 
-	color:#777;
-	}
-.customerinfo h3{
-	font-size:19px; margin-bottom:10px;
-	color:#000;
-}
-
-.footerul {
-	float:left; margin-right:150px;
-	}
-
-.footerul li {
-	margin:10px 0;
 	
-}
-
-.footerul li a{
-	display:block;
-	color:#777;
-	}	
-.servicearea:after {
-    clear: both;
-    content: '';
-    display: block;
-    }
-
-.companyinfo {
-	border-top:1px solid #999;
+	a {	text-decoration:none;
+		color: inherit;
 	}
-
-.companyinfo p {
-	font-size:13px;	color:#777; width:700px;
-	margin-bottom:20px; 	
+	
+	.footerwrap{
+		clear:both;		
+		margin:0 auto;
+		border-top:1px solid #999;
+		width:1295px; height:543px;		
 	}
-.footerul2 {
-	margin:25px 0;
-}
+	
+	footer {
+		box-sizing:border-box;
+		padding:50px 0;
+		width:1200px; height:543px;
+		margin:0 auto;
+	}
+		
+	.servicearea {
+		margin-bottom:30px;
+	}
+	
+	.customerinfo {
+		width:300px; float:right; 
+		font-size:13px; 
+		color:#777;
+		}
+	.customerinfo h3{
+		font-size:19px; margin-bottom:10px;
+		color:#000;
+	}
+	
+	.footerul {
+		float:left; margin-right:150px;
+		}
+	
+	.footerul li {
+		margin:10px 0;
+		
+	}
+	
+	.footerul li a{
+		display:block;
+		color:#777;
+		}	
+	.servicearea:after {
+	    clear: both;
+	    content: '';
+	    display: block;
+	    }
+	
+	.companyinfo {
+		border-top:1px solid #999;
+		}
+	
+	.companyinfo p {
+		font-size:13px;	color:#777; width:700px;
+		margin-bottom:20px; 	
+		}
+	.footerul2 {
+		margin:25px 0;
+	}
+		    
+	.footerul2 li{
+		float:left; font-size:16px; margin-right:15px;
+		} 
+	
+	.footerul2 li:nth-child(5){
+		font-weight:bold;
+	}   
+		
+	.footerul2:after {
+	    clear: both;
+	    content: '';
+	    display: block;
+	    }
 	    
-.footerul2 li{
-	float:left; font-size:16px; margin-right:15px;
-	} 
-
-.footerul2 li:nth-child(5){
-	font-weight:bold;
-}   
+	.footernotice{
+		width:700px; font-size:13px;
+		color:#777; 
+		}
+	.footernotice p{
+		margin:10px 0; color:#000; font-size:15px; font-weight:bold;
+	}
 	
-.footerul2:after {
-    clear: both;
-    content: '';
-    display: block;
-    }
-    
-.footernotice{
-	width:700px; font-size:13px;
-	color:#777; 
+	.questionbtn {
+		background-color:#000; color:#fff; border:0 solid; padding:10px;  font-weight: bold;
+		margin-top:20px; width:180px;
 	}
-.footernotice p{
-	margin:10px 0; color:#000; font-size:15px; font-weight:bold;
-}
-
-.questionbtn {
-	background-color:#000; color:#fff; border:0 solid; padding:10px;  font-weight: bold;
-	margin-top:20px; width:180px;
-	}
-.questionbtn a{
-	display:block;
+	.questionbtn a{
+		display:block;
 	}	
 	
 </style>
 
 </head>
 <body>
-	<div class="wrap">
+	<div class="footerwrap">
 		<footer>
 		<div class="servicearea">
 			<div class="customerinfo">
