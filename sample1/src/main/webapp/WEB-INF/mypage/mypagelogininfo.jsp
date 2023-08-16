@@ -126,7 +126,7 @@
 						<div class="editebox">
 							<h6>이메일 주소</h6>
 							<div class="emailedit">
-								<input type="text" placeholder="e*********@gmail.com" class="editinput">
+								<input type="text" placeholder="e*********@gmail.com" name="{{info.userName}}"class="editinput">
 								<button class="editbtn"><a href="#">변경</a></button>
 							</div>
 						</div>
@@ -212,7 +212,12 @@
 		}, // methods
 		created : function() {
 			var self = this;
-			self.fnGetInfo();
+			if(self.sessionId !=""){
+				self.fnGetInfo();
+			}else{
+				alert("로그인 이후 이용이 가능합니다 시발");
+				location.href="login.do";
+			}
 		}// created
 	});
 </script>

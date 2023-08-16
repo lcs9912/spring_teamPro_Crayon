@@ -15,15 +15,19 @@ import com.example.sample1.model.User;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
 public class MypageController {
 	
+	@Autowired
+	HttpSession session;
+	
 	// 마이페이지
 	@RequestMapping("/mypage.do") 
-    public String login(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/mypage/mypage";
+    public String mypage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/mypage/mypage"; 
     }
 	
 	// 마이페이지 구매리스트
