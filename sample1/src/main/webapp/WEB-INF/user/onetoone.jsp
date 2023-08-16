@@ -194,7 +194,7 @@ background-color : #eee;
 				<tr class="onetoonehead">
 				<th>선택</th>
 				<th><div align="center">번 호</div></th>
-				<th><div align="center"></a>제 목</div></th>
+				<th><div align="center">제 목</div></th>
 				<th><div align="center">작성자</div></th>
 				<th><div align="center">작성일</div></th>
 				<th><div align="center">조회수</div></th>
