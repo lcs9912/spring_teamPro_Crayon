@@ -104,6 +104,12 @@ public class UserController {
 
 		return "/user/pwdresult";
     }
+	@RequestMapping("/onetoone.do") 
+    public String onetoone(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+       
+
+		return "/user/onetoone";
+    }
 
 	
 	//회원가입 
