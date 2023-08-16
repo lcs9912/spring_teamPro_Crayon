@@ -475,7 +475,7 @@ var app = new Vue({
 	}, // methods
 	created : function() {
 		var self = this;
-		
+		//test
 	}// created
 }); 
 </script>
