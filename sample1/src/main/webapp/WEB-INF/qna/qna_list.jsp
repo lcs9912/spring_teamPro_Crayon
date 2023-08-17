@@ -15,7 +15,8 @@
 	th,td{
 		border: 1px solid black;
 		pedding : 5px 10px ;
-	}
+	} 
+	
 </style>
 </head>
 <%@ include file="../header/header1.jsp"%>
