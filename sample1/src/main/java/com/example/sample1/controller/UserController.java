@@ -43,12 +43,12 @@ public class UserController {
 	
 	@RequestMapping("/header1.do")
     public String header(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/header1";
+        return "/header/header1";
     }
 	
 	@RequestMapping("/header2.do") 
     public String header2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/header2";
+        return "/header/header2";
     }
 	
 	@RequestMapping("/faq.do") 
@@ -58,7 +58,7 @@ public class UserController {
 	
 	@RequestMapping("/footer.do") 
     public String footer(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/footer";
+        return "/header/footer";
     }
 	@RequestMapping("/insertcontents.do") 
     public String insertcontents(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -145,6 +145,25 @@ public class UserController {
 			session.setAttribute("sessionStatus", user.getUserState()); 
 			session.setAttribute("sessionEmail", user.getUserEmail()); 
 		}
+		return new Gson().toJson(resultMap);
+	}
+	// 이메일, 비번, 전화번호 마스킹
+	@RequestMapping(value = "/user/selectMasked.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String selectMasked(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		HashMap<String, Object> maskedinfo = userService.searchMaskedinfo(map);
+		resultMap.put("maskedinfo", maskedinfo);
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 로그인정보 수정
+	@RequestMapping(value = "/user/editInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String editInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		userService.editUserLoginInfo(map);
+		
 		return new Gson().toJson(resultMap);
 	}
 }

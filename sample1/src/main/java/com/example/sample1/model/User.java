@@ -32,6 +32,11 @@ public class User {
 	private int userPoint;  // 회원 포인트
 	private String userAccount;  // 회원 계좌번호
 	
+	//T1_USER_TBL 이메일 비번 전화번호 마스킹
+	private String maskedEmail;
+	private String maskedPhone;
+	private String maskedPwd;
+	
 	
 	
 

@@ -11,6 +11,10 @@ public interface UserService {
 	HashMap<String, Object> searchUserLoginAllCheck(HashMap<String, Object> map);
 	// 아이디 중복체크
 	User searchUserLoginIdCheck(HashMap<String, Object> map);
+	// 이메일, 비번, 전화번호 마스킹
+	HashMap<String, Object> searchMaskedinfo(HashMap<String, Object> map);
+	// 로그인정보 수정 
+	int editUserLoginInfo(HashMap<String, Object> map);
 	
 	
 }

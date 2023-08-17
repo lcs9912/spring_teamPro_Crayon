@@ -39,20 +39,30 @@ public class MypageController {
 	// 마이페이지 본인정보
 	@RequestMapping("/mypagelogininfo.do") 
 	public String mypagelogininfo(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	return "/mypage/mypagelogininfo";
+
+		return "/mypage/mypagelogininfo";
 	}
 	
 	// 마이페이지 본인정보
 	@RequestMapping("/mypageselllist.do") 
 	public String mypageselllist(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	return "/mypage/mypageselllist";
+	
+		return "/mypage/mypageselllist";
 	}
 	
 	// 마이페이지 로그인정보 > 이메일정보 수정 팝업
-	@RequestMapping("/mypageEditUserEmailPopup.do") 
+	@RequestMapping("/loginInfoPopup.do") 
 	public String mypageEditUserEmailPopup(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	return "/mypage/mypageEditUserEmailPopup";
+		request.setAttribute("map", map);
+		return "/mypage/mypageEditUserEmailPopup";
 	}
+	
+	// 마이페이지 로그인정보 > 이메일정보 수정 팝업
+		@RequestMapping("/testPopup.do") 
+		public String testPopup(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			request.setAttribute("map", map);
+			return "/mypage/testPopup";
+		}
 	
 	
 	
