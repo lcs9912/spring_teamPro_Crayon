@@ -28,10 +28,11 @@ th, td {
 
 .customerwrap {
 	width:1200px; margin:0 auto;
+	padding-top:70px;
 	}
 	
-customernav {
-	float:left; width:200px; color:#000;
+.customernav {
+	float:left; width:150px; color:#000;
 	}
 
 
@@ -173,7 +174,7 @@ background-color : #eee;
 <body>
 <div id="app">
 <div class="customerwrap">
-	<customernav>
+	<nav>
 		<div class="customernav">
 			<h2>고객센터</h2>
 			<ul>
@@ -181,7 +182,7 @@ background-color : #eee;
 				<li><a href="onetoone.do" style="color: black; font-weight: bold;">1:1 문의 게시판</a></li>
 			</ul>
 		</div>
-		</customernav>
+		</nav>
 		
 				<div class="contentsarea"><h3>1:1 문의 게시판</h3></div>
 	
