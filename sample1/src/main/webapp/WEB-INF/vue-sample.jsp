@@ -1,21 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="js/jquery.js"></script>
+<script src="https://kit.fontawesome.com/2c370f498b.js" crossorigin="anonymous"></script>
+	<script src="../js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<meta charset="EUC-KR">
-	<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>회원가입페이지</title>
 <style>
 </style>
 </head>
 <body>
 <div id="app">
-	jsp �⺻ ��� ���� �Դϴ�.
-	����/�ٿ��ֱ� �ؼ� ����Ͻø� �˴ϴ�.
-	����Ͻ� �� �� �κ� �����Ͻð� ������.
-	- 1�� ������ɲ� �ø�-
+	jsp 기본 양식 파일 입니다.
+	복사/붙여넣기 해서 사용하시면 됩니다.
+	사용하실 때 이 부분 삭제하시고 쓰세요.
+	- 1조 웃음사냥꾼 올림-
 </div>
 </body>
 </html>

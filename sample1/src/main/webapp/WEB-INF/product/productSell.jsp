@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="app">
-	구매구매
+	판매판매
 </div>
 </body>
 </html>

@@ -21,7 +21,7 @@
 	</div>
 </div>
 </body>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({
