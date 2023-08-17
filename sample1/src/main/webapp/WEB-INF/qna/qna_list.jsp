@@ -45,6 +45,10 @@
 		</tr>
 	</table>
 	<button @click="fnQnaAdd()"> 게시물 작성</button>
+	<button   @click="fnQnaRemove()"> 게시물 삭제</button>
+	
+	
+
 
 </div>
 </body>
@@ -82,7 +86,28 @@ var app = new Vue({
         fnlistView : function(item){
         	var self = this;
         	$.pageChange("/qna/view.do", {qnaNumber :item.qnaNumber});
+        },
+        fnQnaRemove : function(){
+        	var self = this;
+        	if(!confirm("정말 삭제할거냐")){
+         		 return;
+         	 }        
+        	var noList = JSON.stringify(self.selectComment);
+        	var nparmap = {selectComment : noList };
+        	 $.ajax({
+                 url : "/qna/deleteList.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) { 
+                	alert("삭제되었다");
+                	self.fnGetList();             
+                	self.selectComment = [];
+                 	
+                 }
+             }); 
         }
+       
        
         
 	}, // methods

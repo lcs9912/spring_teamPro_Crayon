@@ -39,4 +39,34 @@ public class QnaServiceImpl implements QnaService{
 		return qnaMapper.updateQna(map);
 	}
 
+	@Override
+	public int deleteQnaList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.deleteQnaList(map);
+	}
+
+	@Override
+	public int hideQnaList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.hideQnaList(map);
+	}
+
+	@Override
+	public List<Qna> searchQnaCommentList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.selectQnaComment(map);
+	}
+
+	@Override
+	public int addQnaComm(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.insertQnaComm(map);
+	}
+
+	@Override
+	public int hideComment(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return qnaMapper.hideComment(map);
+	}
+
 }

@@ -24,7 +24,31 @@
 	<div>수정일 : {{info.qnaUpdate}}</div>
 	<div>조회수 : {{info.qnaCnt}}</div>
 	
-	<button @click="fnQnaEdit">수정하기</button> 
+	<div v-if="info.userId==uId">
+	<button @click="fnQnaEdit()">수정하기</button> 
+	<button @click="fnQnaRemove()">삭제하기</button> 
+	</div>
+	
+	<div>
+	<hr>
+	<hr>
+	<table >
+		<tr v-for="item in list">
+		<td v-if=" status == 'A'" ><input type="checkbox" :value="item.cNo" v-model="selectItem"></td>
+			<td>아이디: {{item.cuserId}} : </td>
+			<td>댓글 내용 : {{item.commentContents}} </td>
+			<td>수정일 : {{item.commentUpdate}} <a @click="fnCommRemove(item)" href="javascript:;" v-if="item.cuserId==uId || status == 'A' ">
+			<i class="fa-solid fa-skull" style="color: #f24a2c;"></i></a></td>
+			
+		</tr>
+		
+	</table> 
+	<button v-if="status == 'A'" @click="fnRemoveComm">댓글삭제</button>
+	<hr>
+	<hr>
+	<textarea rows="3" cols="40" v-model="text"></textarea>
+	<button @click="fnQnaCommAdd()">댓글등록</button>
+	</div> 
 	
 </div>
 </body>
@@ -60,7 +84,69 @@ var app = new Vue({
         fnQnaEdit : function(item){
         	var self =this;
        	 	$.pageChange("/qna/add.do",{qnaNumber : self.qnaNumber});
-
+       },
+       fnQnaRemove : function(item){
+        	 var self = this;
+        	 if(!confirm("정말 삭제할거냐")){
+        		 retrun;
+        	 }
+             var nparmap = {qnaNumber: self.qnaNumber};
+             $.ajax({
+                 url : "/qna/hide.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) { 
+                	 alert("삭제완료");
+                	 location.href ="/qna/list.do"
+                 }
+             }); 	
+        },
+        fnGetComment : function(){
+            var self = this;
+            var nparmap = {qnaNumber : self.qnaNumber};
+            $.ajax({
+                url : "/qna/comment/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {    	
+                	self.list = data.list;
+                	
+                }
+            }); 
+        },
+        fnQnaCommAdd :function(){
+        	var self = this;
+            var nparmap = {qnaNumber : self.qnaNumber ,text : self.text,uId : self.uId};
+            $.ajax({
+                url : "/qna/comment/add.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	alert("등록완료");
+                	self.text = "";
+                	self.fnGetComment(); 
+                }
+            });
+        },
+        fnCommRemove : function(item){
+       	 var self = this;
+       	 if(!confirm("댓글 삭제할거냐")){
+       		 retrun;
+       	 }
+            var nparmap = {commentNumber : item.commentNumber};
+            $.ajax({
+                url : "/qna/comment/hide.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+               	 alert("삭제완료");
+               	 self.fnGetComment(); 
+                }
+            }); 	
        }
         
      
@@ -69,6 +155,7 @@ var app = new Vue({
 	created : function() {
 		var self = this;
 		self.fnGetList(); 
+		self.fnGetComment();
 		
 		
 	}// created

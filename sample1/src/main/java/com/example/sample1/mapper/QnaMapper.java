@@ -18,4 +18,13 @@ public interface QnaMapper {
 	
 	int updateQna (HashMap<String, Object>map);
 	
+	int deleteQnaList (HashMap<String, Object>map);
+	
+	int hideQnaList (HashMap<String, Object>map);
+	
+	List<Qna> selectQnaComment(HashMap<String, Object> map);
+	
+	int insertQnaComm (HashMap<String, Object>map);
+	
+	int hideComment (HashMap<String, Object>map);
 }

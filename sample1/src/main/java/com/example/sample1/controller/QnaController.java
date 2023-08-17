@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.sample1.model.Qna;
 import com.example.sample1.service.QnaService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -73,11 +75,56 @@ public class QnaController {
 	//Qna 정보 수정 
 	@RequestMapping(value = "/qna/edit.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String boardEdit(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String qnaEdit(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		qnaService.updateQna(map);
 		return new Gson().toJson(resultMap);
 	}
-		
-		
+	//Qna 삭제(리스트)관리자용(안보이게만) 
+		@RequestMapping(value = "/qna/deleteList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String qnaDelelte(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			
+			String json = (String)map.get("selectComment");
+			ObjectMapper mapper = new ObjectMapper();
+			List<Object> list = mapper.readValue(json,new TypeReference<List<Object>>(){});
+			map.put("list", list);
+			
+			qnaService.deleteQnaList(map);
+			return new Gson().toJson(resultMap);
+		}
+	//Qna 정보 수정 
+	@RequestMapping(value = "/qna/hide.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String qnaHide(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		qnaService.hideQnaList(map);
+		return new Gson().toJson(resultMap);
+	}			
+	// Qna 댓글 리스트 출력
+		@RequestMapping(value = "/qna/comment/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String qnaCommentList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			List<Qna> list = qnaService.searchQnaCommentList(map);
+			resultMap.put("list",list);
+			return new Gson().toJson(resultMap);
+		}	
+	// Qna 댓글 등록
+	@RequestMapping(value = "/qna/comment/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String qnaCommAdd(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		qnaService.addQnaComm(map);
+		return new Gson().toJson(resultMap);
+	}	
+	// Qna 댓글 삭제 (자기자신)
+	@RequestMapping(value = "/qna/comment/hide.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String qnaCommhide(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		qnaService.hideComment(map);
+		return new Gson().toJson(resultMap);
+	}
 }

@@ -14,4 +14,14 @@ public interface QnaService {
 	Qna searchQnaInfo(HashMap<String, Object> map);
 	
 	int updateQna (HashMap<String, Object>map);
+	
+	int deleteQnaList(HashMap<String, Object>map);
+
+	int hideQnaList(HashMap<String, Object>map);
+	
+	List<Qna> searchQnaCommentList(HashMap<String, Object> map);
+	
+	int addQnaComm(HashMap<String, Object> map);
+	 
+	int hideComment (HashMap<String, Object> map);
 }
