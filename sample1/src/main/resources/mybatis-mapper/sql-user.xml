@@ -27,6 +27,28 @@
 			WHERE USER_ID = #{uId}
 	</select>
 	
+	<!-- 이메일, 비번, 전화번호 마스킹 -->
+	<select id="selectMaskedinfo" parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+    SELECT
+         CONCAT(
+            SUBSTRING(USER_EMAIL, 1, 1),
+            REPEAT('*', LOCATE('@', USER_EMAIL) - 2),
+            SUBSTRING(USER_EMAIL, LOCATE('@', USER_EMAIL)-1)
+        ) AS MASKED_EMAIL,
+       CONCAT(REPEAT('*', LENGTH(USER_PWD))) AS MASKED_PWD,
+         CONCAT(
+        SUBSTRING(USER_PHONE, 1, 3),
+        '-',
+        SUBSTRING(USER_PHONE, 5, 1),
+        REPEAT('*', 3),
+        '-',
+        SUBSTRING(USER_PHONE, 8, 4)
+    ) AS MASKED_PHONE
+    FROM T1_USER_TBL
+    WHERE USER_ID = #{uId}
+</select>
+	
 	
 	<!-- 로그인 횟수 + 1 -->
 	<update id="updateUserLoginCnt" parameterType="hashmap" > 
@@ -37,9 +59,34 @@
    
    
    <!-- 로그인 성공시 횟수 초기화 -->
-   <update id="updateUserLoginCntReset" parameterType="hashmap" > 
+   <update id="updateUserLoginCntReset" parameterType="hashmap"> 
    	 		UPDATE T1_USER_TBL
 				SET USER_LOGIN_CNT = 0
 			WHERE USER_ID = #{uId} 
+   </update>
+   
+   <!-- 마이페이지 로그인 정보 변경 -->
+   <update id="updateUserLoginInfo" parameterType="hashmap">
+  			UPDATE T1_USER_TBL
+  			SET
+  			<if test="userEmail != '' and userEmail != null">
+				USER_EMAIL = #{userEmail}
+			</if>
+			<if test="userPhone != '' and userPhone != null">
+				USER_PHONE = #{userPhone}
+			</if>
+			<if test="userPwd != '' and userPwd != null">
+				USER_PWD = #{userPwd}
+			</if>
+			<if test="userSize != '' and userSize != null">
+				USER_SIZE = #{userSize}
+			</if>
+			<if test="receiveMessage != '' and receiveMessage != null">
+				RECEIVE_MESSAGE = #{receiveMessage}
+			</if>
+			<if test="receiveEmail != '' and receiveEmail != null">
+				RECEIVE_EMAIL = #{receiveEmail}
+			</if>
+			WHERE USER_ID = #{uId}
    </update>
 </mapper>

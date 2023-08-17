@@ -62,4 +62,22 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectUserLoginIdCheck(map);
 	}
 
+	// 이메일, 비번, 전화번호 마스킹
+	@Override
+	public HashMap<String, Object> searchMaskedinfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		User user = userMapper.selectUserLoginIdCheck(map); // select id
+		User masked = userMapper.selectMaskedinfo(map); // select id
+		resultMap.put("user", user);
+		resultMap.put("masked", masked);
+		return resultMap;
+	}
+
+	@Override
+	public int editUserLoginInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.updateUserLoginInfo(map);
+	}
+
 }

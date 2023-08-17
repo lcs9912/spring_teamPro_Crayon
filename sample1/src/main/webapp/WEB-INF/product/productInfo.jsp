@@ -25,8 +25,16 @@ background-color:#f4f4f4;
 width : 600px;
 height: 600px;
 display:block;
-float:left;
 }
+.leftbox{
+width:600px;
+position: fixed;
+}
+
+.fixed {
+position: absolute;
+top: 650px;
+        }
 .rightcolumn{
 float : right;
 border-left : 1px solid #eee;
@@ -82,7 +90,7 @@ font-size: 18px;
     font-weight: 400;
     letter-spacing: -.09px;
     margin-bottom: 4px;
-    padding-top : 5px;
+    padding-top : 5px; 
    
 }
 .subtitle2{
@@ -113,6 +121,7 @@ float:right;
 .recentsell{
 padding-bottom : 15px;
 margin-top : 10px;
+width:600px;
 }
 .sizeandrecent{
 padding-bottom:10px;
@@ -160,7 +169,6 @@ border: 1px solid #ebebeb;
 border-radius: 10px;
 margin-top : 10px;
 text-align:center;
-height:30px;
 padding-top : 15px;
 padding-bottom : 15px;
 font-size: 15px;
@@ -172,10 +180,17 @@ font-size:15px;
 width:600px;
 }
 
-.prodentdetailheader{
+.productdetailheader{
 font-weight: bold;
 font-size: 20px;
 margin-bottom:10px;
+border-bottom : 1px solid #eee;
+padding-bottom: 15px;
+}
+
+.buybeforeread{
+font-weight: bold;
+font-size: 20px;
 border-bottom : 1px solid #eee;
 padding-bottom: 15px;
 }
@@ -203,6 +218,7 @@ font-size: 14px;
     margin-top : 20px;
     padding-top : 15px;
     border-top : 1px solid #eee;
+    width:600px;
 }
 .displaymorebtn{
 float:right;
@@ -229,7 +245,30 @@ margin-top:10px;
 
 .displayiteminfo{
 margin-bottom:20px;
+width:600px;
 }
+.displaygraph{
+width:600px;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.buybeforeread{
+margin-top:20px;
+}
+.displaybuybefore{
+width:600px;
+}
+
+.buybeforecontents{
+border-bottom:1px solid #eee;
+padding-top : 15px;
+padding-bottom : 15px;
+font-size: 15px;
+width:600px;
+display:inline-block;
+cursor: pointer;
+}
+
 </style>
 
 </head>
@@ -283,12 +322,12 @@ margin-bottom:20px;
 		<div class="interestbtn" style="cursor: pointer">
 		<i class="fa-solid fa-bookmark"></i>
 		<i class="fa-regular fa-bookmark"></i>
-		관심상품 <strong>cnt</strong>
+		관심상품<strong>cnt</strong>
 		</div>
 		</div>
 		
 		<div class="productinfodetail">
-		<div class="prodentdetailheader">상품정보
+		<div class="productdetailheader">상품정보
 		</div>
 		
 		<div class="productlist">
@@ -309,7 +348,7 @@ margin-bottom:20px;
 			<div style="color:black; font-size:14px;">BLACK</div>
 			</div>
 			
-			<div class="detailproductheader">
+			<div class="detailproductheader" style="border-right:none;">
 			발매가
 			<div style="color:black; font-size:14px;">000,000￦</div>
 			</div>
@@ -327,15 +366,15 @@ margin-bottom:20px;
 		<div class="displaypoint">
 		<div class="displaypointbox">
 		<div class="pointheader">포인트</div>
-		<div class="pointcontents" style="width:400px; display:inline-block;">
+		<div class="pointcontents" style="width:500px; display:inline-block;">
 		구매 후 배송완료 시 수수료의 최대 <b>100%</b> 적립</div>
 		
 		<div class="pointheader"></div>
-		<div class="pointcontents" style="width:400px; display:inline-block;">
+		<div class="pointcontents" style="width:500px; display:inline-block;">
 		계좌 간편결제 시 <b>1%</b> 적립</div>
 		
 		<div class="pointheader">결제</div>
-		<div class="pointcontents" style="width:400px; display:inline-block;">
+		<div class="pointcontents" style="width:500px; display:inline-block;">
 		네이버페이 포인트 최대 8만원지급! 외5건</div>
 		</div>
 		</div>
@@ -364,9 +403,28 @@ margin-bottom:20px;
 			배송 없이 창고에 보관 · 빠르게 판매 가능</div>
 			</div>
 			</div>
+			</div>
+			<div class="displaygraph">그래프공간</div>
+			
+			<div class="displaybuybefore">
+			
+			<div class="buybeforeread">
+			구매 전 꼭 확인해주세요!
+			</div>
+			
+			<div class="buybeforecontents">배송기간 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;">
+			</i></div>
+			<div class="buybeforecontents">검수 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+			</div>
+			<div class="buybeforecontents">구매 환불/취소/교환 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+			</div>
 			
 			
-		</div>
+			</div>
+		
 	
 	
 	
@@ -376,7 +434,7 @@ margin-bottom:20px;
 	
 			
 	</div>
-	
+	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
 		상품페이지
 		</div>
@@ -388,7 +446,7 @@ margin-bottom:20px;
 		<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
 		</div>
 		
-		
+		</div>
 	
 	
 	</div>
@@ -399,21 +457,28 @@ margin-bottom:20px;
 </html>
 <script>
 var app = new Vue({
-	el : '#app',
-	data : {
-		model : ""
-	},
-	methods : {
-        fnBuy : function(){ // 구매버튼
-			var self = this;
-			$.pageChange("productBuy");
-			},
-		fnSell : function(){
-			var self = this;
-		}
-	},
-	created : function() {
-		var self = this;
-	}
+    el: '#app',
+    data: {
+        model: "",
+        scrollPosition: 0
+    },
+    methods: {
+        fnBuy: function () {
+            var self = this;
+            $.pageChange("productBuy");
+        },
+        fnSell: function () {
+            var self = this;
+        }
+    },
+    created: function () {
+        var self = this;
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        handleScroll: function () {
+            this.scrollPosition = window.scrollY;
+        }
+    }
 })
 </script>
