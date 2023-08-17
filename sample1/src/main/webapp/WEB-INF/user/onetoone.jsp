@@ -31,7 +31,7 @@ th, td {
 	width:1200px; margin:0 auto;
 	}
 	
-customernav {
+.customernav {
 	float:left; width:200px; color:#000;
 	}
 
@@ -203,7 +203,8 @@ background-color : #eee;
 				
 				
 				<tr v-for="item in paginatedList" :key="item.qnaNumber">
-				  <td><input type="checkbox" :value="item.qnaNumber"></td>
+				
+				  <td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
 				  <td>{{ item.qnaNumber }}</td>
 				  <td align="left">
 				    <a href="javascript:;">
@@ -213,7 +214,7 @@ background-color : #eee;
 				  <td>{{ item.userId }}</td>
 				  <td>{{ item.qnaDate }}</td>
 				  <td>{{ item.qnaCnt }}</td>
-				  <td>처리좀</td>
+				  <td>{{ item.qnaAnsweryn }}</td>
 </tr>
  
 				</tbody>
