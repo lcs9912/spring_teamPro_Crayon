@@ -25,8 +25,16 @@ background-color:#f4f4f4;
 width : 600px;
 height: 600px;
 display:block;
-float:left;
 }
+.leftbox{
+width:600px;
+position: fixed;
+}
+
+.fixed {
+position: absolute;
+top: 650px;
+        }
 .rightcolumn{
 float : right;
 border-left : 1px solid #eee;
@@ -426,7 +434,7 @@ cursor: pointer;
 	
 			
 	</div>
-	
+	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
 		상품페이지
 		</div>
@@ -438,7 +446,7 @@ cursor: pointer;
 		<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
 		</div>
 		
-		
+		</div>
 	
 	
 	</div>
@@ -449,21 +457,28 @@ cursor: pointer;
 </html>
 <script>
 var app = new Vue({
-	el : '#app',
-	data : {
-		model : ""
-	},
-	methods : {
-        fnBuy : function(){ // 구매버튼
-			var self = this;
-			$.pageChange("productBuy");
-			},
-		fnSell : function(){
-			var self = this;
-		}
-	},
-	created : function() {
-		var self = this;
-	}
+    el: '#app',
+    data: {
+        model: "",
+        scrollPosition: 0
+    },
+    methods: {
+        fnBuy: function () {
+            var self = this;
+            $.pageChange("productBuy");
+        },
+        fnSell: function () {
+            var self = this;
+        }
+    },
+    created: function () {
+        var self = this;
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        handleScroll: function () {
+            this.scrollPosition = window.scrollY;
+        }
+    }
 })
 </script>
