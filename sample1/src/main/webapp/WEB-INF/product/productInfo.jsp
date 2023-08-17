@@ -113,6 +113,7 @@ float:right;
 .recentsell{
 padding-bottom : 15px;
 margin-top : 10px;
+width:600px;
 }
 .sizeandrecent{
 padding-bottom:10px;
@@ -209,6 +210,7 @@ font-size: 14px;
     margin-top : 20px;
     padding-top : 15px;
     border-top : 1px solid #eee;
+    width:600px;
 }
 .displaymorebtn{
 float:right;
@@ -235,6 +237,7 @@ margin-top:10px;
 
 .displayiteminfo{
 margin-bottom:20px;
+width:600px;
 }
 .displaygraph{
 width:600px;
@@ -337,7 +340,7 @@ cursor: pointer;
 			<div style="color:black; font-size:14px;">BLACK</div>
 			</div>
 			
-			<div class="detailproductheader">
+			<div class="detailproductheader" style="border-right:none;">
 			발매가
 			<div style="color:black; font-size:14px;">000,000￦</div>
 			</div>
@@ -355,15 +358,15 @@ cursor: pointer;
 		<div class="displaypoint">
 		<div class="displaypointbox">
 		<div class="pointheader">포인트</div>
-		<div class="pointcontents" style="width:400px; display:inline-block;">
+		<div class="pointcontents" style="width:500px; display:inline-block;">
 		구매 후 배송완료 시 수수료의 최대 <b>100%</b> 적립</div>
 		
 		<div class="pointheader"></div>
-		<div class="pointcontents" style="width:400px; display:inline-block;">
+		<div class="pointcontents" style="width:500px; display:inline-block;">
 		계좌 간편결제 시 <b>1%</b> 적립</div>
 		
 		<div class="pointheader">결제</div>
-		<div class="pointcontents" style="width:400px; display:inline-block;">
+		<div class="pointcontents" style="width:500px; display:inline-block;">
 		네이버페이 포인트 최대 8만원지급! 외5건</div>
 		</div>
 		</div>
