@@ -90,7 +90,7 @@ font-size: 18px;
     font-weight: 400;
     letter-spacing: -.09px;
     margin-bottom: 4px;
-    padding-top : 5px;
+    padding-top : 5px; 
    
 }
 .subtitle2{
