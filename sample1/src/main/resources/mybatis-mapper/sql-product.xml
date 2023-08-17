@@ -6,10 +6,10 @@
 	<!-- 상품등록 -->
 	<insert id="insertProduct" parameterType="hashmap">
 		INSERT INTO T1_PRODUCT_UPDATE
-			(PRODUCT_MODEL, PRODUCT_NAME, PRODUCT_SIZE, PRODUCT_PRICE, PRODUCT_COLOR,
-				PRODUCT_LAUNCH_PRICE, PRODUCT_CATEGORIE1, PRODUCT_CATEGORIE2,PRODUCT_BRAND)
+			(PRODUCT_SELL_NUMBER,PRODUCT_MODEL, PRODUCT_NAME, PRODUCT_SIZE, PRODUCT_PRICE, PRODUCT_COLOR,
+				PRODUCT_LAUNCH_PRICE, PRODUCT_CATEGORIE1, PRODUCT_CATEGORIE2,PRODUCT_BRAND,USER_ID)
 		VALUES
-			(#{pModel}, #{pName}, #{pSize}, #{pPrice}, #{pColor}, #{launch}, #{pCategorie1}, #{pCategorie2}, #{brand})
+			(NULL,#{pModel}, #{pName}, #{pSize}, #{pPrice}, #{pColor}, #{launch}, #{pCategorie1}, #{pCategorie2}, #{brand}, #{uId})
 	</insert>
 	
 	<!-- 상품이미지 업로드 -->

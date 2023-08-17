@@ -35,14 +35,51 @@
 		</div>
 		<div><input v-model="product.pName" type="text" placeholder="상품이름"></div>
 		<div><input v-model="product.pModel" type="text" placeholder="모델번호"></div>
-		<div><input v-model="product.pSize" type="text" placeholder="상품사이즈"></div>
+		<div>
+			<select v-model="product.pSize">
+				<option value="a">사이즈</option>
+				<option value="0">ONE SIZE</option>
+				<option value="1">XXS</option>
+				<option value="2">XS</option>
+				<option value="3">S</option>
+				<option value="4">M</option>
+				<option value="5">L</option>
+				<option value="6">XL</option>
+				<option value="7">XXL</option>
+				<option value="8">XXXL</option>
+				<option value="9">28</option>
+				<option value="10">29</option>
+				<option value="11">30</option>
+				<option value="12">31</option>
+				<option value="13">32</option>
+				<option value="14">33</option>
+				<option value="15">34</option>
+				<option value="16">35</option>
+				<option value="17">36</option>
+				<option value="18">220</option>
+				<option value="19">225</option>
+				<option value="20">230</option>
+				<option value="21">235</option>
+				<option value="22">240</option>
+				<option value="23">245</option>
+				<option value="24">250</option>
+				<option value="25">255</option>
+				<option value="26">260</option>
+				<option value="27">265</option>
+				<option value="28">270</option>
+				<option value="28">275</option>
+				<option value="30">280</option>
+				<option value="31">285</option>
+				<option value="32">290</option>
+			</select>
+		</div>
 		<div><input v-model="product.pColor" type="text" placeholder="상품컬러"></div>
 		<div><input v-model="product.pPrice" type="text" placeholder="상품가격"></div>
 		<div><input v-model="product.launch" type="text" placeholder="발매가"></div>
 		<div>*마감일자<input v-model="product.endDate" type="date" placeholder="마감일자"></div>
 		<div>
-			<select v-model="product.pCategorie1">
-				<option disabled selected>카테고리1</option>
+			<select  v-model="product.pCategorie1">
+				<option value="0">카테고리1</option>
 				<option value="1">남자</option>
 				<option value="2">여자</option>
 				<option value="3">신발</option>
@@ -51,7 +88,7 @@
 		</div>
 		<div>
 			<select v-model="product.pCategorie2">
-				<option disabled selected>카테고리2</option>
+				<option value="0">카테고리2</option>
 				<option value="1">상의</option>
 				<option value="2">하의</option>
 				<option value="3">아우터</option>
@@ -68,8 +105,8 @@
 		</div>
 		<div>
 			<select v-model="product.brand" @change="handleBrandChange"	>
-				<option disabled selected>브랜드</option>
-				<option v-for="item in list" :value="item.pBrand">{{item.brandName}}</option>
+				<option value="a">브랜드</option>
+				<option v-for="item in list" :value="item.brand">{{item.brandName}}</option>
 				<option value="0">직접입력</option>
 			</select>
 			<div v-if="showDirectInput">
@@ -92,15 +129,16 @@ var app = new Vue({
 		product :{
 			pName : "",
 			pModel : "",
-			pSize : "",
+			pSize : "a",
 			pColor : "",
 			pPrice : "",
 			launch : "",
 			endDate : "",
-			pCategorie1 : "",
-			pCategorie2 : "",
-			brand : "",
+			pCategorie1 : "0",
+			pCategorie2 : "0",
+			brand : "a",
 			sellBuy : "",
+			uId : "${sessionId}"
 		},
 		showDirectInput: false, // 직접입력 영역 표시 여부
 		directInputBrand: '' // 직접입력한 브랜드
@@ -161,6 +199,7 @@ var app = new Vue({
 				type : "POST",
 				data : nparmap,
 				success : function(data){
+					console.log(self.item.pBrand);
 					alert("등록 완료");
 				}
 			});
