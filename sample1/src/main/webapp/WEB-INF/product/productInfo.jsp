@@ -160,7 +160,6 @@ border: 1px solid #ebebeb;
 border-radius: 10px;
 margin-top : 10px;
 text-align:center;
-height:30px;
 padding-top : 15px;
 padding-bottom : 15px;
 font-size: 15px;
@@ -172,10 +171,17 @@ font-size:15px;
 width:600px;
 }
 
-.prodentdetailheader{
+.productdetailheader{
 font-weight: bold;
 font-size: 20px;
 margin-bottom:10px;
+border-bottom : 1px solid #eee;
+padding-bottom: 15px;
+}
+
+.buybeforeread{
+font-weight: bold;
+font-size: 20px;
 border-bottom : 1px solid #eee;
 padding-bottom: 15px;
 }
@@ -230,6 +236,28 @@ margin-top:10px;
 .displayiteminfo{
 margin-bottom:20px;
 }
+.displaygraph{
+width:600px;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.buybeforeread{
+margin-top:20px;
+}
+.displaybuybefore{
+width:600px;
+}
+
+.buybeforecontents{
+border-bottom:1px solid #eee;
+padding-top : 15px;
+padding-bottom : 15px;
+font-size: 15px;
+width:600px;
+display:inline-block;
+cursor: pointer;
+}
+
 </style>
 
 </head>
@@ -283,12 +311,12 @@ margin-bottom:20px;
 		<div class="interestbtn" style="cursor: pointer">
 		<i class="fa-solid fa-bookmark"></i>
 		<i class="fa-regular fa-bookmark"></i>
-		관심상품 <strong>cnt</strong>
+		관심상품<strong>cnt</strong>
 		</div>
 		</div>
 		
 		<div class="productinfodetail">
-		<div class="prodentdetailheader">상품정보
+		<div class="productdetailheader">상품정보
 		</div>
 		
 		<div class="productlist">
@@ -364,9 +392,28 @@ margin-bottom:20px;
 			배송 없이 창고에 보관 · 빠르게 판매 가능</div>
 			</div>
 			</div>
+			</div>
+			<div class="displaygraph">그래프공간</div>
+			
+			<div class="displaybuybefore">
+			
+			<div class="buybeforeread">
+			구매 전 꼭 확인해주세요!
+			</div>
+			
+			<div class="buybeforecontents">배송기간 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;">
+			</i></div>
+			<div class="buybeforecontents">검수 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+			</div>
+			<div class="buybeforecontents">구매 환불/취소/교환 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+			</div>
 			
 			
-		</div>
+			</div>
+		
 	
 	
 	
