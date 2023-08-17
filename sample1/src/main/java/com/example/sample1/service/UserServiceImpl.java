@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		User user = userMapper.selectUserLoginIdCheck(map); // select id
-		User masked = userMapper.selectMaskedinfo(map); // select id
+		User masked = userMapper.selectMaskedinfo(map); // 마스킹
 		resultMap.put("user", user);
 		resultMap.put("masked", masked);
 		return resultMap;
@@ -78,6 +78,18 @@ public class UserServiceImpl implements UserService{
 	public int editUserLoginInfo(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return userMapper.updateUserLoginInfo(map);
+	}
+
+	@Override
+	public int searchPwdHintAnswer(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectPwdHintAnswer(map);
+	}
+
+	@Override
+	public int searchEmailIdPwd(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectEmailIdPwd(map);
 	}
 
 }

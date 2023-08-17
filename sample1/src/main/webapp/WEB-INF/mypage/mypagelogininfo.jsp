@@ -190,7 +190,7 @@ body.dimmed::before{
     width: 300px;
  
 }
-.popup > .cmd button {
+.cmd button {
     border-radius: 8px;
     padding: 5px 10px;
     border: 1px solid #aaa;
@@ -199,11 +199,11 @@ body.dimmed::before{
     background-color: black;
     font-weight: bold;
     cursor: pointer;
-   position: relative;
-   top : 230px;
-   left: 50px;
+    position: absolute;
+    top : 300px;
+    left: 265px;
 }
-.popup > .cmd button:hover {
+.cmd button:hover {
     color: #fff;
     background-color: #000;
     border-color: #000;
@@ -268,8 +268,7 @@ body.dimmed::before{
 							<h6>비밀번호</h6>
 							<div class="pwdedit spanBut">
 								<span class="editinput">{{masked.maskedPwd}}</span>
-								<!-- <input type="password" placeholder="**********" class="editinput"> -->
-								<button class="editbtn" @click="fnpopup('pwd')"><a href="#">변경</a></button>
+								<button class="editbtn" @click="fnpopup('pwd')">변경</button>
 							</div>
 						</div>
 					</div>
@@ -279,14 +278,14 @@ body.dimmed::before{
 							<h6>휴대폰 번호</h6>
 							<div class="phonenumedit spanBut">
 								<span class="editinput">{{masked.maskedPhone}}</span>
-								<button class="editbtn" @click="fnpopup('phone')"><a href="#">변경</a></button>
+								<button class="editbtn" @click="fnpopup('phone')">변경</button>
 							</div>
 						</div>
 						<div class="editebox">
 							<h6>신발사이즈</h6>
 							<div class="shoessizeedit spanBut">
 								<span class="editinput">{{user.userSize}}</span>
-								<button class="editbtn" @click="fnpopup('size')"><a href="#">변경</a></button>
+								<button class="editbtn" @click="fnpopup('size')">변경</button>
 							</div>
 						</div>
 					</div>
@@ -295,20 +294,32 @@ body.dimmed::before{
 					<div class="editebox">
 						<div class="agreeelement">
 							<p>문자 메세지</p>
-							<div>
-								<label for="dmagree">수신동의</label><input type="radio" id="dmagree" name="dmagree" checked>
-								<label for="dmdisagree">수신거부</label><input type="radio" id="dmdisagree"name="dmagree">
-							</div>
-						</div>
-					</div>
+							<div>	
+								<label for="dmagree">수신동의</label><input type="radio" id="dmagree" name="dmagree" 
+									v-model="user.receiveMessage" value="Y" @change="fnMessageRadio">
+								<label for="dmdisagree">수신거부</label><input type="radio" id="dmdisagree"name="dmagree"
+									v-model="user.receiveMessage" value="N" @change="fnMessageRadio">
+							</div>	
+							
+
+
+
+
+
+
+							
+						</div>		
+					</div>			
 					<div class="editebox">
 						<div class="agreeelement">
 							<p>이메일</p>
-							<div>
-								<label for="agreemail">수신동의</label><input type="radio" id="agreemail" name="emailagree" checked>
-								<label for="disagreemail">수신거부</label><input type="radio" id="disagreemail" name="emailagree">
-							</div>
-						</div>
+							<div>	
+								<label for="agreemail">수신동의</label><input type="radio" id="agreemail" name="emailagree"
+									v-model="user.receiveEmail" value="Y" @change="fnEmailRadio">
+								<label for="disagreemail">수신거부</label><input type="radio" id="disagreemail" name="emailagree"
+									v-model="user.receiveEmail" value="N" @change="fnEmailRadio">
+							</div>	
+						</div>		
 					</div>
 				</div>
 				<button class="resignbtn">회원탈퇴</button>
@@ -319,7 +330,6 @@ body.dimmed::before{
 	
 	
 	<!-- 이메일 변경 팝업 -->
-	
 	<div class="popup popup-overlay" id="popupOverlay" >
         <div class="title">주소 변경<i class="fa-solid fa-x" id="closePopup"></i></div>
         <div class="content">
@@ -328,63 +338,95 @@ body.dimmed::before{
             <p>대충 주소 변경 주의 사항(없어도됨)</p>
             <p>
                 <div>기존 이메일 : {{masked.maskedEmail}}</div>
-               <div><input placeholder="대충 변경할 이메일" v-model="info.userEmail"></div>
-               <div style="color: red;">{{message}}</div>
+               <div><input placeholder="대충 변경할 이메일" v-model="editEmail"></div>
+               <div style="color: red;">{{emailMessage}}</div>
                 <div>
               		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
                		<button @click="fnPwdCheck">인증</button>
                	</div> 
             </p>
+            	 <div class="cmd">
+       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
+        		 </div>
         </template>
         
         <!-- 비밀번호 변경 -->
      	<template v-else-if="keyword == 'pwd'">
             <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
             <p>
-                <div>기존 이메일 : {{masked.maskedPwd}}</div>
-               <div><input placeholder="대충 변경할 이메일" v-model="info.userEmail"></div>
-               <div style="color: red;">{{message}}</div>
-                <div>
-              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-               		<button @click="fnPwdCheck">인증</button>
+                <div><input type="password" placeholder="기존 비밀번호 입력" v-model="pwd"><button @click="fnPwdCheck">확인</button></div>
+                <div v-if="pwdFlg">
+	                <select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="checkPwdHint">
+						<option disabled selected>비밀번호 찾기 질문</option>
+						<option value="1">가장 좋아하는 동물은?</option>
+						<option value="2">가장 좋아하는 음식은?</option>
+						<option value="3">가장 좋아하는 색은?</option>
+						<option value="4">가장 좋아하는 운동선수이름은?</option>
+						<option value="5">자신의 취미나 특기는?</option>
+						<option value="6">가장 좋아하는 운동은?</option>
+						<option value="7">가장 좋아하는 티비프로그램은?</option>
+						<option value="8">가장 좋아하는 책은?</option>
+						<option value="9">가장 좋아하는 영화는?</option>
+					</select>
+	               <div><input placeholder="정답" v-model="hintAnswer"></div>
+	               <div style="color: red;">{{pwdMessage}}</div>
+	               <button @click="fnHintCheck">확인</button>
+               </div>
+                <div v-if="hintPwdFlg">
+              		<div><input type="password" v-model="editPwd" placeholder="새 비밀번호"></div>
+              		<div><input type="password" v-model="editPwd2" placeholder="비밀번호 확인"></div>
+               		
                	</div> 
             </p>
+            	 <div class="cmd">
+       				<button id="submitPopup" @click="fnSubmitPwdEdit">제출</button>          
+        		 </div>
         </template>
         
         <!-- 연락처 변경 -->
      	<template v-else-if="keyword == 'phone'">
             <p>대충 전화번호 변경 주의 사항(없어도됨)</p>
             <p>
-                <div>기존 이메일 : {{masked.maskedPwd}}</div>
-               <div><input placeholder="대충 변경할 이메일" v-model="info.userEmail"></div>
-               <div style="color: red;">{{message}}</div>
-                <div>
-              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-               		<button @click="fnPwdCheck">인증</button>
-               	</div> 
+                
+               <div><input placeholder="아이디" v-model="checkId"></div>
+               <div><input placeholder="비밀번호" v-model="pwd"></div>
+               <div><input placeholder="이메일" v-model="editEmail"></div>
+               <button @click="fnAllCheck">인증</button>
+               <div style="color: red;">{{phoneMessage}}</div>
+                <div v-if="PhoneFlg">
+                	<div><input placeholder="새 전화번호" v-model="editPhone"></div>
+                </div>
             </p>
+            	 <div class="cmd">
+       				<button id="submitPopup" @click="fnSubmitPhoneEdit">제출</button>          
+        		 </div>
         </template>
         
         <!-- 신발 사이즈 변경 -->
      	<template v-else-if="keyword == 'size'">
             <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
             <p>
-                <div>기존 이메일 : {{masked.maskedPwd}}</div>
-               <div><input placeholder="대충 변경할 이메일" v-model="info.userEmail"></div>
-               <div style="color: red;">{{message}}</div>
                 <div>
-              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-               		<button @click="fnPwdCheck">인증</button>
-               	</div> 
+                	<label>230<input type="radio" value="250"></label>
+ 					<label>235<input type="radio" value="235"></label>
+ 					<label>240<input type="radio" value="240"></label>
+ 					<label>245<input type="radio" value="245"></label>
+ 					<label>250<input type="radio" value="250"></label>
+ 					<label>255<input type="radio" value="255"></label>
+ 					<label>260<input type="radio" value="260"></label>
+ 					<label>265<input type="radio" value="265"></label>
+ 					<label>270<input type="radio" value="270"></label>
+ 					
+                </div>
             </p>
+          		 <div class="cmd">
+       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
+        		 </div>
         </template>
         
        
         </div>
-        <div class="cmd">
-       		<button id="submitPopup" @click="fnSubmitPopup">제출</button>
-            
-        </div>
+        
     </div>
 
    
@@ -397,22 +439,31 @@ body.dimmed::before{
 	var app = new Vue({
 		el : '#app',
 		data : {
-			masked : {},
-			user : {},
-			maskedinfo : {},
+			masked : {}, // 마스킹 리스트
+			user : {}, // select where id
 			sessionId : "${sessionId}",
-			message : "",
-			keyword : "",
-			pwd : "",
-			pwdFlg : false,
-			info : {
-				userEmail : "",
-				userPhone : "",
-				userPwd : "",
-				userSize : "",
-				receiveMessage : "",
-				receiveEmail : "",
-			}
+			pwdMessage : "",  // 비밀번호 메세지
+			emailMessage : "", // 이메일 변경 메세지
+			phoneMessage : "", // 연락처 변경 메세지
+			keyword : "", // 변경 버튼 키워드
+			pwd : "", // 비밀번호 
+			pwdFlg : false, // 비밀번호 인증 유무
+			hintPwdFlg : false,
+			PhoneFlg : false,
+			
+			editEmail : "",
+			editPwd : "",
+			editPwd2 : "",
+			editPhone : "",
+			editSize : "",
+			hintAnswer : "",
+			editReMessage : "",
+			editReEmail : "",
+			checkPwdHint : "",
+			checkId : "",
+			
+			
+			
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -424,9 +475,9 @@ body.dimmed::before{
 					type : "POST",
 					data : param,
 					success : function(data) {
-						
 						self.user = data.maskedinfo.user;
 						self.masked = data.maskedinfo.masked;
+						console.log(self.user);
 						
 					}
 				});
@@ -434,7 +485,6 @@ body.dimmed::before{
 			// 레이어 팝업창 띄우기
 			fnpopup : function(keyword){
 				var self = this;
-				console.log(keyword);
 				self.keyword = keyword;
 				document.getElementById("popupOverlay").style.display = "block";
 			},
@@ -443,20 +493,18 @@ body.dimmed::before{
 				var self = this;
 				
 				const regexEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-				if(!regexEmail.test(self.info.userEmail)){
-					console.log(self.info.userEmail);
-					self.message = "이메일 형식에 맞게 입력하시오";
+				if(!regexEmail.test(self.editEmail)){
+					self.emailMessage = "이메일 형식에 맞게 입력하시오";
 					return;
 				}else {
-					self.message = "";
+					self.emailMessage = "";
 				};
 				if(!self.pwdFlg){
 					alert("비밀번호를 확인하시오");
 					return;
 				};
-				var param = self.info;
-					param.uId = self.sessionId;
-					console.log(self.info.userPwd);
+				var param = {uId : self.sessionId, editEmail : self.editEmail}
+					
 				 $.ajax({
 					url : "/user/editInfo.dox",
 					dataType : "json",
@@ -470,6 +518,7 @@ body.dimmed::before{
 				}); 
 				
 			},
+			// id pwd 일치한지
 			fnPwdCheck : function(){
 				var self = this;
 				var param = {uId : self.sessionId, pwd : self.pwd};
@@ -480,7 +529,8 @@ body.dimmed::before{
 					data : param,
 					success : function(data) {
 						if(data.success){ 
-	                		alert(data.message);
+	                		alert("인증완료");
+	                		self.pwd = "";
 	                		self.pwdFlg = true;
 	                	} else {
 	                		alert(data.message);
@@ -491,6 +541,103 @@ body.dimmed::before{
 					}
 				});
 			},
+			// 새 비밀번호 입력
+			fnSubmitPwdEdit : function(){
+				var self = this;
+				var param = {uId : self.sessionId, editPwd : self.editPwd};
+				
+				$.ajax({
+					url : "/user/editInfo.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("비밀번호 수정완료");
+						document.getElementById("popupOverlay").style.display = "none";
+						self.fnGetInfo();
+					}
+				});
+			},
+			
+			// 힌트 확인
+			fnHintCheck : function(){
+				var self = this;
+				var param = {uId : self.sessionId, pwdHint : self.checkPwdHint, answer : self.hintAnswer};
+				$.ajax({
+					url : "/user/searchHint.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("확인 되었습니다!");
+						self.hintPwdFlg = true;
+						
+					}
+				});
+				
+			},
+			// 이메일 아이디 비번 확인
+			fnAllCheck : function(){
+				var self = this;
+				var param = {uId : self.checkId, pwd : self.pwd, editEmail : self.editEmail};
+				$.ajax({
+					url : "/user/emailIdPwd.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("확인 되었습니다!");
+						self.PhoneFlg = true;
+
+					}
+				});
+			},
+			// 연락처 수정
+			fnSubmitPhoneEdit : function(){
+				var self = this;
+				var param = {uId : self.sessionId, editPhone : self.editPhone};
+				$.ajax({
+					url : "/user/editInfo.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("연락처 수정완료");
+						document.getElementById("popupOverlay").style.display = "none";
+						self.fnGetInfo();
+					}
+				});
+			},
+			// 광고성 정보수신 메시지
+			fnMessageRadio : function(){
+				var self = this;
+				var param = {uId : self.sessionId, editReMessage : self.user.receiveMessage};
+				$.ajax({
+					url : "/user/editInfo.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("광고성 정보수신 메세지 변경완료");
+						self.fnGetInfo();
+					}
+				});
+			},
+			// 광고성 정보수신 이메일
+			fnEmailRadio : function(){
+				var self = this;
+				var param = {uId : self.sessionId, editReEmail : self.user.receiveEmail};
+				$.ajax({
+					url : "/user/editInfo.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("광고성 정보수신 이메일 변경완료");
+						self.fnGetInfo();
+					}
+				});
+			}
 
 		}, // methods
 		created : function() {

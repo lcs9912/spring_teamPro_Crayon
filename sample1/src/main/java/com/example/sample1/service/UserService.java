@@ -15,6 +15,10 @@ public interface UserService {
 	HashMap<String, Object> searchMaskedinfo(HashMap<String, Object> map);
 	// 로그인정보 수정 
 	int editUserLoginInfo(HashMap<String, Object> map);
+	// 유저 힌트 확인
+	int searchPwdHintAnswer(HashMap<String, Object> map);
+	// 이메일 아이디 비번 확인
+	int searchEmailIdPwd(HashMap<String, Object> map);
 	
 	
 }

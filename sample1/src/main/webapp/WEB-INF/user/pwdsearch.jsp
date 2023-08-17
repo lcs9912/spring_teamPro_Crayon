@@ -201,16 +201,16 @@ text-align:center;
 					<tr class="hintinput">
 				<td>
 					<select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
-				<option disabled selected>비밀번호 찾기 질문</option>
-				  <option value="1">가장 좋아하는 동물은?</option>
-				  <option value="2">가장 좋아하는 음식은?</option>
-				  <option value="3">가장 좋아하는 색은?</option>
-				  <option value="4">가장 좋아하는 운동선수이름은?</option>
-				  <option value="5">자신의 취미나 특기는?</option>
-				  <option value="6">가장 좋아하는 운동은?</option>
-				  <option value="7">가장 좋아하는 티비프로그램은?</option>
-				  <option value="8">가장 좋아하는 책은?</option>
-				  <option value="9">가장 좋아하는 영화는?</option>
+						<option disabled selected>비밀번호 찾기 질문</option>
+				  		<option value="1">가장 좋아하는 동물은?</option>
+				  		<option value="2">가장 좋아하는 음식은?</option>
+						<option value="3">가장 좋아하는 색은?</option>
+						<option value="4">가장 좋아하는 운동선수이름은?</option>
+						<option value="5">자신의 취미나 특기는?</option>
+						<option value="6">가장 좋아하는 운동은?</option>
+						<option value="7">가장 좋아하는 티비프로그램은?</option>
+						<option value="8">가장 좋아하는 책은?</option>
+						<option value="9">가장 좋아하는 영화는?</option>
 					</select>
 				</td>
 			</tr>
