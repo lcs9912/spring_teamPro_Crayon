@@ -328,7 +328,7 @@ body.dimmed::before{
 		</div>
 		</div>
 	
-	
+
 	<!-- 이메일 변경 팝업 -->
 	<div class="popup popup-overlay" id="popupOverlay" >
         <div class="title">주소 변경<i class="fa-solid fa-x" id="closePopup"></i></div>
@@ -349,7 +349,7 @@ body.dimmed::before{
        				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
         		 </div>
         </template>
-        
+
         <!-- 비밀번호 변경 -->
      	<template v-else-if="keyword == 'pwd'">
             <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
