@@ -14,7 +14,6 @@
 }
 
 
-
 .contentsarea{
     margin: 0 auto;
     max-width: 780px;
@@ -107,68 +106,168 @@ border-bottom:2px solid #eee;
 height:50px;
 font-size:20px;
 }
+.paydayarea{
+width:100%;
+padding: 32px 32px 28px;
+background-color:white;
+}
+.paydaytitle{
+font-size:13px;
+font-weight: bold;
+padding-bottom:15px;
+}
+
+.whatday{
+font-size:13px;
+text-align:center;
+}
+.paydaybtn{
+width:100%;
+padding: 32px 32px 28px;
+
+}
+.paydaybtn button{
+background-color:white;
+border:1px solid #eee;
+cursor:pointer;
+width:19%;
+height: 40px;
+border-radius:30px;
+}
+.paydaycontinuearea{
+width:100%;
+padding: 32px; 32px 32px;
+background-color:white;
+border-top:1px solid #eee;
+}
+
+.allpaybtnarea{
+text-align:center;
+padding-top:15px;
+}
+
+.allpaybtn{
+background-color:#B5B5B5;
+width:100%;
+height:50px;
+border-radius:50px;
+color:white;
+font-size:18px;
+border:1px solid #eee;
+cursor:pointer;
+}
+
+input[type="text"]{
+outline:none;
+}
+
 </style>
 
 </head>
 <%@ include file="../header/header1.jsp"%>
 <%@ include file="../header/header2.jsp"%>
 <body> 
-<div id="app" style="margin-top : 100px; background-color:#fafafa;;">
-
-
-<div class="contentsarea">
-<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
-
-	<div class="productcontents">
+	<div id="app" style="margin-top : 100px; background-color:#fafafa;">
+	
+	<div class="contentsarea">
+		<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
+	
+			<div class="productcontents">
 		<div class="productheader" style="display: flex; align-items: center;">
-    <div class="productinfo">
-        사진데이터
-    </div>
-    <div style="margin-left: 10px;">
-        <div class="productdetailhead">ID</div>
-        <div class="productdetailname">NAME</div>
-        <div class="productdetailtransname">TRANSNAME</div>
-    </div>
-</div>
-	</div>
-
-	<div class="nowbuyarea">
-	<div>
-			<div class="leftnow" style="border-right:1px solid #eee;">즉시구매가
-			<div class="paynowbuy">000.000원</div>
+	   				 <div class="productinfo">
+	        			사진데이터
+	    			</div>
+	    			
+		    <div style="margin-left: 10px;">
+		        <div class="productdetailhead">ID</div>
+		        <div class="productdetailname">NAME</div>
+		        <div class="productdetailtransname">TRANSNAME</div>
+		    </div>
+	    
+		</div>
 			</div>
-			
-			<div class="rightnow">즉시판매가
-			<div class="paynowbuy">000.000원</div>
-			</div>
-			
-			</div>
+	
+		<div class="nowbuyarea">
+				<div>
+					<div class="leftnow" style="border-right:1px solid #eee;">
+					즉시구매가
+					<div class="paynowbuy">000.000원
+					</div>
+					</div>
+				
+					<div class="rightnow">즉시판매가
+					<div class="paynowbuy">000.000원
+					</div>
+					</div>
+				
+				</div>
+		</div>
+		
+	<div style="background-color:white; padding:35px;">
+		<div class="buytabarea">
+			<div class="leftbuybtnarea">구매 입찰</div>
+			<div class="rightbuybtnarea">즉시 구매</div>
+		</div>
 	</div>
 	
-<div style="background-color:white; padding:35px;">
-	<div class="buytabarea">
-		<div class="leftbuybtnarea">구매 입찰</div>
-		<div class="rightbuybtnarea">즉시 구매</div>
+	
+	
+	<div class="wantpay">
+		<div class="wantpaytitle">구매희망가</div>
+		<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
+		<span style="font-size:25px;">원</span>
+		</div>
+		<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
 	</div>
-</div>
-
-<div class="wantpay">
-<div class="wantpaytitle">구매희망가</div>
-<div style="text-align:center;"><input type="text" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
-<span style="font-size:25px;">원</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-</div>
+	
+	<div class="paydayarea">
+	
+		<div class="paydaytitle">입찰 마감기한</div>
+		
+		<div class="whatday">val일 (val.day 마감)</div>
+	
+			<div class="paydaybtn">
+			<button>1일</button>
+			<button>3일</button>
+			<button>7일</button>
+			<button>30일</button>
+			<button>60일</button>
+			</div>
+	
+	
+	</div>
+	
+			<div class="paydaycontinuearea">
+					<div class="paydaycontinue" style="font-size:13px; text-align:center;">
+					총결제금액 다음화면에서 확인
+					</div>
+				
+					<div class="allpaybtnarea">
+					<button class="allpaybtn">구매입찰계속</button>
+					</div>
+			</div>
+			
+		</div>
+		</div>
+	</div>
 </body>
 
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
+
+/* 구매희망가 자동반점 */
+
+const input = document.querySelector('#number');
+input.addEventListener('keyup', function(e) {
+  let value = e.target.value;
+  value = Number(value.replaceAll(',', ''));
+  if(isNaN(value)) {
+    input.value = 0;
+  }else {
+    const formatValue = value.toLocaleString('ko-KR');
+    input.value = formatValue;
+  }
+})
 
 </script>

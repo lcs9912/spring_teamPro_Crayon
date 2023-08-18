@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/047f82d071.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -60,29 +61,30 @@ a {	text-decoration:none;
 		.profileinner2{
 			float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
 		}
-			.profileinner2 strong{
-				font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
-			}
-			.profileinner2 p {margin:5px 0;}
-			.profileinner2 a{
+		.profileinner2 strong{
+			font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+		}
+		.profileinner2 p {margin:5px 0;}
+		.profileinner2 a{
 				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-				margin-left:5px; height:15px; line-height:15px;
+			 height:35px; line-height:15px;
 			}
 		.profileinner3{
 			float:right; height:130px; width:200px; border-left:2px solid #f5f5f5;
 			margin-top:10px; text-align: center;
 		}
-			.profileinner3 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:22 0 0 0;}
-			.profileinner3 p:nth-child(2){line-height:1; margin-top:0;}
+		.profileinner3 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:22 0 0 0;}
+		.profileinner3 p:nth-child(2){line-height:1; margin-top:0;}
 		.profileinner4{
 			float:right; height:150px; width:200px;
 			text-align: center;
 		}
-			.profileinner4 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:30 0 0 0;}
-			.profileinner4 p:nth-child(2){line-height:1; margin-top:2px;}
+		.profileinner4 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:30 0 0 0;}
+		.profileinner4 p:nth-child(2){line-height:1; margin-top:2px;}
 		
 
-	.mylist{
+		.mylist{
+		clear:both;
 		width:1000px; 
 		}
 		.listhead::after {
@@ -126,7 +128,7 @@ a {	text-decoration:none;
 			border:1px solid #999; border-radius:10px; padding:8px;
 			margin-left:5px; 
 		}
-    
+		
 
 </style>
 
@@ -168,9 +170,11 @@ a {	text-decoration:none;
 				</div>
 				<div class="profileinner2">
 					<strong>사용자아이디</strong>
+
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
 					<a href="#" type="button">프로필 관리</a>
 					<a href="#" type="button">내 스타일</a>
+					
 				</div>
 				<div class="profileinner3">
 					<p>{{info.userPoint}}P</p> <!-- 유저포인트 -->
@@ -185,7 +189,7 @@ a {	text-decoration:none;
 			<div class="mylist">
 				<div class="listhead">
 				<h2>구매내역</h2>
-				<span><a href="#">더보기 ></a></span>
+				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
 				</div>
 				<div class="viewdv">
 				<ul class="listul">
@@ -214,7 +218,7 @@ a {	text-decoration:none;
 			<div class="mylist">
 				<div class="listhead">
 				<h2>판매내역</h2>
-				<span><a href="#">더보기 ></a></span>
+				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
 				</div>
 				<div class="viewdv">
 				<ul class="listul">
@@ -243,7 +247,7 @@ a {	text-decoration:none;
 			<div class="mylist">
 				<div class="listhead">
 				<h2>관심상품</h2>
-				<span><a href="#">더보기 ></a></span>
+				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
 				</div>
 				<div class="joygooddv">
 					<p>추가하신 관심상품이 없습니다.</p>
