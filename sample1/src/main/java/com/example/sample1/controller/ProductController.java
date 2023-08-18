@@ -61,6 +61,12 @@ public class ProductController {
 		return "/product/buybeforeunderwear";
 	}
 	
+	// 바바바 엣 햐~ 페이지
+	@RequestMapping("/buyagree.do") 
+	public String buyagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/buyagree";
+	}
+	
 	//.dox
 	// 상품 브랜드 조회
 	@RequestMapping(value = "/brand.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

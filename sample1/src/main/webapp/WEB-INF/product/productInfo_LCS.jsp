@@ -463,6 +463,8 @@ var app = new Vue({
         scrollPosition: 0,
         sessionId : "${sessionId}",
         proInfo : {},
+        minSell : "",
+        minBuy : "",
         proNum : 9,
     },
     methods: {
@@ -477,6 +479,8 @@ var app = new Vue({
                  success : function(data) { 
                  	self.proInfo = data.proInfo;
                  	console.log(self.proInfo);
+                 	console.log(data.minSell);
+                 	console.log(data);
                  	
                  }
              }); 

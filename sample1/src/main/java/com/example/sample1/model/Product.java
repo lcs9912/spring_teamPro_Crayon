@@ -33,8 +33,8 @@ public class Product {
 	private String brandName; // 브랜드이름
 
 	
-	private int sellminprice; // 브랜드이름
-	private int buyminprice; // 브랜드이름
+	private int sellminprice; // 즉시 판매가격
+	private int buyminprice; // 즉시 구매가격
 	
 	
 }
