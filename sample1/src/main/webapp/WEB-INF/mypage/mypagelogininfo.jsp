@@ -217,6 +217,19 @@ body.dimmed::before{
 	right: 10px;
 }
 
+.emailinput input{
+width: 250px;
+height : 30px;
+margin-bottom: 15px;
+}
+
+.emailpwd{
+background-color:white;
+border : 1px solid #a2a2a2;
+width : 100px;
+height : 25px;
+cursor: pointer;
+}
 </style>
 
 </head>
@@ -328,30 +341,32 @@ body.dimmed::before{
 		</div>
 		</div>
 	
-	
+	<div class="emaailbackcolor">
 	<!-- 이메일 변경 팝업 -->
 	<div class="popup popup-overlay" id="popupOverlay" >
-        <div class="title">주소 변경<i class="fa-solid fa-x" id="closePopup"></i></div>
-        <div class="content">
+        <div class="title">변경<i class="fa-solid fa-x" id="closePopup"></i></div>
+        <div class="content" style="text-align:center;">
         <!-- 이메일 변경 -->
      	<template v-if="keyword == 'email'">
-            <p>대충 주소 변경 주의 사항(없어도됨)</p>
+            <h2 style="padding-bottom:15px;">이메일주소 변경</h2>
             <p>
-                <div>기존 이메일 : {{masked.maskedEmail}}</div>
-               <div><input placeholder="대충 변경할 이메일" v-model="editEmail"></div>
+                <div style="padding-bottom:15px;">기존 이메일주소 : {{masked.maskedEmail}}</div>
+               <div class="emailinput"><input placeholder="대충 변경할 이메일" v-model="editEmail"></div>
                <div style="color: red;">{{emailMessage}}</div>
-                <div>
+                <div class="emailinput">
               		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-               		<button @click="fnPwdCheck">인증</button>
+
                	</div> 
+               	<button @click="fnPwdCheck" class="emailpwd" >비밀번호 인증</button>
+               	
             </p>
             	 <div class="cmd">
        				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
         		 </div>
         </template>
-        
+        </div>
         <!-- 비밀번호 변경 -->
-     	<template v-else-if="keyword == 'pwd'">
+     	<template v-if="keyword == 'pwd'">
             <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
             <p>
                 <div><input type="password" placeholder="기존 비밀번호 입력" v-model="pwd"><button @click="fnPwdCheck">확인</button></div>
@@ -384,7 +399,7 @@ body.dimmed::before{
         </template>
         
         <!-- 연락처 변경 -->
-     	<template v-else-if="keyword == 'phone'">
+     	<template v-if="keyword == 'phone'">
             <p>대충 전화번호 변경 주의 사항(없어도됨)</p>
             <p>
                 
@@ -403,7 +418,7 @@ body.dimmed::before{
         </template>
         
         <!-- 신발 사이즈 변경 -->
-     	<template v-else-if="keyword == 'size'">
+     	<template v-if="keyword == 'size'">
             <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
             <p>
                 <div>
@@ -425,7 +440,7 @@ body.dimmed::before{
         </template>
         
         <!-- 회원 탈퇴 -->
-        <template v-else-if="keyword == 'remove'">
+        <template v-if="keyword == 'remove'">
             <p>회원 탈퇴</p>
             <p>
                 <div><input placeholder="아이디" v-model="checkId"></div>

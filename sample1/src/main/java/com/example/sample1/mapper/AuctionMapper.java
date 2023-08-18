@@ -5,10 +5,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.sample1.model.Test;
+import com.example.sample1.model.Auction;
 
 @Mapper
-public interface TestMapper {
+public interface AuctionMapper {
 	
-	List<Test> selectchart(HashMap<String, Object> map);
+	List<Auction> selectAuctionList (HashMap<String, Object> map);
+	
 }

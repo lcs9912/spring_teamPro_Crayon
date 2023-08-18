@@ -4,5 +4,11 @@ import lombok.Data;
 
 @Data
 public class Test {
-	private String test;
+	private String transactionNumer;
+	private String productSellNumber;
+	private String buser;
+	private String suser;
+	private String transactionDate;
+	private int transactionPrice;
+	private String transactionDelyn;
 }
