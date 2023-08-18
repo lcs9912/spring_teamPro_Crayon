@@ -38,5 +38,12 @@ public class ProductServiceImpl implements ProductService{
 	public int addProduct(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return productMapper.insertProduct(map);
+	}//여기까지 지우셈
+	@Override
+	public Product searchProductInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		
+		
+		return productMapper.selectProductInfo(map);
 	}
 }

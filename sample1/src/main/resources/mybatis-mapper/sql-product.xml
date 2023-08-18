@@ -29,5 +29,14 @@
 	<insert id="insertBrand" parameterType="hashmap">
 		INSERT INTO T1_PRODUCT_BRAND(BRAND_NAME)
 		VALUES (#{brandName})
-	</insert>
+	</insert><!-- 여기까지 지우면 됨 -->
+	
+	<!-- 상품 상세정보 -->
+	<select id="selectProductInfo" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT * FROM T1_PRODUCT_UPDATE U 
+		INNER JOIN T1_PRODUCT_BRAND B
+		ON U.PRODUCT_BRAND = B.PRODUCT_BRAND
+		WHERE U.PRODUCT_SELL_NUMBER = #{proNum}	
+	</select>
 </mapper>

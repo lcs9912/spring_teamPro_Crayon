@@ -30,7 +30,7 @@ public class ProductController {
 	// 상품상세 페이지
 	@RequestMapping("/product.do") 
     public String info(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/product/productInfo";
+        return "/product/productInfo_LCS"; // _LCS 삭제 
     }
 	// 상품구매 페이지
 	@RequestMapping("/productBuy.do") 
@@ -42,6 +42,12 @@ public class ProductController {
     public String register(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/product/productRegister";
     }
+	
+	// 구매전 페이지
+	@RequestMapping("/buybeforewindow.do") 
+	public String buybeforewindow(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+	    return "/product/buybeforewindow";
+	}
 	
 	//.dox
 	// 상품 브랜드 조회
@@ -121,5 +127,15 @@ public class ProductController {
         fileName += extName;
         
         return fileName;
-    }
+    }//여기까지 지우셈
+    
+    // 상품 상세정보
+ 	@RequestMapping(value = "/productInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@ResponseBody
+ 	public String productInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		Product proInfo = productService.searchProductInfo(map);
+ 		resultMap.put("proInfo", proInfo);
+ 		return new Gson().toJson(resultMap);
+ 	}
 }

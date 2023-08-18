@@ -16,5 +16,7 @@ public interface ProductMapper {
 	//상품 브랜드 조회
 	List<Product> selectBrand(HashMap<String, Object> map);
 	//브랜드 이름 직접입력
-	int insertBrand(HashMap<String, Object> map);
+	int insertBrand(HashMap<String, Object> map);// 여기까지 지우셈
+	// 상품상세정보
+	Product selectProductInfo(HashMap<String, Object> map);
 }
