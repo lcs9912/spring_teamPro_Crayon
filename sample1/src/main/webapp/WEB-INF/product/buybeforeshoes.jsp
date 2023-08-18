@@ -63,6 +63,7 @@ color: rgba(34,34,34,.5);
 padding:32px 32px 28px 28px;
 background-color:white;
 text-align:center;
+height:500px;
 }
 .productdetailsizarea button{
 background-color:white;
@@ -97,7 +98,7 @@ font-size:15px;
 <%@ include file="../header/header1.jsp"%>
 <%@ include file="../header/header2.jsp"%>
 <body> 
-<div id="app" style="margin-top : 100px; background-color:#E1E1E1;">
+<div id="app" style="margin-top : 100px; background-color:#fafafa;;">
 
 
 <div class="contentsarea">
@@ -120,21 +121,82 @@ font-size:15px;
 
 
 <div class="productdetailsizarea">
-<button>v18.220</button>
-<button>v19.225</button>
-<button>v20.230</button>
-<button>v21.235</button>
-<button>v22.240</button>
-<button>v23.245</button>
-<button>v24.250</button>
-<button>v25.255</button>
-<button>v26.260</button>
-<button>v27.265</button>
-<button>v28.270</button>
-<button>v29.275</button>
-<button>v30.280</button>
-<button>v31.285</button>
-<button>v32.290</button>
+<button>
+<div>val18.220</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val19.225</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val20.230</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val21.235</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val22.240</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val23.245</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val24.250</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val25.255</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val26.260</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val27.265</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val28.270</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val29.275</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val30.280</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val31.285</div>
+<div>status</div>
+</button>
+
+<button>
+<div>val32.290</div>
+<div>status</div>
+</button>
+
+
 </div>
 
 <div class="buyboxarea">
