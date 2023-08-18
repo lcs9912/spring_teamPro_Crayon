@@ -22,6 +22,10 @@ public class User {
 	private String userState; // 회원 회원등급
 	private String userBantn; // 회원 관리자용 유저제한
 	
+	private String receiveApp; // 앱푸쉬동의
+	private String receiveMessage; // 메세지 푸쉬 동의
+	private String receiveEmail; // 이메일 푸쉬동의
+	
 	// T1_TBL_USER_SUB_TBL
 	private String userJumain; // 회원 주민번호
 	private String userAddr; // 회원 주소

@@ -22,4 +22,8 @@ public interface UserMapper {
 	User selectMaskedinfo(HashMap<String, Object> map);
 	// 로그인정보 수정 
 	int updateUserLoginInfo(HashMap<String, Object> map);
+	// 유저 힌트 확인
+	int selectPwdHintAnswer(HashMap<String, Object> map);
+	// 이메일 아이디 비번 같은지
+	int selectEmailIdPwd(HashMap<String, Object> map);
 }
