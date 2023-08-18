@@ -20,7 +20,7 @@ public interface ProductMapper {
 	// 상품상세정보
 	Product selectProductInfo(HashMap<String, Object> map);
 	// 즉시 판매가 
-	int selectSellMinPrice(HashMap<String, Object> map);
+	Product selectSellMinPrice(HashMap<String, Object> map);
 	// 즉시 구매가
-	int selectBuyMinPrice(HashMap<String, Object> map);
+	Product selectBuyMinPrice(HashMap<String, Object> map);
 }

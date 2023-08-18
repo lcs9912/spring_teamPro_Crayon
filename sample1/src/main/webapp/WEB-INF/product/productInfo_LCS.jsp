@@ -306,14 +306,14 @@ cursor: pointer;
 		
 		<button class="buyaction">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
-		<div style="padding-top:3px;"><b>000,000원</b></div>
+		<div style="padding-top:3px;"><b>{{minBuy.buyminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 구매가</div>
 		</button>
 		
 		
 		<button class="sellaction">
 		<strong class="nowsell" style='box-shadow:1px px 0px px'>판매</strong>
-		<div style="padding-top:3px;"><b>000,000원</b></div>
+		<div style="padding-top:3px;"><b>{{minSell.sellminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 판매가</div>
 	
 		</button>
@@ -463,6 +463,7 @@ var app = new Vue({
         scrollPosition: 0,
         sessionId : "${sessionId}",
         proInfo : {},
+        modelNum : "",
         minSell : "",
         minBuy : "",
         proNum : 9,
@@ -478,12 +479,35 @@ var app = new Vue({
                  data : nparmap,
                  success : function(data) { 
                  	self.proInfo = data.proInfo;
+                 	self.modelNum = data.proInfo.productModel;
                  	console.log(self.proInfo);
-                 	console.log(data.minSell);
-                 	console.log(data);
+                 	
+                 	self.fnSellBuyMin();
                  	
                  }
              }); 
+    	},
+    	// 즉시 구매 판매 가격 
+    	fnSellBuyMin : function(){
+    		var self = this;
+    		var nparmap = {modelNum : self.modelNum};
+    		console.log(self.modelNum);
+             $.ajax({
+                url : "/productInfo.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.minSell = data.minSell;
+                	self.minBuy = data.minBuy;
+                	console.log("즉시 구매가"+self.minBuy);
+                	console.log("즉시 판매가"+self.minSell);
+                	console.log(data.minSell);
+                	console.log(data);
+                	
+                	
+                }
+            });  
     	},
          fnBuy: function () {
             var self = this;

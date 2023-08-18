@@ -44,11 +44,15 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		Product proInfo =  productMapper.selectProductInfo(map); // 물품 상세페이지
-		int minSell = productMapper.selectSellMinPrice(map); // 즉시 판매가
-		int minBuy = productMapper.selectBuyMinPrice(map); // 즉시 구매가
+		Product minSell = productMapper.selectSellMinPrice(map); // 즉시 판매가
+		Product minBuy = productMapper.selectBuyMinPrice(map); // 즉시 구매가
 		resultMap.put("proInfo", proInfo);
-		resultMap.put("minSell", minSell);
-		resultMap.put("minBuy", minBuy);
+		
+		if(map.get("modelNum") != null) {
+			resultMap.put("minSell", minSell);
+			resultMap.put("minBuy", minBuy);
+		}
+		
 		
 		return resultMap;
 	}
