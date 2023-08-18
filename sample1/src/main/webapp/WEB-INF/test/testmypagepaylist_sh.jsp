@@ -84,17 +84,13 @@
 
             .headermainlogo > h1 {
                 display: inline-block;
-                width: 200px;
-                height: 50px;
-                font-size: 35px;
-                letter-spacing: -1px;
+                width: 200px; height: 50px;
+                font-size: 35px; letter-spacing: -1px;
             }
 
         .headermenu { /*헤더 shop메뉴 CSS 시작*/
-            font-size: 20px;
-            position: absolute;
-            top: 25px;
-            right: 0;
+            font-size: 20px; position: absolute;
+            top: 25px; right: 0;
         }
 
             .headermenu > li {
@@ -110,11 +106,56 @@
         /*헤더 shop메뉴 CSS 종료*/
 
 		/* 헤더 로고 및 메뉴 영역 CSS 종료*/
+		
+		.mypaylistwrap {
+			width:1200px; margin:120px auto;
+			}
+		.paylistnav {
+			float:left; width:190px; color:#000; margin-right:5px; 
+			}
+		
+		.myinfo h2{
+				margin-bottom:20px;
+			}	
+	
+		
+		.myinfo h3{
+				margin:30px 0;
+			}	
+			
+		.myinfo ul li{
+			margin:10px 0;
+			}	
+		
+		/*결제정보 영역 CSS 시작*/
+		.paylistcontainer {float:left; width:1000px; height:380px; }
+				.paylisthead {margin-top:10px;}
+				.paylisthead h2{
+		    		width:100px; display:inline-block; padding-bottom:15px;
+		     	}
+				.paylisthead p{
+					font-size:12px; color:#888; display:inline-block;
+				}
+		     	.paylisthead .paylistbtn {float:right; border:1px solid #333;}
+		     	.paylist {
+		     		clear:both; height:250px; margin:0; text-align:center; line-height:250px;
+					padding:100px 0; background:#f5f5f5; border-top:3px solid #333;
+				}
+		     	.paylist p{display:inline-block; width:1000px; height:20px; 
+					font-size:12px; color:#888; text-align: center; margin-bottom:30px;
+				}
+				.paylistbtn{
+					border:1px solid #e9e9e9; border-radius:10px; padding:8px;
+					margin-left:5px; font-size:12px; color:#555; background:#fff;
+				}	
+ 
+		/*결제정보 영역 CSS 종료*/
+		
 </style>
 </head>
-<body>
-	<div id="headerApp">
-	 <div class="headerwrap">
+<body><div id="app">
+		<div id="headerApp">
+	 	<div class="headerwrap">
             <header>
                 <div class="loginmenulist">
                     <ul>
@@ -136,6 +177,46 @@
                 </div>
             </header>
         </div>
+        </div>
+		<div class="mypaylistwrap">
+			<nav class="paylistnav"><!--마이페이지 목록리스트 태그 시작-->
+			<div class="myinfo">
+				<h2><a href="mypage.do">마이 페이지</a></h2>
+				<h3>쇼핑 정보</h3>
+				<ul>
+					<li><a href="/mypagebuylist.do">구매 내역</a></li>
+					<li><a href="mypageselllist.do">판매 내역</a></li>
+					<li><a href="#">보관 판매</a></li>
+					<li><a href="#">관심 상품</a></li>
+				</ul>
+			</div>
+			<div class="myinfo">
+				<h3>내 정보</h3>
+				<ul>
+					<li><a href="mypagelogininfo.do">로그인 정보</a></li>
+					<li><a href="#">프로필 관리</a></li>
+					<li><a href="#">주소록</a></li>
+					<li><a href="#">결제 정보</a></li>
+					<li><a href="#">판매 정산 계좌</a></li>
+					<li><a href="#">현금영수증 정보</a></li>
+					<li><a href="#">포인트</a></li>
+				</ul>
+			</div>
+			</nav><!--마이페이지 목록리스트 태그 종료-->
+	
+			<div class="paylistcontainer"><!--프로필관리 태그영역 시작-->
+				<div class="paylisthead">
+					<h2>결제정보</h2>
+					<p>수수료(페널티, 착불배송비 등)가 정산되지 않을 경우, 별도 고지 없이 해당 금액을 결제 시도할 수 있습니다.</p>
+					<button class="paylistbtn"><a href="#">+ 새 카드 추가하기</a></button>
+				</div>
+				<div class="paylist">
+					<p>추가하신 결제정보가 없습니다.</p>				
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
 <script>
