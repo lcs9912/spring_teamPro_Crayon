@@ -366,7 +366,7 @@ cursor: pointer;
         </template>
         </div>
         <!-- 비밀번호 변경 -->
-     	<template v-else-if="keyword == 'pwd'">
+     	<template v-if="keyword == 'pwd'">
             <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
             <p>
                 <div><input type="password" placeholder="기존 비밀번호 입력" v-model="pwd"><button @click="fnPwdCheck">확인</button></div>
@@ -399,7 +399,7 @@ cursor: pointer;
         </template>
         
         <!-- 연락처 변경 -->
-     	<template v-else-if="keyword == 'phone'">
+     	<template v-if="keyword == 'phone'">
             <p>대충 전화번호 변경 주의 사항(없어도됨)</p>
             <p>
                 
@@ -418,7 +418,7 @@ cursor: pointer;
         </template>
         
         <!-- 신발 사이즈 변경 -->
-     	<template v-else-if="keyword == 'size'">
+     	<template v-if="keyword == 'size'">
             <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
             <p>
                 <div>
@@ -440,7 +440,7 @@ cursor: pointer;
         </template>
         
         <!-- 회원 탈퇴 -->
-        <template v-else-if="keyword == 'remove'">
+        <template v-if="keyword == 'remove'">
             <p>회원 탈퇴</p>
             <p>
                 <div><input placeholder="아이디" v-model="checkId"></div>

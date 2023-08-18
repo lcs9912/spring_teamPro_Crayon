@@ -39,4 +39,22 @@
 		ON U.PRODUCT_BRAND = B.PRODUCT_BRAND
 		WHERE U.PRODUCT_SELL_NUMBER = #{proNum}	
 	</select>
+	
+	<!-- 즉시  판매가 -->
+	<select id="selectSellMinPrice" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT MIN(PRODUCT_PRICE) AS SELLMINPRICE
+		FROM T1_PRODUCT_UPDATE 
+		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'B'
+	</select>
+	
+	<!-- 즉시 구매가 -->
+	<select id="selectBuyMinPrice" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT MIN(PRODUCT_PRICE) AS BUYMINPRICE
+		FROM T1_PRODUCT_UPDATE 
+		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'S'
+	</select>
+	
+	
 </mapper>

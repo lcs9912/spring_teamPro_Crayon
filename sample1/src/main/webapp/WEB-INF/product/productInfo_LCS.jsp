@@ -9,16 +9,16 @@
 	<title>Insert title here</title>
 <style>
 *{
-		margin:0;
-		padding:0;
+	margin:0;
+	padding:0;
 }
 
 .productcontents{
-margin-left : auto;
-margin-right : auto;
-max-width : 1280px;
-margin-top : 50px;
-padding: 30px 40px 120px;
+	margin-left : auto;
+	margin-right : auto;
+	max-width : 1280px;
+	margin-top : 50px;
+	padding: 30px 40px 120px;
 }
 .leftcolumnbox{
 background-color:#f4f4f4;
@@ -322,7 +322,7 @@ cursor: pointer;
 		<div class="interestbtn" style="cursor: pointer">
 		<i class="fa-solid fa-bookmark"></i>
 		<i class="fa-regular fa-bookmark"></i>
-		관심상품<strong>cnt</strong>
+		관심상품<strong>{{proInfo.productInterest}}</strong>
 		</div>
 		</div>
 		
@@ -334,23 +334,23 @@ cursor: pointer;
 		
 			<div class="detailproductheader">
 			모델번호
-			<div style="color:black; font-size:14px; font-weight: bold;">1234567
+			<div style="color:black; font-size:14px; font-weight: bold;">{{proInfo.productModel}}
 			</div>
 			</div>
 
 			<div class="detailproductheader">
 			출시일
-			<div style="color:black; font-size:14px;">23/1/1</div>
+			<div style="color:black; font-size:14px;">{{proInfo.productUpdate}}</div>
 			</div>
 			
 			<div class="detailproductheader">
 			컬러
-			<div style="color:black; font-size:14px;">BLACK</div>
+			<div style="color:black; font-size:14px;">{{proInfo.productColor}}</div>
 			</div>
 			
 			<div class="detailproductheader" style="border-right:none;">
 			발매가
-			<div style="color:black; font-size:14px;">000,000￦</div>
+			<div style="color:black; font-size:14px;">{{proInfo.productLaunchPrice}}￦</div>
 			</div>
 
 		</div>
@@ -436,7 +436,7 @@ cursor: pointer;
 	</div>
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-		상품페이지
+		<img src="../img/product/help.png">
 		</div>
 		
 		
@@ -463,7 +463,7 @@ var app = new Vue({
         scrollPosition: 0,
         sessionId : "${sessionId}",
         proInfo : {},
-        proNum : 7,
+        proNum : 9,
     },
     methods: {
     	fnGetInfo : function(){

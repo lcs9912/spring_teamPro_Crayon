@@ -16,6 +16,6 @@ public interface ProductService {
 	//브랜드 이름 직접입력
 	int addBrand(HashMap<String, Object> map);//여기까지 지우셈
 	// 상품상제정보
-	Product searchProductInfo(HashMap<String, Object> map);
+	HashMap<String, Object> searchProductInfo(HashMap<String, Object> map);
 
 }

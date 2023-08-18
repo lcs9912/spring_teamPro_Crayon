@@ -44,9 +44,21 @@ public class ProductController {
     }
 	
 	// 구매전 페이지
-	@RequestMapping("/buybeforewindow.do") 
+	@RequestMapping("/buybeforeshoes.do") 
 	public String buybeforewindow(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	    return "/product/buybeforewindow";
+	    return "/product/buybeforeshoes";
+	}
+	
+	// 상의 페이지
+	@RequestMapping("/buybeforewear.do") 
+	public String buybeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/buybeforewear";
+	}
+	
+	// 상의 페이지
+	@RequestMapping("/buybeforeunderwear.do") 
+	public String buybeforeunderwear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/buybeforeunderwear";
 	}
 	
 	//.dox
@@ -134,8 +146,8 @@ public class ProductController {
  	@ResponseBody
  	public String productInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
  		HashMap<String, Object> resultMap = new HashMap<String, Object>();
- 		Product proInfo = productService.searchProductInfo(map);
- 		resultMap.put("proInfo", proInfo);
+ 		resultMap = productService.searchProductInfo(map);
+ 		
  		return new Gson().toJson(resultMap);
  	}
 }

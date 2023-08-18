@@ -21,7 +21,7 @@ public class Product {
 	private String productCategorie1; // product_update 테이블에 있는 카테고리1
 	private String productCategorie2; // product_update 테이블에 있는 카테고리2
 	private String productBrand; // 브랜드
-	private String productInterset; // 관심상품개수
+	private String productInterest; // 관심상품개수
 	
 	private String categorie1; // 카테고리1 테이블 
 	private String c1Text; // 카테고리1 내용
@@ -31,4 +31,10 @@ public class Product {
 	
 	
 	private String brandName; // 브랜드이름
+
+	
+	private int sellminprice; // 브랜드이름
+	private int buyminprice; // 브랜드이름
+	
+	
 }
