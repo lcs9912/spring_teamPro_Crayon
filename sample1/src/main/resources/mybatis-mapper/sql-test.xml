@@ -3,5 +3,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.sample1.mapper.TestMapper">
-	
+
+	<select id="selectchart" parameterType="hashmap"
+		resultType="com.example.sample1.model.Test">
+		SELECT * FROM T1_TRANSACTION T
+		INNER JOIN T1_PRODUCT_UPDATE P
+		ON T.PRODUCT_SELL_NUMBER = P.PRODUCT_SELL_NUMBER
+		WHERE P.PRODUCT_NAME = #{proName}
+	</select>
 </mapper>
