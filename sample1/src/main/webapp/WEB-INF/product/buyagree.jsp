@@ -143,17 +143,20 @@ margin-top:10px;
 	<div class="noticegroup">
 	
 	<div class="noticeheader">구매하려는 상품이 맞습니다.</div>
+	<div class="checkarea">
+	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
 	<div class="noticecontents">상품 이지미,모델번호,출시일,상품명,사이즈를 한 번 더 확인했습니다. 
 	단,상품의 이미지는 촬영환경에 따라 실제와 다를 수 있습니다.
-	
+	</div>
 	</div>
 	</div>
 	
 	<div class="noticegroup">
 	<div class="noticeheader">국내/해외에서 발매한 정품 · 새상품입니다.</div>
-
+<div class="checkarea">
+	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
 	<div class="noticecontents">모든 구성품이 그대로이며, 한 번도 착용하지 않은 정품・새상품입니다. 국내 발매 상품 여부는 확인드리지 않습니다.
-
+</div>
 	</div>
 	</div>
 	
