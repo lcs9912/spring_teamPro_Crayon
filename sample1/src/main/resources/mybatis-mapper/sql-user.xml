@@ -104,5 +104,11 @@
 			WHERE USER_ID = #{uId}
    </update>
    
-   
+   <!-- 회원 탈퇴 처리 -->
+   <update id="updateUserInfoRemove" parameterType="hashmap">
+   			UPDATE T1_USER_TBL
+   			SET
+   				USER_BANYN = 'Y'
+   			WHERE USER_ID= #{uId}
+   </update>
 </mapper>

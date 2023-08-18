@@ -92,4 +92,10 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectEmailIdPwd(map);
 	}
 
+	@Override
+	public int removeUserInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.updateUserInfoRemove(map);
+	}
+
 }
