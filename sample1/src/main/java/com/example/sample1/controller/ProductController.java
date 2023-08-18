@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.sample1.model.Brand;
+import com.example.sample1.model.Product;
 import com.example.sample1.service.ProductService;
 import com.google.gson.Gson;
+import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -78,8 +79,7 @@ public class ProductController {
 	@ResponseBody
 	public String brand(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Brand> list = productService.viewBrand(map);
-		System.out.println(list.get(0).getpBrand());
+		List<Product> list = productService.viewBrand(map);
 		resultMap.put("brand", list);
 		return new Gson().toJson(resultMap);
 	}
@@ -154,12 +154,12 @@ public class ProductController {
     }//여기까지 지우셈
     
     // 상품 상세정보
-// 	@RequestMapping(value = "/productInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-// 	@ResponseBody
-// 	public String productInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-// 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-// 		resultMap = productService.searchProductInfo(map);
-// 		
-// 		return new Gson().toJson(resultMap);
-// 	}
+ 	@RequestMapping(value = "/productInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@ResponseBody
+ 	public String productInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		resultMap = productService.searchProductInfo(map);
+ 		
+ 		return new Gson().toJson(resultMap);
+ 	}
 }
