@@ -26,4 +26,6 @@ public interface UserMapper {
 	int selectPwdHintAnswer(HashMap<String, Object> map);
 	// 이메일 아이디 비번 같은지
 	int selectEmailIdPwd(HashMap<String, Object> map);
+	// 유저 탈퇴 처리
+	int updateUserInfoRemove(HashMap<String, Object> map);
 }

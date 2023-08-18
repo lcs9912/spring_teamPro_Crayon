@@ -200,7 +200,7 @@ body.dimmed::before{
     font-weight: bold;
     cursor: pointer;
     position: absolute;
-    top : 300px;
+    top : 409px;
     left: 265px;
 }
 .cmd button:hover {
@@ -322,7 +322,7 @@ body.dimmed::before{
 						</div>		
 					</div>
 				</div>
-				<button class="resignbtn">회원탈퇴</button>
+				<button style="cursor: pointer;" class="resignbtn" @click="fnpopup('remove')">회원탈퇴</button>
 				</div>
 			
 		</div>
@@ -421,6 +421,21 @@ body.dimmed::before{
             </p>
           		 <div class="cmd">
        				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
+        		 </div>
+        </template>
+        
+        <!-- 회원 탈퇴 -->
+        <template v-else-if="keyword == 'remove'">
+            <p>회원 탈퇴</p>
+            <p>
+                <div><input placeholder="아이디" v-model="checkId"></div>
+                <div><input placeholder="비밀번호" v-model="pwd"></div>
+                <div><input placeholder="이메일" v-model="editEmail"></div>
+                <div><button @click="fnAllCheck">확인</button></div>
+                
+            </p>
+          		 <div class="cmd">
+       				<button id="submitPopup" @click="fnRemoveUser">제출</button>          
         		 </div>
         </template>
         
@@ -637,6 +652,27 @@ body.dimmed::before{
 						self.fnGetInfo();
 					}
 				});
+			},
+			// 회원 탈퇴
+			fnRemoveUser : function(){
+				var self = this;
+				if(!confirm("정말로 탈퇴하시겠습니다? \nn기간 내에 탈퇴취소 할 수 있습니다.")){
+					return;
+				}
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/user/infoRemove.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("탈퇴 되었습니다.");
+						location.href="login.do";
+						document.getElementById("popupOverlay").style.display = "none";
+						self.fnGetInfo();
+					}
+				});
+				
 			}
 
 		}, // methods

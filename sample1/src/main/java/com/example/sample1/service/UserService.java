@@ -19,6 +19,8 @@ public interface UserService {
 	int searchPwdHintAnswer(HashMap<String, Object> map);
 	// 이메일 아이디 비번 확인
 	int searchEmailIdPwd(HashMap<String, Object> map);
+	// 유저 탈퇴처리
+	int removeUserInfo(HashMap<String, Object> map);
 	
 	
 }
