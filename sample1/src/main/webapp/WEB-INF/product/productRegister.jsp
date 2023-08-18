@@ -6,7 +6,7 @@
 	<script src="../js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<meta charset="UTF-8">
-	<title>회원가입페이지</title>
+	<title>상품등록페이지</title>
 <style>
 	label :hover {
 		border-bottom : 3px solid black;
@@ -106,7 +106,7 @@
 		<div>
 			<select v-model="product.brand" @change="handleBrandChange"	>
 				<option value="a">브랜드</option>
-				<option v-for="item in list" :value="item.brand">{{item.brandName}}</option>
+				<option v-for="item in list" :value="item.pBrand">{{item.brandName}}</option>
 				<option value="0">직접입력</option>
 			</select>
 			<div v-if="showDirectInput">
@@ -147,6 +147,7 @@ var app = new Vue({
 		// 브랜드 직접 입력시 등록 창 보이게하기
 		handleBrandChange: function(event) {
 			var self = this;
+			 console.log("Product Brand:", self.product.brand);
 			if (event.target.value === '0') {
 				self.showDirectInput = true;
 			} else {

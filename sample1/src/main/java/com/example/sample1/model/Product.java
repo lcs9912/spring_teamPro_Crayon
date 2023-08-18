@@ -29,6 +29,5 @@ public class Product {
 	private String categorie2; // 카테고리2 테이블 
 	private String c2Text; // 카테고리2 내용
 	
-	private String pBrand; // 상품 브랜드
-	private String brandName; // 브랜드이름
+	
 }

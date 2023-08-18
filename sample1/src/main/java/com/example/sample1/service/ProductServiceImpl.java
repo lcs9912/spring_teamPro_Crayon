@@ -3,12 +3,11 @@ package com.example.sample1.service;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.sample1.mapper.ProductMapper;
-import com.example.sample1.model.Product;
+import com.example.sample1.model.Brand;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -23,7 +22,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 	//상품 브랜드 조회
 	@Override
-	public List<Product> viewBrand(HashMap<String, Object> map) {
+	public List<Brand> viewBrand(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return productMapper.selectBrand(map);
 	}

@@ -20,7 +20,7 @@
 	</insert>
 	
 	<!-- 브랜드 조회 -->
-	<select id="selectBrand" resultType="com.example.sample1.model.Product">
+	<select id="selectBrand" resultType="com.example.sample1.model.Brand">
 		SELECT *
 		FROM T1_PRODUCT_BRAND
 	</select>
