@@ -77,7 +77,7 @@ var app = new Vue({
         
         fnView : function(item){
         	var self = this;
-        	$.pageChange("auction/view.do", {auctionNumber :item.auctionNumber});
+        	$.pageChange("view.do", {auctionNumber :item.auctionNumber});
         },
         
         

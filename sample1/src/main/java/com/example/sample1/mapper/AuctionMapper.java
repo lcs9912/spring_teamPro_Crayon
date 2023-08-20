@@ -12,4 +12,6 @@ public interface AuctionMapper {
 	
 	List<Auction> selectAuctionList (HashMap<String, Object> map);
 	
+	Auction selectAuctionInfo (HashMap<String, Object> map);
+	
 }

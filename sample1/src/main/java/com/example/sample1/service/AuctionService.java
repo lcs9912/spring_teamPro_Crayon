@@ -8,5 +8,7 @@ import com.example.sample1.model.Auction;
 public interface AuctionService {
 	
 	List <Auction> searchAuctionList(HashMap<String, Object> map);
+	
+	Auction searchAuctionInfo (HashMap<String, Object> map);
 
 }

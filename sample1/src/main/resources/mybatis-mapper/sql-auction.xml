@@ -12,6 +12,14 @@
 		GROUP BY A.AUCTION_NUMBER	
 	</select>
 	
+	<!-- 경매 상세정보 불러오기  -->
+	<select id="selectAuctionInfo" parameterType="hashmap" resultType="com.example.sample1.model.Auction">
+		SELECT *, COUNT(USER_ID)USERCNT
+		FROM T1_AUCTION A
+		INNER JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
+		WHERE A.AUCTION_NUMBER = #{auctionNumber}
+		GROUP BY A.AUCTION_NUMBER	
+	</select>
 
 	
 </mapper>

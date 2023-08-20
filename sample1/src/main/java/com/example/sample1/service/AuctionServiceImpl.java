@@ -20,6 +20,12 @@ public class AuctionServiceImpl implements AuctionService{
 		// TODO Auto-generated method stub
 		return auctionMapper.selectAuctionList(map);
 	}
+
+	@Override
+	public Auction searchAuctionInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.selectAuctionInfo(map);
+	}
 	
 	
 }
