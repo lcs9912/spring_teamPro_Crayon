@@ -9,12 +9,16 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> <!-- 차트표 api -->
 <script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script> <!-- 차트표 api vue -->
 <title>Insert title here</title>
+<style>
+	
+</style>
 </head>
 <body>
 <div id="app">
 	 <div id="chart">
-        <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
+        <apexchart type="line" height="200" width="407" :options="chartOptions" :series="series"></apexchart>
       </div>
+      <!-- <h1 v-for="item in list">{{data.series}}</h1> --> 
 </div>
 
 </body>
@@ -29,41 +33,61 @@ var app = new Vue({
 		list : [],
 		proName : "Nike Air Force 1 07 Fresh Black",
 		series: [{
-            name: "Desktops",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+            name : "",
+            data: [123],
         }],
         chartOptions: {
-          chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-              enabled: false
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'straight',
-            colors : '#ff0000',
-          },
-          title: {
-            text: 'Product Trends by Month',
-            align: 'left'
-          },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5
+            chart: {
+                type: 'line',
+                zoom: {
+                    enabled: false,
+                },
+                toolbar: {
+                    show: false, // 다운로드 버튼 숨기기
+                },
             },
-          },
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-          }
+            dataLabels: {
+                enabled: false,
+            }, 
+            stroke: {
+                curve: 'straight',
+                colors: '#ff0000',
+                width: 3,
+            },
+            title: {
+                align: 'left'
+            },
+            grid: {
+                show: false
+            },
+            xaxis: {
+                labels: { show: false },
+                axisTicks: { show: false },
+                axisBorder: { show: false },
+                categories: [],
+            },
+            yaxis: {
+            	  opposite: true,
+	              min: 0,
+	              max: 500000,
+	              labels: {
+	                  show: true,
+	                  align: 'right',
+	                  minWidth: 0,
+	                  maxWidth: 160,
+	                  style: {
+	                      colors: [],
+	                      fontSize: '12px',
+	                      fontFamily: 'Helvetica, Arial, sans-serif',
+	                      fontWeight: 400,
+	                      cssClass: 'apexcharts-yaxis-label',
+	                  },
+      	  },
+        },
         },
 	},// data
 	methods : {
-		fnGetList : function(){
+		fnGetChart : function(){
             var self = this;
             var nparmap = {proName : self.proName};
             $.ajax({
@@ -73,14 +97,27 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	self.list = data.list;
-                	console.log(self.list);
-                }
+					var price = [];
+					var tdate = [];
+					var won = "원";
+					for(var i=0; i<self.list.length; i++){
+						price.push(self.list[i].transactionPrice+won);
+						tdate.push(self.list[i].transactionDate);
+					}
+					
+					self.series = [{data : price}];
+					
+					self.chartOptions = {
+                			
+                			xaxis : {categories : tdate}
+                	};
+                },
             }); 
         }
 	}, // methods
 	created : function() {
 		var self = this;
-		self.fnGetList();
+		self.fnGetChart();
 	}// created
 });
 </script>
