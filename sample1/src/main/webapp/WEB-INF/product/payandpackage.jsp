@@ -268,14 +268,14 @@ margin-top:10px;
 			<div class="priceinfo">
 			<div>
 			<div style="font-size: 13px;">즉시구매가
-			<div style="float:right; color: #222; font-size: 14px; font-weight:bold;"> 0원			
+			<div style="float:right; color: #222; font-size: 14px; font-weight:bold;"> -P			
 			</div>
 			</div>
 			</div>
 			
 			<div class="priceinfosubtitle">
 			<div style="font-size: 13px;">포인트
-			<div style="float:right; color: #222; font-size: 14px;"> -			
+			<div style="float:right; color: #222; font-size: 14px;"> -P			
 			</div>
 			</div>
 			</div>
@@ -289,14 +289,14 @@ margin-top:10px;
 			
 			<div class="priceinfosubtitle">
 			<div style="font-size: 13px;">수수료
-			<div style="float:right; color: #222; font-size: 14px;"> 0원			
+			<div style="float:right; color: #222; font-size: 14px;"> 0P		
 			</div>
 			</div>
 			</div>
 			
 			<div class="priceinfosubtitle">
 			<div style="font-size: 13px;">배송비
-			<div style="float:right; color: #222; font-size: 14px;"> 0원			
+			<div style="float:right; color: #222; font-size: 14px;"> 0P			
 			</div>
 			</div>
 			</div>
