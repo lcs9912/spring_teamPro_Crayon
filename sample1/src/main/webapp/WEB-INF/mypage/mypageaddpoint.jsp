@@ -100,6 +100,8 @@ html, body{
 }
 .paykindselect{
 margin-top : 20px;
+margin-bottom:30px;
+padding-top : 10px;
 
 }
 .banknum{
