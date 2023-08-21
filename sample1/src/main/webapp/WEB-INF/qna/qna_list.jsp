@@ -178,7 +178,7 @@ background-color : #eee;
 		<div class="customernav">
 			<h2>고객센터</h2>
 			<ul>
-				<li><a href="faq.do" style="color: black;">자주 묻는 질문</a></li>
+				<li><a href="../faq.do" style="color: black;">자주 묻는 질문</a></li>
 				<li><a href="onetoone.do" style="color: black; font-weight: bold;">1:1 문의 게시판</a></li>
 			</ul>
 		</div>
