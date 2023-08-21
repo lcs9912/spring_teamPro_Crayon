@@ -69,5 +69,10 @@ public class MypageController {
 			return "/mypage/mypageaddpoint"; 
 	    }
 		
-	
+		//마이페이지 관심상품
+		@RequestMapping("/mypageproductinter.do") 
+	    public String mypageproductinter(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			return "/mypage/mypageproductinter"; 
+	    }
+		
 }
