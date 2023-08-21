@@ -63,7 +63,11 @@ public class MypageController {
 			request.setAttribute("map", map);
 			return "/mypage/testPopup";
 		}
-	
-	
+		// 마이페이지 포인트충전페이지
+		@RequestMapping("/mypageaddpoint.do") 
+	    public String mypageaddpoint(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			return "/mypage/mypageaddpoint"; 
+	    }
+		
 	
 }

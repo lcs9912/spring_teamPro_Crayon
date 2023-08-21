@@ -128,7 +128,17 @@ a {	text-decoration:none;
 			border:1px solid #999; border-radius:10px; padding:8px;
 			margin-left:5px; 
 		}
-		
+		.pointaddbtn{
+		margin-top:10px;
+		background-color:white;
+		border: 1px solid #999;
+   		 border-radius: 10px;
+   		 height:25px;
+   		 padding:8px;
+   		 line-height: 10px;
+   		 color:#999;
+   		 cursor:pointer;
+		}
 
 </style>
 
@@ -158,7 +168,7 @@ a {	text-decoration:none;
 				<li><a href="#">결제 정보</a></li>
 				<li><a href="#">판매 정산 계좌</a></li>
 				<li><a href="#">현금영수증 정보</a></li>
-				<li><a href="#">포인트</a></li>
+				<li><a href="mypageaddpoint.do">포인트 충전</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -179,6 +189,7 @@ a {	text-decoration:none;
 				<div class="profileinner3">
 					<p>{{info.userPoint}}P</p> <!-- 유저포인트 -->
 					<p>포인트</p>
+					<a href="mypageaddpoint.do"><button class="pointaddbtn">포인트충전</button></a>
 				</div>
 				<div class="profileinner4">
 					<p>일반회원</p>
