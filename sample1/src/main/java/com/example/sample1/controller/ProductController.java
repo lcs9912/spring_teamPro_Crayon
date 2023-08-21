@@ -73,6 +73,11 @@ public class ProductController {
 		return "/product/nowbuy";
 	}
 	
+	@RequestMapping("/payandpackage.do") 
+	public String payandpackage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/payandpackage";
+	}
+	
 	//.dox
 	// 상품 브랜드 조회
 	@RequestMapping(value = "/brand.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
