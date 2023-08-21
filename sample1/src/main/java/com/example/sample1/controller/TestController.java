@@ -35,29 +35,59 @@ public class TestController {
         return "/product/chartTest";
     }
 	
-	@RequestMapping("/testshopping.do") 
+	@RequestMapping("/testshopping.do")  //테스트용 shopping 페이지
     public String test1(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/test/testshopping_sh";
     }
 	
-	@RequestMapping("/testheader.do") 
+	@RequestMapping("/testheader.do") //테스트용 shopping 헤더 페이지
     public String test2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/test/testheader_sh";
+        return "/test/testshopheader_sh";
     }
 	
-	@RequestMapping("/testpaylist.do") 
+	@RequestMapping("/testmainheader.do") //테스트용 main 헤더 페이지
+    public String test6(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testmainheader_sh";
+    }
+	
+	@RequestMapping("/testrankingpage.do") //테스트용 랭킹 페이지
+    public String test7(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testrankingpage_sh";
+    }
+
+	@RequestMapping("/testpaylist.do") //테스트용 구매리스트 페이지
     public String test3(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/test/testmypagepaylist_sh";
     }
 	
-	@RequestMapping("/testmypagebank.do") 
+	@RequestMapping("/testmypagebank.do") //테스트용 계좌 페이지
     public String test4(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/test/testmypagebank_sh";
     }
 	
-	@RequestMapping("/testmypagepoint.do") 
+	@RequestMapping("/testmypagepoint.do") //테스트용 포인트 페이지
     public String test5(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/test/testmypagepoint_sh";
+    }
+	
+	@RequestMapping("/testmainslider.do") //테스트용 메인 페이지 슬라이더
+    public String test8(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testmainslider_sh";
+    }
+	
+	@RequestMapping("/testmainmancate.do") //테스트용 메인 페이지 슬라이더
+    public String test9(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testmainmancate_sh";
+    }
+	
+	@RequestMapping("/testmslider.do") //테스트용 메인 페이지 슬라이더
+    public String test10(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testmslider_sh";
+    }
+	
+	@RequestMapping("/testwslider.do") //테스트용 메인 페이지 슬라이더
+    public String test11(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testwslider_sh";
     }
 	
 	// 임시 물품검색 리스트

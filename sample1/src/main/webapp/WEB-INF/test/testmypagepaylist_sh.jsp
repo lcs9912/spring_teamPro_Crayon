@@ -164,14 +164,15 @@
                         <li class="#"><a href="#">장바구니</a></li>
                         <li class="#"><a href="#">관심상품</a></li>
                         <li class="#"><a href="mypage.do">마이페이지</a></li>
+                        <li class="#"><a href="faq.do">고객센터</a></li>
                     </ul>
                 </div>
                 <div class="headermainlogo">
                     <h1><a href="#">CrayoN</a></h1>
                     <ul class="headermenu">
-                        <li><a href="#">HOME</a></li>
+                        <li><a href="testrankingpage.do">HOME</a></li>
                         <li><a href="#">STYLE</a></li>
-                        <li><a href="#">SHOP</a></li>                   
+                        <li><a href="testshopping.do">SHOP</a></li>                   
                         <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     </ul>
                 </div>
