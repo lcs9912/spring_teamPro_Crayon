@@ -82,6 +82,7 @@ border-radius:80px;
 border:1px solid #ebebeb;
 background-color:#ebebeb;
  text-align:center;
+ line-height: 30px; 
 }
 .leftbuybtnarea, .rightbuybtnarea{
 width:49%;
