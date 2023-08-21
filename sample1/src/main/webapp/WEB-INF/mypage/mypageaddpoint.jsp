@@ -130,10 +130,13 @@ border: 1px solid #e9e9e9;
 margin-top:15px;
 }
 
+.carding {
+display: none;
+}
 
-        .carding {
-            display: none;
-        }
+input[type="text"]{
+outline:none;
+}
 
 </style>
 
@@ -175,8 +178,9 @@ margin-top:15px;
 					<div class="editinner">
 						<h4>내 포인트 0P</h4>
 						<div class="editebox spanBut">
+						<span class="editbtn">충전금액</span>
 								<input type="text" class="editinput" placeholder="0" id="number">P
-								<span class="editbtn">충전금액</span>
+							
 						</div>
 					<div><h6 style="margin-top:10px;">충전 후 금액</h6> 0P</div>
 
