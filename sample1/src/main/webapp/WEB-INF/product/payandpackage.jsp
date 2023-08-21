@@ -198,7 +198,7 @@ margin-top:10px;
     font-size: 13px;">+ 새 주소 추가</a>
     
     <div class="addradd">
-    <div><button style="background-color:#fafafa; color: rgba(34,34,34,.5);">주소를추가해주세요</button></div>
+    <div><button style="background-color:#fafafa; color: rgba(34,34,34,.5);">주소를 추가해주세요.</button></div>
     <div>
     <button style="line-height: 30px;">요청사항 없음
     <i class="fa-solid fa-chevron-right" style="float:right; padding-right:15px; line-height: 30px;"></i></button>
