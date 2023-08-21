@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+<script src="../js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <meta charset="UTF-8">
 <title>포인트충전</title>
@@ -176,13 +178,13 @@ outline:none;
 			</div>
 				<div class="loginedit">				
 					<div class="editinner">
-						<h4>내 포인트 0P</h4>
+						<h4>내 포인트 0P</h4>  <!-- user 테이블 point 가져오기 -->
 						<div class="editebox spanBut">
 						<span class="editbtn">충전금액</span>
-								<input type="text" class="editinput" placeholder="0" id="number">P
+								<input type="text" class="editinput" placeholder="0" id="number" v-model="userPoint">P
 							
 						</div>
-					<div><h6 style="margin-top:10px;">충전 후 금액</h6> 0P</div>
+					<div><h6 style="margin-top:10px;">충전 후 금액</h6> 0P</div> <!-- 유저 포인트 + 인풋 입력 값 -->
 
 					</div>
 
@@ -217,15 +219,15 @@ display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; m
             </div>
 			<!-- 카드결제버튼 -->
 			<div class="carding">
-                <button onclick="creditcard()" id="cardingButton">결제하기</button>
+                <button @click="creditcard" id="cardingButton">결제하기</button>
             </div>
 			</div>
 		</div>
 	
 
    
-   
-</div>
+ </div>
+</div> <!-- app -->
 </body>
 <%@ include file="../header/footer.jsp"%>
 </html>
@@ -233,17 +235,58 @@ display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; m
 /* 카드결제API */
 const userCode = "imp14397622";
 IMP.init(userCode);
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],
+		userPoint : "",
+		uId : "${sessionId}"
+	},// data
+	methods : {
+		
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url : "list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.list = data.list;
+                }
+            }); 
+        },
+        // 결제 api
+		creditcard : function(){
+			var self = this;
+			
+			 IMP.request_pay({
+			    pg: "html5_inicis",
+			    pay_method: "card",
+			    merchant_uid: "test_llkr7mk9",
+			    name: "포인트 결제",
+			    amount: 100/* 가격 */
+			   
+			 },function (rsp) { // callback
+		   	     if (rsp.success) {
+			   	        // 결제 성공 시
+			   	     } else {
+			   	        // 결제 실패 시
+			   	     } 
+			  }); 
+			 
+		},
+	}, // methods
+	created : function() {
+		var self = this;
+		
+	}// created
+});
 
-function creditcard() {
-	  IMP.request_pay({
-	    pg: "html5_inicis",
-	    pay_method: "card",
-	    merchant_uid: "test_llkfalzw",
-	    name: "테스트 결제",
-	    amount: 100,/* 가격 */
-	    buyer_tel: "010-0000-0000",
-	  });
-	}
+
+
+
 /* 포인트 3자리자동반점 */
 const input = document.querySelector('#number');
 input.addEventListener('keyup', function(e) {
@@ -255,6 +298,7 @@ input.addEventListener('keyup', function(e) {
     const formatValue = value.toLocaleString('ko-KR');
     input.value = formatValue;
   }
+  console.log();
 })
 
 function showBanking() {
