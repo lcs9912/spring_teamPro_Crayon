@@ -13,7 +13,7 @@
     li {list-style: none;}
     a {text-decoration: none; color: inherit;}
     img {max-width: 100%; vertical-align: top;}
-	
+	 
 	/*헤더영역 전체 CSS 시작*/
 	.headerwrap{
 		width:100%; height:100px; border-bottom: 1px solid #ccc;

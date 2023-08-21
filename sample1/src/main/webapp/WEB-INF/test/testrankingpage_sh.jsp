@@ -9,7 +9,7 @@
 <script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
 <title>CrayoN 헤더 인클루드 수정페이지</title>
 <style>
-		 /*상품 품목별 전시영역 시작*/
+		 /*상품 품목별 전시영역 시작*/ 
 
 	 	.rankwrap {width:1200px; margin:170px auto;}
 	 	.goodsdisplay { /*상품 품목별 4개씩 분류 전시 영역*/

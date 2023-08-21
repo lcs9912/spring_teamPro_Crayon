@@ -12,7 +12,7 @@
 <style>
 
 
-        /*SHOP영역 CSS 시작*/
+        /*SHOP영역 CSS 시작*/ 
         .shopwrap {
             width: 1200px;
             margin: 10px auto;
