@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.sample1.mapper.AuctionMapper;
 import com.example.sample1.model.Auction;
+import com.example.sample1.model.Product;
 
 @Service
 public class AuctionServiceImpl implements AuctionService{
@@ -26,6 +27,38 @@ public class AuctionServiceImpl implements AuctionService{
 		// TODO Auto-generated method stub
 		return auctionMapper.selectAuctionInfo(map);
 	}
+
+	@Override
+	public int updateAuctionPrice(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.insertAuctionPrice(map);
+	}
+
+	@Override
+	public Auction searchAuctionCheck(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.selectAuctionCheck(map);
+	}
+
+	@Override
+	public Product searchProductInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.selectProductInfo(map);
+	}
+
+	@Override
+	public List<Product> viewBrand(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.selectBrand(map);
+	}
+
+	@Override
+	public int updateAuctionP(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.insertAuctionP(map);
+	}
+
+	
 	
 	
 }

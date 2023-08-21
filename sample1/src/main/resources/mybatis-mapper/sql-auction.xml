@@ -3,12 +3,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.sample1.mapper.AuctionMapper">
-
+	
 	<!-- 경매 리스트 불러오기  -->
 	<select id="selectAuctionList" parameterType="hashmap" resultType="com.example.sample1.model.Auction">
 		SELECT *, COUNT(USER_ID)USERCNT
 		FROM T1_AUCTION A
-		INNER JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
+		LEFT JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
 		GROUP BY A.AUCTION_NUMBER	
 	</select>
 	
@@ -16,10 +16,44 @@
 	<select id="selectAuctionInfo" parameterType="hashmap" resultType="com.example.sample1.model.Auction">
 		SELECT *, COUNT(USER_ID)USERCNT
 		FROM T1_AUCTION A
-		INNER JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
+		LEFT JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
 		WHERE A.AUCTION_NUMBER = #{auctionNumber}
 		GROUP BY A.AUCTION_NUMBER	
 	</select>
-
+	
+	<!-- 경매 입찰 등록하기 -->
+	<insert id="insertAuctionPrice" parameterType="hashmap">
+		INSERT INTO T1_AUCTION_USER
+		VALUES (NULL,#{auctionNumber},#{userId},#{aJoinPrice},CURDATE(),'Y')
+	</insert>
+	
+		<!-- 경매 입찰정보 불러오기  -->
+	<select id="selectAuctionCheck" parameterType="hashmap" resultType="com.example.sample1.model.Auction">
+		SELECT *
+		FROM T1_AUCTION A
+		INNER JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
+		WHERE A.AUCTION_NUMBER = #{auctionNumber} AND U.USER_ID = #{userId}
+ 		GROUP BY A.AUCTION_NUMBER	
+	</select>
+	<!-- 모델번호로 물품 정보 가져오기  -->
+	<select id="selectProductInfo" parameterType="hashmap" resultType="com.example.sample1.model.Product">
+		SELECT *
+		FROM T1_PRODUCT_UPDATE U
+		INNER JOIN T1_PRODUCT_BRAND B ON U.PRODUCT_BRAND = B.PRODUCT_BRAND
+		WHERE PRODUCT_MODEL =#{pModel}
+		LIMIT 1;
+	</select>
+	
+	<!-- 브랜드 조회 -->
+	<select id="selectBrand" resultType="com.example.sample1.model.Product">
+		SELECT *
+		FROM T1_PRODUCT_BRAND
+	</select>
+	
+	<!-- 경매 입찰 등록하기 -->
+	<insert id="insertAuctionP" parameterType="hashmap">
+		INSERT INTO T1_AUCTION
+		VALUES (NULL,#{productName},#{productSize},#{auctionStartPrice},#{auctionMaxPrice},#{auctionStartDate},#{auctionEndDate},'N')
+	</insert>
 	
 </mapper>

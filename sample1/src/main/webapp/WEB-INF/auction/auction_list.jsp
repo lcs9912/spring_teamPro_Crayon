@@ -42,9 +42,10 @@
 			<td>{{item.auctionEndDate}}</td>
 		</tr>
 	</table>
-<!-- 	<button @click="fnBoardAdd"> 글쓰기</button>
-	<button @click="fnRemove"> 삭제</button> -->
-
+	<!-- <div v-if="status=='U'"> -->
+	<button @click="fnAuctionAdd">경매 등록</button>
+	<!-- <button @click="fnRemove"> 삭제</button> --> 
+	<!-- </div> -->
 </div>
 </body>
 </html>
@@ -53,6 +54,7 @@ var app = new Vue({
 	el : '#app',
 	data : {
 		list : [],		
+		list2 : [],		
 		auctionNumber :"",
 		uId : "${sessionId}",
 		Name : "${sessionName}",
@@ -70,7 +72,8 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	self.list = data.list;
-                	console.log(self.list);
+                	self.list2 = data.list2;           
+                	console.log(self.list2);
                 }
             }); 
         },
@@ -79,7 +82,10 @@ var app = new Vue({
         	var self = this;
         	$.pageChange("view.do", {auctionNumber :item.auctionNumber});
         },
-        
+        fnAuctionAdd : function(){
+        	var self = this;
+        	location.href = "update.do";
+        },
         
         
 	}, // methods

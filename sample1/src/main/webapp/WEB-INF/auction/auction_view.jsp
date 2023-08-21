@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>경매상세페이지</title>
 <style>
 	a{
 		text-decoration: none;
@@ -25,10 +25,12 @@
 	<div>시작시간 : {{info.auctionStartDate}}</div>
 	<div>마감시간 : {{info.auctionEndDate}}</div>
 	<div>참여자수  : {{info.usercnt}}</div>
-
+	<div v-if="info.duplicateStatus=='N'">
 	<button @click="fnAuctionJoin()">참여하기 </button> 
-	
-	
+	</div>
+	<div v-else>
+	<button @click="fnAuctionCheck()">참여확인하기 </button>
+	</div>
 </div>
 </body>
 </html>
@@ -38,6 +40,7 @@ var app = new Vue({
 	data : {
 		list : [],
 		info : {},
+		
 		auctionNumber : "${map.auctionNumber}",
 		text: "",
 		uId : "${sessionId}",
@@ -61,6 +64,14 @@ var app = new Vue({
                 }
             }); 
         },
+        fnAuctionJoin : function(){
+          	var self = this;
+           	$.pageChange("join.do", {auctionNumber :self.auctionNumber});       
+        },
+        fnAuctionCheck : function(){
+            var self = this;
+           	$.pageChange("check.do", {auctionNumber : self.auctionNumber});    
+        }
         
      
       
