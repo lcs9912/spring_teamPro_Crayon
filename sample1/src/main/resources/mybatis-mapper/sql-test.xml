@@ -4,12 +4,22 @@
 
 <mapper namespace="com.example.sample1.mapper.TestMapper">
 
+	<!-- 차트 테스트 -->
 	<select id="selectchart" parameterType="hashmap"
 		resultType="com.example.sample1.model.Test">
-		SELECT * FROM T1_TRANSACTION T
-		INNER JOIN T1_PRODUCT_UPDATE P
-		ON T.PRODUCT_SELL_NUMBER = P.PRODUCT_SELL_NUMBER
-		WHERE P.PRODUCT_NAME = #{proName}
-		ORDER BY TRANSACTION_DATE ASC
+		SELECT RESSENTDATE, AVG(TRANSACTION_PRICE) AS AVGDATE
+		FROM (
+
+			SELECT PRODUCT_MODEL,TRANSACTION_PRICE, DATE_FORMAT(TRANSACTION_DATE, '%Y%m%d') AS RESSENTDATE
+			FROM T1_TRANSACTION T
+			INNER JOIN T1_PRODUCT_UPDATE P 
+			ON T.PRODUCT_SELL_NUMBER = P.PRODUCT_SELL_NUMBER
+			WHERE P.PRODUCT_MODEL = #{modelNum}
+	
+		) AS subquery
+		GROUP BY RESSENTDATE
+		ORDER BY RESSENTDATE ASC
 	</select>
+	
+	
 </mapper>

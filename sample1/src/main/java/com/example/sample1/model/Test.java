@@ -11,4 +11,8 @@ public class Test {
 	private String transactionDate;
 	private int transactionPrice;
 	private String transactionDelyn;
+	
+	private int avgdate;
+	private String ressentdate;
+	
 }

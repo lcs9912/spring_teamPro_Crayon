@@ -30,7 +30,7 @@ public class ProductController {
 	// 상품상세 페이지
 	@RequestMapping("/product.do") 
     public String info(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/product/productInfo_LCS"; // _LCS 삭제 
+        return "/product/productInfo";
     }
 	// 상품구매 페이지
 	@RequestMapping("/productBuy.do") 

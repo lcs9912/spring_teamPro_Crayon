@@ -45,13 +45,11 @@ public class ProductLcsServiceImpl implements ProductLcsService{
 		ProductLcs proInfo =  productLcsMapper.selectProductInfo(map); // 물품 상세페이지
 		ProductLcs minSell = productLcsMapper.selectSellMinPrice(map); // 즉시 판매가
 		ProductLcs minBuy = productLcsMapper.selectBuyMinPrice(map); // 즉시 구매가
-		ProductLcs resent = productLcsMapper.selectRecentTransaction(map); // 최근거래가
+		
 
 		resultMap.put("proInfo", proInfo);
-		resultMap.put("resent", resent);
 		
-		
-		
+
 		if(map.get("modelNum") != null) {
 			resultMap.put("minSell", minSell);
 			resultMap.put("minBuy", minBuy);
@@ -66,7 +64,7 @@ public class ProductLcsServiceImpl implements ProductLcsService{
 	public int addInterest(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		productLcsMapper.insertInterest(map); // 관심 등록
-		productLcsMapper.plusInterestCnt(map);
+		productLcsMapper.plusInterestCnt(map); // cnt+1
 		return 0;
 	}
 	//유저  관심 조회
@@ -80,8 +78,15 @@ public class ProductLcsServiceImpl implements ProductLcsService{
 	public int removeInterest(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		productLcsMapper.deleteInterest(map);
-		productLcsMapper.minusdateInterestCnt(map);
+		productLcsMapper.minusdateInterestCnt(map); // cnt-1
+		
 		return 0;
+	}
+	// 최근거래가
+	@Override
+	public ProductLcs searchResentPro(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productLcsMapper.selectRecentTransaction(map);
 	}
 	
 }

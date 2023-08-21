@@ -22,4 +22,6 @@ public interface ProductLcsService {
 	ProductLcs searchInterest(HashMap<String, Object> map);
 	//유저 관심상품 삭제
 	int removeInterest(HashMap<String, Object> map);
+	// 최근거래가
+	ProductLcs searchResentPro(HashMap<String, Object> map);
 }

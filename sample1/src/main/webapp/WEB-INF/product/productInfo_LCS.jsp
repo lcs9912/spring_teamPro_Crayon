@@ -271,6 +271,14 @@ display:inline-block;
 cursor: pointer;
 }
 
+.custom-tooltip {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    
+}
 </style>
 
 </head>
@@ -407,10 +415,10 @@ cursor: pointer;
 			</div>
 			</div>
 			<div class="displaygraph">
-				<div id="chart">
-        			<apexchart type="line" height="200" width="407" :options="chartOptions" :series="series"></apexchart>
-      			</div>
-      		</div>
+    			<div id="chart">
+     			   <apexchart type="line" height="200px" width="600px" :options="chartOptions" :series="series"></apexchart>
+   				 </div>
+			</div>
 			
 			<div class="displaybuybefore">
 			
@@ -435,7 +443,7 @@ cursor: pointer;
 	</div>
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-		<img src="../img/product/help.png">
+		<img src="../img/product/help.png">  <!-- 상품 이미지 -->
 		</div>
 		
 		
@@ -473,7 +481,7 @@ var app = new Vue({
         proName : "Nike Air Force 1", // 상품 이름
         interestFlg : false, // 관심상품 조회
 		series: [{
-            name: "",
+            name: [],
             data: [],
         }],
         chartOptions: {
@@ -505,20 +513,44 @@ var app = new Vue({
                 axisTicks : {show : false},
                 axisBorder : {show : false},
                 categories : [],
-            },
+                min : "",
+                tooltip: {
+                    enabled: false, 
+                    marker: { show: true }, // 이 부분을 추가하여 점을 숨깁니다.
+                    
+            	   
+                  },
+                },
+            
             yaxis: {
 	              
 	              min: 0,
-	              max: 400000,
+	              max: "",
 	            },
-            
-        
+	            tooltip: {
+	                enabled: true,
+	                marker: { show: false }, // 이 부분을 추가하여 점을 숨깁니다.
+	                
+	               
+	           		
+	            },
+	            markers: {
+	                size: 0, // 점의 크기를 0으로 설정하여 점을 숨깁니다.
+	                hover: {
+	                    sizeOffset: 0 // 마우스 호버 시 크기 변경 없이 숨기기
+	                }
+	            },
         },
+        
+        
+        
+        
     },
     methods: {
     	fnProList : function(){
     		var self = this;
             var nparmap = {proNum : self.proNum};
+           
              $.ajax({
                  url : "/productInfo2.dox",
                  dataType:"json",	
@@ -527,12 +559,14 @@ var app = new Vue({
                  success : function(data) { 
                  	self.proInfo = data.proInfo;
                  	self.modelNum = data.proInfo.productModel; // 모델번호
-                 	self.resent = data.resent;
-                 	console.log("확인"+self.resent.transactionPrice);
-                 	console.log("모델번호"+self.modelNum);
                  	
+                 	console.log("proinfo"+ self.proInfo);
+                 	
+                 	console.log("모델번호"+self.modelNum);
+                 	self.fnGetChart();
                  	self.fnSellBuyMin();
                  	self.fnInterestInfo();
+                 	self.fnResent();
                  }
              }); 
     	},
@@ -581,8 +615,18 @@ var app = new Vue({
     	// 관심상품 등록
         fnInterest : function(){
         	var self = this;
-        	var nparmap = {proNum : self.proNum, uId : self.sessionId};
-        	
+        	var nparmap = {proNum : self.proNum, uId : self.sessionId, proSize : self.proInfo.productSize};
+        	console.log("등록"+ self.proInfo.productSize);
+        	console.log("관심 세션아이디"+self.sessionId);
+        	if(self.sessionId == undefined || self.sessionId  == ''){
+        		
+        		if(!confirm("로그인 이후 이용이 가능합니다.\n로그인 하시겠습니다?")){
+        			return;
+        		}else{
+        			location.href="login.do";
+        			return;
+        		}
+        	}
         	$.ajax({
                 url : "/product/interest.dox",
                 dataType:"json",	
@@ -605,14 +649,32 @@ var app = new Vue({
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
-                success : function(data) { 
+                success : function(data) {
                 	self.interestFlg = false;
                 	self.fnProList();
                 	
                 }
             });
         },
-         fnBuy: function () {
+       // 최근 거래가
+       fnResent : function(){
+    	   var self = this;
+    	   var nparmap = {modelNum : self.modelNum};
+    	   console.log("최근거래가 모델번호"+self.modelNum);
+       	
+        	$.ajax({
+               url : "/product/resent.dox",
+               dataType:"json",	
+               type : "POST", 
+               data : nparmap,
+               success : function(data) { 
+               	self.resent = data.resent;
+               	
+               }
+           }); 
+       },
+        
+        fnBuy: function () {
             var self = this;
             $.pageChange("productBuy");
         }, 
@@ -627,7 +689,8 @@ var app = new Vue({
         // 차트 리스트
         fnGetChart : function(){
             var self = this;
-            var nparmap = {proName : self.proName};
+            var nparmap = {modelNum : self.modelNum};
+            console.log("차트 모델번호"+self.modelNum);
             $.ajax({
                 url : "/chartlist.dox",
                 dataType:"json",	
@@ -638,25 +701,42 @@ var app = new Vue({
 					var price = [];
 					var tdate = [];
 					var won = "원";
+					console.log(self.list);
 					for(var i=0; i<self.list.length; i++){
-						price.push(self.list[i].transactionPrice+won);
-						tdate.push(self.list[i].transactionDate);
+						price.push(self.list[i].avgdate);
+						tdate.push(self.list[i].ressentdate);
+	
 					}
 					
-					self.series = [{data : price}];
+					self.series = [{
+						name : "",
+						data : price
+						}];
 					
+					
+					const maxValue = Math.max.apply(null, price);
+					const roundedMaxValue = Math.ceil(maxValue);
+					const yMaxValue = roundedMaxValue * 1.5;
 					self.chartOptions = {
-                			
-                			xaxis : {categories : tdate}
-                	};
+							xaxis : {categories : tdate},
+					    yaxis: {
+					        max: yMaxValue,
+					        min : 0,
+					    },
+					  
+					   
+					}; 
+					
+				
                 },
             }); 
         },
+       
     },
     created: function () {
         var self = this;
         self.fnProList();
-        self.fnGetChart();
+        
         window.addEventListener('scroll', this.handleScroll);
         
     },

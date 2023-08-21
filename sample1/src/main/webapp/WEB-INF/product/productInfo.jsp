@@ -5,20 +5,22 @@
 	<script src="https://kit.fontawesome.com/047f82d071.js" crossorigin="anonymous"></script>
 	<script src="../js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> <!-- 차트표 api -->
+	<script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script> <!-- 차트표 api vue -->	
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 <style>
 *{
-		margin:0;
-		padding:0;
+	margin:0;
+	padding:0;
 }
 
 .productcontents{
-margin-left : auto;
-margin-right : auto;
-max-width : 1280px;
-margin-top : 50px;
-padding: 30px 40px 120px;
+	margin-left : auto;
+	margin-right : auto;
+	max-width : 1280px;
+	margin-top : 50px;
+	padding: 30px 40px 120px;
 }
 .leftcolumnbox{
 background-color:#f4f4f4;
@@ -269,6 +271,14 @@ display:inline-block;
 cursor: pointer;
 }
 
+.custom-tooltip {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    
+}
 </style>
 
 </head>
@@ -281,10 +291,10 @@ cursor: pointer;
 	
 		<div class="toptitlebox">
 		<div>
-		<p class="brandheader">브랜드</p>
+		<p class="brandheader">{{proInfo.brandName}}</p>
 		</div>
 		<div class="subtitle">
-		<p>타이틀값</p>
+		<p>{{proInfo.productName}}</p>
 		</div>
 		<div class="subtitle2">
 		<p>타이틀값2</p>
@@ -298,7 +308,7 @@ cursor: pointer;
 		</div>
 		<div class="recentsell" style="border: none;">
 		<span style="color: #646363; font-size: 13px;">최근 거래가</span>
-		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">000,000</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{resent.transactionPrice}}원</span>
 		</div>
 		</div>
 		
@@ -306,23 +316,23 @@ cursor: pointer;
 		
 		<button class="buyaction">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
-		<div style="padding-top:3px;"><b>000,000원</b></div>
+		<div style="padding-top:3px;"><b>{{minBuy.buyminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 구매가</div>
 		</button>
 		
 		
 		<button class="sellaction">
 		<strong class="nowsell" style='box-shadow:1px px 0px px'>판매</strong>
-		<div style="padding-top:3px;"><b>000,000원</b></div>
+		<div style="padding-top:3px;"><b>{{minSell.sellminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 판매가</div>
 	
 		</button>
 		</div>
 		
 		<div class="interestbtn" style="cursor: pointer">
-		<i class="fa-solid fa-bookmark"></i>
-		<i class="fa-regular fa-bookmark"></i>
-		관심상품<strong>cnt</strong>
+		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
+		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
+		관심상품<strong> {{proInfo.productInterest}}</strong>
 		</div>
 		</div>
 		
@@ -334,23 +344,23 @@ cursor: pointer;
 		
 			<div class="detailproductheader">
 			모델번호
-			<div style="color:black; font-size:14px; font-weight: bold;">1234567
+			<div style="color:black; font-size:14px; font-weight: bold;">{{proInfo.productModel}}
 			</div>
 			</div>
 
 			<div class="detailproductheader">
 			출시일
-			<div style="color:black; font-size:14px;">23/1/1</div>
+			<div style="color:black; font-size:14px;">{{proInfo.productUpdate}}</div>
 			</div>
 			
 			<div class="detailproductheader">
 			컬러
-			<div style="color:black; font-size:14px;">BLACK</div>
+			<div style="color:black; font-size:14px;">{{proInfo.productColor}}</div>
 			</div>
 			
 			<div class="detailproductheader" style="border-right:none;">
 			발매가
-			<div style="color:black; font-size:14px;">000,000￦</div>
+			<div style="color:black; font-size:14px;">{{proInfo.productLaunchPrice}}￦</div>
 			</div>
 
 		</div>
@@ -404,7 +414,11 @@ cursor: pointer;
 			</div>
 			</div>
 			</div>
-			<div class="displaygraph">그래프공간</div>
+			<div class="displaygraph">
+    			<div id="chart">
+     			   <apexchart type="line" height="200px" width="600px" :options="chartOptions" :series="series"></apexchart>
+   				 </div>
+			</div>
 			
 			<div class="displaybuybefore">
 			
@@ -425,18 +439,11 @@ cursor: pointer;
 			
 			</div>
 		
-	
-	
-	
-	
-	
-	
-	
 			
 	</div>
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-		상품페이지
+		<img src="../img/product/help.png">  <!-- 상품 이미지 -->
 		</div>
 		
 		
@@ -458,27 +465,280 @@ cursor: pointer;
 <script>
 var app = new Vue({
     el: '#app',
+    components: {
+        apexchart: VueApexCharts,
+      },
     data: {
         model: "",
-        scrollPosition: 0
+        scrollPosition: 0,
+        sessionId : "${sessionId}",
+        proInfo : {}, // 리스트로 수정 예정 물품 정보 
+        resent : {}, // 최근 거래가
+        modelNum : "", // 모델변호
+        minSell : "", // 즉시 판매가
+        minBuy : "", // 즉시 구매가
+        proNum : 7, // 상품 번호
+        proName : "Nike Air Force 1", // 상품 이름
+        interestFlg : false, // 관심상품 조회
+		series: [{
+            name: [],
+            data: [],
+        }],
+        chartOptions: {
+            chart: {
+                type: 'line',
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false, // 다운로드 버튼 숨기기
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            }, 
+            stroke: {
+                curve: 'straight',
+                colors: '#ff0000',
+                width: 3,
+            },
+            title: {
+                align: 'left'
+            },
+            grid: {
+                show: false
+            },
+            xaxis: {
+                labels : {show : false},
+                axisTicks : {show : false},
+                axisBorder : {show : false},
+                categories : [],
+                min : "",
+                tooltip: {
+                    enabled: false, 
+                    marker: { show: true }, // 이 부분을 추가하여 점을 숨깁니다.
+                    
+            	   
+                  },
+                },
+            
+            yaxis: {
+	              
+	              min: 0,
+	              max: "",
+	            },
+	            tooltip: {
+	                enabled: true,
+	                marker: { show: false }, // 이 부분을 추가하여 점을 숨깁니다.
+	                
+	               
+	           		
+	            },
+	            markers: {
+	                size: 0, // 점의 크기를 0으로 설정하여 점을 숨깁니다.
+	                hover: {
+	                    sizeOffset: 0 // 마우스 호버 시 크기 변경 없이 숨기기
+	                }
+	            },
+        },
+        
+        
+        
+        
     },
     methods: {
+    	fnProList : function(){
+    		var self = this;
+            var nparmap = {proNum : self.proNum};
+           
+             $.ajax({
+                 url : "/productInfo2.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) { 
+                 	self.proInfo = data.proInfo;
+                 	self.modelNum = data.proInfo.productModel; // 모델번호
+                 	
+                 	console.log("proinfo"+ self.proInfo);
+                 	
+                 	console.log("모델번호"+self.modelNum);
+                 	self.fnGetChart();
+                 	self.fnSellBuyMin();
+                 	self.fnInterestInfo();
+                 	self.fnResent();
+                 }
+             }); 
+    	},
+    	
+    	// 즉시 구매 판매 가격 
+    	fnSellBuyMin : function(){
+    		var self = this;
+    		var nparmap = {modelNum : self.modelNum};
+    		console.log(self.modelNum);
+             $.ajax({
+                url : "/productInfo2.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.minSell = data.minSell;
+                	self.minBuy = data.minBuy;
+                	console.log("즉시 구매가"+self.minBuy);
+                	console.log("즉시 판매가"+self.minSell);
+                
+                }
+            });  
+    	},
+    	// 유저 관심상품 조회
+    	fnInterestInfo : function(){
+    		var self = this;
+    		var nparmap = {proNum : self.proNum, uId : self.sessionId};
+            $.ajax({
+                url : "/proInterestInfo.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.interest = data.interest;
+                	console.log("관심"+data.interest);
+                	if(self.interest != undefined){
+                		self.interestFlg = true;
+                		return;
+                	}else{
+                		self.interestFlg = false;
+                	}
+					console.log("관심"+ self.interestFlg);
+                }
+            });
+    	},
+    	// 관심상품 등록
+        fnInterest : function(){
+        	var self = this;
+        	var nparmap = {proNum : self.proNum, uId : self.sessionId, proSize : self.proInfo.productSize};
+        	console.log("등록"+ self.proInfo.productSize);
+        	console.log("관심 세션아이디"+self.sessionId);
+        	if(self.sessionId == undefined || self.sessionId  == ''){
+        		
+        		if(!confirm("로그인 이후 이용이 가능합니다.\n로그인 하시겠습니다?")){
+        			return;
+        		}else{
+        			location.href="login.do";
+        			return;
+        		}
+        	}
+        	$.ajax({
+                url : "/product/interest.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.interestFlg = true;
+                	self.fnProList();
+                	
+                }
+            });
+        },
+        // 관심상품 해제
+        fnInterestRemove : function(){
+        	var self = this;
+			var nparmap = {proNum : self.proNum, uId : self.sessionId};
+        	
+        	$.ajax({
+                url : "/proInterestRemove.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {
+                	self.interestFlg = false;
+                	self.fnProList();
+                	
+                }
+            });
+        },
+       // 최근 거래가
+       fnResent : function(){
+    	   var self = this;
+    	   var nparmap = {modelNum : self.modelNum};
+    	   console.log("최근거래가 모델번호"+self.modelNum);
+       	
+        	$.ajax({
+               url : "/product/resent.dox",
+               dataType:"json",	
+               type : "POST", 
+               data : nparmap,
+               success : function(data) { 
+               	self.resent = data.resent;
+               	
+               }
+           }); 
+       },
+        
         fnBuy: function () {
             var self = this;
             $.pageChange("productBuy");
-        },
-        fnSell: function () {
+        }, 
+         fnSell: function () {
             var self = this;
-        }
+        },  
+        handleScroll: function () {
+            this.scrollPosition = window.scrollY;
+        },
+        
+        
+        // 차트 리스트
+        fnGetChart : function(){
+            var self = this;
+            var nparmap = {modelNum : self.modelNum};
+            console.log("차트 모델번호"+self.modelNum);
+            $.ajax({
+                url : "/chartlist.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.list = data.list;
+					var price = [];
+					var tdate = [];
+					var won = "원";
+					console.log(self.list);
+					for(var i=0; i<self.list.length; i++){
+						price.push(self.list[i].avgdate);
+						tdate.push(self.list[i].ressentdate);
+	
+					}
+					
+					self.series = [{
+						name : "",
+						data : price
+						}];
+					
+					
+					const maxValue = Math.max.apply(null, price);
+					const roundedMaxValue = Math.ceil(maxValue);
+					const yMaxValue = roundedMaxValue * 1.5;
+					self.chartOptions = {
+							xaxis : {categories : tdate},
+					    yaxis: {
+					        max: yMaxValue,
+					        min : 0,
+					    },
+					  
+					   
+					}; 
+					
+				
+                },
+            }); 
+        },
+       
     },
     created: function () {
         var self = this;
+        self.fnProList();
+        
         window.addEventListener('scroll', this.handleScroll);
+        
     },
-    methods: {
-        handleScroll: function () {
-            this.scrollPosition = window.scrollY;
-        }
-    }
 })
 </script>

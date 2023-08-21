@@ -56,12 +56,19 @@
 		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'S'
 	</select>
 	
+	<!-- 최근 거래가 -->
 	<select id="selectRecentTransaction" parameterType="hashmap"
 		resultType="com.example.sample1.model.ProductLcs">
-		SELECT TRANSACTION_PRICE, MAX(TRANSACTION_DATE) AS RECENTTRANSACTION
-		FROM T1_TRANSACTION 
-		WHERE PRODUCT_SELL_NUMBER = #{proNum}
-		GROUP BY TRANSACTION_PRICE
+		SELECT *
+		FROM T1_TRANSACTION T
+		INNER JOIN(
+	
+		SELECT MAX(TRANSACTION_DATE) AS MAXDATE
+		FROM T1_TRANSACTION T
+		INNER JOIN T1_PRODUCT_UPDATE P 
+		ON T.PRODUCT_SELL_NUMBER = P.PRODUCT_SELL_NUMBER
+		WHERE P.PRODUCT_MODEL = #{modelNum}
+	) A ON T.TRANSACTION_DATE = A.MAXDATE
 	</select>
 	
 	<!-- 관심상품 조회 -->
@@ -69,19 +76,19 @@
 		resultType="com.example.sample1.model.ProductLcs">
 		SELECT * 
 		FROM T1_PRODUCT_LIKE
-		WHERE USER_ID = #{uId} AND PRODUCT_SELL_NUMBER = #{proNum}
+		WHERE USER_ID = #{uId} AND PRODUCT_MODEL = #{proNum}
 	</select>
 	
 	<!-- 관심상품 등록 -->
 	<insert id="insertInterest" parameterType="hashmap">
 		INSERT INTO T1_PRODUCT_LIKE
-		VALUES (#{proNum},#{uId}, '유니크', NOW())
+		VALUES (#{proNum},#{proSize}, #{uId}, NOW())
 	</insert>
 	
 	<!-- 관심상품 해제 -->
 	<delete id="deleteInterest" parameterType="hashmap">
 		DELETE FROM T1_PRODUCT_LIKE
-		WHERE USER_ID = #{uId} AND PRODUCT_SELL_NUMBER = #{proNum}
+		WHERE USER_ID = #{uId} AND PRODUCT_MODEL = #{proNum}
 	</delete>
 	
 	<!-- 상품 테이블 관심 cnt + 1 -->

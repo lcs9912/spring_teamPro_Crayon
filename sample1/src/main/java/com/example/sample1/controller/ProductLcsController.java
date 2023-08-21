@@ -69,6 +69,16 @@ public class ProductLcsController {
    	
    		return new Gson().toJson(resultMap);
    	}
- 	
+   	
+   	// 최근거래가
+   	@RequestMapping(value = "/product/resent.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String productResent(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		ProductLcs resent = productLcsService.searchResentPro(map);
+   		resultMap.put("resent", resent);
+   	
+   		return new Gson().toJson(resultMap);
+   	}
  	
 }
