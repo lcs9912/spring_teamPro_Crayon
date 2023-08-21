@@ -53,7 +53,8 @@ var app = new Vue({
                  data : nparmap,
                  success : function(data) {
                 	 self.info = data.info;
-                 }
+                	
+                 }		 
              }); 
         },
        
@@ -61,8 +62,7 @@ var app = new Vue({
 	}, // methods
 	created : function() {
 		var self = this;
-		
-			self.fnGetList();
+		self.fnGetList();
 		
 	}// created
 });

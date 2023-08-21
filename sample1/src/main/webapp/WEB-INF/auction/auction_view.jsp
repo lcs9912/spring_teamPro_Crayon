@@ -40,7 +40,6 @@ var app = new Vue({
 	data : {
 		list : [],
 		info : {},
-		
 		auctionNumber : "${map.auctionNumber}",
 		text: "",
 		uId : "${sessionId}",
@@ -52,7 +51,7 @@ var app = new Vue({
 	methods : {
 		fnGetList : function(){
             var self = this;
-            var nparmap = {auctionNumber : self.auctionNumber};
+            var nparmap = {auctionNumber : self.auctionNumber, uId : self.uId};
             $.ajax({
                 url : "/auction/view.dox",
                 dataType:"json",	
