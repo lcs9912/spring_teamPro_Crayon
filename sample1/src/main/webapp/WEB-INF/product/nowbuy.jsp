@@ -91,6 +91,7 @@ background-color:#FF5E3D;
 border-radius:80px;
 height:30px;
 color:white;
+cursor:pointer;
 }
 .wantpay{
 padding: 32px 32px 28px;
