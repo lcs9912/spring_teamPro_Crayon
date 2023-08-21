@@ -189,7 +189,7 @@ outline:none;
 <div class="paykindselect">
 <div style="margin-bottom:15px;"><h4>결제방식</h4></div>
 <input type="radio" name="payselect" onclick="showBanking()" checked>계좌이체
-<input type="radio" name="payselect" onclick="showCarding()">카드결제
+<input type="radio" name="payselect" onclick="showCarding()">카드결제/페이결제
 </div>
 
 <div class="banking">

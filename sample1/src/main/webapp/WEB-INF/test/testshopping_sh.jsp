@@ -11,110 +11,12 @@
 
 <style>
 
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            vertical-align: top;
-        }
-
-        table {
-            border-collapse: collapse;
-        }
-
-        .headerwrap { /*로그인 메뉴 CSS 시작*/
-            width: 100%;
-            height: 80px;
-            background: #fff;
-            padding-bottom: 80px;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            z-index: 2;
-        }
-
-            .headerwrap header {
-                width: 1200px;
-                height: 80px;
-                margin: 0 auto;
-            }
-
-        .loginmenulist {
-            position: relative;
-            width: 1200px;
-            height: 20px;
-        }
-
-            .loginmenulist ul {
-                position: absolute;
-                top: 5px;
-                right: 0;
-            }
-
-            .loginmenulist li {
-                display: inline-block;
-                margin-left: 15px;
-            }
-
-            .loginmenulist a {
-                font-size: 12px;
-                font-weight: bold;
-                color: #777;
-                display: block;
-            }
-        /*로그인 메뉴 CSS 종료*/
-
-        .headermainlogo { /*헤더 로고 CSS*/
-            font-weight: bold;
-            position: relative;
-            height: 50px;
-        }
-
-            .headermainlogo > h1 {
-                display: inline-block;
-                width: 200px;
-                height: 50px;
-                font-size: 35px;
-                letter-spacing: -1px;
-            }
-
-        .headermenu { /*헤더 shop메뉴 CSS 시작*/
-            font-size: 20px;
-            position: absolute;
-            top: 25px;
-            right: 0;
-        }
-
-            .headermenu > li {
-                display: inline-block;
-                margin-left: 20px;
-            }
-
-                .headermenu > li > a {
-                    display: block;
-                    color: #333;
-                }
-
-        /*헤더 shop메뉴 CSS 종료*/
 
         /*SHOP영역 CSS 시작*/
         .shopwrap {
             width: 1200px;
-            margin: 70px auto;            
+            margin: 10px auto;
+            z-index: 900;            
         }
 
             .shopwrap h1 {
@@ -122,13 +24,18 @@
                 text-align: center;
             }
 
-        .shopnav {
-            height: 55px;
+        .shopnav {           
+            height: 55px; width:1200px;
             border-bottom: 1px solid #e6e4e4;
+            top: 80px;
+            background-color: white;        
+            position: sticky;
+            z-index:90;                
         }
+        
         /*nav메뉴 CSS*/
         .navmenu > ul > li {
-            display: inline-block; float: left;
+            display: inline-block; float: left; 
             margin: 12px 20px 12px 0; font-size: 17px;}
 
         .shopcontainer {clear: both;}
@@ -137,12 +44,29 @@
 
         /*상품카테고리 세로선택 영역 시작*/
         aside {
-            width: 220px; float: left;           
+            width: 220px;
+            float: left;
+            top:120px;
         }
 
         .sidecate {
-            width: 220px; height: 761px;           
+            width: 220px;
+            background: #fff;
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            overflow-x: hidden;         
         }
+			
+			.sidecate::-webkit-scrollbar {width: 1px; /* 스크롤바의 폭 지정 */}
+            .sidecate::-webkit-scrollbar-thumb {
+                background-color: rgba(255, 255, 255, 0); /* 스크롤바 색상을 투명하게 설정 */
+            }
+            .sidecate::-webkit-scrollbar-track {
+                background-color: rgba(255, 255, 255, 0); /* 스크롤바 배경색을 투명하게 설정 */
+            }
+
 
             .sidecate h4 { /*상품 세로선택영역 숨겨진 div CHERK CSS 시작*/
                 width: 200px; height: 52px; margin-top: 25px;
@@ -326,124 +250,13 @@
             }
             /*체크박스 버튼 젤리 애니매이션 효과 CSS 종료*/
 
-	/*푸터 CSS 시작*/
-	.footerwrap{
-		clear:both;		
-		margin:0 auto;
-		border-top:1px solid #999;
-		width:1295px; height:543px;		
-	}
 	
-	footer {
-		box-sizing:border-box;
-		padding:50px 0;
-		width:1200px; height:543px;
-		margin:0 auto;
-	}
-		
-	.servicearea {
-		margin-bottom:30px;
-	}
-	
-	.customerinfo {
-		width:300px; float:right; 
-		font-size:13px; 
-		color:#777;
-		}
-	.customerinfo h3{
-		font-size:19px; margin-bottom:10px;
-		color:#000;
-	}
-	
-	.footerul {
-		float:left; margin-right:150px;
-		}
-	
-	.footerul li {
-		margin:10px 0;
-		
-	}
-	
-	.footerul li a{
-		display:block;
-		color:#777;
-		}	
-	.servicearea:after {
-	    clear: both;
-	    content: '';
-	    display: block;
-	    }
-	
-	.companyinfo {
-		border-top:1px solid #999;
-		}
-	
-	.companyinfo p {
-		font-size:13px;	color:#777; width:700px;
-		margin-bottom:20px; 	
-		}
-	.footerul2 {
-		margin:25px 0;
-	}
-		    
-	.footerul2 li{
-		float:left; font-size:16px; margin-right:15px;
-		} 
-	
-	.footerul2 li:nth-child(5){
-		font-weight:bold;
-	}   
-		
-	.footerul2:after {
-	    clear: both;
-	    content: '';
-	    display: block;
-	    }
-	    
-	.footernotice{
-		width:700px; font-size:13px;
-		color:#777; 
-		}
-	.footernotice p{
-		margin:10px 0; color:#000; font-size:15px; font-weight:bold;
-	}
-	
-	.questionbtn {
-		background-color:#000; color:#fff; border:0 solid; padding:10px;  font-weight: bold;
-		margin-top:20px; width:180px;
-	}
-	.questionbtn a{
-		display:block;
-	}	
-	/*푸터 CSS 종료*/
 </style>
 
 </head>
+<%@ include file="testshopheader_sh.jsp"%>
 <body>
-<div id="headerApp">
-        <div class="headerwrap">
-            <header>
-                <div class="loginmenulist">
-                    <ul>
-                        <li class="loginbtn" v-if="loginOut != '' "><a href="login.do">로그아웃</a></li>
-                        <li class="loginbtn" v-else><a href="login.do">로그인</a></li>
-                        <li class="#"><a href="#">장바구니</a></li>
-                        <li class="#"><a href="#">관심상품</a></li>
-                        <li class="#"><a href="mypage.do">마이페이지</a></li>
-                        <li class="#"><a href="faq.do">고객센터</a></li>
-                    </ul>
-                </div>
-                <div class="headermainlogo">
-                    <h1><a href="#">CrayoN</a></h1>
-                    <ul class="headermenu">
-                        <li><a href="testrankingpage.do">HOME</a></li>
-                        <li><a href="#">STYLE</a></li>
-                        <li><a href="testshopping.do">SHOP</a></li>                   
-                        <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    </ul>
-                </div>
-            </header>
-        </div>
+	<div id="headerApp">
         <div class="shopwrap">
             <!-- 쇼핑 페이지 전체감싸기 태그.  쇼핑 메뉴, 슬라이드 브랜드 선택 영역, 세로 상세품목 선택영역, 상품전시 영역 시작 -->
             <h1>SHOP</h1>
@@ -984,56 +797,10 @@
                 </div><!--상품전시 영역 종료-->
             </div><!--세로 상세품목 선택영역, 상품전시 영역 시작-->
         </div><!-- 쇼핑 페이지 전체감싸기 태그, 슬라이드 메뉴, 세로 메뉴, 상품전시 영역 종료 -->
-    </div>
-
-
-
-		<div class="footerwrap">
-		<footer>
-		<div class="servicearea">
-			<div class="customerinfo">
-				<h3>고객센터 1588-7813</h3>
-				<p>운영시간 평일 11:00 - 18:00 (토 일, 공휴일 휴무)  점심시간 평일 13:00 - 14:00</p>
-				<p>1:1 문의하기는 앱에서만 가능합니다.</p>
-				<button class="questionbtn"><a href="#">자주묻는질문</a></button>
-			</div>
-			<div>
-				<ul class="footerul">
-					<h3>이용안내</h3>
-					<li><a href="#">검수기준</a></li>
-					<li><a href="#">이용정책</a></li>
-					<li><a href="#">페널티 정책</a></li>
-					<li><a href="#">커뮤니티 가이드라인</a></li>
-				</ul>
-			</div>
-			<div>
-				<ul class="footerul">
-					<h3>고객지원</h3>
-					<li><a href="#">공지사항</a></li>
-					<li><a href="#">서비스 소개</a></li>
-					<li><a href="#">스토어 안내</a></li>
-					<li><a href="#">판매자 방문접수</a></li>
-				</ul>
-			</div>
-			</div>
-		<div class="companyinfo">
-			<ul class="footerul2">
-				<li><a href="#">회사소개</a></li>
-				<li><a href="#">인재채용</a></li>
-				<li><a href="#">제휴제안</a></li>
-				<li><a href="#">이용약관</a></li>
-				<li><a href="#">개인정보처리방침</a></li>
-			</ul>
-			<p>크림 주식회사 · 대표 김창욱사업자등록번호 : 570-88-01618 사업자정보확인통신판매업 : 제 2021-성남분당C-0093호사업장소재지 : 경기도 성남시 분당구 분당내곡로 131 판교테크원 타워1, 8층호스팅 서비스 : 네이버 클라우드</p>
-		</div>
-		<div class="footernotice">
-			<p>신한은행 채무지급보증 안내</p>
-			당사는 고객님의 현금 결제 금액에 대해 신한은행과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다.서비스가입 사실 확인
-			크림(주)는 통신판매 중개자로서 통신판매의 당사자가 아닙니다. 본 상품은 개별판매자가 등록한 상품으로 상품, 상품정보, 거래에 관한 의무와 책임은 각 판매자에게 있습니다. 단, 이용약관 및 정책, 기타 거래 체결 과정에서 고지하는 내용 등에 따라 검수하고 보증하는 내용에 대한 책임은 크림(주)에 있습니다.
-		</div>
-	</footer>
+    </div>	
 	</div>
 </body>
+<%@include file="testfooter.jsp" %>
 </html>
 <script>
 var headerApp = new Vue({
@@ -1104,6 +871,22 @@ var headerApp = new Vue({
    $(function () {
         $("input[type='checkbox']").change(function () {
             $(this).next("label").find(".eventcheckbox").toggleClass("checked");
+        });
+   	}); 
+        
+   $(document).ready(function () {
+        // 스크롤 이벤트 처리
+        $(window).scroll(function () {
+            var scrollTop = $(window).scrollTop(); // 스크롤 위치 가져오기 
+            var sidecateHeight = $(".sidecate").height();
+
+            // shopnav 위치 조정
+            if (scrollTop > 80) {
+                $(".shopnav").css({ "position": "fixed", "top": "80" });
+            } else {
+                $(".shopnav").css({ "position": "static", "top": "auto" });
+            }
+                        
         });
    });
  

@@ -13,7 +13,7 @@
     li {list-style: none;}
     a {text-decoration: none; color: inherit;}
     img {max-width: 100%; vertical-align: top;}
-
+	
 	/*헤더영역 전체 CSS 시작*/
 	.headerwrap{
 		width:100%; height:100px; border-bottom: 1px solid #ccc;
@@ -97,7 +97,7 @@
 				</ul>
 			</div><!--헤더 로그인 메뉴영역 종료-->
 			<div class="headermainlogo"><!--헤더 대분류 메뉴영역 시작-->
-				<h1><a href="#">CrayoN</a></h1>
+				<h1><a href="testmainslider.do">CrayoN</a></h1>
 				<ul class="headermenu">
 					<li><a href="testmainslider.do">HOME</a></li>
 					<li><a href="testrankingpage.do">STYLE</a></li>
@@ -110,14 +110,14 @@
 					<ul class="headerKindList">
 						<!-- 헤더 종류별 리스트 -->		
 						<li>
-							<a href="#">랭킹</a>
+							<a href="testrankingpage.do">랭킹</a>
 						</li>
 		
 						<li>
-							<a href="#">남성</a>
+							<a href="testmslider.do">남성</a>
 						</li>		
 						<li>
-							<a href="#">여성</a>
+							<a href="testwslider.do">여성</a>
 						</li>		
 						<li>
 							<a href="#">신발</a>
