@@ -8,9 +8,11 @@ import com.example.sample1.model.Test;
 
 public interface ProductService {
 	//상품 등록
-	int addProduct(HashMap<String, Object> map);
+	HashMap<String, Object> addProduct(HashMap<String, Object> map);
 	//상품 이미지 업로드
 	int addProductImg(HashMap<String, Object> map);
+	//상품 이미지 조회
+	Product viewProductImg(HashMap<String, Object> map);
 	//상품 브랜드 조회
 	List<Product> viewBrand(HashMap<String, Object> map);
 	//브랜드 이름 직접입력

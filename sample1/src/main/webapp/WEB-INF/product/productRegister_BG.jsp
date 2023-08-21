@@ -19,18 +19,28 @@
 	#b, #s {
 		opacity : 0;
 	}
+	#main_info, #main_img {
+		float : left;
+	}
+	#add_img {
+		display : inline-block;
+	}
 </style>
 </head>
 <body>
 <div id="app">
-	<div>
+	<div id="main_img">
+		<div id="add_img">
+			<input type="file" name="file1" id="file1" accept=".gif, .jpg, .png">
+			<button @click="upload">상품이미지등록</button>
+		</div>
+	</div>
+	<div id="main_info">
 		<div>
 			<input v-model="product.sellBuy" type="radio" value="B" id="b"><label for="B">구매</label>
 			<input v-model="product.sellBuy" type="radio" value="S" id="s"><label for="S">판매</label>
 		</div>
-		<div>
-			<input type="file"  id="file1" name="file1" accept=".gif, .jpg, .png">
-		</div>
+		
 		<div><input v-model="product.pName" type="text" placeholder="상품이름"></div>
 		<div><input v-model="product.pModel" type="text" placeholder="모델번호"></div>
 		<div>
@@ -103,8 +113,8 @@
 		</div>
 		<div>
 			<select v-model="product.brand" @change="handleBrandChange"	>
-				<option value="100">브랜드</option>
-				<option v-for="item in list" :value="item.productBrand">{{item.brandName}}</option>
+				<option value="a">브랜드</option>
+				<option v-for="item in list" :value="item.pBrand">{{item.brandName}}</option>
 				<option value="0">직접입력</option>
 			</select>
 			<div v-if="showDirectInput">
@@ -113,7 +123,9 @@
 			</div>
 		</div>
 	</div>
-	<div>
+		
+	
+	<div id="btn_add">
 		<button @click="fnAddProduct">상품등록</button>
 	</div>
 </div>
@@ -198,28 +210,10 @@ var app = new Vue({
 				type : "POST",
 				data : nparmap,
 				success : function(data){
-					var form = new FormData();
-					 form.append( "file1",  $("#file1")[0].files[0] );
-		       	     form.append( "productName",  self.product.pName); // pk
-		           	 self.upload(form);
-		       	     console.log(form);
+					console.log(self.item.pBrand);
 					alert("등록 완료");
 				}
 			});
-		},
-		// 파일 업로드
-	    upload: function(form) {
-		    var self = this;
-		    $.ajax({
-		        url: "fileUpload.dox",
-		        type: "POST",
-		        processData: false,
-		        contentType: false,
-		        data: form,
-		        success:function(response) { 
-		        	   
-		           }
-		    });
 		},
 		// 브랜드이름 직접입력 추가
 		fnAddBrand : function (){
@@ -248,6 +242,23 @@ var app = new Vue({
 					console.log(self.list);
 				}
 			});
+		},
+		// 파일 업로드
+	    upload : function(form){
+	    	var self = this;
+	         $.ajax({
+	             url : "/fileUpload.dox"
+	           , type : "POST"
+	           , processData : false
+	           , contentType : false
+	           , data : form
+	           , success:function(response) { 
+	        	   var form = new FormData();
+	       	        form.append( "file1",  $("#file1")[0].files[0] );
+	       	     	form.append( "pName",  data.pName); // pk
+	           		self.upload(form); 
+	           }
+	       });
 		}
 	}, // methods
 	created : function() {

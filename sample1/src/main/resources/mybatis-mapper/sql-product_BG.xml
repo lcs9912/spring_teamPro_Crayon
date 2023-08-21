@@ -2,33 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.sample1.mapper.ProductMapper">
+<mapper namespace="com.example.sample1.mapper.ProductMapper_BG">
 	<!-- 상품등록 -->
 	<insert id="insertProduct" parameterType="hashmap">
 		INSERT INTO T1_PRODUCT_UPDATE
-			(PRODUCT_MODEL, PRODUCT_NAME, PRODUCT_SIZE, PRODUCT_PRICE, PRODUCT_UPDATE, USER_ID, SELLBUY, PRODUCT_COLOR,
+			(PRODUCT_MODEL, PRODUCT_NAME, PRODUCT_SIZE, PRODUCT_PRICE, PRODUCT_COLOR,
 				PRODUCT_LAUNCH_PRICE, PRODUCT_CATEGORIE1, PRODUCT_CATEGORIE2,PRODUCT_BRAND)
 		VALUES
-			(#{pModel}, #{pName}, #{pSize}, #{pPrice}, CURRENT_TIMESTAMP, #{uId}, #{sellBuy}, #{pColor}, #{launch}, #{pCategorie1}, #{pCategorie2}, #{brand})
+			(#{pModel}, #{pName}, #{pSize}, #{pPrice}, #{pColor}, #{launch}, #{pCategorie1}, #{pCategorie2}, #{brand})
 	</insert>
 	
 	<!-- 상품이미지 업로드 -->
 	<insert id="insertProductImg" parameterType="hashmap">
-		INSERT INTO T1_PRODUCT_IMG(PRODUCT_NAME, P_IMG_PATH, P_IMG_NAME)
+		INSERT INTO T1_PRODUCT_IMG (PRODUCT_NAME, P_IMG_PATH, P_IMG_NAME)
 		VALUES
 			(#{pName}, #{pImgPath}, #{pImgName})
 	</insert>
-	
-	<!-- 상품 이미지 불러오기 -->
-	<select id="selectProductImg" parameterType="hashmap"
-		resultType="com.example.sample1.model.Product">
-		SELECT U.PRODUCT_NAME, I.P_IMG_PATH, I.P_IMG_NAME
-		FROM T1_PRODUCT_UPDATE U
-		INNER JOIN T1_PRODUCT_IMG AS I
-			ON U.PRODUCT_NAME = I.PRODUCT_NAME
-		WHERE I.PRODUCT_NAME = #{pName}
-		LIMIT 1
-	</select>
 	
 	<!-- 브랜드 조회 -->
 	<select id="selectBrand" resultType="com.example.sample1.model.Product">

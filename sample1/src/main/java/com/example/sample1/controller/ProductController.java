@@ -1,5 +1,6 @@
 package com.example.sample1.controller;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.sample1.model.Product;
 import com.example.sample1.service.ProductService;
 import com.google.gson.Gson;
-import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -88,6 +88,7 @@ public class ProductController {
 		resultMap.put("brand", list);
 		return new Gson().toJson(resultMap);
 	}
+	
 	// 브랜드 이름 직접입력
 	@RequestMapping(value = "/addBrand.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -96,67 +97,68 @@ public class ProductController {
 		productService.addBrand(map);
 		return new Gson().toJson(resultMap);
 	}
+	
 	// 상품 등록 
 	@RequestMapping(value = "/addProduct.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String addProduct(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		productService.addProduct(map);
+		resultMap = productService.addProduct(map);
 		return new Gson().toJson(resultMap);
 	}
+	
 	// 상품이미지 업로드
-	@RequestMapping("/fileUpload.dox")
-    public String result(@RequestParam("file1") MultipartFile multi, @RequestParam("idx") int idx, HttpServletRequest request,HttpServletResponse response, Model model)
-    {
-		/*
-		 * String url = null; String path="c:\\img"; try {
-		 * 
-		 * //String uploadpath = request.getServletContext().getRealPath(path); String
-		 * uploadpath = path; String originFilename = multi.getOriginalFilename();
-		 * String extName =
-		 * originFilename.substring(originFilename.lastIndexOf("."),originFilename.
-		 * length()); long size = multi.getSize(); String saveFileName =
-		 * genSaveFileName(extName);
-		 * 
-		 * System.out.println("uploadpath : " + uploadpath);
-		 * System.out.println("originFilename : " + originFilename);
-		 * System.out.println("extensionName : " + extName);
-		 * System.out.println("size : " + size); System.out.println("saveFileName : " +
-		 * saveFileName); String path2 = System.getProperty("user.dir");
-		 * System.out.println("Working Directory = " + path2 + "\\src\\webapp\\img");
-		 * if(!multi.isEmpty()) { File file = new File(path2 +
-		 * "\\src\\main\\webapp\\img", saveFileName); multi.transferTo(file);
-		 * 
-		 * HashMap<String, Object> map = new HashMap<String, Object>();
-		 * map.put("filename", saveFileName); map.put("path", "../img/" + saveFileName);
-		 * map.put("idx", idx);
-		 * 
-		 * // insert 쿼리 실행 productService.addProductImg(map);
-		 * 
-		 * model.addAttribute("filename", multi.getOriginalFilename());
-		 * model.addAttribute("uploadPath", file.getAbsolutePath());
-		 * 
-		 * return "redirect:productRegister.do"; } }catch(Exception e) {
-		 * System.out.println(e); }
-		 */
-        return "redirect:productRegister.do";
-    }
+	@RequestMapping(value = "/fileUpload.dox")
+	public String result(@RequestParam("file1") MultipartFile multi, @RequestParam("productName") String productName, HttpServletRequest request, HttpServletResponse response, Model model) {
+	    String url = null;
+	    String path = "c:\\img";
+	    try {
+	        String uploadpath = path;
+	        String originFilename = multi.getOriginalFilename();
+	        String extName = originFilename.substring(originFilename.lastIndexOf("."), originFilename.length());
+	        long size = multi.getSize();
+	        String saveFileName = genSaveFileName(extName);
+
+	        String path2 = System.getProperty("user.dir");
+	        if (!multi.isEmpty()) {
+	        	File file = new File(path2 + "\\src\\main\\webapp\\img\\product", saveFileName);
+	            multi.transferTo(file);
+
+	            HashMap<String, Object> map = new HashMap<String, Object>();	
+	            map.put("pImgName", saveFileName);
+	            map.put("pImgPath", "..\\img\\product\\" + saveFileName); // Set the correct image path
+	            map.put("pName", productName);
+
+	            // Insert query execution
+	            productService.addProductImg(map);
+
+	            model.addAttribute("pImgName", multi.getOriginalFilename());
+	            model.addAttribute("uploadPath", file.getAbsolutePath());
+
+	            return "redirect:mypage.do";
+	        }
+	    } catch (Exception e) {
+	        System.out.println(e);
+	    }
+	    return "redirect:mypage.do";
+	}
+	
 	// 현재 시간을 기준으로 파일 이름 생성
     private String genSaveFileName(String extName) {
-        String fileName = "";
+        String pImgName = "";
         
         Calendar calendar = Calendar.getInstance();
-        fileName += calendar.get(Calendar.YEAR);
-        fileName += calendar.get(Calendar.MONTH);
-        fileName += calendar.get(Calendar.DATE);
-        fileName += calendar.get(Calendar.HOUR);
-        fileName += calendar.get(Calendar.MINUTE);
-        fileName += calendar.get(Calendar.SECOND);
-        fileName += calendar.get(Calendar.MILLISECOND);
-        fileName += extName;
+        pImgName += calendar.get(Calendar.YEAR);
+        pImgName += calendar.get(Calendar.MONTH);
+        pImgName += calendar.get(Calendar.DATE);
+        pImgName += calendar.get(Calendar.HOUR);
+        pImgName += calendar.get(Calendar.MINUTE);
+        pImgName += calendar.get(Calendar.SECOND);
+        pImgName += calendar.get(Calendar.MILLISECOND);
+        pImgName += extName;
         
-        return fileName;
-    }//여기까지 지우셈
+        return pImgName;
+    }
     
     // 상품 상세정보
  	@RequestMapping(value = "/productInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -165,6 +167,15 @@ public class ProductController {
  		HashMap<String, Object> resultMap = new HashMap<String, Object>();
  		resultMap = productService.searchProductInfo(map);
  		
+ 		return new Gson().toJson(resultMap);
+ 	}
+ 	// 상품 이미지 보여주기
+ 	@RequestMapping(value = "/productImg.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@ResponseBody
+ 	public String productImg(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		Product img =productService.viewProductImg(map);
+ 		resultMap.put("img",img);
  		return new Gson().toJson(resultMap);
  	}
 }

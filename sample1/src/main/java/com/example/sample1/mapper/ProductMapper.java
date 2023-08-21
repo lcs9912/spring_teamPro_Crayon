@@ -13,6 +13,8 @@ public interface ProductMapper {
 	int insertProduct(HashMap<String, Object> map);
 	//상품 이미지 업로드
 	int insertProductImg(HashMap<String, Object> map);
+	//상품 이미지 조회
+	Product selectProductImg(HashMap<String, Object> map);
 	//상품 브랜드 조회
 	List<Product> selectBrand(HashMap<String, Object> map);
 	//브랜드 이름 직접입력

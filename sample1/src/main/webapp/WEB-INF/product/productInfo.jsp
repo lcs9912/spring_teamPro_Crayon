@@ -443,7 +443,7 @@ cursor: pointer;
 	</div>
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-		<img src="../img/product/help.png">  <!-- 상품 이미지 -->
+		<img :src="img.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
 		</div>
 		
 		
@@ -469,6 +469,10 @@ var app = new Vue({
         apexchart: VueApexCharts,
       },
     data: {
+    	img : {},
+    	pImgPath : "",
+    	pName : "Stussy 8 Ball T-Shirt White - 22SS",
+    	
         model: "",
         scrollPosition: 0,
         sessionId : "${sessionId}",
@@ -478,7 +482,7 @@ var app = new Vue({
         minSell : "", // 즉시 판매가
         minBuy : "", // 즉시 구매가
         proNum : 7, // 상품 번호
-        proName : "Nike Air Force 1", // 상품 이름
+      
         interestFlg : false, // 관심상품 조회
 		series: [{
             name: [],
@@ -570,7 +574,6 @@ var app = new Vue({
                  }
              }); 
     	},
-    	
     	// 즉시 구매 판매 가격 
     	fnSellBuyMin : function(){
     		var self = this;
@@ -684,7 +687,21 @@ var app = new Vue({
         handleScroll: function () {
             this.scrollPosition = window.scrollY;
         },
-        
+        //상품 사진 불러오기
+        fnGetImg : function() {
+        	var self = this;
+        	var nparmap = {pName : self.pName};
+        	$.ajax({
+				url : "productImg.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data){
+					console.log(data);
+					self.img = data.img;
+				}
+			});
+		},
         
         // 차트 리스트
         fnGetChart : function(){
@@ -736,7 +753,7 @@ var app = new Vue({
     created: function () {
         var self = this;
         self.fnProList();
-        
+        self.fnGetImg();
         window.addEventListener('scroll', this.handleScroll);
         
     },

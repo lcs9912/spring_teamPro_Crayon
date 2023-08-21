@@ -3,7 +3,7 @@ package com.example.sample1.model;
 import lombok.Data;
 
 @Data
-public class Product {
+public class Product_BG {
 	private String productSellNumber; // 상품등록번호(거래번호,주문번호)
 	private String productName; // 상품이름
 	private String productSize; // 상품사이즈
@@ -32,12 +32,13 @@ public class Product {
 	
 	private String brandName; // 브랜드이름
 
-	private String pImgPath;
-	private String pImgName;
-	
 	
 	private int sellminprice; // 즉시 판매가격
 	private int buyminprice; // 즉시 구매가격
+	
+	//T1_PRODUCT_IMG 테이블
+	private String pImgPath;
+	private String pImgName;
 	
 	
 }
