@@ -336,7 +336,7 @@ margin-top:10px;
 	</div>
 	
 	<div class="noticegroup"  style="border:none;">
-	<div class="noticeheader" style="font-weight:bold; width:100%;">구매 조건을 모두 확인하였으며, 거래 진행에 동의합니다.<input class="checkarea" type="checkbox" style="float:right; clear:both;"></div>
+	<div class="noticeheader" style="font-weight:bold; width:100%; font-size:15px;">구매 조건을 모두 확인하였으며, 거래 진행에 동의합니다.<input class="checkarea" type="checkbox" style="float:right; clear:both;"></div>
 
 </div>
 
