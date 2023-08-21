@@ -110,7 +110,6 @@ margin-right : 5px;
 
 }
 .paymentbtn{
-text-align:center;
 margin-bottom:15px;
 }
 .paymentbtn button{
@@ -129,15 +128,11 @@ border: 1px solid #e9e9e9;
 margin-top:15px;
 }
 
-        .banking {
-            display: none; 
-        }
+
         .carding {
             display: none;
         }
-        .paymentbtn button {
-            display: none; 
-        }
+
 </style>
 
 </head>
@@ -187,7 +182,7 @@ margin-top:15px;
 
 <div class="paykindselect">
 <div style="margin-bottom:15px;"><h4>결제방식</h4></div>
-<input type="radio" name="payselect" onclick="showBanking()">계좌이체
+<input type="radio" name="payselect" onclick="showBanking()" checked>계좌이체
 <input type="radio" name="payselect" onclick="showCarding()">카드결제
 </div>
 
