@@ -31,6 +31,7 @@
 			<th>참여인원</th>
 			<th>시작날짜</th>
 			<th>마감날짜</th>
+			<th>종료버튼</th>
 			
 		</tr>
 		<tr v-for="item in list">
@@ -40,6 +41,8 @@
 			<td>{{item.usercnt}}</td>			
 			<td>{{item.auctionStartDate}}</td>
 			<td>{{item.auctionEndDate}}</td>
+			<td v-if="isAuctionExpired(item)"><button @click="fnAuctionEnd(item)">종료</button></td>
+			<td v-else></td>
 		</tr>
 	</table>
 	<!-- <div v-if="status=='U'"> -->
@@ -59,7 +62,9 @@ var app = new Vue({
 		uId : "${sessionId}",
 		Name : "${sessionName}",
 		status : "${sessionStatus}",
-		selectComment : [] 
+		selectComment : [] ,
+		endDateTimestamp : "",
+		currentTimestamp : "",
 	},// data
 	methods : {
 		fnGetList : function(){
@@ -73,7 +78,6 @@ var app = new Vue({
                 success : function(data) { 
                 	self.list = data.list;
                 	self.list2 = data.list2;           
-                	console.log(self.list2);
                 }
             }); 
         },
@@ -86,12 +90,44 @@ var app = new Vue({
         	var self = this;
         	location.href = "update.do";
         },
-        
+        fnAuctionEnd : function(item){
+       	   var self = this;
+              var nparmap = {auctionNumber : item.auctionNumber};
+              $.ajax({
+                  url : "/auction/auction/end.dox",
+                  dataType:"json",	
+                  type : "POST", 
+                  data : nparmap,
+                  success : function(data) { 
+               	   alert("ss");
+                  }
+              }); 
+         },
+         isAuctionExpired: function(item) {
+             var currentTimestamp = new Date().getTime();
+             var endDateTimestamp = new Date(item.auctionEndDate).getTime(); 
+             return endDateTimestamp < currentTimestamp;
+         },
+         fnUpdateDataPeriodically: function () {
+     	      var self = this;
+     	     var endDateTimestamp = new Date(item.auctionEndDate).getTime();
+     	      // 매 5초마다 실행하도록 설정 (1000ms = 1초)
+     	      setInterval(function () {
+     	        // 서버에 요청하여 데이터 업데이트
+     	    	 var currentTimestamp = new Date().getTime();
+     	    	
+     	      }, 5000); // 5초마다
+     	      
+     	      // 페이지 로딩 시에도 데이터 초기화를 위해 한 번 실행
+     	      self.fnGetList();
+     	},
+  
         
 	}, // methods
 	created : function() {
 		var self = this;
 		self.fnGetList();
+		 self.fnUpdateDataPeriodically(); // 데이터를 일정 간격으로 업데이트하는 함수 호출 
 	}// created
 });
 </script>

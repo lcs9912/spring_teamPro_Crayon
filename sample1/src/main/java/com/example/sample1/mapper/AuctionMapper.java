@@ -25,5 +25,13 @@ public interface AuctionMapper {
 	
 	int insertAuctionP (HashMap<String, Object> map);
 	
+	List<Auction>selectAuctionUserJoinList(HashMap<String, Object> map);
 	
+	int insertAuctionLike (HashMap<String, Object> map);
+	
+	int deleteAuctionLike (HashMap<String, Object> map);
+	
+	int endAuction (HashMap<String, Object> map);
+	
+	int insertAuctionResult (HashMap<String, Object> map);
 }

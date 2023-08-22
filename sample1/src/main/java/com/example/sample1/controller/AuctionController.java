@@ -122,4 +122,38 @@ public class AuctionController {
 				auctionService.updateAuctionP(map);
 				return new Gson().toJson(resultMap);
 			}	
+	//Aution 리스트 출력
+	@RequestMapping(value = "/auction/user/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String auctionUserList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	    HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	    List<Auction> list = auctionService.viewJoinUser(map);
+	    resultMap.put("list", list);
+	   return new Gson().toJson(resultMap);
+	}
+	//Aution 물품 등록
+	@RequestMapping(value = "/auction/user/like.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String auctionLike(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		auctionService.updateAuctionLike(map);
+		return new Gson().toJson(resultMap);
+	}			
+	//Aution 물품 등록
+		@RequestMapping(value = "/auction/user/unlike.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String auctionUnLike(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			auctionService.deleteAuctionLike(map);
+			return new Gson().toJson(resultMap);
+		}		
+	//Aution 종료+ 결과 등록
+	@RequestMapping(value = "/auction/auction/end.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String auctionEnd(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		auctionService.endAuction(map);
+		return new Gson().toJson(resultMap);
+	}			
+		
 }

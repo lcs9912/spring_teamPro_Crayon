@@ -23,4 +23,13 @@ public interface AuctionService {
 	
 	int updateAuctionP(HashMap<String, Object> map);
 	
+	List<Auction> viewJoinUser(HashMap<String, Object> map);
+	
+	int updateAuctionLike(HashMap<String, Object> map);
+
+	int deleteAuctionLike(HashMap<String, Object> map);
+	
+	int endAuction(HashMap<String, Object> map);
+	
+		
 }

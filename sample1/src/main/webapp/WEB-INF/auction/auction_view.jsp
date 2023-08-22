@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <title>경매상세페이지</title>
 <style>
-	a{
-		text-decoration: none;
-	}
+
 </style>
 </head>
+<%@ include file="../header/header1.jsp"%>
+<%@ include file="../header/header2.jsp"%>
 <body>
 <div id="app">
 	<!-- <div>이미지 : {{info.img}}</div> -->
@@ -25,12 +25,27 @@
 	<div>시작시간 : {{info.auctionStartDate}}</div>
 	<div>마감시간 : {{info.auctionEndDate}}</div>
 	<div>참여자수  : {{info.usercnt}}</div>
-	<div v-if="info.duplicateStatus=='N'">
+	<div v-if="info.aLikeUser==null">
+	<button @click="fnAuctionLike()">좋아요 </button>
+	</div>
+	<div v-else>
+	<button @click="fnAuctionUnLike()">좋아요해제 </button>
+	</div>
+	
+	<div v-if="info.duplicateStatus=='N'||info.duplicateStatus==null">
 	<button @click="fnAuctionJoin()">참여하기 </button> 
 	</div>
 	<div v-else>
 	<button @click="fnAuctionCheck()">참여확인하기 </button>
 	</div>
+	<table >
+		<tr v-for="item in list">
+			<td>아이디: {{item.userId}} : </td>
+			<td>참가시간 : {{item.auctionDate}} </td>	
+		</tr>
+		
+	</table> 
+	
 </div>
 </body>
 </html>
@@ -45,7 +60,8 @@ var app = new Vue({
 		uId : "${sessionId}",
 		Name : "${sessionName}",
 		status : "${sessionStatus}",
-		selectItem : []
+		selectItem : [],
+		
 		
 	},// data
 	methods : {
@@ -70,15 +86,59 @@ var app = new Vue({
         fnAuctionCheck : function(){
             var self = this;
            	$.pageChange("check.do", {auctionNumber : self.auctionNumber});    
-        }
-        
+        },
+        fnGetJoinList : function(){
+            var self = this;
+            var nparmap = {auctionNumber : self.auctionNumber};
+            $.ajax({
+                url : "/auction/user/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	console.log(data);
+                	self.list = data.list;
+                }
+            }); 
+        },
+        fnAuctionLike : function(){
+        	 var self = this;
+             var nparmap = {auctionNumber : self.auctionNumber, uId : self.uId};
+             $.ajax({
+                 url : "/auction/user/like.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) { 
+                	 alert("관심등록 완료.");
+                 	
+                 }
+             }); 
+        },
+        fnAuctionUnLike : function(){
+       	 var self = this;
+            var nparmap = {auctionNumber : self.auctionNumber, uId : self.uId};
+            $.ajax({
+                url : "/auction/user/unlike.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+               	 alert("관심등록 해제완료.");
+                	
+                }
+            }); 
+       },
+      
      
       
 	}, // methods
 	created : function() {
 		var self = this;
 		 self.fnGetList();
-
+		 self.fnGetJoinList();
+		 
+	  
 		
 	}// created
 });

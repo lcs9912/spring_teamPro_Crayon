@@ -17,8 +17,17 @@
 		SELECT *, COUNT(USER_ID)USERCNT
 		FROM T1_AUCTION A
 		LEFT JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
+		LEFT JOIN T1_AUCTION_LIKE L ON A.AUCTION_NUMBER = L.AUCTION_NUMBER
 		WHERE A.AUCTION_NUMBER = #{auctionNumber} 
 		GROUP BY A.AUCTION_NUMBER	
+		UNION
+		SELECT *, COUNT(USER_ID)USERCNT
+		FROM T1_AUCTION A
+		LEFT JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER
+		LEFT JOIN T1_AUCTION_LIKE L ON A.AUCTION_NUMBER = L.AUCTION_NUMBER
+		WHERE A.AUCTION_NUMBER = #{auctionNumber} AND U.USER_ID=#{uId} 
+		GROUP BY A.AUCTION_NUMBER	
+		LIMIT 1
 	</select>
 	
 	<!-- 경매 입찰 등록하기 -->
@@ -55,5 +64,34 @@
 		INSERT INTO T1_AUCTION
 		VALUES (NULL,#{productName},#{productSize},#{auctionStartPrice},#{auctionMaxPrice},#{auctionStartDate},#{auctionEndDate},'N')
 	</insert>
+	
+	<!-- 경매 참가자 리스트 불러오기  -->
+	<select id="selectAuctionUserJoinList" parameterType="hashmap" resultType="com.example.sample1.model.Auction">
+    SELECT AUCTION_NUMBER, USER_ID , USER_POINT, AUCTION_DATE
+    FROM T1_AUCTION_USER
+    WHERE AUCTION_NUMBER = #{auctionNumber}
+	</select>
+	<!-- 경매물품 관심 등록하기 -->
+	<insert id="insertAuctionLike" parameterType="hashmap">
+		INSERT INTO T1_AUCTION_LIKE
+		VALUES (#{auctionNumber},#{uId},CURDATE())
+	</insert>
+	<delete id="deleteAuctionLike" parameterType="hashmap">
+	 DELETE FROM T1_AUCTION_LIKE
+    WHERE AUCTION_NUMBER = #{auctionNumber} AND A_LIKE_USER = #{uId}
+	</delete>
+	
+	<update id="endAuction" parameterType="hashmap">
+		UPDATE T1_AUCTION
+		SET
+			AUCTION_ENDYN='Y'
+		WHERE AUCTION_NUMBER = #{auctionNumber} 
+	</update>
+	<insert id="insertAuctionResult" parameterType="hashmap">
+		INSERT INTO T1_AUCTION_RESULT
+		VALUES (#{auctionNumber},#{auctionProduct},#{uId},#{AUCPRI},CURDATE())
+	</insert>
+	
+	
 	
 </mapper>

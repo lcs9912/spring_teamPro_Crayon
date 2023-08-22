@@ -18,37 +18,31 @@ public class AuctionServiceImpl implements AuctionService{
 
 	@Override
 	public List<Auction> searchAuctionList(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		return auctionMapper.selectAuctionList(map);
 	}
 
 	@Override
 	public Auction searchAuctionInfo(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		return auctionMapper.selectAuctionInfo(map);
 	}
 
 	@Override
 	public int updateAuctionPrice(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		return auctionMapper.insertAuctionPrice(map);
 	}
 
 	@Override
 	public Auction searchAuctionCheck(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		return auctionMapper.selectAuctionCheck(map);
 	}
 
 	@Override
 	public Product searchProductInfo(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		return auctionMapper.selectProductInfo(map);
 	}
 
 	@Override
 	public List<Product> viewBrand(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		return auctionMapper.selectBrand(map);
 	}
 
@@ -57,6 +51,32 @@ public class AuctionServiceImpl implements AuctionService{
 		// TODO Auto-generated method stub
 		return auctionMapper.insertAuctionP(map);
 	}
+
+	@Override
+	public List<Auction> viewJoinUser(HashMap<String, Object> map) {
+	    return auctionMapper.selectAuctionUserJoinList(map);
+	}
+
+	@Override
+	public int updateAuctionLike(HashMap<String, Object> map) {
+		return auctionMapper.insertAuctionLike(map);
+		}
+
+	@Override
+	public int deleteAuctionLike(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return auctionMapper.deleteAuctionLike(map);
+	}
+
+	@Override
+	public int endAuction(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		auctionMapper.insertAuctionResult(map);
+		auctionMapper.endAuction(map);
+		return 0;
+	}
+
+
 
 	
 	

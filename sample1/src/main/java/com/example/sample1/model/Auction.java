@@ -20,8 +20,9 @@ public class Auction {
 	private String duplicateStatus; // 중복여부
 	//t1_auction_result	
 	private String auctionPrice; // 경매낙찰가격
-	
-
+	//t1_auction_like		
+	private String aLikeUser; // 관심유저
+	private String likeDate; // 등록날짜
 	
 	
 	
