@@ -42,15 +42,14 @@ input[type="radio"]{
 	.buylabel,.selllabel{
 	font-weight:bold;
 	display:inline-block;
-	border:1px solid black;
-	width:150px;
-	height:50px;
 	line-height:50px;
 	font-size:30px;
-	border-radius:10px;
+	
+	width:48%;
 	}
 	.selectarea{
-	margin-bottom:30px;
+	width:600px;
+	margin : 0 auto;
 	}
 	.selectfile{
 	margin-bottom:30px;
@@ -87,6 +86,21 @@ input[type="radio"]{
 	label{
 	width:150px;
 	}
+
+	.buybtn, .sellbtn{
+	width:100%;
+	height:50px;
+	color:white;
+	font-size:18px;
+	background-color:#E8E8E8;
+	}
+	.buybtn:hover{
+	background-color:tomato;
+	}
+	
+	.sellbtn:hover{
+	background-color:limegreen;
+	}
 </style>
 </head>
 <body>
@@ -94,11 +108,13 @@ input[type="radio"]{
 	<div class="area">
 	<div class="areaselect">
 	<div class="selectarea">
-		<div class="buylabel" style="margin-right:80px;">
-			<input type="radio" v-model="product.sellBuy" value="B" id="b"><label for="b" >구매</label>
+
+		<div class="buylabel">
+			<button class="buybtn" style="margin-right:-10px; margin-bottom:10px;">구매</button>
 			</div>
 		<div class="selllabel">
-			<input type="radio" v-model="product.sellBuy" value="S" id="s"><label for="s">판매</label>
+			<button class="sellbtn">판매</button>
+
 		</div>
 		</div>
 		
@@ -213,9 +229,11 @@ input[type="radio"]{
 	</div>
 </div>
 </div>
+</div>
 </body>
 </html>
 <script>
+
 var app = new Vue({
 	el : '#app',
 	data : {
@@ -351,4 +369,15 @@ var app = new Vue({
 		self.fnGetBrandName();
 	}// created
 });
+var buyButton = document.querySelector('.buybtn');
+var sellButton = document.querySelector('.sellbtn');
+buyButton.addEventListener('click', function() {
+    buyButton.style.backgroundColor = 'tomato';
+    sellButton.style.backgroundColor = '#E8E8E8';
+});
+sellButton.addEventListener('click', function() {
+    buyButton.style.backgroundColor = '#E8E8E8';
+    sellButton.style.backgroundColor = 'limegreen';
+});
+
 </script>
