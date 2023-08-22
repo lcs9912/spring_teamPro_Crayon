@@ -332,6 +332,7 @@ padding:10px 0px 0px 15px;
 	.startendtime{
 	width:100%;
 	text-align:center;
+	margin-bottom:10px;
 	}
 	.actionendtime{
 	border-top:1px solid #eee;
@@ -368,7 +369,7 @@ padding:10px 0px 0px 15px;
 		
 		
 		<div>
-		<p class="brandheader">{{proInfo.brandName}}</p>
+		<p class="brandheader">{{proInfo.brandName}} 1</p>
 		</div>
 		<div class="subtitle">
 		<p>{{proInfo.productName}}</p>
