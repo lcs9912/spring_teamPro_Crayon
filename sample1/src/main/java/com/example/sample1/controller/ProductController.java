@@ -72,10 +72,15 @@ public class ProductController {
 	public String nowbuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/product/nowbuy";
 	}
-	
+	// 결제 배송페이지
 	@RequestMapping("/payandpackage.do") 
 	public String payandpackage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/product/payandpackage";
+	}
+	// 경매 페이지
+	@RequestMapping("/productauction.do") 
+	public String productauction(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/productauction";
 	}
 	
 	//.dox
