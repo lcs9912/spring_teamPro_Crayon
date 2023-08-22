@@ -126,7 +126,7 @@
                 <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
                     <h1 class="innertext">
                         Luxury Item, Rare Goods!
-                    </h1>
+                    </h1>                    
                 </div>
                 <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
                     <h1 class="innertext">

@@ -29,122 +29,117 @@ a {	text-decoration:none;
 	color: inherit;
 	}
 
-.mypagewrap {
-	width:1200px; margin:0 auto;
-	clear:both; margin-top:150px; margin-bottom:50px;
-	}
-.mypagenav {
-	float:left; width:200px; color:#000;
-	}
-	
-.myinfo h2{
-		margin-bottom:20px;
-	}	
-
-	
-.myinfo h3{
-		margin:30px 0;
-	}	
-	
-.myinfo ul li{
-	margin:10px 0;
-	}	
-	
-
-.sailcontainer {float:left;}
-	.profilearea {
-		width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
+	.mypagewrap {
+		width:1200px; margin:50px auto;
+		clear:both; 
 		}
-		.profileinner1{
-			float:left; width: 100px; height:100px; margin:25px 40px;
+	.mypagenav {
+		float:left; width:200px; color:#000;
 		}
-		.profileinner2{
-			float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
-		}
-		.profileinner2 strong{
-			font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
-		}
-		.profileinner2 p {margin:5px 0;}
-		.profileinner2 a{
-				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-			 height:35px; line-height:15px;
-			}
-		.profileinner3{
-			float:right; height:130px; width:200px; border-left:2px solid #f5f5f5;
-			margin-top:10px; text-align: center;
-		}
-		.profileinner3 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:22 0 0 0;}
-		.profileinner3 p:nth-child(2){line-height:1; margin-top:0;}
-		.profileinner4{
-			float:right; height:150px; width:200px;
-			text-align: center;
-		}
-		.profileinner4 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:30 0 0 0;}
-		.profileinner4 p:nth-child(2){line-height:1; margin-top:2px;}
 		
-
-		.mylist{
-		clear:both;
-		width:1000px; 
-		}
-		.listhead::after {
-		    content: "";
-		    display: table;
-		    clear: both;
-		}
-	
-		.listhead h2{
-			display:inline-block; float:left; margin:25px 0 10px 0;
+	.myinfo h2{
+			margin-bottom:20px;
 		}	
-		.listhead span {
-			display:inline-block; float:right; margin-top:35px;
-		}
 	
-		.viewdv{
-			height:100px; background-color:rgb(248,248,248);
-			border-radius:20px;
-		}
+		
+	.myinfo h3{
+			margin:30px 0;
+		}	
+		
+	.myinfo ul li{
+			margin:10px 0;
+		}	
+		
+	
+	.sailcontainer {float:left;}
+		.profilearea {
+			width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
+			}
+			.profileinner1{
+				float:left; width: 100px; height:100px; margin:25px 40px;
+			}
+			.profileinner2{
+				float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
+			}
+			.profileinner2 strong{
+				font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+			}
+			.profileinner2 p {margin:5px 0;}
+			.profileinner2 a{
+					display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
+				 height:35px; line-height:15px;
+				}
+			.profileinner3{
+				float:right; height:130px; width:200px; border-left:2px solid #f5f5f5;
+				margin-top:10px; text-align: center;
+			}
+			.profileinner3 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:22 0 0 0;}
+			.profileinner3 p:nth-child(2){line-height:1; margin-top:0;}
+			.profileinner4{
+				float:right; height:150px; width:200px;
+				text-align: center;
+			}
+			.profileinner4 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:30 0 0 0;}
+			.profileinner4 p:nth-child(2){line-height:1; margin-top:2px;}
 			
-		.listul li{
-			float:left; width:250px; text-align:center; margin-top:0;
-		}
-			.listul li p:nth-child(1){line-height:2.5; font-size:15px; font-weight:bold; margin:15 0 0 0;}
-			.listul li p:nth-child(2){line-height:1; margin-top:2px; font-size:20px;}
-		.listul li:after {
-		    clear: both;
-		    content: '';
-		    display: block;
-    	}
-    	.listdv{
-    		height:325px; margin:0; text-align:center; line-height:200px;
-     	}
-     	
-     	.joygooddv {
-     		height:325px; margin:0; text-align:center; line-height:100px;
-     		background-color:rgb(248,248,248); border-radius:20px;
-     	}
-     	
-		.joygooddv button{
-			border:1px solid #999; border-radius:10px; padding:8px;
-			margin-left:5px; 
-		}
-		.pointaddbtn{
-		margin-top:10px;
-		background-color:white;
-		border: 1px solid #999;
-   		 border-radius: 10px;
-   		 height:25px;
-   		 padding:8px;
-   		 line-height: 10px;
-   		 color:#999;
-   		 cursor:pointer;
-		}
+	
+			.mylist{
+				clear:both;
+				width:1000px; 
+			}
+			.listhead::after {
+			    content: "";
+			    display: table;
+			    clear: both;
+			}
+		
+			.listhead h2{
+				display:inline-block; float:left; margin:25px 0 10px 0;
+			}	
+			.listhead span {
+				display:inline-block; float:right; margin-top:35px;
+			}
+		
+			.viewdv{
+				height:100px; background-color:rgb(248,248,248);
+				border-radius:20px;
+			}
+				
+			.listul li{
+				float:left; width:250px; text-align:center; margin-top:0;
+			}
+				.listul li p:nth-child(1){line-height:2.5; font-size:15px; font-weight:bold; margin:15 0 0 0;}
+				.listul li p:nth-child(2){line-height:1; margin-top:2px; font-size:20px;}
+			.listul li:after {
+			    clear: both;
+			    content: '';
+			    display: block;
+	    	}
+	    	.listdv{
+	    		height:325px; margin:0; text-align:center; line-height:200px;
+	     	}
+	     	
+	     	.joygooddv {
+	     		height:325px; margin:0; text-align:center; line-height:100px;
+	     		background-color:rgb(248,248,248); border-radius:20px;
+	     	}
+	     	
+			.joygooddv button{
+				border:1px solid #999; border-radius:10px; padding:8px;
+				margin-left:5px; 
+			}
+			.pointaddbtn{
+				margin-top:10px; background-color:white;
+				border: 1px solid #999; border-radius: 10px;
+		   		 height:25px; padding:8px;
+		   		 line-height:10px;
+		   		 color:#999; cursor:pointer;
+			}
 
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 	<div id="app">
 	<div class="mypagewrap">

@@ -29,7 +29,7 @@
 		}
 	
 	.wrap {
-		width:1200px; margin:0 auto;
+		width:1200px; margin:50px auto;
 		}
 	.myinfonav {
 		float:left; width:196px; color:#000;
@@ -165,8 +165,8 @@
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
+
 <body>
 	<div id="app">
 	<div class="wrap">

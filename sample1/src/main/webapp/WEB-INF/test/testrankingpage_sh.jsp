@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="../js/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
 <title>CrayoN 헤더 인클루드 수정페이지</title>
@@ -376,4 +377,6 @@ var headerApp = new Vue({
 		
 	}// created
 });
+
+
 </script>

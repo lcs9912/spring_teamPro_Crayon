@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="../js/jquery.js"></script>	
+    <script src="../js/jquery.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>CrayoN 메인 페이지용 슬라이드</title>
