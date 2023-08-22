@@ -25,4 +25,16 @@ public interface ProductMapper {
 	Product selectSellMinPrice(HashMap<String, Object> map);
 	// 즉시 구매가
 	Product selectBuyMinPrice(HashMap<String, Object> map);
+	// 최근 거래가
+	Product selectRecentTransaction(HashMap<String, Object> map);
+	// 관심 상품 등록
+	int insertInterest(HashMap<String, Object> map);
+	// 관심 상품 조회
+	Product selectInterest(HashMap<String, Object> map);
+	// 유저 관심상품 삭제
+	int deleteInterest(HashMap<String, Object> map);
+	//상품 테이블 관심 cnt + 1
+	int plusInterestCnt(HashMap<String, Object> map);
+	//상품 테이블 관심 cnt - 1
+	int minusdateInterestCnt(HashMap<String, Object> map);
 }

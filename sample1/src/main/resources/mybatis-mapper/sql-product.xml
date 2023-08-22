@@ -67,5 +67,54 @@
 		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'S'
 	</select>
 	
+	<!-- 최근 거래가 -->
+	<select id="selectRecentTransaction" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT *
+		FROM T1_TRANSACTION T
+		INNER JOIN(
+	
+		SELECT MAX(TRANSACTION_DATE) AS MAXDATE
+		FROM T1_TRANSACTION T
+		INNER JOIN T1_PRODUCT_UPDATE P 
+		ON T.PRODUCT_SELL_NUMBER = P.PRODUCT_SELL_NUMBER
+		WHERE P.PRODUCT_MODEL = #{modelNum}
+	) A ON T.TRANSACTION_DATE = A.MAXDATE
+	</select>
+	
+	<!-- 관심상품 조회 -->
+	<select id="selectInterest" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT * 
+		FROM T1_PRODUCT_LIKE
+		WHERE USER_ID = #{uId} AND PRODUCT_MODEL = #{proNum}
+	</select>
+	
+	<!-- 관심상품 등록 -->
+	<insert id="insertInterest" parameterType="hashmap">
+		INSERT INTO T1_PRODUCT_LIKE
+		VALUES (#{proNum},#{proSize}, #{uId}, NOW())
+	</insert>
+	
+	<!-- 관심상품 해제 -->
+	<delete id="deleteInterest" parameterType="hashmap">
+		DELETE FROM T1_PRODUCT_LIKE
+		WHERE USER_ID = #{uId} AND PRODUCT_MODEL = #{proNum}
+	</delete>
+	
+	<!-- 상품 테이블 관심 cnt + 1 -->
+	<update id="plusInterestCnt" parameterType="hashmap">
+		UPDATE T1_PRODUCT_UPDATE
+			SET PRODUCT_INTEREST = PRODUCT_INTEREST + 1
+		WHERE PRODUCT_SELL_NUMBER = #{proNum}	
+	</update>
+	
+	<!-- 상품 테이블 관심 cnt - 1 -->
+	<update id="minusdateInterestCnt" parameterType="hashmap">
+		UPDATE T1_PRODUCT_UPDATE
+			SET PRODUCT_INTEREST = PRODUCT_INTEREST - 1
+		WHERE PRODUCT_SELL_NUMBER = #{proNum}	
+	</update>
+	
 	
 </mapper>

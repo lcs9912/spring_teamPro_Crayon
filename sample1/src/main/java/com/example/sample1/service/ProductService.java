@@ -19,5 +19,13 @@ public interface ProductService {
 	int addBrand(HashMap<String, Object> map);//여기까지 지우셈
 	// 상품상제정보
 	HashMap<String, Object> searchProductInfo(HashMap<String, Object> map);
+	// 관심 상품 등록
+	int addInterest(HashMap<String, Object> map);
+	// 유저 관심상품 조회
+	Product searchInterest(HashMap<String, Object> map);
+	//유저 관심상품 삭제
+	int removeInterest(HashMap<String, Object> map);
+	// 최근거래가
+	Product searchResentPro(HashMap<String, Object> map);
 
 }
