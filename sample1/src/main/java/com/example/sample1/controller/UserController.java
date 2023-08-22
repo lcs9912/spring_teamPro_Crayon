@@ -182,12 +182,12 @@ public class UserController {
 	@ResponseBody
 	public String emailIdPwd(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		userService.searchEmailIdPwd(map);
-			
+		int num = userService.searchEmailIdPwd(map);
+		resultMap.put("num", num);
 		return new Gson().toJson(resultMap);
 	}
 		
-	// 이메일 아이디 비번 확인
+	// 회원탈퇴
 	@RequestMapping(value = "/user/infoRemove.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String infoRemove(Model model, @RequestParam HashMap<String, Object> map) throws Exception {

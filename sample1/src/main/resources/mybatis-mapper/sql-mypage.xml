@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.sample1.mapper.MypageMapper">
+	
+	<update id="updateUserProfill" parameterType="hashmap">
+		UPDATE T1_USER_TBL
+  			SET
+			<if test="nickName != '' and nickName != null">
+				USER_NICKNAME = #{nickName}
+			</if>
+			<if test="userName != '' and userName != null">
+				USER_NAME = #{userName}
+			</if>
+			WHERE USER_ID = #{uId}
+		
+	</update>
+</mapper>

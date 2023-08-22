@@ -227,7 +227,7 @@
 			<h3>내 정보</h3>
 			<ul>
 				<li style="font-weight:bold; color:#FF6868"><a href="mypagelogininfo.do">로그인 정보</a></li>
-				<li><a href="#">프로필 관리</a></li>
+				<li><a href="/mypageprofile.do">프로필 관리</a></li>
 				<li><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
 				<li><a href="#">판매 정산 계좌</a></li>				
@@ -481,19 +481,24 @@
 			fnpopup : function(keyword){
 				var self = this;
 				self.keyword = keyword;
+				self.pwdFlg = false;
 				document.getElementById("popupOverlay").style.display = "block";
 			},
 			// 레이어 팝업창 제출
 			fnSubmitPopup : function(){
 				var self = this;
 				
-				const regexEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				const regexEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일 정규식
+				
 				if(!regexEmail.test(self.editEmail)){
 					self.emailMessage = "이메일 형식에 맞게 입력하시오";
+					
 					return;
 				}else {
 					self.emailMessage = "";
 				};
+				
+	        	
 				if(!self.pwdFlg){
 					alert("비밀번호를 확인하시오");
 					return;
@@ -539,6 +544,20 @@
 			// 새 비밀번호 입력
 			fnSubmitPwdEdit : function(){
 				var self = this;
+				var regexPwd = /^[a-zA-Z0-9]{8,16}$/;
+				if(!self.pwdFlg){
+					alert("비밀번호를 확인하시오");
+					return;
+				};
+				if(!regexPwd.test(self.editPwd)){
+					alert("비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.");
+					return;
+				};
+				if(self.editPwd != self.editPwd2){
+					alert("비밀번호가 같지않습니다.");
+					return;
+				};
+				
 				var param = {uId : self.sessionId, editPwd : self.editPwd};
 				
 				$.ajax({
@@ -557,6 +576,10 @@
 			// 힌트 확인
 			fnHintCheck : function(){
 				var self = this;
+				if(!self.pwdFlg){
+					alert("비밀번호를 확인하시오");
+					return;
+				};
 				var param = {uId : self.sessionId, pwdHint : self.checkPwdHint, answer : self.hintAnswer};
 				$.ajax({
 					url : "/user/searchHint.dox",
@@ -581,8 +604,14 @@
 					type : "POST",
 					data : param,
 					success : function(data) {
+						if(data.num < 1){
+							alert("다시 확인해주시오");
+							self.PhoneFlg = false;
+							return;
+						}
 						alert("확인 되었습니다!");
 						self.PhoneFlg = true;
+						self.pwdFlg=true;
 
 					}
 				});
@@ -590,6 +619,11 @@
 			// 연락처 수정
 			fnSubmitPhoneEdit : function(){
 				var self = this;
+				if(!self.pwdFlg){
+					alert("비밀번호를 확인하시오");
+					return;
+				};
+				
 				var param = {uId : self.sessionId, editPhone : self.editPhone};
 				$.ajax({
 					url : "/user/editInfo.dox",

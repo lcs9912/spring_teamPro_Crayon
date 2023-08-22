@@ -96,7 +96,133 @@ a {	text-decoration:none;
  
     /*프로필 관리 영역 CSS 종료*/
 
+    /* 팝업 레이어 */
+.popup-overlay {
+	display: none;
+   	position: fixed;
+  	top: 0;
+  	left: 0;
+  	width: 50%;
+    height: 50%;
+   	background-color: rgba(0, 0, 0, 0.5);
+  	z-index: 1000;
+} 
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#popupTitleBox{
+	background-color: black;
+}
+
+#popupTitleBox i{
+	cursor: pointer;
+	color: white;
+}
+#popupTitle{
+	color: white;
+	
+	font-weight: bold;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
     
+}
+body{
+    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    
+}
+body.dimmed::before{
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
+    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    
+    
+}
+.popup {
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 300px;
+    max-width: 600px;
+    background-color: #fff; 
+    border-radius: 15px;
+    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);
+    
+    
+}
+.popup > .title{
+    border-radius: 15px 15px 0 0;
+    min-height: 40px;
+    color: white;
+    background-color: black;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+}
+.popup > .content {
+    padding: 20px;
+    box-sizing: border-box;
+}
+.popup > .cmd {
+    bottom: 0;
+    min-height: 40px;
+    padding: 15px 15px;
+    box-sizing: border-box;
+    border-radius: 0 0 15px 15px;
+    min-height: 40px;
+    text-align: right;
+    width: 300px;
+ 
+}
+.cmd button {
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: 1px solid #aaa;
+    width: 80px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top : 409px;
+    left: 265px;
+}
+.cmd button:hover {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+.title i{
+	cursor: pointer;
+}
+.fa-x{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
 
 </style>
 
@@ -119,7 +245,7 @@ a {	text-decoration:none;
 			<h3>내 정보</h3>
 			<ul>
 				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
-				<li style="font-weight:bold; color:#FF6868"><a href="#">프로필 관리</a></li>
+				<li style="font-weight:bold; color:#FF6868"><a href="/mypagelogininfo.do">프로필 관리</a></li>
 				<li><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
 				<li><a href="#">판매 정산 계좌</a></li>
@@ -140,8 +266,8 @@ a {	text-decoration:none;
 				</div>
 				<div class="profileinner2">
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
-					<a href="#" type="button">이미지 변경</a>
-					<a href="#" type="button">삭제</a>
+					<a @click="fnProfillImgChange" type="button">이미지 변경</a>
+					<a @click="fnProfillImgRemove" type="button">삭제</a>
 				</div>							
 			</div>
 			<div class="editprofile">
@@ -149,27 +275,70 @@ a {	text-decoration:none;
 				<div class="editebox">
 					<h5>프로필 정보</h5>
 					<div class="emailedit">
-						<input type="text" placeholder="홍길동" class="editinput">
-						<button class="editbtn"><a href="#">변경</a></button>
+						<span class="editinput">{{info.userNickname}}</span>
+						<button class="editbtn" @click="fnpopup('nick')">변경</button>
 					</div>
 				</div>			
 				<div class="editebox">
 					<h5>이름</h5>
 					<div class="pwdedit">
-						<input type="text" class="editinput">
-						<button class="editbtn"><a href="#">변경</a></button>
+						<span class="editinput">{{info.userName}}</span>
+						<button class="editbtn" @click="fnpopup('name')">변경</button>
 					</div>
 				</div>
-				<div class="editebox">
-					<h5>소개</h5>
-					<div class="pwdedit">
-						<input type="text" placeholder="나를 소개하세요" class="editinput">
-						<button class="editbtn"><a href="#">변경</a></button>
-					</div>
-				</div>
+				
 			</div>
 		</div><!--프로필관리 태그영역 종료-->
 	</div><!--프로필관리 태그영역 시작-->
+	
+	
+	<!-- 레이어 팝업 -->
+
+	<div class="popup popup-overlay" id="popupOverlay" >
+        <div class="title">변경<i class="fa-solid fa-x" id="closePopup"></i></div>
+        <div class="content" style="text-align:center;">
+        <!-- 닉네임 변경 -->
+        <template v-if="keyword == 'nick'">
+            <h2 style="padding-bottom:15px;">닉네임 변경</h2>
+            <p>
+                <div style="padding-bottom:15px;"></div>
+               <div class="emailinput"><input placeholder="대충 변경할 닉네임" v-model="nickName">닉네임 입력</div>
+               <div style="color: red;">메세지</div>
+                <div class="emailinput">
+              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
+
+               	</div> 
+               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>
+               	
+            </p>
+            	 <div class="cmd">
+       				<button id="submitPopup" @click="fnChangNickname">제출</button>          
+        		 </div>
+        </template>
+        
+        <!-- 이름 변경 -->
+        <template v-if="keyword == 'name'">
+            <h2 style="padding-bottom:15px;">이름 변경</h2>
+            <p>
+                <div style="padding-bottom:15px;"></div>
+               <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">이름 입력</div>
+               <div style="color: red;">메세지</div>
+                <div class="emailinput">
+              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
+
+               	</div> 
+               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>
+               	
+            </p>
+            	 <div class="cmd">
+       				<button id="submitPopup" @click="fnChangName">제출</button>          
+        		 </div>
+        </template>
+        </div>
+  
+        </div>
+        
+  
 	</div>
 </body>
 	<%@ include file="../header/footer.jsp"%>
@@ -179,7 +348,14 @@ a {	text-decoration:none;
 		el : '#app',
 		data : {
 			info : {},
-			sessionId : "${sessionId}"
+			sessionId : "${sessionId}",
+			keyword : "", // 팝업 키워드
+			
+			pwd : "",
+			nickName : "",
+			userName : "",
+			pwdFlg : false, // 비밀번호 인증 여부
+			
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -193,9 +369,95 @@ a {	text-decoration:none;
 					success : function(data) {
 						self.info = data.info;
 						console.log(self.info);
+						pwdFlg : false;
 					}
 				});
-			}
+			},
+			// 프로필 이미지 변경
+			fnImgChange : function(){
+				var self = this;
+				
+			},
+			// 프로필 이미지 삭제
+			fnImgRemove : function(){
+				var self = this;
+				
+			},
+			// 유저 닉네임 변경
+			fnChangNickname : function(){
+				var self = this;
+				if(!self.pwdFlg){
+					alert("비밀번호를 인증하시오");
+					return;
+				};
+				var param = {uId : self.sessionId, nickName : self.nickName};
+				$.ajax({
+					url : "/mypage/editFrofill.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("닉네임 변경 완");
+						document.getElementById("popupOverlay").style.display = "none";
+						self.fnGetInfo();
+					}
+				});
+			},
+			// 유저 이름 변경
+			fnChangName : function(){
+				var self = this;
+				var self = this;
+				if(!self.pwdFlg){
+					alert("비밀번호를 인증하시오");
+					return;
+				};
+				var param = {uId : self.sessionId, userName : self.userName};
+				$.ajax({
+					url : "/mypage/editFrofill.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("이름 변경 완");
+						document.getElementById("popupOverlay").style.display = "none";
+						self.fnGetInfo();
+					}
+				});
+			},
+			// id pwd 일치한지
+			fnPwdCheck : function(){
+				var self = this;
+				
+				var param = {uId : self.sessionId, pwd : self.pwd};
+				$.ajax({
+					url : "/login.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						if(data.success){ 
+	                		alert("인증완료");
+	                		self.pwd = "";
+	                		self.pwdFlg = true;
+	                	} else {
+	                		alert(data.message);
+	                		self.pwd = "";
+	                		self.pwdFlg = false;
+	                		
+	                	}
+						
+					}
+				});
+			},
+			// 레이어 팝업창 띄우기
+			fnpopup : function(keyword){
+				var self = this;
+				self.keyword = keyword;
+				self.pwdFlg = false;
+				document.getElementById("popupOverlay").style.display = "block";
+			},
+		
+			
 
 		}, // methods
 		created : function() {
@@ -207,5 +469,11 @@ a {	text-decoration:none;
 				location.href="login.do";
 			}
 		}// created
+	});
+	 // 레이어 팝업창 닫기
+	document.getElementById("closePopup").addEventListener("click", function() {
+		document.getElementById("popupOverlay").style.display = "none";
+		self.pwdFlg = false;
+		
 	});
 </script>

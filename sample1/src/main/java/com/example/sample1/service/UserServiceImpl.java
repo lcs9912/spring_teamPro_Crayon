@@ -85,7 +85,8 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userMapper.selectPwdHintAnswer(map);
 	}
-
+	
+	// 유저 이메일 아이디 비번 체크
 	@Override
 	public int searchEmailIdPwd(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub

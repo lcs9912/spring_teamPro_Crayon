@@ -30,6 +30,7 @@ public class TestController {
         return "/test";
     }
 	
+	
 	@RequestMapping("/chart.do") 
     public String chart(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/product/chartTest";

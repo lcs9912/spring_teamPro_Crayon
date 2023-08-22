@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.sample1.model.User;
-
+import com.example.sample1.service.MypageService;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +23,8 @@ public class MypageController {
 	
 	@Autowired
 	HttpSession session;
-	
+	@Autowired
+	MypageService mypageService;
 	// 마이페이지
 	@RequestMapping("/mypage.do") 
     public String mypage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -49,7 +50,11 @@ public class MypageController {
 	
 		return "/mypage/mypageselllist";
 	}
-	
+	// 마이페이지 프로필관리
+	@RequestMapping("/mypageprofile.do") 
+	   public String mypageprofile(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/mypage/mypageprofile"; 
+	   }
 	// 마이페이지 로그인정보 > 이메일정보 수정 팝업
 	@RequestMapping("/loginInfoPopup.do") 
 	public String mypageEditUserEmailPopup(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -74,5 +79,15 @@ public class MypageController {
 	    public String mypageproductinter(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 			return "/mypage/mypageproductinter"; 
 	    }
+		
+		// 마이페이지 프로필 변경
+		@RequestMapping(value = "/mypage/editFrofill.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String editFrofill(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			mypageService.editUserProfill(map);
+					
+			return new Gson().toJson(resultMap);
+		}
 		
 }

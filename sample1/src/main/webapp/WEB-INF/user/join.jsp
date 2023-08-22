@@ -472,7 +472,7 @@ var app = new Vue({
 		fnPwdCheck : function() {
 			var self = this;
 			/* var userPwd = self.user.userPwd1; */
-			var regex = /^[a-zA-Z0-9]{8,16}$/;
+			var regex = /^[a-zA-Z0-9]{8,16}$/; // 비밀번호 정규식
 			if(!regex.test(self.user.userPwd1)){
 				self.message = "비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.";
 			}else {
