@@ -9,32 +9,121 @@
 	<title>상품등록페이지</title>
 <style>
 	label :hover {
-		border-bottom : 3px solid black;
+		background-color:#a2a2a2;
 		cursor : pointer;
 	}
 	input:checked + label {
-		border-bottom : 3px solid black;
+		border-radius:10px;
+		background-color:#a2a2a2;
 		font-weight : bold;
 	}
-	#b, #s {
-		opacity : 0;
+input[type="radio"]{
+	position: absolute;
+	opacity: 0;
+	width: 0;
+}
+	.area{
+	width:100%;
+	text-align:center;
+	margin-top:50px;
+	}
+	.lastbtn{
+	text-align:center;
+	margin-top:15px;
+	width:100px;
+	height:30px;
+	background-color:white;
+	border-radius:10px;
+	border:1px solid #a2a2a2;
+	}
+	.lastbtn:hover{
+	background-color:#BCB9B9;
+	}
+	.buylabel,.selllabel{
+	font-weight:bold;
+	display:inline-block;
+	border:1px solid black;
+	width:150px;
+	height:50px;
+	line-height:50px;
+	font-size:30px;
+	border-radius:10px;
+	}
+	.selectarea{
+	margin-bottom:30px;
+	}
+	.selectfile{
+	margin-bottom:30px;
+	}
+	.selectfilearea{
+	border:1px solid black;
+	width:300px;
+	border-radius:10px;
+	
+	}
+	.selectfileareazone{
+	width:100%;
+	text-align:center;
+	margin-bottom:30px;
+	}
+	
+	input[type="text"]{
+	width:200px;
+	height:40px;
+	margin-bottom:30px;
+	}
+	select{
+	width:200px;
+	height:45px;
+	text-align:center;
+	color:#a2a2a2;
+	}
+	input[type="date"]{
+	width:150px;
+	height:30px;
+	text-align:center;
+	margin-left:10px;
+	}
+	label{
+	width:150px;
 	}
 </style>
 </head>
 <body>
 <div id="app">
-	<div>
-		<div>
-			<input v-model="product.sellBuy" type="radio" value="B" id="b"><label for="B">구매</label>
-			<input v-model="product.sellBuy" type="radio" value="S" id="s"><label for="S">판매</label>
+	<div class="area">
+	<div class="areaselect">
+	<div class="selectarea">
+		<div class="buylabel" style="margin-right:80px;">
+			<input type="radio" v-model="product.sellBuy" value="B" id="b"><label for="b" >구매</label>
+			</div>
+		<div class="selllabel">
+			<input type="radio" v-model="product.sellBuy" value="S" id="s"><label for="s">판매</label>
 		</div>
-		<div>
-			<input type="file"  id="file1" name="file1" accept=".gif, .jpg, .png">
 		</div>
-		<div><input v-model="product.pName" type="text" placeholder="상품이름"></div>
-		<div><input v-model="product.pModel" type="text" placeholder="모델번호"></div>
+		
+		<div class="selectfileareazone">
+		<div class="selectfilearea" style="margin: 0 auto;"><p style="font-weight:bold;">이미지 파일선택</p>
+		<div class="selectfile">
+			<input type="file"  id="file1" name="file1" accept=".gif, .jpg, .png" style="padding-top:20px;">
+		</div>
+		</div>
+		</div>
+		
 		<div>
-			<select v-model="product.pSize">
+		<div style="display:inline-block;">
+		<input v-model="product.pName" type="text" placeholder="상품이름" style="display:inline-block; text-align:center;">
+		<div style="display:inline-block;">
+		<input v-model="product.pModel" type="text" placeholder="모델번호" style="display:inline-block; text-align:center;">
+		</div>
+		</div>
+		</div>
+		
+		<div>
+		<div style="display:inline-block;"><input v-model="product.pColor" type="text" placeholder="상품컬러" style="text-align:center;"></div>
+		<div style="display:inline-block;"><input v-model="product.pPrice" type="text" placeholder="상품가격" style="text-align:center;"></div>
+		<div><input v-model="product.launch" type="text" placeholder="발매가" style="text-align:center;">
+		<select v-model="product.pSize">
 				<option value="a">사이즈</option>
 				<option value="0">ONE SIZE</option>
 				<option value="1">XXS</option>
@@ -71,11 +160,17 @@
 				<option value="32">290</option>
 			</select>
 		</div>
-		<div><input v-model="product.pColor" type="text" placeholder="상품컬러"></div>
-		<div><input v-model="product.pPrice" type="text" placeholder="상품가격"></div>
-		<div><input v-model="product.launch" type="text" placeholder="발매가"></div>
-		<div>*마감일자<input v-model="product.endDate" type="date" placeholder="마감일자"></div>
-		<div>
+		
+		
+	
+		
+			
+		
+
+		<div style="margin-bottom:30px;">*마감일자<input v-model="product.endDate" type="date" placeholder="마감일자"></div>
+		<div style="margin-bottom:10px; font-weight:bold;">카테고리 선택</div>
+	<div>
+		<div style="display:inline-block">
 			<select  v-model="product.pCategorie1">
 				<option value="0">카테고리1</option>
 				<option value="1">남자</option>
@@ -84,7 +179,7 @@
 				<option value="4">액세서리</option>
 			</select>
 		</div>
-		<div>
+		<div style="display:inline-block">
 			<select v-model="product.pCategorie2">
 				<option value="0">카테고리2</option>
 				<option value="1">상의</option>
@@ -101,7 +196,8 @@
 				<option value="12">모자</option>
 			</select>
 		</div>
-		<div>
+		<div style="margin-top:10px; margin-bottom:10px;"><strong>브랜드 선택</strong></div>
+		<div> 
 			<select v-model="product.brand" @change="handleBrandChange"	>
 				<option value="100">브랜드</option>
 				<option v-for="item in list" :value="item.productBrand">{{item.brandName}}</option>
@@ -113,9 +209,9 @@
 			</div>
 		</div>
 	</div>
-	<div>
-		<button @click="fnAddProduct">상품등록</button>
+		<button class="lastbtn" @click="fnAddProduct">상품등록</button>
 	</div>
+</div>
 </div>
 </body>
 </html>
