@@ -87,11 +87,19 @@ background-color:#ebebeb;
 .leftbuybtnarea, .rightbuybtnarea{
 width:49%;
 display:inline-block;
-background-color:#FF5E3D;
 border-radius:80px;
 height:30px;
 color:white;
 cursor:pointer;
+border:none;
+font-size:18px;
+
+}
+.leftbuybtnarea{
+background-color:#FF5E3D;
+}
+.leftbuybtnarea:hover, .rightbuybtnarea:hover{
+background-color:#FF5E3D;
 }
 .wantpay{
 padding: 32px 32px 28px;
@@ -148,8 +156,18 @@ text-align:center;
 padding-top:15px;
 }
 
-.allpaybtn{
+.leftallpaybtn{
 background-color:#B5B5B5;
+width:100%;
+height:50px;
+border-radius:50px;
+color:white;
+font-size:18px;
+border:1px solid #eee;
+cursor:pointer;
+}
+.rightallpaybtn{
+background-color:black;
 width:100%;
 height:50px;
 border-radius:50px;
@@ -162,7 +180,9 @@ cursor:pointer;
 input[type="text"]{
 outline:none;
 }
-
+.rightallpaybtn{
+display:none;
+}
 </style>
 
 </head>
@@ -193,12 +213,12 @@ outline:none;
 				<div>
 					<div class="leftnow" style="border-right:1px solid #eee;">
 					즉시구매가
-					<div class="paynowbuy">000.000원
+					<div class="paynowbuy">000.000P
 					</div>
 					</div>
 				
 					<div class="rightnow">즉시판매가
-					<div class="paynowbuy">000.000원
+					<div class="paynowbuy">000.000P
 					</div>
 					</div>
 				
@@ -207,8 +227,8 @@ outline:none;
 		
 	<div style="background-color:white; padding:35px;">
 		<div class="buytabarea">
-			<div class="leftbuybtnarea">구매 입찰</div>
-			<div class="rightbuybtnarea">즉시 구매</div>
+			<button class="leftbuybtnarea" id="leftbtnjava">구매 입찰</button>
+			<button class="rightbuybtnarea" id="rightbtnjava">즉시 구매</button>
 		</div>
 	</div>
 	
@@ -217,7 +237,7 @@ outline:none;
 	<div class="wantpay">
 		<div class="wantpaytitle">구매희망가</div>
 		<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
-		<span style="font-size:25px;">원</span>
+		<span style="font-size:25px;">P</span>
 		</div>
 		<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
 	</div>
@@ -229,7 +249,7 @@ outline:none;
 		<div class="whatday">val일 (val.day 마감)</div>
 	
 			<div class="paydaybtn">
-			<button>1일</button>
+			<button >1일</button>
 			<button>3일</button>
 			<button>7일</button>
 			<button>30일</button>
@@ -245,7 +265,8 @@ outline:none;
 					</div>
 				
 					<div class="allpaybtnarea">
-					<button class="allpaybtn">구매입찰계속</button>
+					<button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button>
+					<button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button>
 					</div>
 			</div>
 			
@@ -271,5 +292,35 @@ input.addEventListener('keyup', function(e) {
     input.value = formatValue;
   }
 })
+
+/* 구매입찰버튼,즉시구매버튼 누르면 마감기한,구매버튼none/block */
+document.addEventListener("DOMContentLoaded", function() {
+    const rightBuyBtn = document.getElementById("rightbtnjava");
+    const paydayArea = document.querySelector(".paydayarea");
+    const leftBuyBtn = document.getElementById("leftbtnjava");
+    const rightAllPayBtn = document.querySelector(".rightallpaybtn");
+    const leftAllPayBtn = document.querySelector(".leftallpaybtn");
+
+    rightBuyBtn.addEventListener("click", function() {
+        paydayArea.style.display = "none";
+        leftAllPayBtn.style.display = "none";
+        rightAllPayBtn.style.display = "block";
+        
+        rightBuyBtn.style.backgroundColor = '#FF5E3D';
+        leftBuyBtn.style.backgroundColor = '#ebebeb';
+
+    });
+
+    leftBuyBtn.addEventListener("click", function() {
+        paydayArea.style.display = "block";
+        leftAllPayBtn.style.display = "block";
+        rightAllPayBtn.style.display = "none";
+        
+        rightBuyBtn.style.backgroundColor = '#ebebeb';
+        leftBuyBtn.style.backgroundColor = '#FF5E3D';
+
+    });
+});
+
 
 </script>
