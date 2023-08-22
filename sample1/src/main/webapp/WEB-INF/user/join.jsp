@@ -162,6 +162,7 @@ text-align:center;
 	background-color: #262626;
 }
 .idsection{
+text-align:center;
 width : 1200px;
 display: inline-block;
 margin-left : 17%;
@@ -192,7 +193,7 @@ display:block;
 <%-- <%@ include file="../logo.jsp"%> --%>
 <hr>
 <body>
-<div id="app">
+<div id="app" style="width:1900px;">
 	<h1>회원가입</h1>
 <section class="idsection">
 		<table>
