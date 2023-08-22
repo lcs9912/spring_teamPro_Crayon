@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="../js/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <meta charset="UTF-8">
 <title>포인트충전</title>
 
@@ -219,7 +219,7 @@ display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; m
             </div>
 			<!-- 카드결제버튼 -->
 			<div class="carding">
-                <button @click="creditcard" id="cardingButton">결제하기</button>
+                <button @click="requestPay" id="cardingButton">결제하기</button>
             </div>
 			</div>
 		</div>
@@ -233,54 +233,64 @@ display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; m
 </html>
 <script>
 /* 카드결제API */
-const userCode = "imp14397622";
+const userCode = "imp54148822";
 IMP.init(userCode);
+
 var app = new Vue({
 	el : '#app',
 	data : {
-		list : [],
+		info : {},
 		userPoint : "",
 		uId : "${sessionId}"
 	},// data
 	methods : {
 		
-		fnGetList : function(){
+		fnUserInfo : function(){
             var self = this;
-            var nparmap = {};
+            var nparmap = {uId : self.uId};
             $.ajax({
-                url : "list.dox",
+                url : "/user/selectId.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) { 
-                	self.list = data.list;
+                	self.info = data.info;
+                	console.log(self.info.userNickname);
                 }
             }); 
         },
         // 결제 api
-		creditcard : function(){
+		requestPay : function(){
 			var self = this;
-			
+			console.log(self.userPoint);
 			 IMP.request_pay({
-			    pg: "html5_inicis",
+			    pg: "nice",
 			    pay_method: "card",
-			    merchant_uid: "test_llkr7mk9",
+			    merchant_uid: "test_llljwi7x",
 			    name: "포인트 결제",
-			    amount: 100/* 가격 */
-			   
-			 },function (rsp) { // callback
-		   	     if (rsp.success) {
+			    buyer_name: self.info.userNickname,
+			    amount: self.userPoint,
+			}, function (rsp) { // callback
+		   	      if (rsp.success) { 
 			   	        // 결제 성공 시
-			   	     } else {
-			   	        // 결제 실패 시
-			   	     } 
+			   	        alert("실패"+amount);
+		   	    		console.log(amount);
+			   	      } else {
+			   	    	 
+			   	    	alert("실패");
+			   	    	  // 결제 실패 시
+			   	      } 
 			  }); 
 			 
+		},
+		// 포인트 입력
+		fnPayment : function(){
+			
 		},
 	}, // methods
 	created : function() {
 		var self = this;
-		
+		self.fnUserInfo();
 	}// created
 });
 
@@ -288,7 +298,7 @@ var app = new Vue({
 
 
 /* 포인트 3자리자동반점 */
-const input = document.querySelector('#number');
+ /* const input = document.querySelector('#number');
 input.addEventListener('keyup', function(e) {
   let value = e.target.value;
   value = Number(value.replaceAll(',', ''));
@@ -299,7 +309,7 @@ input.addEventListener('keyup', function(e) {
     input.value = formatValue;
   }
   console.log();
-})
+})  */
 
 function showBanking() {
     document.querySelector('.banking').style.display = 'block';
