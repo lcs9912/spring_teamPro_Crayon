@@ -166,14 +166,14 @@ font-size: 18px;
 }
 .interestbtn{
 
-width:600px;
+width:360px;
 background-color:white;
 border: 1px solid #ebebeb;
 border-radius: 10px;
 margin-top : 10px;
-text-align:center;
 padding-top : 15px;
 padding-bottom : 15px;
+margin-left:120px;
 font-size: 15px;
 font-weight: 400;
 font-size:15px;
@@ -293,6 +293,7 @@ font-size:25px;
 }
 .bidderlisttitle{
 padding:15px 0px 0px 15px;
+margin-left:120px;
 font-size : 18px;
 }
 .bidderlist{
@@ -318,7 +319,31 @@ padding:10px 0px 0px 15px;
   padding-top:3px;
   font-size:16px;
   }
-
+  .biddernum{
+  float:right;
+  }
+  .starttime,.endtime{
+  display:inline-block;
+  width:49%;
+  text-align:center;
+  font-weight:bold;
+  
+  }
+	.startendtime{
+	width:100%;
+	text-align:center;
+	}
+	.actionendtime{
+	border-top:1px solid #eee;
+	padding-top:10px;
+	}
+	.startendnum{
+	margin-top:5px;
+	font-size:20px;
+	}
+	.starttime{
+	border-right:1px solid #eee;
+	}
 </style>
 
 </head>
@@ -330,6 +355,18 @@ padding:10px 0px 0px 15px;
 	<div class="rightcolumn">
 	
 		<div class="toptitlebox">
+		<div class="startendtime">
+		
+		<div class="starttime">경매 시작날짜
+		<div class="startendnum">00000000</div>
+		</div>
+		
+		<div class="endtime">경매 마감날짜
+		<div class="startendnum">00000000</div>
+			</div>
+		</div>
+		
+		
 		<div>
 		<p class="brandheader">{{proInfo.brandName}}</p>
 		</div>
@@ -346,9 +383,18 @@ padding:10px 0px 0px 15px;
 		<span style="color: #646363;">사이즈</span>
 		<span class="sizebtn" style="font-weight: bold; font-size:16px;">모든사이즈</span>
 		</div>
+		
 		<div class="recentsell" style="border: none;">
 		<span style="color: #646363; font-size: 13px;">최근 거래가</span>
 		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{resent.transactionPrice}}원</span>
+		</div>
+		
+		<div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">경매 시작가격</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">원</span>
+		</div><div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">경매 한도가격</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">원</span>
 		</div>
 		</div>
 		
@@ -390,17 +436,20 @@ padding:10px 0px 0px 15px;
 
 		</div>
 		
-		<div class="interestbtn" style="cursor: pointer">
+		<div style="width:600px;">
+		<div class="interestbtn" style="cursor: pointer;text-align:center;">
 		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
 		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
 		관심상품<strong> {{proInfo.productInterest}}</strong>
 		</div>
-		
-		<div class="actiontimearea">
-		<div class="actionendtime">경매 남은시간</div>
-		<div class="endtimenum">00:00:00</div>
 		</div>
 		
+		<div class="actiontimearea">
+		
+		<div class="actionendtime">경매 남은시간</div>
+		<div class="endtimenum">00:00:00</div>
+	
+		</div>
 		</div>
 		
 		
@@ -408,6 +457,7 @@ padding:10px 0px 0px 15px;
 		<div class="displayitem">
 			<div class="displayitemtitle">
 			<span class="bidderlisttitle">입찰자 리스트</span>
+			<span class="biddernum">참여자 수 : 000명</span>
 			</div>
 		</div>
 		
