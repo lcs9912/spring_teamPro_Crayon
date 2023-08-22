@@ -129,11 +129,12 @@ width:600px;
 padding-bottom:10px;
 }
 .btnaction{
+margin-top:15px;
 width:600px;
 
 }
 .buyaction{
-width : 100%;
+width : 60%;
 height : 50px;
 border-radius: 10px;
 cursor: pointer;
@@ -164,6 +165,7 @@ font-size: 18px;
     color:white;
 }
 .interestbtn{
+
 width:600px;
 background-color:white;
 border: 1px solid #ebebeb;
@@ -348,27 +350,6 @@ padding:10px 0px 0px 15px;
 		</div>
 		</div>
 		
-		<div class="btnaction">
-		
-		<button class="buyaction">
-		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰하기</strong>
-		</button>
-
-		</div>
-		
-		<div class="interestbtn" style="cursor: pointer">
-		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
-		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
-		관심상품<strong> {{proInfo.productInterest}}</strong>
-		</div>
-		
-		<div class="actiontimearea">
-		<div class="actionendtime">경매 남은시간</div>
-		<div class="endtimenum">00:00:00</div>
-		</div>
-		
-		</div>
-		
 		<div class="productinfodetail">
 		<div class="productdetailheader">상품정보
 		</div>
@@ -398,6 +379,29 @@ padding:10px 0px 0px 15px;
 
 		</div>
 		</div><!-- productinfodetail -->
+		
+		<div class="btnaction">
+		
+		<button class="buyaction">
+		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰하기</strong>
+		</button>
+
+		</div>
+		
+		<div class="interestbtn" style="cursor: pointer">
+		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
+		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
+		관심상품<strong> {{proInfo.productInterest}}</strong>
+		</div>
+		
+		<div class="actiontimearea">
+		<div class="actionendtime">경매 남은시간</div>
+		<div class="endtimenum">00:00:00</div>
+		</div>
+		
+		</div>
+		
+		
 		
 		<div class="displayitem">
 			<div class="displayitemtitle">
