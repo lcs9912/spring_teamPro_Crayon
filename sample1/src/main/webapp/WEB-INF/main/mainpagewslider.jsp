@@ -219,7 +219,7 @@
         }, // methods
         created: function () {
             var self = this;
-
+            hApp.fnActive("3");
         }// created
     });
 

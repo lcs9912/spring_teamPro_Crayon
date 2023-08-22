@@ -190,7 +190,7 @@
     </style>
 </head>
 <body>
-	<div id="headerApp">
+	<div id="hApp">
         <div class="headerwrap">
             <!--헤더영역 div 시작-->
             <header>
@@ -199,7 +199,7 @@
                     <ul>
                         <li class="#"><a href="faq.do">고객센터</a></li>                        
                         <li class="#"><a href="#">장바구니</a></li>
-                        <li class="#"><a href="mypageproductinter.do">관심상품</a></li>
+                        <li class="#"><a href="#">관심상품</a></li>
                         <li class="#"><a href="mypage.do">마이페이지</a></li>
                         <li class="loginbtn" v-if="loginOut != '' "><a href="login.do">로그아웃</a></li>
                         <li class="loginbtn" v-else><a href="login.do">로그인</a></li>                        
@@ -227,19 +227,19 @@
                         <ul class="headerKindList">
                             <!-- 헤더 종류별 리스트 -->
                             <li>
-                                <a href="testrankingpage.do">랭킹</a>
+                                <a href="testrankingpage.do" :class="{active : activeValue == '1'}">랭킹</a>
                             </li>
                             <li>
-                                <a href="testmslider.do">남성</a>
+                                <a href="testmslider.do" :class="{active : activeValue == '2'}">남성</a>
                             </li>
                             <li>
-                                <a href="testwslider.do">여성</a>
+                                <a href="testwslider.do" :class="{active : activeValue == '3'}">여성</a>
                             </li>
                             <li>
-                                <a href="#">신발</a>
+                                <a href="#" @click="fnActive('4')">신발</a>
                             </li>
                             <li>
-                                <a href="#">악세사리</a>
+                                <a href="#" @click="fnActive('5')">악세사리</a>
                             </li>
                         </ul>
                     </div>
@@ -250,10 +250,11 @@
 </body>
 </html>
 <script>
-var headerApp = new Vue({
-	el : '#headerApp',
+var hApp = new Vue({
+	el : '#hApp',
 	data : {
-		loginOut : "${sessionId}"
+		loginOut : "${sessionId}",
+		activeValue : "1"
 	},// data
 	methods : {
 		fnCheck : function(){
@@ -268,7 +269,11 @@ var headerApp = new Vue({
 						
 	                }
 	            });  
-		},
+		},	
+		fnActive : function(v){
+			var self = this;
+			self.activeValue = v;
+		}
 	}, // methods
 	created : function() {
 		var self = this;
@@ -276,14 +281,14 @@ var headerApp = new Vue({
 	}// created
 });
 
-	$(document).ready(function () {//rankingnav li 클릭효과 함수
+/* 	$(document).ready(function () {//rankingnav li 클릭효과 함수
 	    
 		$(".headerKindList li a").first().addClass("active");
 	    $(".headerKindList li a").on("click", function () {            
 	        $(".headerKindList li a").removeClass("active");
 	        $(this).addClass("active");
 	    });
-	});
+	}); */
 	
 	const charElements = document.querySelectorAll(".char");
     const toggleAnimation = () => {
