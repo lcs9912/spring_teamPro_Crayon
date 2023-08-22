@@ -70,6 +70,11 @@ public class TestController {
         return "/test/testmypagepoint_sh";
     }
 	
+	@RequestMapping("/testmypageprofile.do") //테스트용 포인트 페이지
+    public String test12(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/test/testmypageprofile";
+    }
+	
 	@RequestMapping("/testmainslider.do") //테스트용 메인 페이지 슬라이더
     public String test8(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/test/testmainslider_sh";

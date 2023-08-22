@@ -32,7 +32,6 @@
 			margin-bottom:20px;
 		}	
 	
-		
 	.myinfo h3{
 			margin:30px 0;
 		}	

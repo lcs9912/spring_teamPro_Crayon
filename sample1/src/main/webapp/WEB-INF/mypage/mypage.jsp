@@ -66,9 +66,9 @@ a {	text-decoration:none;
 			}
 			.profileinner2 p {margin:5px 0;}
 			.profileinner2 a{
-					display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-				 height:35px; line-height:15px;
-				}
+				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
+				height:35px; line-height:15px;
+			}
 			.profileinner3{
 				float:right; height:130px; width:200px; border-left:2px solid #f5f5f5;
 				margin-top:10px; text-align: center;

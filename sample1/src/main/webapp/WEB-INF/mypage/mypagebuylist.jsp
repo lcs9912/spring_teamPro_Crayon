@@ -47,7 +47,6 @@
 		.myinfo ul li{
 			margin:10px 0;
 			}	
-		
 	
 	
 	

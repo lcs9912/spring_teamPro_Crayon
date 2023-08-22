@@ -230,8 +230,7 @@
 				<li><a href="#">프로필 관리</a></li>
 				<li><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
-				<li><a href="#">판매 정산 계좌</a></li>
-				<li><a href="#">현금영수증 정보</a></li>
+				<li><a href="#">판매 정산 계좌</a></li>				
 				<li><a href="mypageaddpoint.do">포인트 충전</a></li>
 			</ul>
 		</div>
