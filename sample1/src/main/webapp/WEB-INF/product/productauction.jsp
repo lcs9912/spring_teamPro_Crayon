@@ -304,6 +304,8 @@ padding:10px 0px 0px 15px;
     overflow: visible;
   }
   th{
+  position: sticky;
+    top: 0px;
   border:none;
     border-bottom: 1px solid #eee;
     padding: 10px;
