@@ -74,6 +74,7 @@ input[type="text"], input[type="password"], select {
 input[type="checkbox"]{
 width: 35px; 
 height: 15px; 
+margin-top:10px;
 }
 .styled-checkbox{
 font-size : 25px;
@@ -184,6 +185,9 @@ text-align:center;
 }
 #app h1{
 display:block;
+}
+.aa{
+margin-bottom:5px;
 }
 </style>
 
