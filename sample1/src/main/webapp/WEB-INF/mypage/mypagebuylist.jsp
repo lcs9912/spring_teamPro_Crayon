@@ -19,148 +19,148 @@
 		padding: 5px 10px;
 	}
 	
-	li {
-		list-style:none;
-		}
-	
-	
-	a {	text-decoration:none;
-		color: inherit;
-		}
-	
-	.wrap {
-		width:1200px; margin:50px auto;
-		}
-	.myinfonav {
-		float:left; width:196px; color:#000;
-		}
-		
-	.myinfo h2{
-			margin-bottom:20px;
-		}	
-	
-		
-	.myinfo h3{
-			margin:30px 0;
-		}	
-		
-	.myinfo ul li{
-		margin:10px 0;
-		}	
-		
-	
-	
-	
-.sailcontainer {float:left;}
-	.profilearea {
-		width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
-		}
-		.profileinner1{
-			float:left; width: 100px; height:100px; margin:25px 40px;
-		}
-		.profileinner2{
-			float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
-		}
-			.profileinner2 strong{
-				font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+		li {
+			list-style:none;
 			}
-			.profileinner2 p {margin:5px 0;}
-			.profileinner2 a{
-				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-				margin-left:5px; height:15px; line-height:15px;
+		
+		
+		a {	text-decoration:none;
+			color: inherit;
 			}
-		.profileinner3{
-			float:right; height:130px; width:200px; border-left:2px solid #f5f5f5;
-			margin-top:10px; text-align: center;
-		}
-			.profileinner3 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:22 0 0 0;}
-			.profileinner3 p:nth-child(2){line-height:1; margin-top:0;}
-		.profileinner4{
-			float:right; height:150px; width:200px;
-			text-align: center;
-		}
-			.profileinner4 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:30 0 0 0;}
-			.profileinner4 p:nth-child(2){line-height:1; margin-top:2px;}
 		
-
-	.mybuylist{
-		width:1000px; 
-		}
-		
-		
-		.viewdv{
-			height:100px; 
-		}
+		.wrap {
+			width:1200px; margin:50px auto;
+			}
+		.myinfonav {
+			float:left; width:196px; color:#000; margin-bottom:100px;
+			}
 			
-		.listul li{
-			float:left; width:333px; text-align:center; margin-top:0;
-		}
-			.listul li p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:15 0 0 0;}
-			.listul li p:nth-child(2){line-height:1; margin-top:2px; font-size:14px; color:#ccc;}
-
-            
-		.listul li:after {
-		    clear: both;
-		    content: '';
-		    display: block;
-    	}
-        
-        .searchbuydate {
-            height:60px; background-color:#eaeaea; text-align: center; border-top:1px solid #c5c5c5f7; border-bottom:1px solid #e9e9e9; 
-            line-height: 60px; margin-right:5px;
-        }
-        .buydateinner1 {
-            display:inline-block; height:60px;
-        }
-            .buymonthbtn {
-                border: 1px solid #c5c5c5f7; background-color: #fff; padding:8px; color:#555; font-size: 12px; margin-top:2px;
-            }
-        .buydateinner2 {
-            display:inline-block; 
-        }
-            .buymonthinput {
-                border: 1px solid #c5c5c5f7; background-color: #fff; padding:8px; color:#555; font-size: 12px;
-                margin-top:0;
-            }
-            .buysearchbtn {
-                background-color:#000; color:#fff; width:65px; height:31px; 
-		    }
-            .buysearchbtn a{
-                display:block;
-            }
-        .buynoticeul {
-            height: 50px; margin-top: 20px;
-        }
-            .buynoticeul li {
-                list-style:disc; margin-left:20px; font-size: 12px; color:#777; font-weight: bold; 
-            }
-
-        .buylistsearch {
-            height:50px; border-bottom:1px solid #e9e9e9; margin-top: 10px;
-        }
-        
-            .buylistselect{
-                border:1px solid #c5c5c5f7; background-color: #fff; color:#555; font-size:14px; width:120px; height:35px;
-                margin-left: 20px; border-radius: 10px;
-            }
-            .buylistinput{
-                border:0px solid #c5c5c5f7; background-color: #fff; color:#555; font-size:14px; float:right;
-                width:120px; height:35px; border-radius: 10px; margin-left:15px;
-            }
-        
-     	.buygooddv {
-     		height:300px; margin:0; text-align:center; line-height:100px;     		
-     	}
-     	
-        .buygooddv p{
-            color:#ccc; font-size:13px;
-        }
-
-            .buygooddv button{
-                border:1px solid #ccc; border-radius:10px; width:120px; height:40px; line-height: 40px; background-color: #fff;
-                margin-left:5px; color:#555; 
-            }
-        
+		.myinfo h2{
+				margin-bottom:20px;
+			}	
+		
+			
+		.myinfo h3{
+				margin:30px 0;
+			}	
+			
+		.myinfo ul li{
+			margin:10px 0;
+			}	
+		
+	
+	
+	
+		.sailcontainer {float:left; margin-bottom:100px;}
+			.profilearea {
+				width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
+				}
+				.profileinner1{
+					float:left; width: 100px; height:100px; margin:25px 40px;
+				}
+				.profileinner2{
+					float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
+				}
+					.profileinner2 strong{
+						font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+					}
+					.profileinner2 p {margin:5px 0;}
+					.profileinner2 a{
+						display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
+						margin-left:5px; height:15px; line-height:15px;
+					}
+				.profileinner3{
+					float:right; height:130px; width:200px; border-left:2px solid #f5f5f5;
+					margin-top:10px; text-align: center;
+				}
+					.profileinner3 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:22 0 0 0;}
+					.profileinner3 p:nth-child(2){line-height:1; margin-top:0;}
+				.profileinner4{
+					float:right; height:150px; width:200px;
+					text-align: center;
+				}
+					.profileinner4 p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:30 0 0 0;}
+					.profileinner4 p:nth-child(2){line-height:1; margin-top:2px;}
+				
+		
+			.mybuylist{
+				width:1000px; 
+				}
+				
+				
+				.viewdv{
+					height:100px; 
+				}
+					
+				.listul li{
+					float:left; width:333px; text-align:center; margin-top:0;
+				}
+					.listul li p:nth-child(1){line-height:2.5; font-size:18px; font-weight:bold; margin:15 0 0 0;}
+					.listul li p:nth-child(2){line-height:1; margin-top:2px; font-size:14px; color:#ccc;}
+		
+		            
+				.listul li:after {
+				    clear: both;
+				    content: '';
+				    display: block;
+		    	}
+		        
+		        .searchbuydate {
+		            height:60px; background-color:#eaeaea; text-align: center; border-top:1px solid #c5c5c5f7; border-bottom:1px solid #e9e9e9; 
+		            line-height: 60px; margin-right:5px;
+		        }
+		        .buydateinner1 {
+		            display:inline-block; height:60px;
+		        }
+		            .buymonthbtn {
+		                border: 1px solid #c5c5c5f7; background-color: #fff; padding:8px; color:#555; font-size: 12px; margin-top:2px;
+		            }
+		        .buydateinner2 {
+		            display:inline-block; 
+		        }
+		            .buymonthinput {
+		                border: 1px solid #c5c5c5f7; background-color: #fff; padding:8px; color:#555; font-size: 12px;
+		                margin-top:0;
+		            }
+		            .buysearchbtn {
+		                background-color:#000; color:#fff; width:65px; height:31px; 
+				    }
+		            .buysearchbtn a{
+		                display:block;
+		            }
+		        .buynoticeul {
+		            height: 50px; margin-top: 20px;
+		        }
+		            .buynoticeul li {
+		                list-style:disc; margin-left:20px; font-size: 12px; color:#777; font-weight: bold; 
+		            }
+		
+		        .buylistsearch {
+		            height:50px; border-bottom:1px solid #e9e9e9; margin-top: 10px;
+		        }
+		        
+		            .buylistselect{
+		                border:1px solid #c5c5c5f7; background-color: #fff; color:#555; font-size:14px; width:120px; height:35px;
+		                margin-left: 20px; border-radius: 10px;
+		            }
+		            .buylistinput{
+		                border:0px solid #c5c5c5f7; background-color: #fff; color:#555; font-size:14px; float:right;
+		                width:120px; height:35px; border-radius: 10px; margin-left:15px;
+		            }
+		        
+		     	.buygooddv {
+		     		height:300px; margin:0; text-align:center; line-height:100px;     		
+		     	}
+		     	
+		        .buygooddv p{
+		            color:#ccc; font-size:13px;
+		        }
+		
+		            .buygooddv button{
+		                border:1px solid #ccc; border-radius:10px; width:120px; height:40px; line-height: 40px; background-color: #fff;
+		                margin-left:5px; color:#555; 
+		            }
+		        
 
 </style>
 
@@ -175,10 +175,9 @@
 			<h2><a href="mypage.do">마이 페이지</a></h2>
 			<h3>쇼핑 정보</h3>
 			<ul>
-				<li><a href="mypagebuylist.do">구매 내역</a></li>
-				<li><a href="mypageselllist.do">판매 내역</a></li>
-				<li><a href="#">보관 판매</a></li>
-				<li><a href="#">관심 상품</a></li>
+				<li style="font-weight:bold; color:#FF6868"><a href="mypagebuylist.do">구매 내역</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>				
+				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div>
 		<div class="myinfo">

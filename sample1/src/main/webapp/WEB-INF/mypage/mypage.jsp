@@ -38,7 +38,7 @@ a {	text-decoration:none;
 		}
 		
 	.myinfo h2{
-			margin-bottom:20px;
+			margin-bottom:20px; color:tomato;
 		}	
 	
 		
@@ -148,10 +148,9 @@ a {	text-decoration:none;
 			<h2><a href="mypage.do">마이 페이지</a></h2>
 			<h3>쇼핑 정보</h3>
 			<ul>
-				<li><a href="/mypagebuylist.do">구매 내역</a></li>
-				<li><a href="mypageselllist.do">판매 내역</a></li>
-				<li><a href="#">보관 판매</a></li>
-				<li><a href="#">관심 상품</a></li>
+				<li><a href="mypagebuylist.do">구매 내역</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>				
+				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div>
 		<div class="myinfo">

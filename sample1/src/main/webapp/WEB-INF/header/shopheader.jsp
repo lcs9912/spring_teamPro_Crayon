@@ -17,7 +17,7 @@
         }
 
         li {
-            list-style: none;
+            list-style: none; outline:none;
         }
 
         a {

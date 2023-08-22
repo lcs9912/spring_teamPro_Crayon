@@ -19,7 +19,7 @@
 		}
 	
 	.mypagewrap {
-		width:1200px; margin:0 auto;
+		width:1200px; margin:50px auto;
 		}
 	.myinfonav {
 		float:left; width:200px; color:#000;
@@ -39,7 +39,7 @@
 		}	
 	
 	.editlogininfo{
-		width:1000px; float:left;
+		width:1000px; float:left; margin-bottom:100px;
 		}        
 	.edithead {
 		padding-bottom:15px; border-bottom:3px solid #000;
@@ -89,152 +89,127 @@
 				cursor: pointer;
 			}
 			
-/* 팝업 레이어 */
-.popup-overlay {
-	display: none;
-   	position: fixed;
-  	top: 0;
-  	left: 0;
-  	width: 50%;
-    height: 50%;
-   	background-color: rgba(0, 0, 0, 0.5);
-  	z-index: 1000;
-} 
-
-.popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-#popupTitleBox{
-	background-color: black;
-}
-
-#popupTitleBox i{
-	cursor: pointer;
-	color: white;
-}
-#popupTitle{
-	color: white;
-	
-	font-weight: bold;
-}
-html, body{
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    
-}
-body{
-    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    
-    
-}
-body.dimmed::before{
-    content: '';
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
-    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    
-    
-}
-.popup {
-    z-index: 1;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    min-width: 300px;
-    max-width: 600px;
-    background-color: #fff; 
-    border-radius: 15px;
-    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);
-    
-    
-}
-.popup > .title{
-    border-radius: 15px 15px 0 0;
-    min-height: 40px;
-    color: white;
-    background-color: black;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    font-weight: bold;
-    text-align: center;
-}
-.popup > .content {
-    padding: 20px;
-    box-sizing: border-box;
-}
-.popup > .cmd {
-    bottom: 0;
-    min-height: 40px;
-    padding: 15px 15px;
-    box-sizing: border-box;
-    border-radius: 0 0 15px 15px;
-    min-height: 40px;
-    text-align: right;
-    width: 300px;
- 
-}
-.cmd button {
-    border-radius: 8px;
-    padding: 5px 10px;
-    border: 1px solid #aaa;
-    width: 80px;
-    color: white;
-    background-color: black;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top : 409px;
-    left: 265px;
-}
-.cmd button:hover {
-    color: #fff;
-    background-color: #000;
-    border-color: #000;
-}
-.title i{
-	cursor: pointer;
-}
-.fa-x{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-}
-
-.emailinput input{
-width: 250px;
-height : 30px;
-margin-bottom: 15px;
-}
-
-.emailpwd{
-background-color:white;
-border : 1px solid #a2a2a2;
-width : 100px;
-height : 25px;
-cursor: pointer;
-}
+			/* 팝업 레이어 */
+			.popup-overlay {
+				display: none;
+			   	position: fixed;
+			  	top: 0;
+			  	left: 0;
+			  	width: 50%;
+			    height: 50%;
+			   	background-color: rgba(0, 0, 0, 0.5);
+			  	z-index: 1000;
+			} 
+			
+			.popup-content {
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    background-color: #fff;
+			    padding: 20px;
+			    border-radius: 10px;
+			    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			}
+			
+			#popupTitleBox{
+				background-color: black;
+			}
+			
+			#popupTitleBox i{
+				cursor: pointer;
+				color: white;
+			}
+			#popupTitle{
+				color: white;
+				
+				font-weight: bold;
+			}
+			html, body{
+			    width: 100%;
+			    height: 100%;
+			    padding: 0;
+			    margin: 0;
+			    
+			}
+			body{
+			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
+			    background-repeat: no-repeat;
+			    background-size: cover;
+			    background-position: center;
+			    
+			    
+			}
+			body.dimmed::before{
+			    content: '';
+			    position: fixed; left: 0;
+			    right: 0; top: 0;
+			    bottom: 0; background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
+			    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    			    
+			}
+			.popup {
+			    z-index: 1; position: fixed;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%,-50%);
+			    min-width: 300px; max-width: 600px;
+			    background-color: #fff; border-radius: 15px;
+			    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);			    			    
+			}
+			.popup > .title{
+			    border-radius: 15px 15px 0 0; min-height: 40px;
+			    color: white; background-color: black; padding: 10px 15px;
+			    box-sizing: border-box; font-weight: bold;
+			    text-align: center;
+			}
+			.popup > .content {
+			    padding: 20px;
+			    box-sizing: border-box;
+			}
+			.popup > .cmd {
+			    bottom: 0; min-height: 40px;
+			    padding: 15px 15px; box-sizing: border-box;
+			    border-radius: 0 0 15px 15px;
+			    min-height: 40px; text-align: right;
+			    width: 300px;			 
+			}
+			.cmd button {
+			    border-radius: 8px; padding: 5px 10px;
+			    border: 1px solid #aaa; width: 80px;
+			    color: white; background-color: black;
+			    font-weight: bold; cursor: pointer;
+			    position: absolute; top : 409px;
+			    left: 265px;
+			}
+			.cmd button:hover {
+			    color: #fff;
+			    background-color: #000;
+			    border-color: #000;
+			}
+			.title i{
+				cursor: pointer;
+			}
+			.fa-x{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+			
+			.emailinput input{
+				width: 250px;
+				height : 30px;
+				margin-bottom: 15px;
+			}
+			
+			.emailpwd{
+				background-color:white;
+				border : 1px solid #a2a2a2;
+				width : 100px; height : 25px;
+				cursor: pointer;
+			}
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 	<div id="app">
 	<div class="mypagewrap">
@@ -244,15 +219,14 @@ cursor: pointer;
 			<h3>쇼핑 정보</h3>
 			<ul>
 				<li><a href="mypagebuylist.do">구매 내역</a></li>
-				<li><a href="mypageselllist.do">판매 내역</a></li>
-				<li><a href="#">보관 판매</a></li>
-				<li><a href="#">관심 상품</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>				
+				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div>
 		<div class="myinfo">
 			<h3>내 정보</h3>
 			<ul>
-				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
+				<li style="font-weight:bold; color:#FF6868"><a href="mypagelogininfo.do">로그인 정보</a></li>
 				<li><a href="#">프로필 관리</a></li>
 				<li><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
@@ -312,15 +286,7 @@ cursor: pointer;
 									v-model="user.receiveMessage" value="Y" @change="fnMessageRadio">
 								<label for="dmdisagree">수신거부</label><input type="radio" id="dmdisagree"name="dmagree"
 									v-model="user.receiveMessage" value="N" @change="fnMessageRadio">
-							</div>	
-							
-
-
-
-
-
-
-							
+							</div>								
 						</div>		
 					</div>			
 					<div class="editebox">
@@ -422,15 +388,15 @@ cursor: pointer;
             <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
             <p>
                 <div>
-                	<label>230<input type="radio" value="250"></label>
- 					<label>235<input type="radio" value="235"></label>
- 					<label>240<input type="radio" value="240"></label>
- 					<label>245<input type="radio" value="245"></label>
- 					<label>250<input type="radio" value="250"></label>
- 					<label>255<input type="radio" value="255"></label>
- 					<label>260<input type="radio" value="260"></label>
- 					<label>265<input type="radio" value="265"></label>
- 					<label>270<input type="radio" value="270"></label>
+                	<label>230<input type="radio" value="230" name="shoessize" checked></label>
+ 					<label>235<input type="radio" value="235" name="shoessize"></label>
+ 					<label>240<input type="radio" value="240" name="shoessize"></label>
+ 					<label>245<input type="radio" value="245" name="shoessize"></label>
+ 					<label>250<input type="radio" value="250" name="shoessize"></label>
+ 					<label>255<input type="radio" value="255" name="shoessize"></label>
+ 					<label>260<input type="radio" value="260" name="shoessize"></label>
+ 					<label>265<input type="radio" value="265" name="shoessize"></label>
+ 					<label>270<input type="radio" value="270" name="shoessize"></label>
  					
                 </div>
             </p>

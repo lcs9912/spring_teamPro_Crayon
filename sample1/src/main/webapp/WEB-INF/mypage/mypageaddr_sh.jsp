@@ -28,45 +28,46 @@ a {	text-decoration:none;
 	color: inherit;
 	}
 
-.myaddrwrap {
-	width:1200px; margin:0 auto;
-	}
-.addrnav {
-	float:left; width:190px; color:#000; margin-right:5px;
-	}
-	
-.myinfo h2{
-		margin-bottom:20px;
-	}	
-
-	
-.myinfo h3{
-		margin:30px 0;
-	}	
-	
-.myinfo ul li{
-	margin:10px 0;
-	}	
-	
-/*주소록 영역 CSS 시작*/
-.addrcontainer {float:left; width:1000px; height:380px; }
-		.addrhead {margin-top:10px;}
-		.addrhead h2{
-    		width:100px; display:inline-block;
-     	}
-     	.addrhead .addrbtn {float:right; border:1px solid #333;}
-     	.addrlist {
-     		clear:both; height:380px; margin:0; text-align:center; line-height:20px;
-			padding:100px 0;
+	.myaddrwrap {
+		width:1200px; margin:50px auto;
 		}
-     	.addrlist p{display:inline-block; width:1000px; height:20px; 
-			font-size:12px; color:#888; text-align: center; margin-bottom:30px;
+	.addrnav {
+		float:left; width:190px; color:#000; margin-right:5px;
 		}
-		.addrbtn{
-			border:1px solid #e9e9e9; border-radius:10px; padding:8px;
-			margin-left:5px; font-size:12px; color:#555; background:#fff;
+		
+	.myinfo h2{
+			margin-bottom:20px;
+		}	
+	
+		
+	.myinfo h3{
+			margin:30px 0;
 		}	
 		
+	.myinfo ul li{
+		margin:10px 0;
+		}
+	
+		
+	/*주소록 영역 CSS 시작*/
+	.addrcontainer {float:left; width:1000px; height:380px; }
+			.addrhead {margin-top:10px;}
+			.addrhead h2{
+	    		width:100px; display:inline-block;
+	     	}
+	     	.addrhead .addrbtn {float:right; border:1px solid #333;}
+	     	.addrlist {
+	     		clear:both; height:380px; margin:0; text-align:center; line-height:20px;
+				padding:100px 0;
+			}
+	     	.addrlist p{display:inline-block; width:1000px; height:20px; 
+				font-size:12px; color:#888; text-align: center; margin-bottom:30px;
+			}
+			.addrbtn{
+				border:1px solid #e9e9e9; border-radius:10px; padding:8px;
+				margin-left:5px; font-size:12px; color:#555; background:#fff;
+			}	
+			
 		
 		
  
@@ -75,8 +76,7 @@ a {	text-decoration:none;
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 	<div id="app">
 	<div class="myaddrwrap">
@@ -88,7 +88,7 @@ a {	text-decoration:none;
 				<li><a href="/mypagebuylist.do">구매 내역</a></li>
 				<li><a href="mypageselllist.do">판매 내역</a></li>
 				<li><a href="#">보관 판매</a></li>
-				<li><a href="#">관심 상품</a></li>
+				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div> 
 		<div class="myinfo">
@@ -96,7 +96,7 @@ a {	text-decoration:none;
 			<ul>
 				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
 				<li><a href="#">프로필 관리</a></li>
-				<li><a href="#">주소록</a></li>
+				<li style="font-weight:bold; color:#FF6868"><a href="#">주소록</a></li>
 				<li><a href="#">결제 정보</a></li>
 				<li><a href="#">판매 정산 계좌</a></li>
 				<li><a href="#">현금영수증 정보</a></li>

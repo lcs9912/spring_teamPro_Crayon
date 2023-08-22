@@ -101,8 +101,7 @@ a {	text-decoration:none;
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 	<div id="app">
 	<div class="profilewrap">
@@ -114,7 +113,7 @@ a {	text-decoration:none;
 				<li><a href="/mypagebuylist.do">구매 내역</a></li>
 				<li><a href="mypageselllist.do">판매 내역</a></li>
 				<li><a href="#">보관 판매</a></li>
-				<li><a href="#">관심 상품</a></li>
+				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div>
 		<div class="myinfo">
