@@ -53,8 +53,16 @@ var app = new Vue({
                  data : nparmap,
                  success : function(data) {
                 	 self.info = data.info;
+                	 if(self.auctionNumber!=self.userId){
+                		 alert("참여하지않았습니다 ");
+                		 window.history.back();
+                	 }
                 	
-                 }		 
+                 },
+             	
+                 
+               
+             
              }); 
         },
        
@@ -62,6 +70,7 @@ var app = new Vue({
 	}, // methods
 	created : function() {
 		var self = this;
+		
 		self.fnGetList();
 		
 	}// created

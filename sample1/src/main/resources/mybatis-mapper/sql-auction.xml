@@ -92,6 +92,14 @@
 		VALUES (#{auctionNumber},#{auctionProduct},#{uId},#{AUCPRI},CURDATE())
 	</insert>
 	
+	<select id="selectAuctionEndInfo" parameterType="hashmap" resultType="com.example.sample1.model.Product">
+		SELECT *
+		FROM T1_AUCTION A
+		LEFT JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER	
+		WHERE A.AUCTION_NUMBER=#{auctionNumber}
+		ORDER BY U.USER_POINT DESC
+		LIMIT 1;
+	</select>
 	
 	
 </mapper>

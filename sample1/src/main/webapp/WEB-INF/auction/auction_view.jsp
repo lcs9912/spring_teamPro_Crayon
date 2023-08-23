@@ -25,16 +25,19 @@
 	<div>시작시간 : {{info.auctionStartDate}}</div>
 	<div>마감시간 : {{info.auctionEndDate}}</div>
 	<div>참여자수  : {{info.usercnt}}</div>
+	
 	<div v-if="info.aLikeUser==null">
 	<button @click="fnAuctionLike()">좋아요 </button>
 	</div>
+	
 	<div v-else>
 	<button @click="fnAuctionUnLike()">좋아요해제 </button>
 	</div>
 	
-	<div v-if="info.duplicateStatus=='N'||info.duplicateStatus==null">
+	<div v-if="info.duplicateStatus=='Y'||info.duplicateStatus==null">
 	<button @click="fnAuctionJoin()">참여하기 </button> 
 	</div>
+	
 	<div v-else>
 	<button @click="fnAuctionCheck()">참여확인하기 </button>
 	</div>
@@ -43,7 +46,6 @@
 			<td>아이디: {{item.userId}} : </td>
 			<td>참가시간 : {{item.auctionDate}} </td>	
 		</tr>
-		
 	</table> 
 	
 </div>

@@ -34,4 +34,6 @@ public interface AuctionMapper {
 	int endAuction (HashMap<String, Object> map);
 	
 	int insertAuctionResult (HashMap<String, Object> map);
+	
+	Auction selectAuctionEndInfo (HashMap<String, Object> map);
 }

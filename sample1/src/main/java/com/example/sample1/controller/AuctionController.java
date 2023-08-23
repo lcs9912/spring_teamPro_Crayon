@@ -32,6 +32,11 @@ public class AuctionController {
 	public String auctionList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/auction/auction_list";
 	}
+	// Auction리스트 출력
+		@RequestMapping("/tauction/list.do") 
+		public String tauctionList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			return "/auction/tauction_list";
+		}
 	// Auction 상세보기 출력
 	@RequestMapping("/auction/view.do") 
 	public String auctionView(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -87,7 +92,7 @@ public class AuctionController {
 			auctionService.updateAuctionPrice(map);
 			return new Gson().toJson(resultMap);
 		}
-		//Aution 참가정보 출력
+		//Aution 자기 입찰 정보 출력
 		@RequestMapping(value = "/auction/check.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String auctionCheck(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -147,13 +152,29 @@ public class AuctionController {
 			auctionService.deleteAuctionLike(map);
 			return new Gson().toJson(resultMap);
 		}		
-	//Aution 종료+ 결과 등록
+	//Aution 종료 등록
 	@RequestMapping(value = "/auction/auction/end.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String auctionEnd(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		auctionService.endAuction(map);
 		return new Gson().toJson(resultMap);
-	}			
-		
+	}	
+	//Aution 결과 등록
+		@RequestMapping(value = "/auction/auction/result.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String auctionEndR(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			auctionService.insertAuctionResult(map);
+			return new Gson().toJson(resultMap);
+		}	
+	//Aution 상세정보 출력
+			@RequestMapping(value = "/auction/auction/endU.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+			@ResponseBody
+			public String auctionEndInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+				HashMap<String, Object> resultMap = new HashMap<String, Object>();
+				Auction info = auctionService.searchAuctionEndInfo(map);
+				resultMap.put("info", info);
+				return new Gson().toJson(resultMap);
+			}	
 }
