@@ -32,7 +32,7 @@ a {	text-decoration:none;
 		width:1200px; margin:50px auto;
 		}
 	.addrnav {
-		float:left; width:190px; color:#000; margin-right:5px;
+		float:left; width:190px; color:#000; margin-right:5px; margin-bottom:100px;
 		}
 		
 	.myinfo h2{
@@ -86,8 +86,7 @@ a {	text-decoration:none;
 			<h3>쇼핑 정보</h3>
 			<ul>
 				<li><a href="/mypagebuylist.do">구매 내역</a></li>
-				<li><a href="mypageselllist.do">판매 내역</a></li>
-				<li><a href="#">보관 판매</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>				
 				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div> 
@@ -95,11 +94,10 @@ a {	text-decoration:none;
 			<h3>내 정보</h3>
 			<ul>
 				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
-				<li><a href="#">프로필 관리</a></li>
-				<li style="font-weight:bold; color:#FF6868"><a href="#">주소록</a></li>
-				<li><a href="#">결제 정보</a></li>
-				<li><a href="#">판매 정산 계좌</a></li>
-				<li><a href="#">현금영수증 정보</a></li>
+				<li><a href="mypageprofile.do">프로필 관리</a></li>
+				<li style="font-weight:bold; color:#FF6868"><a href="mypageaddr.do">주소록</a></li>
+				<li><a href="mypagepaylist.do">결제 정보</a></li>
+				<li><a href="mypagebank.do">판매 정산 계좌</a></li>				
 				<li><a href="mypageaddpoint.do">포인트 충전</a></li>
 			</ul>
 		</div>
