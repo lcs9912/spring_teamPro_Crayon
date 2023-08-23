@@ -111,4 +111,7 @@
    				USER_BANYN = 'Y'
    			WHERE USER_ID= #{uId}
    </update>
+   
+   <!-- POINT_TBL포인트 입력 -->
+   
 </mapper>

@@ -232,7 +232,7 @@ display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; m
 </html>
 <script>
 /* 카드결제API */
-const userCode = "imp54148822";
+const userCode = "imp54148822"; //가맹점 식별 코드
 IMP.init(userCode);
 
 var app = new Vue({
@@ -240,7 +240,8 @@ var app = new Vue({
 	data : {
 		info : {},
 		userPoint : "",
-		uId : "${sessionId}"
+		uId : "${sessionId}",
+		point : 0,
 	},// data
 	methods : {
 		
@@ -254,28 +255,35 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	self.info = data.info;
-                	console.log(self.info.userNickname);
+                	console.log(self.info.userEmail);
                 }
             }); 
         },
         // 결제 api
 		requestPay : function(){
 			var self = this;
+			 var timestamp = new Date().getTime();
 			console.log(self.userPoint);
 			 IMP.request_pay({
-			    pg: "nice",
+			    pg: "html5_inicis",
 			    pay_method: "card",
-			    merchant_uid: "test_llljwi7x",
+			    merchant_uid:  "order_" + timestamp,
 			    name: "포인트 결제",
 			    buyer_name: self.info.userNickname,
 			    amount: self.userPoint,
+			    buyer_email: self.info.userEmail,
+			    popup: true,
 			}, function (rsp) { // callback
 		   	      if (rsp.success) { 
 			   	        // 결제 성공 시
-			   	        alert("실패"+amount);
-		   	    		console.log(amount);
+			   	        alert("성공");
+			   	    	 console.log(rsp.error_msg);
+		   	    		 console.log(rsp);
+		   	    		 self.fnPayMent(rsp.paid_amount);
+		   	    		
 			   	      } else {
-			   	    	 
+			   	    	 console.log(rsp.error_msg);
+			   	    	 console.log(rsp);
 			   	    	alert("실패");
 			   	    	  // 결제 실패 시
 			   	      } 
@@ -283,13 +291,35 @@ var app = new Vue({
 			 
 		},
 		// 포인트 입력
-		fnPayment : function(){
+		fnPayMent : function(point){
+			var self = this;
+			var nparmap = {uId : self.uId, point : point};
+	            $.ajax({
+	                url : "/user/pointPlus.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) { 
+	                	alert("충전 완료");
+	                }
+	            }); 
 			
 		},
+		// 시간 변경
+		 formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            
+            return year+""+month+""+day;
+          },
 	}, // methods
 	created : function() {
 		var self = this;
+		
+		
 		self.fnUserInfo();
+		
 	}// created
 });
 

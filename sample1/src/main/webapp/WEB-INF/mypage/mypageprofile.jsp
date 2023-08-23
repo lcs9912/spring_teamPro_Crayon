@@ -266,14 +266,14 @@ body.dimmed::before{
 				</div>
 				<div class="profileinner2">
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
-					<a @click="fnProfillImgChange" type="button">이미지 변경</a>
-					<a @click="fnProfillImgRemove" type="button">삭제</a>
+					<a @click="fnImgChange" type="button">이미지 변경</a>
+					<a @click="fnImgRemove" type="button">삭제</a>
 				</div>							
 			</div>
 			<div class="editprofile">
 				<h4>프로필 정보</h4>
 				<div class="editebox">
-					<h5>프로필 정보</h5>
+					<h5>프로필 이름</h5>
 					<div class="emailedit">
 						<span class="editinput">{{info.userNickname}}</span>
 						<button class="editbtn" @click="fnpopup('nick')">변경</button>
