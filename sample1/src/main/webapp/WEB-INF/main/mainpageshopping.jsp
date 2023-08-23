@@ -254,7 +254,7 @@
 </style>
 
 </head>
-<%@ include file="testshopheader_sh.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 	<div id="headerApp">
         <div class="shopwrap">
@@ -800,7 +800,7 @@
     </div>	
 	</div>
 </body>
-<%@include file="testfooter.jsp" %>
+
 </html>
 <script>
 var headerApp = new Vue({

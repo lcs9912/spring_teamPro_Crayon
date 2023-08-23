@@ -108,6 +108,7 @@
                
     </style>
 </head>
+
 <body>
 	<div id="headerApp">
   	<div class="rankwrap">

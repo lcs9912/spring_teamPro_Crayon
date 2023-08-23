@@ -166,7 +166,7 @@
                     </ul>
                 </div>
                 <div class="headermainlogo">
-                    <h1><a href="testmainslider.do">
+                    <h1><a href="mainslider.do">
                         <span class="char c">C</span>
                         <span class="char r">r</span>
                         <span class="char a">a</span>
@@ -175,9 +175,9 @@
                         <span class="char n">N</span>
                     </a></h1>
                     <ul class="headermenu">
-                        <li><a href="testmainslider.do">HOME</a></li>
-                        <li><a href="testrankingpage.do">STYLE</a></li>
-                        <li><a href="testshopping.do">SHOP</a></li>
+                        <li><a href="mainslider.do">HOME</a></li>
+                        <li><a href="mainpageranking.do">STYLE</a></li>
+                        <li><a href="mainpageshopping.do">SHOP</a></li>
                         <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     </ul>
                 </div>
