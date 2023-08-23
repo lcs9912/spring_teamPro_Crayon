@@ -144,6 +144,7 @@ public class UserController {
 			session.setAttribute("sessionName", user.getUserName());
 			session.setAttribute("sessionStatus", user.getUserState()); 
 			session.setAttribute("sessionEmail", user.getUserEmail()); 
+			session.setAttribute("sessionNickname", user.getUserNickname());
 		}
 		return new Gson().toJson(resultMap);
 	}
