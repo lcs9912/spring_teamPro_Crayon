@@ -86,11 +86,17 @@ text-align:center;
 width: 100%;
 height:60px;
 border-radius:10px;
-background-color:black;
 color:white;
 font-weight: bold;
 font-size:15px;
+background-color: #B5B5B5;
 }
+
+		.selected {
+			background-color: #eee;
+			border-color: black; /* 선택 시 테두리 색상 변경 */
+			color: red;
+		}
 
 </style>
 
@@ -121,77 +127,77 @@ font-size:15px;
 
 
 <div class="productdetailsizarea">
-<button>
+<button class="custom-button">
 <div>val18.220</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val19.225</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val20.230</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val21.235</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val22.240</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val23.245</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val24.250</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val25.255</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val26.260</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val27.265</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val28.270</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val29.275</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val30.280</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val31.285</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val32.290</div>
 <div>status</div>
 </button>
@@ -200,7 +206,9 @@ font-size:15px;
 </div>
 
 <div class="buyboxarea">
-<button>구매입찰</button>
+	<a href="buyagree.do">
+<button class="buy-button" disabled>구매입찰</button>
+</a>
 </div>
 
 </div>
@@ -212,5 +220,14 @@ font-size:15px;
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+/* 사이즈 버튼 누르면 텍스트 red 구매입찰버튼 비활성화,활성화*/
+$(document).ready(function() {
+	$('.custom-button').click(function() {
+		$('.custom-button').removeClass('selected');
+		$(this).addClass('selected');
+		$('.buy-button').css('background-color', 'black');
+		$('.buy-button').css('cursor', 'pointer');
+		$('.buy-button').prop('disabled', false);
+	});
+});
 </script>

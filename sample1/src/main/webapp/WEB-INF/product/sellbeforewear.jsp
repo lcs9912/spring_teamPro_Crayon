@@ -91,8 +91,14 @@ background-color:black;
 color:white;
 font-weight: bold;
 font-size:15px;
+background-color: #B5B5B5;
 }
 
+		.selected {
+			background-color: #eee;
+			border-color: black; /* 선택 시 테두리 색상 변경 */
+			color: red;
+		}
 </style>
 
 </head>
@@ -122,47 +128,47 @@ font-size:15px;
 
 
 <div class="productdetailsizarea">
-<button>
+<button class="custom-button">
 <div>va1.XXS</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val2.XS</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val3.S</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val4.M</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val5.L</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val6.XL</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val7.XXL</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val8.XXXL</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val0.FREE</div>
 <div>status</div>
 </button>
@@ -170,7 +176,9 @@ font-size:15px;
 </div>
 
 <div class="buyboxarea">
-<button>판매입찰</button>
+<a href="sellagree.do">
+<button class="buy-button" disabled>판매입찰</button>
+</a>
 </div>
 
 </div>
@@ -182,5 +190,13 @@ font-size:15px;
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+$(document).ready(function() {
+	$('.custom-button').click(function() {
+		$('.custom-button').removeClass('selected');
+		$(this).addClass('selected');
+		$('.buy-button').css('background-color', 'black');
+		$('.buy-button').css('cursor', 'pointer');
+		$('.buy-button').prop('disabled', false);
+	});
+});
 </script>

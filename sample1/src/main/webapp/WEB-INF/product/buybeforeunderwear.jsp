@@ -86,11 +86,18 @@ text-align:center;
 width: 100%;
 height:60px;
 border-radius:10px;
-background-color:black;
 color:white;
 font-weight: bold;
 font-size:15px;
+background-color: #B5B5B5;
 }
+
+
+		.selected {
+			background-color: #eee;
+			border-color: black; /* 선택 시 테두리 색상 변경 */
+			color: red;
+		}
 
 </style>
 
@@ -121,47 +128,47 @@ font-size:15px;
 
 
 <div class="productdetailsizarea">
-<button>
+<button class="custom-button">
 <div>val9.28</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val10.29</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val11.30</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val12.31</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val13.32</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val14.33</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val15.34</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val16.35</div>
 <div>status</div>
 </button>
 
-<button>
+<button class="custom-button">
 <div>val17.36</div>
 <div>status</div>
 </button>
@@ -172,7 +179,9 @@ font-size:15px;
 </div>
 
 <div class="buyboxarea">
-<button>구매입찰</button>
+<a href="buyagree.do">
+<button class="buy-button" disabled>구매입찰</button>
+</a>
 </div>
 
 </div>
@@ -184,5 +193,14 @@ font-size:15px;
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+/* 사이즈 버튼 누르면 텍스트 red 구매입찰버튼 비활성화,활성화*/
+$(document).ready(function() {
+	$('.custom-button').click(function() {
+		$('.custom-button').removeClass('selected');
+		$(this).addClass('selected');
+		$('.buy-button').css('background-color', 'black');
+		$('.buy-button').css('cursor', 'pointer');
+		$('.buy-button').prop('disabled', false);
+	});
+});
 </script>
