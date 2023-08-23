@@ -43,28 +43,48 @@ public class ProductController {
         return "/product/productRegister";
     }
 	
-	// 구매전 페이지
+	// 구매전 신발 페이지
 	@RequestMapping("/buybeforeshoes.do") 
 	public String buybeforewindow(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 	    return "/product/buybeforeshoes";
 	}
+	// 판매전 신발 페이지
+	@RequestMapping("/sellbeforeshoes.do") 
+	public String sellbeforewindow(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+	    return "/product/sellbeforeshoes";
+	}
 	
-	// 상의 페이지
+	// 구매전 상의 페이지
 	@RequestMapping("/buybeforewear.do") 
 	public String buybeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/product/buybeforewear";
 	}
+	// 판매전 상의 페이지
+	@RequestMapping("/sellbeforewear.do") 
+	public String sellbeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/sellbeforewear";
+	}
 	
-	// 상의 페이지
+	// 구매전 하의 페이지
 	@RequestMapping("/buybeforeunderwear.do") 
 	public String buybeforeunderwear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/product/buybeforeunderwear";
+	}
+	// 구매전 하의 페이지
+	@RequestMapping("/sellbeforeunderwear.do") 
+	public String sellbeforeunderwear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/sellbeforeunderwear";
 	}
 	
 	// 구매동의 페이지
 	@RequestMapping("/buyagree.do") 
 	public String buyagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/product/buyagree";
+	}
+	// 판매동의 페이지
+	@RequestMapping("/sellagree.do") 
+	public String sellagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/sellagree";
 	}
 	
 	// 즉시 구매 페이지
@@ -77,6 +97,11 @@ public class ProductController {
 	public String payandpackage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/product/payandpackage";
 	}
+	// 주문/정산 배송페이지
+		@RequestMapping("/orderandsettle.do") 
+		public String orderandsettle(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			return "/product/orderandsettle";
+		}
 	// 경매 페이지
 	@RequestMapping("/productauction.do") 
 	public String productauction(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
