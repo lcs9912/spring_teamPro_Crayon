@@ -208,4 +208,36 @@ public class ProductController {
  		resultMap.put("img",img);
  		return new Gson().toJson(resultMap);
  	}
+ 	
+ // 유저 관심상품 조회
+   	@RequestMapping(value = "/proInterestInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String proInterestInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		Product interest = productService.searchInterest(map);
+   		resultMap.put("interest", interest);
+   		return new Gson().toJson(resultMap);
+   	}
+
+   	// 관심상품 해제
+   	@RequestMapping(value = "/proInterestRemove.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String proInterestRemove(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		productService.removeInterest(map);
+
+   		return new Gson().toJson(resultMap);
+   	}
+
+   	// 최근거래가
+   	@RequestMapping(value = "/product/resent.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String productResent(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		Product resent = productService.searchResentPro(map);
+   		resultMap.put("resent", resent);
+
+   		return new Gson().toJson(resultMap);
+   	}
+ 	
 }

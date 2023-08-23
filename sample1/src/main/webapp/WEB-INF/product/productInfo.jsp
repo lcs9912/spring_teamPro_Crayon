@@ -556,7 +556,7 @@ var app = new Vue({
             var nparmap = {proNum : self.proNum};
            
              $.ajax({
-                 url : "/productInfo2.dox",
+                 url : "/productInfo.dox",
                  dataType:"json",	
                  type : "POST", 
                  data : nparmap,
@@ -580,7 +580,7 @@ var app = new Vue({
     		var nparmap = {modelNum : self.modelNum};
     		console.log(self.modelNum);
              $.ajax({
-                url : "/productInfo2.dox",
+                url : "/productInfo.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,

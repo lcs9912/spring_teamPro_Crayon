@@ -112,6 +112,10 @@
    			WHERE USER_ID= #{uId}
    </update>
    
+   <insert id="insertPointHistory" parameterType="hashmap">
+   			INSERT INTO T1_USER_POINT
+   			VALUES (#{uId}, 'P', #{point}, NOW())
+   </insert>
    <!-- POINT_TBL포인트 입력 -->
    
 </mapper>

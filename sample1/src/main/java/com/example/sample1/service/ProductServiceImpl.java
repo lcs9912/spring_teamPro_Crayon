@@ -43,6 +43,7 @@ public class ProductServiceImpl implements ProductService{
 		return resultMap;
 	}
 	
+	// 상품 상세페이지
 	@Override
 	public HashMap<String, Object> searchProductInfo(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -65,5 +66,34 @@ public class ProductServiceImpl implements ProductService{
 	public Product viewProductImg(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return productMapper.selectProductImg(map);
+	}
+	// 관심 등록
+	@Override
+	public int addInterest(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		productMapper.insertInterest(map); // 관심 등록
+		productMapper.plusInterestCnt(map); // cnt+1
+		return 0;
+	}
+	//유저  관심 조회
+	@Override
+	public Product searchInterest(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectInterest(map);
+	}
+	// 관심해제
+	@Override
+	public int removeInterest(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		productMapper.deleteInterest(map);
+		productMapper.minusdateInterestCnt(map); // cnt-1
+
+		return 0;
+	}
+	// 최근거래가
+	@Override
+	public Product searchResentPro(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectRecentTransaction(map);
 	}
 }
