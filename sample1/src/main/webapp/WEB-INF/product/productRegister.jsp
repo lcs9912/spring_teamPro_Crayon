@@ -221,7 +221,7 @@ input[type="radio"]{
 			</select>
 			<div v-if="showDirectInput">
 				<input v-model="directInputBrand" type="text">
-				<span><button @click="fnAddBrand">등록</button></span>
+			<span><button @click="fnAddBrand">등록</button></span>
 			</div>
 		</div>
 	</div>
