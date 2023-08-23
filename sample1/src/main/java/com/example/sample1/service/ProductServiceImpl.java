@@ -21,6 +21,12 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productMapper.insertProductImg(map);
 	}
+	// 상품사이즈 조회
+	@Override
+	public List<Product> viewSize(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectSize(map);
+	}
 	//상품 브랜드 조회
 	@Override
 	public List<Product> viewBrand(HashMap<String, Object> map) {
@@ -96,4 +102,5 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productMapper.selectRecentTransaction(map);
 	}
+	
 }

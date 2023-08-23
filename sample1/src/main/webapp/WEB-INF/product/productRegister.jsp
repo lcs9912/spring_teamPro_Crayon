@@ -17,11 +17,11 @@
 		background-color:#a2a2a2;
 		font-weight : bold;
 	}
-input[type="radio"]{
+/* input[type="radio"]{
 	position: absolute;
 	opacity: 0;
 	width: 0;
-}
+} */
 	.area{
 	width:100%;
 	text-align:center;
@@ -94,6 +94,10 @@ input[type="radio"]{
 	font-size:18px;
 	background-color:#E8E8E8;
 	}
+	.buybtn {
+		margin-right:-10px;
+		margin-bottom:10px;
+	}
 	.buybtn:hover{
 	background-color:tomato;
 	}
@@ -110,11 +114,10 @@ input[type="radio"]{
 	<div class="selectarea">
 
 		<div class="buylabel">
-			<button class="buybtn" style="margin-right:-10px; margin-bottom:10px;">구매</button>
+			<input class="buybtn" v-model="product.sellBuy" type="radio" value="B" id="b"><label for="B">구매</label>
 			</div>
 		<div class="selllabel">
-			<button class="sellbtn">판매</button>
-
+			<input class="sellbtn" v-model="product.sellBuy" type="radio" value="S" id="s"><label for="S">판매</label>
 		</div>
 		</div>
 		
@@ -138,51 +141,12 @@ input[type="radio"]{
 		<div>
 		<div style="display:inline-block;"><input v-model="product.pColor" type="text" placeholder="상품컬러" style="text-align:center;"></div>
 		<div style="display:inline-block;"><input v-model="product.pPrice" type="text" placeholder="상품가격" style="text-align:center;"></div>
-		<div><input v-model="product.launch" type="text" placeholder="발매가" style="text-align:center;">
-		<select v-model="product.pSize">
-				<option value="a">사이즈</option>
-				<option value="0">ONE SIZE</option>
-				<option value="1">XXS</option>
-				<option value="2">XS</option>
-				<option value="3">S</option>
-				<option value="4">M</option>
-				<option value="5">L</option>
-				<option value="6">XL</option>
-				<option value="7">XXL</option>
-				<option value="8">XXXL</option>
-				<option value="9">28</option>
-				<option value="10">29</option>
-				<option value="11">30</option>
-				<option value="12">31</option>
-				<option value="13">32</option>
-				<option value="14">33</option>
-				<option value="15">34</option>
-				<option value="16">35</option>
-				<option value="17">36</option>
-				<option value="18">220</option>
-				<option value="19">225</option>
-				<option value="20">230</option>
-				<option value="21">235</option>
-				<option value="22">240</option>
-				<option value="23">245</option>
-				<option value="24">250</option>
-				<option value="25">255</option>
-				<option value="26">260</option>
-				<option value="27">265</option>
-				<option value="28">270</option>
-				<option value="28">275</option>
-				<option value="30">280</option>
-				<option value="31">285</option>
-				<option value="32">290</option>
-			</select>
+		<div>
+			<input v-model="product.kName" type="text" placeholder="상품한글명" style="text-align:center;">
 		</div>
-		
-		
-	
-		
-			
-		
-
+		<div>
+			<input v-model="product.launch" type="text" placeholder="발매가" style="text-align:center;">
+		</div>
 		<div style="margin-bottom:30px;">*마감일자<input v-model="product.endDate" type="date" placeholder="마감일자"></div>
 		<div style="margin-bottom:10px; font-weight:bold;">카테고리 선택</div>
 	<div>
@@ -212,6 +176,12 @@ input[type="radio"]{
 				<option value="12">모자</option>
 			</select>
 		</div>
+		<div>
+			<select v-model="product.pSize">
+				<option value="a">사이즈</option>
+				<option v-for="sItem in computedSizeOptions" :value="sItem.productSize">{{sItem.size}}</option>
+			</select>
+		</div>
 		<div style="margin-top:10px; margin-bottom:10px;"><strong>브랜드 선택</strong></div>
 		<div> 
 			<select v-model="product.brand" @change="handleBrandChange"	>
@@ -238,23 +208,39 @@ var app = new Vue({
 	el : '#app',
 	data : {
 		list : [],
+		sList : [],
 		product :{
 			pName : "",
 			pModel : "",
 			pSize : "a",
 			pColor : "",
 			pPrice : "",
+			kName : "",
 			launch : "",
 			endDate : "",
 			pCategorie1 : "0",
 			pCategorie2 : "0",
-			brand : "a",
+			brand : "100",
 			sellBuy : "",
 			uId : "${sessionId}"
 		},
 		showDirectInput: false, // 직접입력 영역 표시 여부
 		directInputBrand: '' // 직접입력한 브랜드
 	},// data
+	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
+	computed: {
+	    computedSizeOptions() {
+	      if (this.product.pCategorie2 === '1' || this.product.pCategorie2 === '3') {
+	        return this.sList.slice(1, 8); // 상의,아우터 카테고리인 경우 1(XXS)부터 8(XXL)까지만 보여주도록 처리
+	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7'|| this.product.pCategorie2 === '8') {
+	        return this.sList.slice(18,32); // 신발 카테고리인 경우 18(220)부터 32(290)까지만 보여주도록 처리
+	      } else if (this.product.pCategorie2 === '2'){
+	        return this.sList.slice(9,17); // 하의 카테고리에 경우 9(28)부터 17(36)까지만 보여주도록 처리
+	      } else if (this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'|| this.product.pCategorie2 === '12'){
+	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
+	      }
+	    },
+	  },
 	methods : {
 		// 브랜드 직접 입력시 등록 창 보이게하기
 		handleBrandChange: function(event) {
@@ -283,6 +269,10 @@ var app = new Vue({
 			}
 			if(self.product.pModel == ""){
 				alert("상품의 모델명을 입력해주세요");
+				return;
+			}
+			if(self.product.kName == "") {
+				alert("상품의 한글명을 입력해주세요");
 				return;
 			}
 			if(self.product.pSize == ""){
@@ -322,8 +312,9 @@ var app = new Vue({
 			});
 		},
 		// 파일 업로드
-	    upload: function(form) {
+		upload: function(form) {
 		    var self = this;
+
 		    $.ajax({
 		        url: "fileUpload.dox",
 		        type: "POST",
@@ -334,6 +325,21 @@ var app = new Vue({
 		        	   
 		           }
 		    });
+		},
+		// 사이즈 조회
+		fnGetSize : function () {
+			var self = this;
+			var nparmap = {};
+			$.ajax({
+				url : "size.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data){
+					self.sList = data.size;
+					console.log(data);
+				}
+			})
 		},
 		// 브랜드이름 직접입력 추가
 		fnAddBrand : function (){
@@ -366,10 +372,12 @@ var app = new Vue({
 	}, // methods
 	created : function() {
 		var self = this;
+		self.fnGetSize();
 		self.fnGetBrandName();
+		console.log(self.product);
 	}// created
 });
-var buyButton = document.querySelector('.buybtn');
+/* var buyButton = document.querySelector('.buybtn');
 var sellButton = document.querySelector('.sellbtn');
 buyButton.addEventListener('click', function() {
     buyButton.style.backgroundColor = 'tomato';
@@ -378,6 +386,6 @@ buyButton.addEventListener('click', function() {
 sellButton.addEventListener('click', function() {
     buyButton.style.backgroundColor = '#E8E8E8';
     sellButton.style.backgroundColor = 'limegreen';
-});
+}); */
 
 </script>

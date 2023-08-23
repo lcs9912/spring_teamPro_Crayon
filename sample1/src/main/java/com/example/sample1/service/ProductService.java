@@ -13,6 +13,8 @@ public interface ProductService {
 	int addProductImg(HashMap<String, Object> map);
 	//상품 이미지 조회
 	Product viewProductImg(HashMap<String, Object> map);
+	//상품 사이즈 조회
+	List<Product> viewSize(HashMap<String, Object> map);
 	//상품 브랜드 조회
 	List<Product> viewBrand(HashMap<String, Object> map);
 	//브랜드 이름 직접입력

@@ -109,6 +109,15 @@ public class ProductController {
 	}
 	
 	//.dox
+	//상품 사이즈 조회
+	 @RequestMapping(value = "/size.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String size(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Product> list = productService.viewSize(map);
+		resultMap.put("size", list);
+		return new Gson().toJson(resultMap);
+	}
 	// 상품 브랜드 조회
 	@RequestMapping(value = "/brand.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
