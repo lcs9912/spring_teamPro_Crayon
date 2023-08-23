@@ -6,7 +6,7 @@
 <title>마이페이지 로그인정보 페이지</title>
 
 <style>
-	* {margin:0; padding:0;}
+	* {margin:0; padding:0; box-sizing:border-box;}
 
 	li {
 		list-style:none;
@@ -16,6 +16,7 @@
 	a {	
 		text-decoration:none;
 		color: inherit;
+		cursor:point;
 		}
 	
 	.mypagewrap {
@@ -90,81 +91,40 @@
 			}
 			
 			/* 팝업 레이어 */
-			.popup-overlay {
-				display: none;
-			   	position: fixed;
-			  	top: 0;
-			  	left: 0;
-			  	width: 50%;
-			    height: 50%;
-			   	background-color: rgba(0, 0, 0, 0.5);
-			  	z-index: 1000;
-			} 
-			
-			.popup-content {
-			    position: absolute;
-			    top: 50%;
-			    left: 50%;
-			    transform: translate(-50%, -50%);
-			    background-color: #fff;
-			    padding: 20px;
-			    border-radius: 10px;
-			    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			body{
+			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
+			    background-repeat: no-repeat;
+			    background-size: cover;
+			    position:relative;
 			}
 			
-			#popupTitleBox{
-				background-color: black;
-			}
-			
-			#popupTitleBox i{
-				cursor: pointer;
-				color: white;
-			}
-			#popupTitle{
-				color: white;
-				
-				font-weight: bold;
-			}
 			html, body{
 			    width: 100%;
 			    height: 100%;
 			    padding: 0;
 			    margin: 0;
-			    
 			}
-			body{
-			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
-			    background-repeat: no-repeat;
-			    background-size: cover;
-			    background-position: center;
-			    
-			    
-			}
-			body.dimmed::before{
-			    content: '';
-			    position: fixed; left: 0;
-			    right: 0; top: 0;
-			    bottom: 0; background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
-			    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    			    
-			}
-			.popup {
-			    z-index: 1; position: fixed;
-			    top: 50%; left: 50%;
-			    transform: translate(-50%,-50%);
-			    min-width: 300px; max-width: 600px;
-			    background-color: #fff; border-radius: 15px;
-			    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);			    			    
-			}
-			.popup > .title{
+			
+			.popup-overlay {
+				display: none; position: absolute;
+			  	top: 0; left: 0;
+			  	width: 100%; height: 100%;
+			   	background-color: rgba(51,51,51,0.5);
+			  	z-index: 3000;
+			  	opacity:50%;
+			} 
+			.content {
+			    width:500px; height:500px;
+			    margin:0 auto; background:#fff;
+			}		
+			
+			.title{
 			    border-radius: 15px 15px 0 0; min-height: 40px;
 			    color: white; background-color: black; padding: 10px 15px;
 			    box-sizing: border-box; font-weight: bold;
 			    text-align: center;
 			}
-			.popup > .content {
-			    padding: 20px;
-			    box-sizing: border-box;
-			}
+		
 			.popup > .cmd {
 			    bottom: 0; min-height: 40px;
 			    padding: 15px 15px; box-sizing: border-box;
@@ -205,7 +165,7 @@
 				border : 1px solid #a2a2a2;
 				width : 100px; height : 25px;
 				cursor: pointer;
-			}
+			} 
 </style>
 
 </head>
@@ -243,11 +203,9 @@
 					<div class="editinner">
 						<h4>내 계정</h4>
 						<div class="editebox spanBut">
-							<h6>이메일 주소</h6>
-							
+							<h6>이메일 주소</h6>							
 								<span class="editinput">{{masked.maskedEmail}}</span>
 								<button class="editbtn" @click="fnpopup('email')">변경</button>
-						
 						</div>
 					
 						<div class="editebox">
@@ -306,123 +264,119 @@
 		</div>
 		</div>
 	
-	<div class="emaailbackcolor">
-	<!-- 이메일 변경 팝업 -->
-	<div class="popup popup-overlay" id="popupOverlay" >
-        <div class="title">변경<i class="fa-solid fa-x" id="closePopup"></i></div>
-        <div class="content" style="text-align:center;">
-        <!-- 이메일 변경 -->
-     	<template v-if="keyword == 'email'">
-            <h2 style="padding-bottom:15px;">이메일주소 변경</h2>
-            <p>
-                <div style="padding-bottom:15px;">기존 이메일주소 : {{masked.maskedEmail}}</div>
-               <div class="emailinput"><input placeholder="대충 변경할 이메일" v-model="editEmail"></div>
-               <div style="color: red;">{{emailMessage}}</div>
-                <div class="emailinput">
-              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-
-               	</div> 
-               	<button @click="fnPwdCheck" class="emailpwd" >비밀번호 인증</button>
-               	
-            </p>
-            	 <div class="cmd">
-       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
-        		 </div>
-        </template>
-        </div>
-        <!-- 비밀번호 변경 -->
-     	<template v-if="keyword == 'pwd'">
-            <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
-            <p>
-                <div><input type="password" placeholder="기존 비밀번호 입력" v-model="pwd"><button @click="fnPwdCheck">확인</button></div>
-                <div v-if="pwdFlg">
-	                <select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="checkPwdHint">
-						<option disabled selected>비밀번호 찾기 질문</option>
-						<option value="1">가장 좋아하는 동물은?</option>
-						<option value="2">가장 좋아하는 음식은?</option>
-						<option value="3">가장 좋아하는 색은?</option>
-						<option value="4">가장 좋아하는 운동선수이름은?</option>
-						<option value="5">자신의 취미나 특기는?</option>
-						<option value="6">가장 좋아하는 운동은?</option>
-						<option value="7">가장 좋아하는 티비프로그램은?</option>
-						<option value="8">가장 좋아하는 책은?</option>
-						<option value="9">가장 좋아하는 영화는?</option>
-					</select>
-	               <div><input placeholder="정답" v-model="hintAnswer"></div>
-	               <div style="color: red;">{{pwdMessage}}</div>
-	               <button @click="fnHintCheck">확인</button>
-               </div>
-                <div v-if="hintPwdFlg">
-              		<div><input type="password" v-model="editPwd" placeholder="새 비밀번호"></div>
-              		<div><input type="password" v-model="editPwd2" placeholder="비밀번호 확인"></div>
-               		
-               	</div> 
-            </p>
-            	 <div class="cmd">
-       				<button id="submitPopup" @click="fnSubmitPwdEdit">제출</button>          
-        		 </div>
-        </template>
-        
-        <!-- 연락처 변경 -->
-     	<template v-if="keyword == 'phone'">
-            <p>대충 전화번호 변경 주의 사항(없어도됨)</p>
-            <p>
-                
-               <div><input placeholder="아이디" v-model="checkId"></div>
-               <div><input placeholder="비밀번호" v-model="pwd"></div>
-               <div><input placeholder="이메일" v-model="editEmail"></div>
-               <button @click="fnAllCheck">인증</button>
-               <div style="color: red;">{{phoneMessage}}</div>
-                <div v-if="PhoneFlg">
-                	<div><input placeholder="새 전화번호" v-model="editPhone"></div>
-                </div>
-            </p>
-            	 <div class="cmd">
-       				<button id="submitPopup" @click="fnSubmitPhoneEdit">제출</button>          
-        		 </div>
-        </template>
-        
-        <!-- 신발 사이즈 변경 -->
-     	<template v-if="keyword == 'size'">
-            <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
-            <p>
-                <div>
-                	<label>230<input type="radio" value="230" name="shoessize" checked></label>
- 					<label>235<input type="radio" value="235" name="shoessize"></label>
- 					<label>240<input type="radio" value="240" name="shoessize"></label>
- 					<label>245<input type="radio" value="245" name="shoessize"></label>
- 					<label>250<input type="radio" value="250" name="shoessize"></label>
- 					<label>255<input type="radio" value="255" name="shoessize"></label>
- 					<label>260<input type="radio" value="260" name="shoessize"></label>
- 					<label>265<input type="radio" value="265" name="shoessize"></label>
- 					<label>270<input type="radio" value="270" name="shoessize"></label>
- 					
-                </div>
-            </p>
-          		 <div class="cmd">
-       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
-        		 </div>
-        </template>
-        
-        <!-- 회원 탈퇴 -->
-        <template v-if="keyword == 'remove'">
-            <p>회원 탈퇴</p>
-            <p>
-                <div><input placeholder="아이디" v-model="checkId"></div>
-                <div><input placeholder="비밀번호" v-model="pwd"></div>
-                <div><input placeholder="이메일" v-model="editEmail"></div>
-                <div><button @click="fnAllCheck">확인</button></div>
-                
-            </p>
-          		 <div class="cmd">
-       				<button id="submitPopup" @click="fnRemoveUser">제출</button>          
-        		 </div>
-        </template>
-        
-       
-        </div>
-        
-    </div>
+		<div class="emaailbackcolor">
+		<!-- 이메일 변경 팝업 -->
+		<div class="popup popup-overlay" id="popupOverlay" >
+	        <div class="content">
+	        <div class="title">변경<i class="fa-solid fa-x" id="closePopup"></i></div>
+	        <!-- 이메일 변경 -->
+	     	<template v-if="keyword == 'email'">
+	            <h2 style="padding-bottom:15px;">이메일주소 변경</h2>
+	            <p>
+	                <div style="padding-bottom:15px;">기존 이메일주소 : {{masked.maskedEmail}}</div>
+	                <div class="emailinput"><input placeholder="대충 변경할 이메일" v-model="editEmail"></div>
+	                <div style="color: red;">{{emailMessage}}</div>
+	                <div class="emailinput">
+	              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
+	               	</div> 
+	               	<button @click="fnPwdCheck" class="emailpwd" >비밀번호 인증</button>
+	            </p>
+	            	 <div class="cmd">
+	       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
+	        		 </div>
+	        </template>
+	        </div>
+	        <!-- 비밀번호 변경 -->
+	     	<template v-if="keyword == 'pwd'">
+	            <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
+	            <p>
+	                <div><input type="password" placeholder="기존 비밀번호 입력" v-model="pwd"><button @click="fnPwdCheck">확인</button></div>
+	                <div v-if="pwdFlg">
+		                <select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="checkPwdHint">
+							<option disabled selected>비밀번호 찾기 질문</option>
+							<option value="1">가장 좋아하는 동물은?</option>
+							<option value="2">가장 좋아하는 음식은?</option>
+							<option value="3">가장 좋아하는 색은?</option>
+							<option value="4">가장 좋아하는 운동선수이름은?</option>
+							<option value="5">자신의 취미나 특기는?</option>
+							<option value="6">가장 좋아하는 운동은?</option>
+							<option value="7">가장 좋아하는 티비프로그램은?</option>
+							<option value="8">가장 좋아하는 책은?</option>
+							<option value="9">가장 좋아하는 영화는?</option>
+						</select>
+		               <div><input placeholder="정답" v-model="hintAnswer"></div>
+		               <div style="color: red;">{{pwdMessage}}</div>
+		               <button @click="fnHintCheck">확인</button>
+	               </div>
+	                <div v-if="hintPwdFlg">
+	              		<div><input type="password" v-model="editPwd" placeholder="새 비밀번호"></div>
+	              		<div><input type="password" v-model="editPwd2" placeholder="비밀번호 확인"></div>
+	               	</div> 
+	            </p>
+	            	 <div class="cmd">
+	       				<button id="submitPopup" @click="fnSubmitPwdEdit">제출</button>          
+	        		 </div>
+	        </template>
+	        
+	        <!-- 연락처 변경 -->
+	     	<template v-if="keyword == 'phone'">
+	            <p>대충 전화번호 변경 주의 사항(없어도됨)</p>
+	            <p>
+	               <div><input placeholder="아이디" v-model="checkId"></div>
+	               <div><input placeholder="비밀번호" v-model="pwd"></div>
+	               <div><input placeholder="이메일" v-model="editEmail"></div>
+	               <button @click="fnAllCheck">인증</button>
+	               <div style="color: red;">{{phoneMessage}}</div>
+	               <div v-if="PhoneFlg">
+	                	<div><input placeholder="새 전화번호" v-model="editPhone"></div>
+	                </div>
+	            </p>
+	            	 <div class="cmd">
+	       				<button id="submitPopup" @click="fnSubmitPhoneEdit">제출</button>          
+	        		 </div>
+	        </template>
+	        
+	        <!-- 신발 사이즈 변경 -->
+	     	<template v-if="keyword == 'size'">
+	            <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
+	            <p>
+	                <div>
+	                	<label>230<input type="radio" value="230" name="shoessize" checked></label>
+	 					<label>235<input type="radio" value="235" name="shoessize"></label>
+	 					<label>240<input type="radio" value="240" name="shoessize"></label>
+	 					<label>245<input type="radio" value="245" name="shoessize"></label>
+	 					<label>250<input type="radio" value="250" name="shoessize"></label>
+	 					<label>255<input type="radio" value="255" name="shoessize"></label>
+	 					<label>260<input type="radio" value="260" name="shoessize"></label>
+	 					<label>265<input type="radio" value="265" name="shoessize"></label>
+	 					<label>270<input type="radio" value="270" name="shoessize"></label>
+	 					
+	                </div>
+	            </p>
+	          		 <div class="cmd">
+	       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
+	        		 </div>
+	        </template>
+	        
+	        <!-- 회원 탈퇴 -->
+	        <template v-if="keyword == 'remove'">
+	            <p>회원 탈퇴</p>
+	            <p>
+	                <div><input placeholder="아이디" v-model="checkId"></div>
+	                <div><input placeholder="비밀번호" v-model="pwd"></div>
+	                <div><input placeholder="이메일" v-model="editEmail"></div>
+	                <div><button @click="fnAllCheck">확인</button></div>
+	                
+	            </p>
+	          		 <div class="cmd">
+	       				<button id="submitPopup" @click="fnRemoveUser">제출</button>          
+	        		 </div>
+	        </template>
+	        
+	       
+	        </div>
+	        
+	    </div> 
 
    
    
@@ -535,7 +489,6 @@
 	                	} else {
 	                		alert(data.message);
 	                		self.pwdFlg = false;
-	                		
 	                	}
 						
 					}
@@ -702,7 +655,7 @@
 	});
 	
 	 // 레이어 팝업창 닫기
-	document.getElementById("closePopup").addEventListener("click", function() {
+		document.getElementById("closePopup").addEventListener("click", function() {
 		document.getElementById("popupOverlay").style.display = "none";
 	});
 </script>
