@@ -22,10 +22,10 @@
 		}
 	
 	.mypagewrap {
-		width:1200px; margin:0 auto;
+		width:1200px; margin:50px auto;
 		}
 	.myinfonav {
-		float:left; width:200px; color:#000;
+		float:left; width:200px; color:#000; margin-bottom:100px;
 		}
 		
 	.myinfo h2{
@@ -40,8 +40,8 @@
 		margin:10px 0;
 		}	
 	
-	.editlogininfo{
-		width:1000px; float:left;
+	.editpointinfo{
+		width:1000px; float:left; margin-bottom:150px;
 		}        
 	.edithead {
 		padding-bottom:15px; border-bottom:3px solid #000;
@@ -91,59 +91,56 @@
 				cursor: pointer;
 			}
 			
-
-html, body{
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    
-}
-.paykindselect{
-margin-top : 20px;
-margin-bottom:30px;
-padding-top : 10px;
-
-}
-.banknum{
-margin-right:100px;
-}
-input[type="radio"]{
-margin-right : 5px;
-
-}
-.paymentbtn{
-margin-bottom:15px;
-}
-.paymentbtn button{
-border: 1px solid #e9e9e9;
-    background-color: #fff;
-    border-radius: 10px;
-    width: 50px;
-    height: 30px;
-    color: #777;
-    font-size: 12px;
-    width:100px;
-    background-color:white;
-    cursor:pointer;
-}
-.cardkindselect{
-margin-top:15px;
-}
-
-.carding {
-display: none;
-}
-
-input[type="text"]{
-outline:none;
-}
+			
+			html, body{
+			    width: 100%;
+			    height: 100%;
+			    padding: 0;
+			    margin: 0;
+			    
+			}
+			.paykindselect{
+				margin-top : 20px;
+				margin-bottom:30px;
+				padding-top : 10px;
+			}
+			.banknum{
+				margin-right:100px;
+			}
+			input[type="radio"]{
+				margin-right : 5px;			
+			}
+			.paymentbtn{
+				margin-bottom:15px;
+			}
+			.paymentbtn button{
+				border: 1px solid #e9e9e9;
+			    background-color: #fff;
+			    border-radius: 10px;
+			    width: 50px;
+			    height: 30px;
+			    color: #777;
+			    font-size: 12px;
+			    width:100px;
+			    background-color:white;
+			    cursor:pointer;
+			}
+			.cardkindselect{
+				margin-top:15px;
+			}
+			
+			.carding {
+				display: none;
+			}
+			
+			input[type="text"]{
+				outline:none;
+			}
 
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 	<div id="app">
 	<div class="mypagewrap">
@@ -153,25 +150,23 @@ outline:none;
 			<h3>쇼핑 정보</h3>
 			<ul>
 				<li><a href="mypagebuylist.do">구매 내역</a></li>
-				<li><a href="mypageselllist.do">판매 내역</a></li>
-				<li><a href="#">보관 판매</a></li>
-				<li><a href="#">관심 상품</a></li>
+				<li><a href="mypageselllist.do">판매 내역</a></li>				
+				<li><a href="mypageproductinter.do">관심 상품</a></li>
 			</ul>
 		</div>
 		<div class="myinfo">
 			<h3>내 정보</h3>
 			<ul>
 				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
-				<li><a href="#">프로필 관리</a></li>
-				<li><a href="#">주소록</a></li>
-				<li><a href="#">결제 정보</a></li>
-				<li><a href="#">판매 정산 계좌</a></li>
-				<li><a href="#">현금영수증 정보</a></li>
+				<li><a href="mypageprofile.do">프로필 관리</a></li>
+				<li><a href="mypageaddr.do">주소록</a></li>
+				<li><a href="mypagepaylist.do">결제 정보</a></li>
+				<li><a href="mypagebank.do">판매 정산 계좌</a></li>				
 				<li style="font-weight:bold; color:#FF6868"><a href="mypageaddpoint.do">포인트 충전</a></li>
 			</ul>
 		</div>
 		</nav>
-		<div class="editlogininfo">
+		<div class="editpointinfo">
 			<div class="edithead">
 				<h2>포인트 충전</h2>
 			</div>

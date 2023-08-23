@@ -6,223 +6,187 @@
 <title>Insert title here</title>
 
 <style>
-* {margin:0; padding:0; box-sizing : border-box;}
-
-table {
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-th, td {
-	border: 1px solid black;
-	padding: 5px 10px;
-}
-
-li {
-	list-style:none;
-	}
-
-
-a {	text-decoration:none;
-	color: inherit;
-	}
-
-.profilewrap {
-	width:1200px; margin:0 auto;
-	}
-.profilenav {
-	float:left; width:200px; color:#000;
+	* {margin:0; padding:0; box-sizing : border-box;}
+	
+	table {
+		border: 1px solid black;
+		border-collapse: collapse;
+		text-align: center;
 	}
 	
-.myinfo h2{
-		margin-bottom:20px;
-	}	
-
+	th, td {
+		border: 1px solid black;
+		padding: 5px 10px;
+	}
 	
-.myinfo h3{
-		margin:30px 0;
-	}	
-	
-.myinfo ul li{
-	margin:10px 0;
-	}	
-	
-
-/*프로필 관리 영역 CSS 시작*/
-.sailcontainer {float:left;}
-	.edithead {
-		width:1000px; height:40px;
-		padding-bottom:15px; border-bottom:3px solid #000; 
+	li {
+		list-style:none;
 		}
-		.edithead h2{margin-top:10px;}	
-	.profilearea {
-		width:1000px; height:150px; margin:15px 0; border-bottom:1px solid #e9e9e9;
-		}		
-		.profileinner1{
-			float:left; width: 100px; height:100px; margin:20px 40px;
+	
+	
+	a {	text-decoration:none;
+		color: inherit;
 		}
-		.profileinner2{
-			float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
-		}
-			.profileinner2 strong{
-				font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+	
+		.profilewrap {
+			width:1200px; margin:50px auto;
 			}
-			.profileinner2 p {margin:5px 0;}
-			.profileinner2 a{
-				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-				margin-left:5px; height:15px; line-height:15px;
+		.profilenav {
+			float:left; width:200px; color:#000;
 			}
+			
+		.myinfo h2{
+				margin-bottom:20px;
+			}	
 		
+			
+		.myinfo h3{
+				margin:30px 0;
+			}	
+			
+		.myinfo ul li{
+			margin:10px 0;
+			}	
+			
 		
-			.editprofile h4 {/*프로필정보 영역 CSS(인풋, 버튼) 시작*/
-			margin:25px 0 25PX 0; 
-			}
-			.editebox {
-				width:480px; height:70px; border-bottom: 1px solid #e9e9e9;
-			}
-
-			.editebox h5 {
-				color:#ccc; margin-top:25px;
-			}
-
-			.editebox .editbtn{
-				border:1px solid #e9e9e9; background-color: #fff; border-radius: 10px; width:50px; height:30px;	
-				color:#777; font-size: 12px;	
-			}
-			.editinput {/*프로필정보 영역 CSS 종료*/
-				border:0 solid; font-size:20px; margin-top: 20px; width:421px;
-			}		
- 
-    /*프로필 관리 영역 CSS 종료*/
-
-    /* 팝업 레이어 */
-.popup-overlay {
-	display: none;
-   	position: fixed;
-  	top: 0;
-  	left: 0;
-  	width: 50%;
-    height: 50%;
-   	background-color: rgba(0, 0, 0, 0.5);
-  	z-index: 1000;
-} 
-
-.popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-#popupTitleBox{
-	background-color: black;
-}
-
-#popupTitleBox i{
-	cursor: pointer;
-	color: white;
-}
-#popupTitle{
-	color: white;
+		/*프로필 관리 영역 CSS 시작*/
+		.sailcontainer {float:left; margin-bottom:150px;}
+			.edithead {
+				width:1000px; 
+				padding-bottom:15px; border-bottom:3px solid #000; 
+				}				
+			.profilearea {
+				width:1000px; height:150px; margin:15px 0; border-bottom:1px solid #e9e9e9;
+				}		
+				.profileinner1{
+					float:left; width: 100px; height:100px; margin:20px 40px;
+				}
+				.profileinner2{
+					float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
+				}
+					.profileinner2 strong{
+						font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+					}
+					.profileinner2 p {margin:5px 0;}
+					.profileinner2 a{
+						display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
+						margin-left:5px; height:35px; line-height:15px;
+					}
+				
+				
+				.editprofile h4 {/*프로필정보 영역 CSS(인풋, 버튼) 시작*/
+				margin:25px 0 25PX 0; 
+				}
+				.editebox {
+					width:480px; height:70px; border-bottom: 1px solid #e9e9e9;
+				}
 	
-	font-weight: bold;
-}
-html, body{
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    
-}
-body{
-    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    
-    
-}
-body.dimmed::before{
-    content: '';
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
-    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    
-    
-}
-.popup {
-    z-index: 1;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    min-width: 300px;
-    max-width: 600px;
-    background-color: #fff; 
-    border-radius: 15px;
-    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);
-    
-    
-}
-.popup > .title{
-    border-radius: 15px 15px 0 0;
-    min-height: 40px;
-    color: white;
-    background-color: black;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    font-weight: bold;
-    text-align: center;
-}
-.popup > .content {
-    padding: 20px;
-    box-sizing: border-box;
-}
-.popup > .cmd {
-    bottom: 0;
-    min-height: 40px;
-    padding: 15px 15px;
-    box-sizing: border-box;
-    border-radius: 0 0 15px 15px;
-    min-height: 40px;
-    text-align: right;
-    width: 300px;
- 
-}
-.cmd button {
-    border-radius: 8px;
-    padding: 5px 10px;
-    border: 1px solid #aaa;
-    width: 80px;
-    color: white;
-    background-color: black;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top : 409px;
-    left: 265px;
-}
-.cmd button:hover {
-    color: #fff;
-    background-color: #000;
-    border-color: #000;
-}
-.title i{
-	cursor: pointer;
-}
-.fa-x{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-}
+				.editebox h5 {
+					color:#ccc; margin-top:25px;
+				}
+	
+				.editebox .editbtn{
+					border:1px solid #e9e9e9; background-color: #fff; border-radius: 10px; width:50px; height:30px;	
+					color:#777; font-size: 12px;	
+				}
+				.editinput {/*프로필정보 영역 CSS 종료*/
+					border:0 solid; font-size:20px; margin-top: 20px; width:421px;
+				}		
+	 
+	    /*프로필 관리 영역 CSS 종료*/
+
+			    /* 팝업 레이어 */
+			.popup-overlay {
+				display: none;
+			   	position: fixed;
+			  	top: 0;	left: 0;
+			  	width: 50%; height: 50%;
+			   	background-color: rgba(0, 0, 0, 0.5);
+			  	z-index: 1000;
+			} 
+			
+			.popup-content {
+			    position: absolute;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%, -50%);
+			    background-color: #fff;
+			    padding: 20px; border-radius: 10px;
+			    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			}
+			
+			#popupTitleBox{
+				background-color: black;
+			}
+			
+			#popupTitleBox i{
+				cursor: pointer; color: white;
+			}
+			#popupTitle{
+				color: white; font-weight: bold;
+			}
+			html, body{
+			    width: 100%; height: 100%;
+			    padding: 0; margin: 0;			    
+			}
+			
+			body{
+			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
+			    background-repeat: no-repeat; background-size: cover;
+			    background-position: center;		    
+			}
+			body.dimmed::before{
+			    content: '';
+			    position: fixed; left: 0;
+			    right: 0; top: 0;
+			    bottom: 0; background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
+			    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    			  
+			}
+			.popup {
+			    z-index: 1; position: fixed;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%,-50%);
+			    min-width: 300px; max-width: 600px;
+			    background-color: #fff; border-radius: 15px;
+			    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);		    
+			 }
+			.popup > .title{
+			    border-radius: 15px 15px 0 0;
+			    min-height: 40px; color: white;
+			    background-color: black; padding: 10px 15px;
+			    box-sizing: border-box; font-weight: bold;
+			    text-align: center;
+			}
+			.popup > .content {
+			    padding: 20px;
+			    box-sizing: border-box;
+			}
+			.popup > .cmd {
+			    bottom: 0; min-height: 40px;
+			    padding: 15px 15px; box-sizing: border-box;
+			    border-radius: 0 0 15px 15px;
+			    min-height: 40px; text-align: right;
+			    width: 300px;
+			}
+			.cmd button {
+			    border-radius: 8px; padding: 5px 10px;
+			    border: 1px solid #aaa; width: 80px;
+			    color: white; background-color: black;
+			    font-weight: bold; cursor: pointer;
+			    position: absolute;
+			    top : 409px; left: 265px;
+			}
+			.cmd button:hover {
+			    color: #fff; background-color: #000;
+			    border-color: #000;
+			}
+			.title i{
+				cursor: pointer;
+			}
+			.fa-x{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
 
 </style>
 
@@ -246,10 +210,9 @@ body.dimmed::before{
 			<ul>
 				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
 				<li style="font-weight:bold; color:#FF6868"><a href="/mypagelogininfo.do">프로필 관리</a></li>
-				<li><a href="#">주소록</a></li>
-				<li><a href="#">결제 정보</a></li>
-				<li><a href="#">판매 정산 계좌</a></li>
-				<li><a href="#">현금영수증 정보</a></li>
+				<li><a href="mypageaddr.do">주소록</a></li>
+				<li><a href="mypagepaylist.do">결제 정보</a></li>
+				<li><a href="mypagebank.do">판매 정산 계좌</a></li>				
 				<li><a href="mypageaddpoint.do">포인트 충전</a></li>
 			</ul>
 		</div>
@@ -306,29 +269,25 @@ body.dimmed::before{
                <div style="color: red;">메세지</div>
                 <div class="emailinput">
               		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-
                	</div> 
-               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>
-               	
+               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>               	
             </p>
-            	 <div class="cmd">
-       				<button id="submitPopup" @click="fnChangNickname">제출</button>          
-        		 </div>
+            <div class="cmd">
+       			<button id="submitPopup" @click="fnChangNickname">제출</button>          
+        	</div>
         </template>
         
         <!-- 이름 변경 -->
         <template v-if="keyword == 'name'">
             <h2 style="padding-bottom:15px;">이름 변경</h2>
             <p>
-                <div style="padding-bottom:15px;"></div>
-               <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">이름 입력</div>
-               <div style="color: red;">메세지</div>
+            	<div style="padding-bottom:15px;"></div>
+                <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">이름 입력</div>
+                <div style="color: red;">메세지</div>
                 <div class="emailinput">
               		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-
                	</div> 
-               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>
-               	
+               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>               	
             </p>
             	 <div class="cmd">
        				<button id="submitPopup" @click="fnChangName">제출</button>          
@@ -336,10 +295,8 @@ body.dimmed::before{
         </template>
         </div>
   
-        </div>
-        
-  
-	</div>
+    </div>       
+  	</div>
 </body>
 	<%@ include file="../header/footer.jsp"%>
 </html>

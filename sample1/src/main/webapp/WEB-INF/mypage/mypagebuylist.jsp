@@ -183,11 +183,10 @@
 			<h3>내 정보</h3>
 			<ul>
 				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
-				<li><a href="#">프로필 관리</a></li>
-				<li><a href="#">주소록</a></li>
-				<li><a href="#">결제 정보</a></li>
-				<li><a href="#">판매 정산 계좌</a></li>
-				<li><a href="#">현금영수증 정보</a></li>
+				<li><a href="mypageprofile.do">프로필 관리</a></li>
+				<li><a href="mypageaddr.do">주소록</a></li>
+				<li><a href="mypagepaylist.do">결제 정보</a></li>
+				<li><a href="mypagebank.do">판매 정산 계좌</a></li>				
 				<li><a href="mypageaddpoint.do">포인트 충전</a></li>
 			</ul>
 		</div>
