@@ -314,11 +314,11 @@ cursor: pointer;
 		
 		<div class="btnaction">
 		
-		<button class="buyaction">
+		<a href="buyagree.do"><button class="buyaction">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
 		<div style="padding-top:3px;"><b>{{minBuy.buyminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 구매가</div>
-		</button>
+		</button></a>
 		
 		
 		<button class="sellaction">
