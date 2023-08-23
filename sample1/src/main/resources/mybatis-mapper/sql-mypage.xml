@@ -4,6 +4,7 @@
 
 <mapper namespace="com.example.sample1.mapper.MypageMapper">
 	
+	<!-- 유저 프로필 정보 변경 (닉네임, 이름) -->
 	<update id="updateUserProfill" parameterType="hashmap">
 		UPDATE T1_USER_TBL
   			SET
@@ -15,5 +16,21 @@
 			</if>
 			WHERE USER_ID = #{uId}
 		
+	</update>
+	<!-- 프로필 사진 출력 -->
+	<select id="selectUserImg" parameterType="hashmap"
+		resultType="com.example.sample1.model.Mypage">
+		SELECT * 
+		FROM T1_USER_IMAGE
+		WHERE USER_ID = #{uId}		
+	</select>
+	
+	<!-- 프로필 이미지 변경 -->
+	<update id="updateUserImg" parameterType="hashmap">
+		UPDATE T1_USER_IMAGE
+		SET 
+			USER_IMG = #{path},
+			USER_IMG_NAME = #{filename}
+		WHERE USER_ID = #{uId}	
 	</update>
 </mapper>

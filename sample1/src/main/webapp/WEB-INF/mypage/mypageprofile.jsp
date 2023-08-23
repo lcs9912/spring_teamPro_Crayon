@@ -68,7 +68,7 @@
 						font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
 					}
 					.profileinner2 p {margin:5px 0;}
-					.profileinner2 a{
+					.profileinner2 label{
 						display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
 						margin-left:5px; height:35px; line-height:15px;
 					}
@@ -224,13 +224,21 @@
 			</div>
 			<div class="profilearea">				
 				<div class="profileinner1">
-					<img src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png">
-					<!-- 유저 프로필사진 -->
+					<img :src="imgInfo.userImg"> <!-- 변경시 선택한 이미지로 출력하면서 삽입 -->
+					<!-- 유저 프로필사진 동그랗게 만들기-->
 				</div>
 				<div class="profileinner2">
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
-					<a @click="fnImgChange" type="button">이미지 변경</a>
-					<a @click="fnImgRemove" type="button">삭제</a>
+					<label @click="fnImgEditFlg">이미지 변경</label>
+					<label @click="fnImgRemove" type="button">삭제</label>
+					<div v-if="imgFlg">
+						<input type="file" id="file1" name="file1">
+						<button @click="fnImgEdit">변경</button>
+					</div>
+					
+					
+					
+					
 				</div>							
 			</div>
 			<div class="editprofile">
@@ -305,13 +313,14 @@
 		el : '#app',
 		data : {
 			info : {},
+			imgInfo : {},
 			sessionId : "${sessionId}",
 			keyword : "", // 팝업 키워드
-			
 			pwd : "",
 			nickName : "",
 			userName : "",
 			pwdFlg : false, // 비밀번호 인증 여부
+			imgFlg : false, // 이미지 변경클릭 여부
 			
 		},// data
 		methods : {
@@ -327,18 +336,79 @@
 						self.info = data.info;
 						console.log(self.info);
 						pwdFlg : false;
+						self.fnImgInfo();
 					}
 				});
 			},
-			// 프로필 이미지 변경
-			fnImgChange : function(){
+			// 프로필 이미지 출력
+			fnImgInfo : function(){
 				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/user/profileImg.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.imgInfo = data.imgInfo;
+						console.log(self.imgInfo.userImgName);
+						
+					}
+				});
+			},
+			// 프로필 이미지 변경 버튼 띄우기
+			fnImgEditFlg : function(){
+				var self = this;
+				if(!self.imgFlg){
+					self.imgFlg = true;
+				} else{
+					self.imgFlg = false;
+				}
 				
+				
+				
+			},
+			// 프로필 이미지 변경
+			fnImgEdit : function(){
+				var self = this;
+				var form = new FormData();
+   	       		form.append( "file1",  $("#file1")[0].files[0] );
+   	     		form.append( "uId",  self.sessionId); 
+   	     		form.append( "imgName",  self.imgInfo.userImgName);
+	         $.ajax({
+	             url : "/editUserImg.dox"
+	           , type : "POST"
+	           , processData : false
+	           , contentType : false
+	           , data : form
+	           , success:function(response) {
+	        	   
+	           }
+	           
+	       });
+	         location.reload();
+	         console.log(form);
 			},
 			// 프로필 이미지 삭제
 			fnImgRemove : function(){
 				var self = this;
+				var form = new FormData();
 				
+		     	form.append( "uId",  self.sessionId); 
+		     	form.append( "imgName",  self.info.userImgName);
+		     	$.ajax({
+		             url : "/imgRemove.dox"
+		           , type : "POST"
+		           , processData : false
+		           , contentType : false
+		           , data : form
+		           , success:function(response) {
+		        	   
+		           }
+		           
+		       });
+		     	location.reload();
+		         console.log(form);
 			},
 			// 유저 닉네임 변경
 			fnChangNickname : function(){

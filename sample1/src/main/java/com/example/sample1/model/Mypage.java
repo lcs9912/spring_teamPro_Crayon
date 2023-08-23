@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class Mypage {
 
+	private String userImg;
+	private String userImgName;
 	
 	
 	
