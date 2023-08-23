@@ -55,6 +55,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	alert("참여 완료하셨습니다.");
+                	window.history.back();
                 }
             }); 
         },

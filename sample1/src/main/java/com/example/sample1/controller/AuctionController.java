@@ -152,7 +152,7 @@ public class AuctionController {
 			auctionService.deleteAuctionLike(map);
 			return new Gson().toJson(resultMap);
 		}		
-	//Aution 종료 등록
+	//Aution 결과 등록 +종료 등록
 	@RequestMapping(value = "/auction/auction/end.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String auctionEnd(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -160,21 +160,14 @@ public class AuctionController {
 		auctionService.endAuction(map);
 		return new Gson().toJson(resultMap);
 	}	
-	//Aution 결과 등록
-		@RequestMapping(value = "/auction/auction/result.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-		@ResponseBody
-		public String auctionEndR(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-			HashMap<String, Object> resultMap = new HashMap<String, Object>();
-			auctionService.insertAuctionResult(map);
-			return new Gson().toJson(resultMap);
-		}	
+		
 	//Aution 상세정보 출력
-			@RequestMapping(value = "/auction/auction/endU.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+			@RequestMapping(value = "/auction/endU.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 			@ResponseBody
 			public String auctionEndInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 				HashMap<String, Object> resultMap = new HashMap<String, Object>();
 				Auction info = auctionService.searchAuctionEndInfo(map);
-				resultMap.put("info", info);
+				resultMap.put("info1", info);
 				return new Gson().toJson(resultMap);
 			}	
 }

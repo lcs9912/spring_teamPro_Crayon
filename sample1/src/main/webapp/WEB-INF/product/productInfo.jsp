@@ -470,7 +470,7 @@ var app = new Vue({
     data: {
     	img : {},
     	pImgPath : "",
-    	pName : "Stussy 8 Ball T-Shirt White - 22SS",
+    	pName : "Stussy Basic Stussy Hoodie Black 2023",
     	
         model: "",
         scrollPosition: 0,
@@ -480,7 +480,7 @@ var app = new Vue({
         modelNum : "", // 모델변호
         minSell : "", // 즉시 판매가
         minBuy : "", // 즉시 구매가
-        proNum : 7, // 상품 번호
+        proNum : 1, // 상품 번호
       
         interestFlg : false, // 관심상품 조회
 		series: [{
@@ -551,7 +551,7 @@ var app = new Vue({
     },
     methods: {
     	fnProList : function(){
-    		var self = this;
+    		var self = this; 
             var nparmap = {proNum : self.proNum};
            
              $.ajax({
@@ -561,6 +561,7 @@ var app = new Vue({
                  data : nparmap,
                  success : function(data) { 
                  	self.proInfo = data.proInfo;
+                 	
                  	self.modelNum = data.proInfo.productModel; // 모델번호
                  	
                  	console.log("proinfo"+ self.proInfo);
@@ -588,7 +589,7 @@ var app = new Vue({
                 	self.minBuy = data.minBuy;
                 	console.log("즉시 구매가"+self.minBuy);
                 	console.log("즉시 판매가"+self.minSell);
-                
+
                 }
             });  
     	},
