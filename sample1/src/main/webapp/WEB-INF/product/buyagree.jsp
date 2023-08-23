@@ -104,7 +104,10 @@ color:white;
 font-size:25px;
 margin-top:10px;
 }
-
+ .continuebtn button.continuebtn-active {
+            background-color: black;
+            cursor:pointer;
+        }
 </style>
 
 </head>
@@ -144,7 +147,7 @@ margin-top:10px;
 	
 	<div class="noticeheader">구매하려는 상품이 맞습니다.</div>
 	<div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[0]"></div>
 	<div class="noticecontents">상품 이지미,모델번호,출시일,상품명,사이즈를 한 번 더 확인했습니다. 
 	단,상품의 이미지는 촬영환경에 따라 실제와 다를 수 있습니다.
 	</div>
@@ -154,7 +157,7 @@ margin-top:10px;
 	<div class="noticegroup">
 	<div class="noticeheader">국내/해외에서 발매한 정품 · 새상품입니다.</div>
 <div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[1]"></div>
 	<div class="noticecontents">모든 구성품이 그대로이며, 한 번도 착용하지 않은 정품・새상품입니다. 국내 발매 상품 여부는 확인드리지 않습니다.
 </div>
 	</div>
@@ -163,7 +166,7 @@ margin-top:10px;
 	<div class="noticegroup">
 	<div class="noticeheader">제조사에서 불량으로 인정하지 않는 기준은 하자로 판단하지 않습니다.</div>
 		<div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[2]"></div>
 	<div class="noticecontents">박스/패키지와 상품 컨디션에 민감하시다면 검수 기준을 반드시 확인하시기 바랍니다.
 	<div style="padding-top:10px;"><a href="#" style="color:#899CFC">검수기준 보기</a></div>
 	</div>
@@ -173,14 +176,14 @@ margin-top:10px;
 	<div class="noticegroup"  style="border:none;">
 	<div class="noticeheader">KREAM의 최신 이용정책을 모두 확인하였으며, 구매를 계속합니다.</div>
 		<div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[3]"></div>
 	<div class="noticecontents">건전하고 안전한 거래를 위해 반드시 숙지해야 할 미입고, 페널티, 부정거래 등의 이용정책을 확인했습니다.
 	<div style="padding-top:10px;"><a href="#" style="color:#899CFC">이용정책 보기</a></div>
 	</div>
 	</div>
 </div>
 <div class="continuebtn" style="width:100%; text-align:center;">
-<button>구매 계속</button>
+<a href="nowbuy.do"><button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">구매 계속</button></a>
 </div>
 </div>
 
@@ -192,5 +195,17 @@ margin-top:10px;
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+var app = new Vue({
+    el: '#app',
+    data: {
+        agreements: [false, false, false, false],
+    },
+    computed: {
+        allCheck: function() {
+            return this.agreements.every(item => item === true);
+        },
+    },
+    methods: {
+    },
+});
 </script>
