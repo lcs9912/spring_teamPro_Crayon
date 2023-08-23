@@ -97,7 +97,7 @@ border:1px solid #eee;
 }
 
 </style>
-
+<%@ include file="header/shopheader.jsp"%>
 </head>
 <body>
 	<div id="app">
@@ -153,6 +153,7 @@ border:1px solid #eee;
 	
 </body>
 </html>
+<%@ include file="header/footer.jsp"%>
 <script>
 
 </script>

@@ -34,7 +34,7 @@
 			<th>종료버튼</th>
 			
 		</tr>
-		<tr v-for="item in list">
+		<tr v-for="item in list" v-if="item.auctionEndyn!='Y'">			
 			<td>{{item.auctionNumber}}</td>
 			<td ><a @click="fnView(item)" href="javascript:;"> {{item.auctionProduct}}</td>
 			<td>{{item.auctionStartPrice}}</td>			
@@ -44,6 +44,7 @@
 			<td v-if="isAuctionExpired(item)"><button @click="fnAuctionEndU(item)">종료</button></td>
 			<td v-else></td>
 		</tr>
+		
 	</table>
 	<!-- <div v-if="status=='U'"> -->
 	<button @click="fnAuctionAdd">경매 등록</button>
@@ -55,7 +56,8 @@
 var app = new Vue({
 	el : '#app',
 	data : {
-		list : [],	
+		list : [			
+		],	
 		info : {},
 		auctionNumber :"",
 		uId : "${sessionId}",
@@ -76,7 +78,8 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {
                 	self.list = data.list;
-                	console.log(self.list);   
+                	console.log(self.list);
+                
                 }
             }); 
         },
@@ -89,9 +92,12 @@ var app = new Vue({
         	var self = this;
         	location.href = "update.do";
         },
+        
         fnAuctionEnd : function(info){
        	   var self = this;
-              var nparmap = {auctionNumber : info.auctionNumber};
+       	console.log(info);
+              var nparmap = info;
+              
               $.ajax({
                   url : "/auction/auction/end.dox",
                   dataType:"json",	
@@ -99,21 +105,22 @@ var app = new Vue({
                   data : nparmap,
                   success : function(data) { 
                	   alert("종료완료");
+               	self.fnGetList();
                   }
               }); 
          },
+         
          fnAuctionEndU : function(item){
          	   var self = this;
                 var nparmap = {auctionNumber : item.auctionNumber};
                 $.ajax({
-                    url : "/auction/auction/endU.dox",
+                    url : "/auction/endU.dox",
                     dataType:"json",	
                     type : "POST", 
                     data : nparmap,
                     success : function(data) { 
-                    	self.info = data.info;
-                    	console.log(self.info);
-                    	self.fnAuctionEnd();
+                    	self.info = data.info1;
+                    	self.fnAuctionEnd(self.info);
                     }
                 }); 
            },

@@ -89,10 +89,10 @@
 	</update>
 	<insert id="insertAuctionResult" parameterType="hashmap">
 		INSERT INTO T1_AUCTION_RESULT
-		VALUES (#{auctionNumber},#{auctionProduct},#{uId},#{AUCPRI},CURDATE())
+		VALUES (#{auctionNumber},#{auctionProduct},#{userId},#{userPoint},CURDATE())
 	</insert>
 	
-	<select id="selectAuctionEndInfo" parameterType="hashmap" resultType="com.example.sample1.model.Product">
+	<select id="selectAuctionEndInfo" parameterType="hashmap" resultType="com.example.sample1.model.Auction">
 		SELECT *
 		FROM T1_AUCTION A
 		LEFT JOIN T1_AUCTION_USER U ON A.AUCTION_NUMBER = U.AUCTION_NUMBER	

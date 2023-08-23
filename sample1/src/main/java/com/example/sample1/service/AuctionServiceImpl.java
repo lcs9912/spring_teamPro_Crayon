@@ -71,13 +71,8 @@ public class AuctionServiceImpl implements AuctionService{
 	@Override
 	public int endAuction(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
+		auctionMapper.endAuction(map);
 		return auctionMapper.insertAuctionResult(map);
-	}
-
-	@Override
-	public int insertAuctionResult(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return auctionMapper.endAuction(map);
 	}
 
 	@Override

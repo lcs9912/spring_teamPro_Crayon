@@ -31,7 +31,5 @@ public interface AuctionService {
 	
 	int endAuction(HashMap<String, Object> map);
 	
-	int insertAuctionResult (HashMap<String, Object> map);	
-	
 	Auction searchAuctionEndInfo (HashMap<String, Object> map);
 }
