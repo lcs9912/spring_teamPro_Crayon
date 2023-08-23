@@ -172,7 +172,7 @@
 			</div>
 				<div class="loginedit">				
 					<div class="editinner">
-						<h4>내 포인트 0P</h4>  <!-- user 테이블 point 가져오기 -->
+						<h4>보유 포인트 : {{info.userPoint}}P</h4>
 						<div class="editebox spanBut">
 						<span class="editbtn">충전금액</span>
 								<input type="text" class="editinput" placeholder="0" id="number" v-model="userPoint">P
@@ -250,7 +250,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	self.info = data.info;
-                	console.log(self.info.userEmail);
+                	console.log(self.info.userPoint);
                 }
             }); 
         },

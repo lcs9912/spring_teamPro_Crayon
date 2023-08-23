@@ -41,7 +41,10 @@ public class User {
 	private String maskedPhone;
 	private String maskedPwd;
 	
-	
+	// T1_USER_POINT 
+	private String type;
+	private int pointHistory;
+	private String pointDate;
 	
 
 	public String getUserId() {

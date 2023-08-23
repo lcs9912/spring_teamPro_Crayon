@@ -68,7 +68,101 @@ a {	text-decoration:none;
 				margin-left:5px; font-size:12px; color:#555; background:#fff;
 			}	
 			
-		
+		/* 팝업 레이어 */
+			.popup-overlay {
+				display: none;
+			   	position: fixed;
+			  	top: 0;	left: 0;
+			  	width: 50%; height: 50%;
+			   	background-color: rgba(0, 0, 0, 0.5);
+			  	z-index: 1000;
+			} 
+			
+			.popup-content {
+			    position: absolute;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%, -50%);
+			    background-color: #fff;
+			    padding: 20px; border-radius: 10px;
+			    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			}
+			
+			#popupTitleBox{
+				background-color: black;
+			}
+			
+			#popupTitleBox i{
+				cursor: pointer; color: white;
+			}
+			#popupTitle{
+				color: white; font-weight: bold;
+			}
+			html, body{
+			    width: 100%; height: 100%;
+			    padding: 0; margin: 0;			    
+			}
+			
+			body{
+			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
+			    background-repeat: no-repeat; background-size: cover;
+			    background-position: center;		    
+			}
+			body.dimmed::before{
+			    content: '';
+			    position: fixed; left: 0;
+			    right: 0; top: 0;
+			    bottom: 0; background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
+			    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    			  
+			}
+			.popup {
+			    z-index: 1; position: fixed;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%,-50%);
+			    min-width: 300px; max-width: 600px;
+			    background-color: #fff; border-radius: 15px;
+			    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);		    
+			 }
+			.popup > .title{
+			    border-radius: 15px 15px 0 0;
+			    min-height: 40px; color: white;
+			    background-color: black; padding: 10px 15px;
+			    box-sizing: border-box; font-weight: bold;
+			    text-align: center;
+			}
+			.popup > .content {
+			    padding: 20px;
+			    box-sizing: border-box;
+			}
+			.popup > .cmd {
+			    bottom: 0; min-height: 40px;
+			    padding: 15px 15px; box-sizing: border-box;
+			    border-radius: 0 0 15px 15px;
+			    min-height: 40px; text-align: right;
+			    width: 300px;
+			}
+			.cmd button {
+			    border-radius: 8px; padding: 5px 10px;
+			    border: 1px solid #aaa; width: 80px;
+			    color: white; background-color: black;
+			    font-weight: bold; cursor: pointer;
+			    position: absolute;
+			    top : 409px; left: 265px;
+			}
+			.cmd button:hover {
+			    color: #fff; background-color: #000;
+			    border-color: #000;
+			}
+			.title i{
+				cursor: pointer;
+			}
+			.fa-x{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+		#addrInput input{
+			border: 1px solid;
+		}
 		
  
 /*주소록 영역 CSS 종료*/
@@ -78,7 +172,7 @@ a {	text-decoration:none;
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body>
-	<div id="app">
+<div id="app">
 	<div class="myaddrwrap">
 		<nav class="addrnav"><!--마이페이지 목록리스트 태그 시작-->
 		<div class="myinfo">
@@ -106,27 +200,55 @@ a {	text-decoration:none;
 		<div class="addrcontainer"><!--프로필관리 태그영역 시작-->
 			<div class="addrhead">
 				<h2>주소록</h2>
-				<button class="addrbtn"><a href="#">+ 새 배송지 추가</a></button>
+				<button class="addrbtn" @click="fnpopup">+ 새 배송지 추가</a></button>
 			</div>
 			<div class="addrlist">
 				<p>배송지 정보가 없습니다.<br>
 				새 배송지를 등록해주세요.</p>
-				<button class="addrbtn"><a href="#">+ 새 배송지 추가</a></button>
+				<button class="addrbtn" @click="fnpopup">+ 새 배송지 추가</a></button>
 			</div>
 			</div>
 			
 		</div>
-	</div>
-	</div>
+		
+	
+	<div class="popup popup-overlay" id="popupOverlay" >
+        <div class="title">새 주소 추가<i class="fa-solid fa-x" id="closePopup"></i></div>
+        <div class="content" style="text-align:center;">
+        <!-- 이메일 변경 -->
+     	<div id="addrInput">
+         	<div>우편번호</div>
+            <div><input v-model="zipNo"><button @click="fnSearchAddr" >열려라 참깨</button></div>
+            <div>주소</div>
+            <div><input v-model="addr"></div>
+            <div>상세주소</div>
+            <div><input v-model="detailAddr"></div>
+            <label><input type="checkbox">기본 배송지로 설정</label>
+            
+            	 <div class="cmd">
+       				<button id="submitPopup" @click="fnSumbitPop">제출</button>          
+        		 </div>
+        
+        </div>
+ </div>
+        
+    </div>
+</div>
 </body>
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+	app.fnResult(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo);
+} 
 	var app = new Vue({
 		el : '#app',
 		data : {
 			info : {},
-			sessionId : "${sessionId}"
+			sessionId : "${sessionId}",
+			addr : "",
+			detailAddr : "",
+			zipNo : "",
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -142,7 +264,53 @@ a {	text-decoration:none;
 						console.log(self.info);
 					}
 				});
-			}
+			},
+			// 유저 주소 입력
+			fnSumbitPop : function(){
+				var self = this;
+				var param = {uId : self.sessionId, addr : self.addr, detailAddr : self.detailAddr, zipNo : self.zipNo};
+				$.ajax({
+					url : "/user/insertAddr.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						alert("완료!");
+					}
+				});
+			},
+			// 주소 입력
+			fnSearchAddr : function(){
+				var self = this;
+	    		var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	    		window.open("addr.do", "test", option);
+			},
+			// 주소 팝업 돌아오는 곳
+			fnResult : function(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+	    		var self = this;
+	    		self.addr = roadAddrPart1; // 도로명 주소
+	    		self.detailAddr = addrDetail; // 상세주소 
+	    		self.zipNo = zipNo;
+	    		console.log(self.addr);
+	    		console.log(self.zipNo);
+	    		
+	    		// 콘솔 통해 각 변수 값 찍어보고 필요한거 가져다 쓰면 됩니다.
+	    		// console.log(roadAddrPart2); // 전체 주소
+	    		//console.log(roadAddrPart1); // 도로명 주소
+	    		console.log(addrDetail); // 상세주소
+	    		//console.log(engAddr);   // 영어주소
+	    		
+	    		
+	    		
+	    	},
+			// 레이어팝업창 띄우기
+			fnpopup : function(keyword){
+				var self = this;
+				self.keyword = keyword;
+				self.pwdFlg = false;
+				document.getElementById("popupOverlay").style.display = "block";
+			},
+			
 
 		}, // methods
 		created : function() {
@@ -153,6 +321,10 @@ a {	text-decoration:none;
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";
 			}
-		}// created
+		},// created
+	});
+	 // 레이어 팝업창 닫기
+	document.getElementById("closePopup").addEventListener("click", function() {
+		document.getElementById("popupOverlay").style.display = "none";
 	});
 </script>

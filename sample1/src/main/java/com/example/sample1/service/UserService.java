@@ -21,6 +21,10 @@ public interface UserService {
 	int searchEmailIdPwd(HashMap<String, Object> map);
 	// 유저 탈퇴처리
 	int removeUserInfo(HashMap<String, Object> map);
+	// 유저 포인트 충전
+	int userPointPlus(HashMap<String, Object> map);
+	//유저 주소입력
+	int useraddrInput(HashMap<String, Object> map);
 	
 	
 }

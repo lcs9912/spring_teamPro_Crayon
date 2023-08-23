@@ -74,12 +74,13 @@ public class UserServiceImpl implements UserService{
 		return resultMap;
 	}
 
+	// 유저 로그인정보 변경
 	@Override
 	public int editUserLoginInfo(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return userMapper.updateUserLoginInfo(map);
 	}
-
+	// 비밀번호 힌트 답
 	@Override
 	public int searchPwdHintAnswer(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -93,10 +94,26 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectEmailIdPwd(map);
 	}
 
+	// 회원탈퇴
 	@Override
 	public int removeUserInfo(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return userMapper.updateUserInfoRemove(map);
+	}
+
+	// 유저 포인트 충전
+	@Override
+	public int userPointPlus(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		userMapper.insertPointHistory(map); // 결제내역 테이블 입력
+		userMapper.updateUserPointPlus(map); // 유저 포인트 충전
+		return 0;
+	}
+
+	@Override
+	public int useraddrInput(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.insertUserAddr(map);
 	}
 
 }

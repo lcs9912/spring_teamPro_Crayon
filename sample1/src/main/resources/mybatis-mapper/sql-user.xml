@@ -83,6 +83,7 @@
    <update id="updateUserLoginInfo" parameterType="hashmap">
   			UPDATE T1_USER_TBL
   			SET
+  				USER_UPDATE = CURDATE(),
   			<if test="editEmail != '' and editEmail != null">
 				USER_EMAIL = #{editEmail}
 			</if>
@@ -112,10 +113,24 @@
    			WHERE USER_ID= #{uId}
    </update>
    
+   <!-- POINT_TBL포인트 입력 -->
    <insert id="insertPointHistory" parameterType="hashmap">
    			INSERT INTO T1_USER_POINT
    			VALUES (#{uId}, 'P', #{point}, NOW())
    </insert>
-   <!-- POINT_TBL포인트 입력 -->
+   <!-- user_point plus-->
+   <update id="updateUserPointPlus" parameterType="hashmap">
+   			UPDATE T1_USER_TBL
+   			SET
+   				USER_POINT = USER_POINT + #{point}
+   			WHERE USER_ID = #{uId}
+   </update>
+   
+   <!-- 유저 주소 등록 -->
+   <insert id="insertUserAddr" parameterType="hashmap">
+   			INSERT INTO T1_USER_ADDR
+   			VALUES (#{uId}, #{addr}, #{detailAddr}, #{zipNo}, 'N')
+   </insert>
+   
    
 </mapper>

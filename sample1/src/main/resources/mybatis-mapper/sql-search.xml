@@ -40,7 +40,7 @@
 	<update id="updateSearchCnt" parameterType="hashmap">
 		UPDATE T1_SEARCH
 		SET	
-			SEARCH_CNT = SEARCH_CNT +1, 
+			SEARCH_CNT = SEARCH_CNT +1,
 			SEARCH_REMOVE = 'N',
 			SEARCH_DATE = NOW()
 		WHERE SEARCH_NAME = #{searchName}

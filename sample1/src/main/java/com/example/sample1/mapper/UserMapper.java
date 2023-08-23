@@ -28,4 +28,10 @@ public interface UserMapper {
 	int selectEmailIdPwd(HashMap<String, Object> map);
 	// 유저 탈퇴 처리
 	int updateUserInfoRemove(HashMap<String, Object> map);
+	// POINT_TBL포인트 입력
+	int insertPointHistory(HashMap<String, Object> map);
+	//user_point plus
+	int updateUserPointPlus(HashMap<String, Object> map);
+	// 유저 주소 입력
+	int insertUserAddr(HashMap<String, Object> map);
 }
