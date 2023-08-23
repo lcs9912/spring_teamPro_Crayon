@@ -168,7 +168,7 @@ background-color : #eee;
 
 
 </style>
-
+<%@ include file="../header/shopheader.jsp"%>
 </head>
 <body>
 	<div id="app">
@@ -251,6 +251,7 @@ background-color : #eee;
 	
 	
 </body>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({
