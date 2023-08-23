@@ -314,19 +314,18 @@ cursor: pointer;
 		
 		<div class="btnaction">
 		
-		<a href="buyagree.do"><button class="buyaction">
+		<a href="#"><button class="buyaction">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
 		<div style="padding-top:3px;"><b>{{minBuy.buyminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 구매가</div>
 		</button></a>
 		
 		
-		<button class="sellaction">
+		<a href="#"><button class="sellaction">
 		<strong class="nowsell" style='box-shadow:1px px 0px px'>판매</strong>
 		<div style="padding-top:3px;"><b>{{minSell.sellminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 판매가</div>
-	
-		</button>
+		</button></a>
 		</div>
 		
 		<div class="interestbtn" style="cursor: pointer">
