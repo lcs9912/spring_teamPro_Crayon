@@ -97,8 +97,7 @@ public class MypageController {
 		public String mypagebank(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 			return "/mypage/mypagebank"; 
 		}
-		
-		
+				
 		
 		// 마이페이지 프로필 변경
 		@RequestMapping(value = "/mypage/editFrofill.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

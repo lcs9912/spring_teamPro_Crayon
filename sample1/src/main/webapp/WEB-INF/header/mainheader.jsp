@@ -206,7 +206,7 @@
                     </ul>
                 </div><!--헤더 로그인 메뉴영역 종료-->
                 <div class="headermainlogo">
-                    <h1><a href="testmainslider.do">
+                    <h1><a href="mainslider.do">
                         <span class="char c">C</span>
                         <span class="char r">r</span>
                         <span class="char a">a</span>
@@ -215,9 +215,9 @@
                         <span class="char n">N</span>
                     </a></h1>            
                     <ul class="headermenu">
-                        <li><a href="testmainslider.do">HOME</a></li>
-                        <li><a href="testrankingpage.do">STYLE</a></li>
-                        <li><a href="testshopping.do">SHOP</a></li>
+                        <li><a href="mainslider.do">HOME</a></li>
+                        <li><a href="mainpageranking.do">STYLE</a></li>
+                        <li><a href="mainpageshopping.do">SHOP</a></li>
                         <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     </ul>
                 </div><!--헤더 대분류 메뉴영역 종료-->
@@ -227,13 +227,13 @@
                         <ul class="headerKindList">
                             <!-- 헤더 종류별 리스트 -->
                             <li>
-                                <a href="testrankingpage.do" :class="{active : activeValue == '1'}">랭킹</a>
+                                <a href="mainpageranking.do" :class="{active : activeValue == '1'}">랭킹</a>
                             </li>
                             <li>
-                                <a href="testmslider.do" :class="{active : activeValue == '2'}">남성</a>
+                                <a href="mainpageman.do" :class="{active : activeValue == '2'}">남성</a>
                             </li>
                             <li>
-                                <a href="testwslider.do" :class="{active : activeValue == '3'}">여성</a>
+                                <a href="mainpagewoman.do" :class="{active : activeValue == '3'}">여성</a>
                             </li>
                             <li>
                                 <a href="#" @click="fnActive('4')">신발</a>

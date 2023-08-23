@@ -103,7 +103,7 @@
 
 </style>
 </head>
-<%@ include file="testmainheader_sh.jsp"%>
+<%@ include file="../header/mainheader.jsp"%>
 <body>
 <div id="headerApp">	
 	<div class="rankwrap">
