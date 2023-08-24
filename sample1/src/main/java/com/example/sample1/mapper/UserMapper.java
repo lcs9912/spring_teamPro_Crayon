@@ -40,5 +40,9 @@ public interface UserMapper {
 	List<Mypage>selectUserAddr(HashMap<String, Object> map);
 	// 유저 기본프로필 설정
 	int insertUserDefaultImg(HashMap<String, Object> map);
+	// 마이페이지 유저 신발 사이즈 변경
+	int updateUserSize(HashMap<String, Object> map);
+	// 마이페이지 유저테이블 사이즈 테이블 조인 출력
+	User selectUserJoinSize(HashMap<String, Object> map);
 	
 }

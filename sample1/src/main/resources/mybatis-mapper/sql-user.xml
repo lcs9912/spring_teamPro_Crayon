@@ -136,7 +136,7 @@
    			INSERT INTO T1_USER_ADDR
    			VALUES (#{uId}, #{addr}, #{detailAddr}, #{zipNo}, 'N')
    </insert>
-  
+   <!-- 유저주소 출력 -->
    <select id="selectUserAddr" parameterType="hashmap"
    		resultType="com.example.sample1.model.Mypage">
    			SELECT A.USER_ADDR, A.USER_DETAIL_ADDR, A.USER_ZIPNO, U.USER_NAME
@@ -145,4 +145,22 @@
 			ON U.USER_ID = A.USER_ID
 			WHERE U.USER_ID = #{uId}
    	</select>
+   	
+   	<!-- 유저 신발 사이즈 변경 -->
+   	<update id="updateUserSize" parameterType="hashmap">
+   			UPDATE T1_USER_TBL
+   			SET
+   				USER_SIZE = #{productSize}
+   			WHERE USER_ID = #{uId}
+   	</update>
+   	
+   	<select id="selectUserJoinSize" parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+			SELECT * 
+			FROM T1_USER_TBL U
+			INNER JOIN T1_PRODUCT_SIZE S
+			ON U.USER_SIZE = S.PRODUCT_SIZE
+			WHERE USER_ID = #{uId}
+	</select>
+   	
 </mapper>

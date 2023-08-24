@@ -1,6 +1,7 @@
 package com.example.sample1.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.example.sample1.model.Mypage;
 
@@ -11,6 +12,8 @@ public interface MypageService {
 	Mypage searchUserImg(HashMap<String, Object> map);
 	// 유저 프로필사진 변경
 	int editUserImg(HashMap<String, Object> map);
+	// 유저 포인트사용 내역 출력
+	List<Mypage> searchUserPointList(HashMap<String, Object> map);
 	
 	
 }

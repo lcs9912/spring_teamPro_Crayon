@@ -12,6 +12,15 @@
 	
 		/* 결제 정보영역 CSS 시작*/
 		
+		table{
+			border: 1px solid;
+			border-collapse: collapse;
+			margin:0 auto;
+		}
+		tr,th,td{
+			border: 1px solid; width:200px;
+			
+		}
 		.mypaylistwrap {
 			width:1200px; margin:50px auto;
 			}
@@ -43,9 +52,11 @@
 				}
 		     	.paylisthead .paylistbtn {float:right; border:1px solid #333;}
 		     	.paylist {
-		     		clear:both; height:250px; margin:0; text-align:center; line-height:250px;
-					padding:100px 0; background:#f5f5f5; border-top:3px solid #333;
+		     		clear:both;
+					height:490px; margin:0; text-align:center; 
+					background:#f5f5f5; border-top:3px solid #333;
 				}
+				
 		     	.paylist p{display:inline-block; width:1000px; height:20px; 
 					font-size:12px; color:#888; text-align: center; margin-bottom:30px;
 				}
@@ -89,10 +100,39 @@
 				<div class="paylisthead">
 					<h2>결제정보</h2>
 					<p>수수료(페널티, 착불배송비 등)가 정산되지 않을 경우, 별도 고지 없이 해당 금액을 결제 시도할 수 있습니다.</p>
-					<button class="paylistbtn"><a href="#">+ 새 카드 추가하기</a></button>
+					
 				</div>
 				<div class="paylist">
-					<p>추가하신 결제정보가 없습니다.</p>				
+					
+					<table v-if='pointList != ""'>
+						<tr>
+							<th>내역</th>
+							<th>날짜</th>
+							<th>비고</th>
+						</tr>
+						<tr v-for="item in paginatedList">
+							<td>{{item.type}}</td>
+							<td>{{item.pointHistory}}</td>
+							<td>{{item.pointDate}}</td>
+						</tr>
+					</table>
+					<div class="movebtn">
+				  <button @click="changePage(-1)">
+				    <i class="fa-solid fa-chevron-left"></i>
+				  </button>
+				  
+				  <button class="selectpagebtn"
+				  v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+				  :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+				  :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+				  {{ pageNumber }}
+				 </button>
+				
+				  <button @click="changePage(1)">
+				    <i class="fa-solid fa-chevron-right"></i>
+				  </button>
+		</div>
+					<p v-if='pointList == ""'>추가하신 결제정보가 없습니다.</p>				
 				</div>
 			</div>
 		</div>
@@ -102,29 +142,76 @@
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-var headerApp = new Vue({
-	el : '#headerApp',
+var app = new Vue({
+	el : '#app',
 	data : {
-		loginOut : "${sessionId}"
+		uId : "${sessionId}",
+		info : {},
+		pointList : [],
+		currentPage: 1,
+	    itemsPerPage: 15,
 	},// data
 	methods : {
-		fnCheck : function(){
+		fnGetInfo : function() {
 			var self = this;
-			var nparmap = {}
+			var param = {uId : self.uId};
+			$.ajax({
+				url : "/user/selectId.dox",
+				dataType : "json",
+				type : "POST",
+				data : param,
+				success : function(data) {
+					self.info = data.info;
+					console.log(data.info);
+					
+				}
+			});
+		},
+		// 포인트 리스트 출력
+		fnPointList : function(){
+			var self = this;
+			var nparmap = {uId : self.uId};
+			
 			  $.ajax({
-	                url:"list.dox", 
+	                url:"/pointList.dox", 
 	                dataType:"json", 
 	                type : "POST",  
 	                data : nparmap, 
 	                success : function(data) {  
-						
+						self.pointList = data.pointList;
+						console.log(data.pointList);
 	                }
-	            });  
+	            }); 
 		},
+		changePage: function (offset) {
+		      this.currentPage += offset;
+		      if (this.currentPage < 1) {
+		        this.currentPage = 1;
+		      } else if (this.currentPage > this.totalPages) {
+		        this.currentPage = this.totalPages;
+		      }
+		      this.fnPointList();
+		    },
+		    goToPage: function (pageNumber) {
+		      this.currentPage = pageNumber;
+		      this.fnPointList();
+		    },
+		  },
+		  computed: {
+		    totalPages: function () {
+		      return Math.ceil(this.pointList.length / this.itemsPerPage);
+		    },
+		    paginatedList: function () {
+		      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+		      const endIndex = startIndex + this.itemsPerPage;
+		      return this.pointList.slice(startIndex, endIndex);
+		    },
+		  },
 	}, // methods
 	created : function() {
 		var self = this;
-		
+		self.fnGetInfo();
+		self.fnPointList();
 	}// created
 });
 </script>

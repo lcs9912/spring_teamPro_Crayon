@@ -321,6 +321,7 @@ var app = new Vue({
 		// 포인트 다시 입력하기
 		fnPointReset : function(){
 			var self = this;
+			self.point = self.userPoint;
 			self.point = self.info.userPoint;
 			self.userPoint = "";
 		}

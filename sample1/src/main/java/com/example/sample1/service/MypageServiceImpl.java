@@ -1,14 +1,15 @@
 package com.example.sample1.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.sample1.mapper.MypageMapper;
-import com.example.sample1.mapper.UserMapper;
+
 import com.example.sample1.model.Mypage;
-import com.example.sample1.model.User;
+
 
 @Service
 public class MypageServiceImpl implements MypageService{
@@ -34,6 +35,11 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		
 		return mypageMapper.updateUserImg(map);
+	}
+	@Override
+	public List<Mypage> searchUserPointList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mypageMapper.selectUserPointList(map);
 	}
 
 }

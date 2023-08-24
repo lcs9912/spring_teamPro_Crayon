@@ -210,7 +210,7 @@ public class ProductController {
  		return new Gson().toJson(resultMap);
  	}
  	
- // 유저 관심상품 조회
+ 	// 유저 관심상품 조회
    	@RequestMapping(value = "/proInterestInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
    	@ResponseBody
    	public String proInterestInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -219,7 +219,15 @@ public class ProductController {
    		resultMap.put("interest", interest);
    		return new Gson().toJson(resultMap);
    	}
+   	// 관심상품 등록
+   	@RequestMapping(value = "/product/interest.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String addInterest(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		productService.addInterest(map);
 
+   		return new Gson().toJson(resultMap);
+   	}
    	// 관심상품 해제
    	@RequestMapping(value = "/proInterestRemove.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
    	@ResponseBody

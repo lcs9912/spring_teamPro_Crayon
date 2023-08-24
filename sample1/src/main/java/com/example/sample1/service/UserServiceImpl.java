@@ -126,4 +126,16 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectUserAddr(map);
 	}
 
+	@Override
+	public int editUserSize(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.updateUserSize(map);
+	}
+
+	@Override
+	public User searchUserJoinSize(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserJoinSize(map);
+	}
+
 }

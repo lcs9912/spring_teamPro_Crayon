@@ -46,6 +46,9 @@ public class User {
 	private int pointHistory;
 	private String pointDate;
 	
+	// 	T1_PRODUCT_SIZE
+	private int productSize;
+	private String size;
 
 	public String getUserId() {
 		return userId;

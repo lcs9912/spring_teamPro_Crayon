@@ -34,5 +34,14 @@
 		WHERE USER_ID = #{uId}	
 	</update>
 	
-	
+	<!-- 유저 포인트 사용내역 출력 -->
+	<select id="selectUserPointList" parameterType="hashmap"
+   		resultType="com.example.sample1.model.Mypage">
+   			SELECT *
+			FROM T1_USER_POINT
+			WHERE USER_ID = #{uId}
+			ORDER BY POINT_DATE DESC
+   	</select>
+   	
+   	
 </mapper>

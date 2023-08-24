@@ -18,7 +18,10 @@ public class Mypage {
 	// T1_USER_TBL
 	private String userName;
 	
-
+	// T1_USER_POINT
+	private String type;
+	private int pointHistory;
+	private String pointDate;
 	
 
 	

@@ -3,6 +3,7 @@ package com.example.sample1.controller;
 import java.io.File;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -127,6 +128,17 @@ public class MypageController {
 		Mypage imgInfo = mypageService.searchUserImg(map);
 		resultMap.put("imgInfo", imgInfo);
 						
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 유저 포인트 사용 내역 출력
+	@RequestMapping(value = "/pointList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String pointList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Mypage> pointList = mypageService.searchUserPointList(map);
+		resultMap.put("pointList", pointList);
+							
 		return new Gson().toJson(resultMap);
 	}
 	

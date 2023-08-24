@@ -294,7 +294,7 @@ var app = new Vue({
       this.currentPage = pageNumber;
       this.fnGetList();
     },
-  },
+  }, // methods end
   computed: {
     totalPages: function () {
       return Math.ceil(this.list.length / this.itemsPerPage);

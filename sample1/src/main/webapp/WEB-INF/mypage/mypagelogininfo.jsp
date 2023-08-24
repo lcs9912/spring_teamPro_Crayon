@@ -235,8 +235,19 @@
 						<div class="editebox">
 							<h6>신발사이즈</h6>
 							<div class="shoessizeedit spanBut">
-								<span class="editinput">{{user.userSize}}</span>
-								<button class="editbtn" @click="fnpopup('size')">변경</button>
+								<span class="editinput">
+								{{userSize.size}} 
+									<span v-if="sizeFlg">
+										<select id="selectSize" v-model="productSize">
+											<option v-for="item in sizeList" :value="item.productSize">{{item.size}}</option>
+										</select>
+										
+										
+									</span>
+									<button @click="fnSizeEdit" v-if="sizeFlg">확인</button>
+									<button class="editbtn" v-if="!sizeFlg" @click="sizeFlg = !sizeFlg">변경</button>
+								</span>
+								
 							</div>
 						</div>
 					</div>
@@ -337,27 +348,7 @@
 	        	</div>	        	
 	        </template>
 	        
-	        <!-- 신발 사이즈 변경 -->
-	     	<template v-if="keyword == 'size'">
-	            <p>대충 신발 사이즈 변경 주의 사항(없어도됨)</p>
-	            <p>
-	                <div>
-	                	<label>230<input type="radio" value="230" name="shoessize" checked></label>
-	 					<label>235<input type="radio" value="235" name="shoessize"></label>
-	 					<label>240<input type="radio" value="240" name="shoessize"></label>
-	 					<label>245<input type="radio" value="245" name="shoessize"></label>
-	 					<label>250<input type="radio" value="250" name="shoessize"></label>
-	 					<label>255<input type="radio" value="255" name="shoessize"></label>
-	 					<label>260<input type="radio" value="260" name="shoessize"></label>
-	 					<label>265<input type="radio" value="265" name="shoessize"></label>
-	 					<label>270<input type="radio" value="270" name="shoessize"></label>
-	 					
-	                </div>
-	            </p>
-	          		 <div class="cmd">
-	       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
-	        		 </div>
-	        </template>
+	       
 	        
 	        <!-- 회원 탈퇴 -->
 	        <template v-if="keyword == 'remove'">
@@ -386,6 +377,8 @@
 		data : {
 			masked : {}, // 마스킹 리스트
 			user : {}, // select where id
+			sizeList : [],
+			userSize : {},
 			sessionId : "${sessionId}",
 			pwdMessage : "",  // 비밀번호 메세지
 			emailMessage : "", // 이메일 변경 메세지
@@ -395,6 +388,7 @@
 			pwdFlg : false, // 비밀번호 인증 유무
 			hintPwdFlg : false,
 			PhoneFlg : false,
+			sizeFlg : false, // 사이즈 플래그
 			
 			editEmail : "",
 			editPwd : "",
@@ -406,6 +400,7 @@
 			editReEmail : "",
 			checkPwdHint : "",
 			checkId : "",
+			productSize : "",
 			
 			
 			
@@ -466,6 +461,22 @@
 						self.fnGetInfo();
 					}
 				}); 				
+			},
+			// 유저 사이즈 조인 인포
+			fnUserJoinSize : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/user/joinSize.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.userSize = data.userSize;
+						console.log(self.userSize);
+						
+					}
+				});
 			},
 			// id pwd 일치한지
 			fnPwdCheck : function(){
@@ -585,6 +596,39 @@
 					}
 				});
 			},
+			// 사이즈 조회
+			fnSizeList : function(){
+				var self = this;
+				var param = {};
+				$.ajax({
+					url : "/size.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.sizeList = data.size.slice(17,32);
+						console.log(self.sizeList);
+						
+					}
+				});
+			},
+			// 사이즈 변경 
+			fnSizeEdit : function(){
+				var self = this;
+				var param = {uId : self.sessionId, productSize : self.productSize };
+				console.log(self.productSize);
+				$.ajax({
+					url : "user/editUserSize.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.sizeFlg = false;
+						location.reload();
+					}
+				});
+				
+			},
 			// 광고성 정보수신 메시지
 			fnMessageRadio : function(){
 				var self = this;
@@ -642,6 +686,8 @@
 			var self = this;
 			if(self.sessionId !=""){
 				self.fnGetInfo();
+				self.fnSizeList();
+				self.fnUserJoinSize();
 			}else{
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";

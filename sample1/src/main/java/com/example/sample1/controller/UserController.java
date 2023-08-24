@@ -43,16 +43,6 @@ public class UserController {
     }
 	
 	
-	@RequestMapping("/header1.do")
-    public String header(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/header/header1";
-    }
-	
-	@RequestMapping("/header2.do") 
-    public String header2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/header/header2";
-    }
-	
 	@RequestMapping("/faq.do") 
     public String faq(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/faq";
@@ -231,6 +221,26 @@ public class UserController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	// 유저 주소 출력
+	@RequestMapping(value = "/user/editUserSize.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String editUserSize(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		userService.editUserSize(map);
+		
+									
+		return new Gson().toJson(resultMap);
+	}
+		
+	// select where id 
+	@RequestMapping(value = "/user/joinSize.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String joinSize(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		User userSize = userService.searchUserJoinSize(map);
+		resultMap.put("userSize", userSize);
+		return new Gson().toJson(resultMap);
+	}
 	
 	
 	
