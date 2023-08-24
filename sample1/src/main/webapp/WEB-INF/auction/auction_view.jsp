@@ -19,7 +19,8 @@
 	<!-- <div>이미지 : {{info.img}}</div> -->
 	
 	<div>경매 번호 : {{info.auctionNumber}}</div>
-	<div>경매 사진 : {{info.auctionNumber}}</div>
+	<div>물품 사진 :<img :src="info.pImgPath" style="max-width : 100px">
+	</div>
 	<div>경매 물품 : {{info.auctionProduct}}</div>
 	<div>경매 시작가격 :{{info.auctionStartPrice}}</div>
 	<div>경매 한도가격 : {{info.auctionMaxPrice}}</div>
