@@ -192,8 +192,7 @@ margin-bottom:5px;
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <%-- <%@ include file="../logo.jsp"%> --%>
 <hr>
 <body>

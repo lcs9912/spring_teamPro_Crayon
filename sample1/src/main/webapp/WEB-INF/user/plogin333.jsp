@@ -137,9 +137,7 @@ main {
 </style>
 
 </head>
-<%@ include file="../header.jsp"%>
-<%@ include file="../header2.jsp"%>
-<%@ include file="../headerlist.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 
 <body>
 <div id="app">
