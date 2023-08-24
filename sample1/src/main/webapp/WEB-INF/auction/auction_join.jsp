@@ -32,7 +32,7 @@ background-color:#eee;
 width:350px;
 height:300px;
 margin-top:10px;
-margin-left:45px;
+margin-left:10px;
 background-color:#eee;
 max-width:350px;
 max-height:300px;
@@ -99,6 +99,7 @@ background-color:#eee;
 	</table>
 	</div>
 	
+	<div style="text-align:center;">
 	<div class="picarea">
 		1
 	</div>
@@ -113,7 +114,7 @@ background-color:#eee;
 			</div>
 	</div>
 
-
+</div>
 
 </div>
 </body>
