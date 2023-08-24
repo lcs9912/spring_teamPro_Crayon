@@ -109,9 +109,8 @@
 				display: none; position: absolute;
 			  	top: 0; left: 0;
 			  	width: 100%; height: 100%;
-			   	background-color: rgba(51,51,51,0.5);
+			   	background-color: rgba(51,51,51,0.3);
 			  	z-index: 3000;
-			  	opacity:50%;
 			} 
 			.content {
 			    width:500px; height:500px;
