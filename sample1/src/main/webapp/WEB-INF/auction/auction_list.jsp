@@ -26,6 +26,7 @@
 	<table>
 		<tr>
 			<th>경매번호</th>
+			<th>물품 이미지</th>		
 			<th>경매물품</th>
 			<th>시작가격</th>
 			<th>참여인원</th>
@@ -36,6 +37,7 @@
 		</tr>
 		<tr v-for="item in list" v-if="item.auctionEndyn!='Y'">			
 			<td>{{item.auctionNumber}}</td>
+			<td><img :src="item.pImgPath" style="max-width : 100px"></td> 
 			<td ><a @click="fnView(item)" href="javascript:;"> {{item.auctionProduct}}</td>
 			<td>{{item.auctionStartPrice}}</td>			
 			<td>{{item.usercnt}}</td>			

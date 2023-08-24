@@ -24,6 +24,9 @@ public class Auction {
 	//t1_auction_like		
 	private String aLikeUser; // 관심유저
 	private String likeDate; // 등록날짜
+	//T1_PRODUCT_IMG
+	private String pImgPath; //상품 이미지 저장경로
+	private String pImgName; //상품 이미지 파일명
 	public String getAuctionNumber() {
 		return auctionNumber;
 	}

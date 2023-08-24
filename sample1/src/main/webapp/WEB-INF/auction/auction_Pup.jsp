@@ -24,12 +24,13 @@
 <body>
 <div id="app">
 	<div>
-		
+		<img :src="info.pImgPath" style="max-width : 300px"> 
 		<div><input v-model="info.pModel" type="text" placeholder="모델번호"></div>
 		<div>
 		<button @click="fnGetProductInfo">모델번호로 상품찾기</button>
 		</div>
 		<div><input v-model="info.productName" type="text" placeholder="상품이름"></div>
+		
 		<div>
 			<select v-model="info.productSize">
 				<option value="a">사이즈</option>
