@@ -431,7 +431,7 @@ padding:10px 0px 0px 15px;
 		
 		<div class="btnaction">
 		
-		<button class="buyaction">
+		<button class="buyaction" onclick="openPopup('auction/join.do')">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰하기</strong>
 		</button>
 
@@ -854,4 +854,8 @@ var app = new Vue({
         
     },
 })
+function openPopup(url) {
+    const popup = window.open(url, 'popupWindow', 'width=800,height=600,scrollbars=yes');
+    popup.focus();
+}
 </script>

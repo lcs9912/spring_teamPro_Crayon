@@ -10,28 +10,126 @@
 <script src="https://unpkg.com/vue2-editor@2.3.11/dist/index.js"></script>
 <title>경매입찰</title>
 <style>
+table{
+border:1px solid #a2a2a2;
+border-collapse: collapse;
+text-align:center;
+margin : 0 auto;
+}
+table th, td {
+border:1px solid black;
+padding : 10px;
+font-size: 13px;
+border:none;
+}
+#app h2{
+text-align:center;
+}
+th{
+background-color:#eee;
+}
+.picarea{
+width:350px;
+height:300px;
+margin-top:10px;
+margin-left:45px;
+background-color:#eee;
+max-width:350px;
+max-height:300px;
+display:inline-block;
+vertical-align: top;
+}
+.payarea{
+margin-top:10px;
+display:inline-block;
+width:350px;
+height:300px;
+}
+.payarea input{
+width:250px;
+height:30px;
+text-align:right;
+border:none;
+border-bottom : 2px solid #a2a2a2;
+}
+.payarea input:focus {
+outline: none;
+}
+.auctionbtnarea{
+text-align:center;
+margin-top : 30px;
+}
+.auctionbtn{
+width:100px;
+height:40px;
+background-color:white;
+border-radius:10px;
+}
+.auctionbtn:hover{
+background-color:#eee;
+}
+
 </style>
 </head>
 <body>
 <div id="app">
+<h2>입찰하기</h2>
+<div class="auctiontextarea">
+	<table>
+	<tr>
+	<th>경매 번호</th>
+	<th>경매 물품</th>
+	<th>경매 시작가격</th>
+	<th>경매 한도가격</th>
+	<th>시작 시간</th>
+	<th>마감 시간</th>
+	<th>보유포인트</th>
+	</tr>
 	
-	<div>경매 번호 : {{info.auctionNumber}}</div>
-	<div>경매 물품 : {{info.auctionProduct}}</div>
-	<div>경매 시작가격 :{{info.auctionStartPrice}}</div>
-	<div>경매 한도가격 : {{info.auctionMaxPrice}}</div>
-	<div>시작시간 : {{info.auctionStartDate}}</div>
-	<div>마감시간 : {{info.auctionEndDate}}</div>
+	<tr>
+	<td>{{info.auctionNumber}}2312213</td>
+	<td>{{info.auctionProduct}}231221323122132312213</td>
+	<td>{{info.auctionStartPrice}}2312213</td>
+	<td>{{info.auctionMaxPrice}}2312213</td>
+ 	<td>{{info.auctionStartDate}}2312213</td>
+	<td>{{info.auctionEndDate}}2312213</td>
+	<td>0<b>P</b></td>
+	</tr>
 
-	<div>
-		<label>입찰 금액: <input v-model="info.aJoinPrice"></label>
+	</table>
+	</div>
+	
+	<div class="picarea">
+		1
+	</div>
+	
+	<div class="payarea">
+		<div style="text-align:center; font-size:25px; color:#a2a2a2">입찰 금액</div> 
+		<div style="text-align:center; margin-top:5px;"><input type="text" id="number" v-model="info.aJoinPrice">P</div>
+		<div style="text-align:right; margin-right:50px;">입찰 후 포인트 <b>P</b></div>
+		
+		<div class="auctionbtnarea">
+			<button class="auctionbtn" @click="fnJoin">입찰 신청</button>
+			</div>
 	</div>
 
-	<button @click="fnJoin">등록</button>
+
 
 </div>
 </body>
 </html>
 <script>
+const input = document.querySelector('#number');
+input.addEventListener('keyup', function(e) {
+  let value = e.target.value;
+  value = Number(value.replaceAll(',', ''));
+  if(isNaN(value)) {
+    input.value = 0;
+  }else {
+    const formatValue = value.toLocaleString('ko-KR');
+    input.value = formatValue;
+  }
+})
 var app = new Vue({
 	el : '#app',
 	data : {
