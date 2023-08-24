@@ -199,7 +199,7 @@
                     <ul>
                         <li class="#"><a href="faq.do">고객센터</a></li>                        
                         <li class="#"><a href="#">장바구니</a></li>
-                        <li class="#"><a href="#">관심상품</a></li>
+                        <li class="#"><a href="mypageproductinter.do">관심상품</a></li>
                         <li class="#"><a href="mypage.do">마이페이지</a></li>
                         <li class="loginbtn" v-if="loginOut != '' "><a href="login.do">로그아웃</a></li>
                         <li class="loginbtn" v-else><a href="login.do">로그인</a></li>                        
@@ -246,7 +246,7 @@
                                 <a href="#" @click="fnActive('5')">악세사리</a>
                             </li>
                              <li>
-                                <a href="#" @click="fnActive('6')">경매</a>
+                                <a href="auction/list.do" @click="fnActive('6')">경매</a>
                             </li>
                         </ul>
                     </div>

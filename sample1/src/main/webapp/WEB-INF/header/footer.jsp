@@ -121,7 +121,7 @@
 				<h3>고객센터 1500-0000</h3>
 				<p>운영시간 평일 11:00 - 18:00 (토 일, 공휴일 휴무)  점심시간 평일 13:00 - 14:00</p>
 				<p>1:1 문의하기는 앱에서만 가능합니다.</p>
-				<button class="questionbtn"><a href="#">자주묻는질문</a></button>
+				<button class="questionbtn"><a href="faq.do">자주묻는질문</a></button>
 			</div>
 			<div>
 				<ul class="footerul">

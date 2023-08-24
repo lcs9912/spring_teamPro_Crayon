@@ -31,14 +31,7 @@ public class SearchController {
         	
 		return "/search";
     }
-	
-	// 물품정보 리스트 (임시)
-	@RequestMapping("/productList.do") 
-    public String productList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		request.setAttribute("map", map);
-		return "/product_list";
-    }
-	
+		
 	// 임시 물품검색 리스트
 	@RequestMapping(value = "/product/searchList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

@@ -183,7 +183,7 @@ a {	text-decoration:none;
 
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
 					<a href="mypageprofile.do" type="button">프로필 관리</a>
-					<a href="#" type="button">내 스타일</a>
+					<a href="myposts.do" type="button">내 스타일</a>
 					
 				</div>
 				<div class="profileinner3">
@@ -262,7 +262,7 @@ a {	text-decoration:none;
 				</div>
 				<div class="joygooddv">
 					<p>추가하신 관심상품이 없습니다.</p>
-					<button><a href="#">shop 바로가기</a></button>
+					<button><a href="mainpageshopping.do">shop 바로가기</a></button>
 				</div>
 			</div>
 		</div>

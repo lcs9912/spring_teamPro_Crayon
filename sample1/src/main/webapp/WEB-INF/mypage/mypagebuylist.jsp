@@ -239,7 +239,7 @@
                     </div>                
                     <div class="buygooddv">
                         <p>구매입찰 목록이 없습니다.</p>
-                        <button><a href="#">SHOP 바로가기</a></button>
+                        <button><a href="mainpageshopping.do">SHOP 바로가기</a></button>
                     </div>
                 </div>
 			</div>

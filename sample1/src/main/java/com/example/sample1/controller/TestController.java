@@ -30,10 +30,6 @@ public class TestController {
         return "/test";
     }
 	
-	@RequestMapping("/chart.do") 
-    public String chart(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/product/chartTest";
-    }
 	
 	@RequestMapping("/testshopping.do")  //테스트용 shopping 페이지
     public String test1(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -95,11 +91,7 @@ public class TestController {
         return "/test/testwslider_sh";
     }
 	
-	// 결제 api 테스트
-	@RequestMapping("/payTest.do") //테스트용 메인 페이지 슬라이더
-    public String payTest(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/mypage/paymentTest";
-    }
+	
 	
 	// 임시 물품검색 리스트
 	@RequestMapping(value = "/chartlist.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

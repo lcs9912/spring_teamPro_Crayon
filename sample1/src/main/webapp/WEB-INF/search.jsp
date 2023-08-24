@@ -220,7 +220,7 @@ var app = new Vue({
 	                success : function(data) {
 	                	self.fnSearchList();
 	            		self.fnUserSearchList();
-						$.pageChange("/productList.do", {searchName : self.searchName});  // 검색할때 flg 하나 넘기면 서 shop 페이지에서 검색 인풋창 띄우기
+						$.pageChange("/mainpageshopping.do", {searchName : self.searchName});  // 검색할때 flg 하나 넘기면 서 shop 페이지에서 검색 인풋창 띄우기
 	                }
 	            });   
 		},
@@ -236,7 +236,7 @@ var app = new Vue({
 	                success : function(data) {  	
 	                	self.fnSearchList();
 	            		self.fnUserSearchList();
-						$.pageChange("/productList.do", {searchName : searchName});  // 검색할때 flg 하나 넘기면 서 shop 페이지에서 검색 인풋창 띄우기
+						$.pageChange("/mainpageshopping.do", {searchName : searchName});  // 검색할때 flg 하나 넘기면 서 shop 페이지에서 검색 인풋창 띄우기
 	                }
 	            });   
 		},

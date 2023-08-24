@@ -321,7 +321,7 @@ cursor: pointer;
 		</button></a>
 		
 		
-		<a href="#"><button class="sellaction">
+		<a href="sellbeforewear.do"><button class="sellaction">
 		<strong class="nowsell" style='box-shadow:1px px 0px px'>판매</strong>
 		<div style="padding-top:3px;"><b>{{minSell.sellminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 판매가</div>

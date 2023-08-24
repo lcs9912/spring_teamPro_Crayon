@@ -190,7 +190,7 @@ margin-top:10px;
 	</div>
 </div>
 <div class="continuebtn" style="width:100%; text-align:center;">
-<button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">판매 계속</button>
+<button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">판매 계속</button> <!-- orderandsettle.do 다음 링크 -->
 </div>
 </div>
 
