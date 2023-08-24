@@ -83,6 +83,7 @@ background-color : #f6f6f6;
 }
 
 .brandheader{
+text-decoration : underline;
 font-weight: bold;
 font-size: 20px;
 margin-bottom:10px;
