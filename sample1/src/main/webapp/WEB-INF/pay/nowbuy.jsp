@@ -186,8 +186,7 @@ display:none;
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body> 
 	<div id="app" style="margin-top : 100px; background-color:#fafafa;">
 	
