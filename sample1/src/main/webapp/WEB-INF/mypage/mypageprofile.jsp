@@ -261,12 +261,11 @@
 				</div>
 				<div class="profileinner2">
 					<p>{{info.userNickname}}</p> <!-- 유저이메일 -->
-					<label @click="fnImgEditFlg">이미지 변경</label>
+					<label @click="fnImgEditFlg" for="file1">이미지 변경</label>
 					<label @click="fnImgRemove" type="button">삭제</label>
-					<div v-if="imgFlg" id="fileBut">
-						<input  type="file" id="file1" name="file1">
-						<button @click="fnImgEdit">변경</button>
-					</div>
+					
+						<input  type="file" id="file1" name="file1" @change="fnImgEdit" hidden>
+						
 				</div>							
 			</div>
 			<div class="editprofile">
