@@ -152,7 +152,7 @@
     </style>
 </head>
 <body>
-    <div id="headerApp">
+    <div id="App">
         <div class="headerwrap">
             <header>
                 <div class="loginmenulist">
@@ -187,7 +187,7 @@
 </body>
 </html>
 <script>
-    var headerApp = new Vue({
+    var App = new Vue({
         el: '#headerApp',
         data: {
             loginOut: "${sessionId}"

@@ -42,12 +42,12 @@ public class TestController {
 	
 	@RequestMapping("/testheader.do") //테스트용 shopping 헤더 페이지
     public String test2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/test/testshopheader_sh";
+        return "/test/testmainheader_sh";
     }
 	
 	@RequestMapping("/testmainheader.do") //테스트용 main 헤더 페이지
     public String test6(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/test/testmainheader_sh";
+        return "/test/testshopheader_sh";
     }
 	
 	@RequestMapping("/testrankingpage.do") //테스트용 랭킹 페이지

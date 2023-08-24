@@ -307,7 +307,6 @@ margin-bottom:5px;
     <label><input type="checkbox" class="bbCheckbox" v-model="bbChecked[2]">이메일</label>
 </div>
 </div>
-
 		<div class="btnwhere">
 		<td colspan="2" style="text-align: center;">
 		<button @click="fnJoin" class="btnhover">가입</button>
