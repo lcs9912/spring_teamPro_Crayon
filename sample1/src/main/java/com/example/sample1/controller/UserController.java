@@ -1,6 +1,7 @@
 package com.example.sample1.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.sample1.model.Mypage;
 import com.example.sample1.model.User;
 import com.example.sample1.service.UserService;
 import com.google.gson.Gson;
@@ -217,4 +219,19 @@ public class UserController {
 							
 		return new Gson().toJson(resultMap);
 	}
+	
+	// 유저 주소 출력
+	@RequestMapping(value = "/user/searchAddr.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchUserAddr(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Mypage> addrList =  userService.searchUserAddr(map);
+		resultMap.put("addrList", addrList);
+								
+		return new Gson().toJson(resultMap);
+	}
+	
+	
+	
+	
 }

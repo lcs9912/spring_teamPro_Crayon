@@ -10,6 +10,11 @@
 			#{userEmail}, #{userPhone}, #{userGender}, 
 			#{userPwdHint}, #{userPwdAnswer}, NOW(), NOW())
 	</insert>
+	 <!-- 회원가입시 유저 기본프사 입력 -->
+   <insert id="insertUserDefaultImg" parameterType="hashmap">
+   			INSERT INTO T1_USER_IMAGE
+   			VALUES (NULL,#{userId},'../img/user/defaultImg.png','defaultImg.png')		
+   </insert>
 	
 	<!-- 로그인 아이디 비번 조회 -->
 	<select id="selectUserLoginAllCheck" parameterType="hashmap"
@@ -131,6 +136,13 @@
    			INSERT INTO T1_USER_ADDR
    			VALUES (#{uId}, #{addr}, #{detailAddr}, #{zipNo}, 'N')
    </insert>
-   
-   
+  
+   <select id="selectUserAddr" parameterType="hashmap"
+   		resultType="com.example.sample1.model.Mypage">
+   			SELECT A.USER_ADDR, A.USER_DETAIL_ADDR, A.USER_ZIPNO, U.USER_NAME
+			FROM T1_USER_TBL U
+			INNER JOIN T1_USER_ADDR A
+			ON U.USER_ID = A.USER_ID
+			WHERE U.USER_ID = #{uId}
+   	</select>
 </mapper>

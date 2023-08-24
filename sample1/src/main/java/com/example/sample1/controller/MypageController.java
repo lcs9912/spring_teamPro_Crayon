@@ -268,7 +268,7 @@ public class MypageController {
         return "redirect:list.do";
 		
 	}
-	 // 현재 시간을 기준으로 파일 이름 생성
+	// 현재 시간을 기준으로 파일 이름 생성
     private String genSaveFileName(String extName) {
         String fileName = "";
         

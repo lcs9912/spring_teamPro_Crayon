@@ -136,6 +136,13 @@
 			input[type="text"]{
 				outline:none;
 			}
+			#resetPoint{
+				margin-left: 416px;
+				font-size: 13px;
+				text-decoration: underline;
+				font-style: italic;
+				cursor: pointer;
+			}
 
 </style>
 
@@ -175,34 +182,34 @@
 						<h4>보유 포인트 : {{info.userPoint}}P</h4>
 						<div class="editebox spanBut">
 						<span class="editbtn">충전금액</span>
-								<input type="text" class="editinput" placeholder="0" id="number" v-model="userPoint">P
+								<input type="text" class="editinput" placeholder="0" id="number" v-model="userPoint" @keyup.enter="fnPlusPoint">P
 							
-						</div>
-					<div><h6 style="margin-top:10px;">충전 후 금액</h6> 0P</div> <!-- 유저 포인트 + 인풋 입력 값 -->
+						</div><a id="resetPoint" @click="fnPointReset">다시입력</a>
 
+
+					<div>
+						<h6 style="margin-top:10px;">충전 후 금액</h6> {{point}}P</div> <!-- 유저 포인트 + 인풋 입력 값 -->
 					</div>
 
+
 <div class="paykindselect">
-<div style="margin-bottom:15px;"><h4>결제방식</h4></div>
-<input type="radio" name="payselect" onclick="showBanking()" checked>계좌이체
-<input type="radio" name="payselect" onclick="showCarding()">카드결제/페이결제
+	<div style="margin-bottom:15px;"><h4>결제방식</h4></div>
+	<input type="radio" name="payselect" onclick="showBanking()" checked>계좌이체
+	<input type="radio" name="payselect" onclick="showCarding()">카드결제/페이결제
 </div>
 
 <div class="banking">
-<div style="margin-top:15px;"><h4>전용계좌</h4></div>
-<div style="margin-top:5px;"><h6>농협</h6></div>
-<div><input type="text" value="123-1234-1234"
-style="text-align:center; border:0; border-bottom:1px solid #eee; display:inline-block;">
-<h5 style="margin-top:5px; display:inline-block;">예금주:(주)크레용</h5></div>
+	<div style="margin-top:15px;"><h4>전용계좌</h4></div>
+	<div style="margin-top:5px;"><h6>농협</h6></div>
+	<div><input type="text" value="123-1234-1234"
+		style="text-align:center; border:0; border-bottom:1px solid #eee; display:inline-block;">
+	<h5 style="margin-top:5px; display:inline-block;">예금주:(주)크레용</h5></div>
 
-<div>*<input type="text" placeholder="예금자 성명"
-style="border:0; border-bottom:1px solid #eee;
-display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; margin-bottom:15px;">
-
-
+	<div>*<input type="text" placeholder="예금자 성명"
+		style="border:0; border-bottom:1px solid #eee;
+		display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; margin-bottom:15px;">
+	</div>
 </div>
-
-				</div>
 			
 		</div>
 		<div class="paymentbtn">
@@ -215,8 +222,8 @@ display:inline-block; margin-top:15px; width:20%; height:30px; font-size:15px; m
 			<div class="carding">
                 <button @click="requestPay" id="cardingButton">결제하기</button>
             </div>
-			</div>
 		</div>
+	</div>
 	
 
    
@@ -237,6 +244,9 @@ var app = new Vue({
 		userPoint : "",
 		uId : "${sessionId}",
 		point : 0,
+		paymentFlg : false,
+		plusPoint : 0,
+		point : 0,
 	},// data
 	methods : {
 		
@@ -251,6 +261,8 @@ var app = new Vue({
                 success : function(data) { 
                 	self.info = data.info;
                 	console.log(self.info.userPoint);
+                	self.plusPoint = self.info.userPoint;
+                	self.point = self.info.userPoint;
                 }
             }); 
         },
@@ -300,6 +312,18 @@ var app = new Vue({
 	            }); 
 			
 		},
+		// 충전후 포인트
+		fnPlusPoint : function(){
+			var self = this;
+			self.point = Number(self.plusPoint) + Number(self.userPoint);
+			
+		},
+		// 포인트 다시 입력하기
+		fnPointReset : function(){
+			var self = this;
+			self.point = self.info.userPoint;
+			self.userPoint = "";
+		}
 		
 	}, // methods
 	created : function() {

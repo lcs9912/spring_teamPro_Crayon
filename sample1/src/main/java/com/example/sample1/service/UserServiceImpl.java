@@ -1,11 +1,13 @@
 package com.example.sample1.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.sample1.mapper.UserMapper;
+import com.example.sample1.model.Mypage;
 import com.example.sample1.model.User;
 
 @Service
@@ -17,7 +19,9 @@ public class UserServiceImpl implements UserService{
 	@Override //회원가입
 	public int insertUser(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		return userMapper.insert(map);
+		userMapper.insertUserDefaultImg(map);
+		userMapper.insert(map);
+		return 0;
 	}
 	
 	@Override //로그인 시 아이디 비밀번호 체크
@@ -114,6 +118,12 @@ public class UserServiceImpl implements UserService{
 	public int useraddrInput(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return userMapper.insertUserAddr(map);
+	}
+
+	@Override
+	public List<Mypage> searchUserAddr(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserAddr(map);
 	}
 
 }

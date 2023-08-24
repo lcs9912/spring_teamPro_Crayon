@@ -147,6 +147,12 @@ main {
     left: 310px; 
     transform: translateY(-50%);
 }
+.fa-square-caret-down{
+	cursor: pointer;
+	margin-left: 310px;
+	
+	}
+	
 
 </style>
 
@@ -173,9 +179,11 @@ main {
 					<span class="idpwd" >아이디</span>
 				</div>
 				<div class="input-container">
-					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
+					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">				
 					<i class="fa-solid fa-user icon"></i>
+					
 				</div>
+				<i v-if="!idflg" class="fa-solid fa-square-caret-down" @click="fnEnter"></i>
 				<div v-if="idflg">
 					<div class="idpwdwhere">
 						<span class="idpwd" >비밀번호</span> 
@@ -183,6 +191,7 @@ main {
 					<div  class="input-container">
 						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
 						<i class="fa-solid fa-lock icon"></i>
+						
 						
 					</div>
 				</div>

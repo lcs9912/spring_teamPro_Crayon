@@ -1,9 +1,11 @@
 package com.example.sample1.mapper;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.sample1.model.Mypage;
 import com.example.sample1.model.User;
 
 @Mapper
@@ -34,4 +36,9 @@ public interface UserMapper {
 	int updateUserPointPlus(HashMap<String, Object> map);
 	// 유저 주소 입력
 	int insertUserAddr(HashMap<String, Object> map);
+	// 유저 주소 출력
+	List<Mypage>selectUserAddr(HashMap<String, Object> map);
+	// 유저 기본프로필 설정
+	int insertUserDefaultImg(HashMap<String, Object> map);
+	
 }

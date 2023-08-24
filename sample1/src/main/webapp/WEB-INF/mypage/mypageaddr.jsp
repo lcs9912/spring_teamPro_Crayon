@@ -164,6 +164,11 @@ a {	text-decoration:none;
 			border: 1px solid;
 		}
 		
+		button{
+			cursor: pointer;
+		}
+		
+		
  
 /*주소록 영역 CSS 종료*/
 
@@ -202,10 +207,22 @@ a {	text-decoration:none;
 				<h2>주소록</h2>
 				<button class="addrbtn" @click="fnpopup">+ 새 배송지 추가</a></button>
 			</div>
-			<div class="addrlist">
+			<div v-if='addrList == ""' class="addrlist">
 				<p>배송지 정보가 없습니다.<br>
 				새 배송지를 등록해주세요.</p>
 				<button class="addrbtn" @click="fnpopup">+ 새 배송지 추가</a></button>
+			</div>
+			<div class="addrlist">
+				<table>
+					<tr v-for="item in addrList">
+						<td>{{item.userName}}</td>
+						<td>{{item.userAddr}}</td>
+						<td>{{item.userDetailAddr}}</td>
+						<td>{{item.userZipno}}</td>
+						<td><button>수정</button></td>
+						<td><button>삭제</button></td>
+					</tr>
+				</table>
 			</div>
 			</div>
 			
@@ -245,6 +262,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		el : '#app',
 		data : {
 			info : {},
+			addrList : [],
 			sessionId : "${sessionId}",
 			addr : "",
 			detailAddr : "",
@@ -262,6 +280,22 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 					success : function(data) {
 						self.info = data.info;
 						console.log(self.info);
+						self.fnAddrList();
+					}
+				});
+			},
+			// 유저 주소 리스트 출력
+			fnAddrList : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/user/searchAddr.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.addrList = data.addrList;
+						console.log(self.addrList);
 					}
 				});
 			},
@@ -276,10 +310,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 					data : param,
 					success : function(data) {
 						alert("완료!");
+						location.reload();
 					}
 				});
 			},
-			// 주소 입력
+			// 주소 팝업 입력
 			fnSearchAddr : function(){
 				var self = this;
 	    		var option = "width = 500, height = 500, top = 100, left = 200, location = no"

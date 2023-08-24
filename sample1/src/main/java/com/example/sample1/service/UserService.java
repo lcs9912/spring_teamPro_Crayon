@@ -1,7 +1,9 @@
 package com.example.sample1.service;
 
 import java.util.HashMap;
+import java.util.List;
 
+import com.example.sample1.model.Mypage;
 import com.example.sample1.model.User;
 
 public interface UserService {
@@ -25,6 +27,8 @@ public interface UserService {
 	int userPointPlus(HashMap<String, Object> map);
 	//유저 주소입력
 	int useraddrInput(HashMap<String, Object> map);
+	// 유저 주소 출력
+	List<Mypage> searchUserAddr(HashMap<String, Object> map);
 	
 	
 }

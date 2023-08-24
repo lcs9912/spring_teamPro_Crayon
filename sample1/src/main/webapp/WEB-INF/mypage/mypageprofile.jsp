@@ -59,19 +59,44 @@
 				width:1000px; height:150px; margin:15px 0; border-bottom:1px solid #e9e9e9;
 				}		
 				.profileinner1{
-					float:left; width: 100px; height:100px; margin:20px 40px;
+					float:left; width: 120px; height:120px; margin:8px 22px;
 				}
 				.profileinner2{
-					float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
+					float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px; 
+					    
 				}
 					.profileinner2 strong{
 						font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
 					}
-					.profileinner2 p {margin:5px 0;}
+					.profileinner2 p {
+						margin:5px 0;
+						font-size: 20px;
+						font-weight: bold;
+						color: black;
+					}
+					img{
+						width: 100%;
+					    height: 100%;
+					    object-fit: cover;
+					    border-radius: 70%;
+					    overflow: hidden;
+					}
 					.profileinner2 label{
 						display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-						margin-left:5px; height:35px; line-height:15px;
+						margin-left:5px; height:35px; line-height:15px; cursor: pointer;
 					}
+					
+					#fileBut {
+					
+					}
+					.profileinner2 input{ /* 이거 도움받기 */
+						cursor: pointer;
+					}
+					
+					.profileinner2 button{
+						cursor: pointer;
+					}
+					
 				
 				
 				.editprofile h4 {/*프로필정보 영역 CSS(인풋, 버튼) 시작*/
@@ -228,17 +253,13 @@
 					<!-- 유저 프로필사진 동그랗게 만들기-->
 				</div>
 				<div class="profileinner2">
-					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
+					<p>{{info.userNickname}}</p> <!-- 유저이메일 -->
 					<label @click="fnImgEditFlg">이미지 변경</label>
 					<label @click="fnImgRemove" type="button">삭제</label>
-					<div v-if="imgFlg">
-						<input type="file" id="file1" name="file1">
+					<div v-if="imgFlg" id="fileBut">
+						<input  type="file" id="file1" name="file1">
 						<button @click="fnImgEdit">변경</button>
 					</div>
-					
-					
-					
-					
 				</div>							
 			</div>
 			<div class="editprofile">
@@ -395,7 +416,7 @@
 				var form = new FormData();
 				
 		     	form.append( "uId",  self.sessionId); 
-		     	form.append( "imgName",  self.info.userImgName);
+		     	form.append( "imgName",  self.imgInfo.userImgName);
 		     	$.ajax({
 		             url : "/imgRemove.dox"
 		           , type : "POST"

@@ -56,7 +56,7 @@ a {	text-decoration:none;
 			width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
 			}
 			.profileinner1{
-				float:left; width: 100px; height:100px; margin:25px 40px;
+					float:left; width: 120px; height:120px; margin:8px 22px;
 			}
 			.profileinner2{
 				float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
@@ -135,6 +135,13 @@ a {	text-decoration:none;
 		   		 line-height:10px;
 		   		 color:#999; cursor:pointer;
 			}
+			img{
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 70%;
+				overflow: hidden;
+			}
 
 </style>
 
@@ -168,14 +175,14 @@ a {	text-decoration:none;
 		<div class="sailcontainer">
 			<div class="profilearea">
 				<div class="profileinner1">
-					<img src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png">
+					<img :src="imgInfo.userImg">
 					<!-- 유저 프로필사진 -->
 				</div>
 				<div class="profileinner2">
-					<strong>사용자아이디</strong>
+					<strong>{{info.userId}}</strong>
 
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
-					<a href="#" type="button">프로필 관리</a>
+					<a href="mypageprofile.do" type="button">프로필 관리</a>
 					<a href="#" type="button">내 스타일</a>
 					
 				</div>
@@ -270,6 +277,7 @@ a {	text-decoration:none;
 		el : '#app',
 		data : {
 			info : {},
+			imgInfo : {},
 			sessionId : "${sessionId}"
 		},// data
 		methods : {
@@ -284,9 +292,26 @@ a {	text-decoration:none;
 					success : function(data) {
 						self.info = data.info;
 						console.log(self.info);
+						self.fnImgInfo();
 					}
 				});
-			}
+			},
+			
+			fnImgInfo : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/user/profileImg.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.imgInfo = data.imgInfo;
+						console.log(self.imgInfo.userImgName);
+						
+					}
+				});
+			},
 
 		}, // methods
 		created : function() {
