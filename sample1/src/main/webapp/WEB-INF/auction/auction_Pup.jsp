@@ -26,6 +26,7 @@ outline: none;
 border:none;
 border-bottom:1px solid #eee;
 
+
 }
 .imgarea{
 width:600px;
@@ -100,10 +101,10 @@ text-align : center;
 		<button class="searchbtn" @click="fnGetProductInfo">모델번호로 상품찾기</button>
 		</div>
 		
-		<div><span class="headtitlename">상품이름 : </span><input v-model="info.productName" type="text" placeholder="상품이름"></div>
+		<div style="margin-bottom : 10px;"><span class="headtitlename">상품이름 : </span><input v-model="info.productName" type="text" placeholder="상품이름"></div>
 		
 		<div>
-		<span class="headtitlename">상품사이즈</span>
+		<span class="headtitlename">상품사이즈 : </span>
 			<select v-model="info.productSize">
 				<option value="a">사이즈</option>
 				<option value="0">ONE SIZE</option>
@@ -148,11 +149,11 @@ text-align : center;
 		
 		<div><span class="headtitlename">최대가격 : </span><input v-model="info.auctionMaxPrice" type="text" placeholder="최대가격"></div>
 		
-		<div><span class="headtitlename">발매가 : </span><input v-model="info.productLaunchPrice" type="text" placeholder="발매가"></div>
-		<div style="width:300px;">*시작일자<input v-model="info.auctionStartDate" type="date" placeholder="시작일자"></div>
-		<div>*마감일자<input v-model="info.auctionEndDate" type="date" placeholder="마감일자"></div>
+		<div style="margin-bottom:10px;"><span class="headtitlename">발매가 : </span><input v-model="info.productLaunchPrice" type="text" placeholder="발매가"></div>
+		<div style="width:300px;">*시작일자 : <input v-model="info.auctionStartDate" type="date" placeholder="시작일자"></div>
+		<div>*마감일자 : <input v-model="info.auctionEndDate" type="date" placeholder="마감일자"></div>
 		<div style="width:300px;">
-		<span class="headtitlename">카테고리1</span>
+		<span class="headtitlename">카테고리1 : </span>
 			<select  v-model="info.productCategorie1">
 				<option value="0">카테고리1</option>
 				<option value="1">남자</option>
@@ -162,7 +163,7 @@ text-align : center;
 			</select>
 		</div>
 		<div>
-		<span class="headtitlename">카테고리2</span>
+		<span class="headtitlename">카테고리2 : </span>
 			<select v-model="info.productCategorie2">
 				<option value="0">카테고리2</option>
 				<option value="1">상의</option>
