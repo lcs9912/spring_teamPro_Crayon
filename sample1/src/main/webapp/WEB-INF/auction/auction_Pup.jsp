@@ -43,6 +43,7 @@ float:left;
 width:600px;
 float:left;
 margin: 30px 0 20px 0;
+height:700px;
 }
 .headtitlename{
 width: 120px;
@@ -82,12 +83,16 @@ width:100%;
 .areadetail{
 width:1200px;
 margin : 0 auto;
+padding-top:30px;
+
 }
 .areadetail h2{
 text-align : center;
+padding-bottom:30px;
 }
 </style>
 </head>
+<%@ include file="../header/shopheader.jsp" %>
 <body>
 <div id="app">
 	
@@ -197,6 +202,7 @@ text-align : center;
 </div>
 
 </body>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({
