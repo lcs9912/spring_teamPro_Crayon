@@ -105,7 +105,7 @@
 					<input v-model="product.sellBuy" name="sellbuybtn" type="radio" value="S" id="sellbtn"><label for="sellbtn" id="selllabel">판매</label>
 				</div>
 				<div class="productinputarea">
-					<p>희망하는 상품을 등록하세요</p>
+					<input v-model="info.productColor" type="text" placeholder="상품컬러">
 					<label for="nameupload" class="producupload">상품이름</label><input v-model="product.pName" type="text" id="nameupload">
 					<label for="modelupload" class="producupload">모델번호</label><input v-model="product.pModel" type="text" id="modelupload">
 					<label for="colorupload" class="producupload">상품컬러</label><input v-model="product.pColor" type="text" id="colorupload">

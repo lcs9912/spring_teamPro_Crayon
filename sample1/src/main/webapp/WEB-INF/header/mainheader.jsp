@@ -15,7 +15,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+		
         li {
             list-style: none;
         }
@@ -29,7 +29,7 @@
             max-width: 100%;
             vertical-align: top;
         }
-
+		input {outline:none;}
         /*헤더영역 전체 CSS 시작*/
         .headerwrap {
             width: 100%;
@@ -218,6 +218,7 @@
                         <li><a href="mainslider.do">HOME</a></li>
                         <li><a href="mainpageranking.do">STYLE</a></li>
                         <li><a href="mainpageshopping.do">SHOP</a></li>
+                        <li><a href="mainpageshopping.do">UP</a></li>
                         <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     </ul>
                 </div><!--헤더 대분류 메뉴영역 종료-->
@@ -240,6 +241,9 @@
                             </li>
                             <li>
                                 <a href="#" @click="fnActive('5')">악세사리</a>
+                            </li>
+                             <li>
+                                <a href="#" @click="fnActive('6')">경매</a>
                             </li>
                         </ul>
                     </div>

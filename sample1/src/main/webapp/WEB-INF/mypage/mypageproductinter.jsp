@@ -152,9 +152,25 @@
 				<h2>관심상품</h2>
 				</div>
 				
-				<div class="interestarea">
-<ul>
-	<li>
+		<div class="interestarea">
+			<ul>
+				<li>
+				<div class="productpicture">상품사진</div>
+					<div class="productdetail">
+						<div class="productname">상품이름</div>
+						<div class="productinfo">상품설명</div>
+						<div class="productsize">size</div>
+					</div>
+				<button class="buybtn">
+					<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
+					<div style="padding-top:3px;"><b>000,000원</b></div>
+					<div style="padding-top:5px;">즉시 구매가</div>
+					<span class="delete">삭제</span>
+				</button>
+				</li>
+
+
+		<li>
 		<div class="productpicture">상품사진</div>
 			<div class="productdetail">
 				
@@ -169,37 +185,14 @@
 				<div style="padding-top:5px;">즉시 구매가</div>
 				<span class="delete">삭제</span>
 			</button>
-
-	</li>
-
-
-<li>
-		<div class="productpicture">상품사진</div>
-			<div class="productdetail">
-				
-				<div class="productname">상품이름</div>
-				<div class="productinfo">상품설명</div>
-				<div class="productsize">size</div>
-
-			</div>
-			<button class="buybtn">
-				<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
-				<div style="padding-top:3px;"><b>000,000원</b></div>
-				<div style="padding-top:5px;">즉시 구매가</div>
-				<span class="delete">삭제</span>
-			</button>
-
-	</li>
-</ul>
-				
-				
-				
+	
+		</li>
+	</ul>
 				</div>
 				
-				</div>
-			</div>
-						
-				</div>
+		</div>
+	</div>
+</div>
 
 
 

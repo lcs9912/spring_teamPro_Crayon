@@ -113,58 +113,66 @@
 			  	z-index: 3000;
 			} 
 			.content {
-			    width:500px; height:500px;
-			    margin:0 auto; background:#fff;
+			    width:500px; border-radius:15px; padding-bottom:40px;
+			    margin:10% auto; background:#fff;
 			}		
 			
 			.title{
-			    border-radius: 15px 15px 0 0; min-height: 40px;
-			    color: white; background-color: black; padding: 10px 15px;
-			    box-sizing: border-box; font-weight: bold;
-			    text-align: center;
+			    min-height: 40px; margin-bottom:10px; border-radius:15px 15px 0 0;
+			    color: white; background-color: #ccc; padding: 10px 15px;
+			    box-sizing: border-box; font-weight: bold; 
+			    text-align: center; position:relative; 
 			}
-		
-			.popup > .cmd {
-			    bottom: 0; min-height: 40px;
-			    padding: 15px 15px; box-sizing: border-box;
-			    border-radius: 0 0 15px 15px;
-			    min-height: 40px; text-align: right;
-			    width: 300px;			 
-			}
-			.cmd button {
-			    border-radius: 8px; padding: 5px 10px;
-			    border: 1px solid #aaa; width: 80px;
-			    color: white; background-color: black;
-			    font-weight: bold; cursor: pointer;
-			    position: absolute; top : 409px;
-			    left: 265px;
-			}
-			.cmd button:hover {
-			    color: #fff;
-			    background-color: #000;
-			    border-color: #000;
-			}
-			.title i{
-				cursor: pointer;
-			}
-			.fa-x{
-				position: absolute;
-				top: 10px;
-				right: 10px;
-			}
+				
+					.fa-x{position: absolute; top: 15px; right: 15px; cursor: pointer;}
+					/*이메일변경 CSS 시작*/
+					.nowemail {width:500px; height:50px; margin-top:30px; font-size:16px;}
+					.nowemail h3{width:500px; height:50px; text-align:center;}
+					.emailinput{width: 400px; height : 70px;margin-left:60px; border-bottom:1px solid #ccc;}
+						.emailinput input{width: 300px; height : 60px; outline:none; border:0px solid; font-size:16px;}
+						.emailpwd{background-color:white; border : 1px solid #a2a2a2; font-size:13px;
+							width : 90px; height : 25px; cursor: pointer; margin-top:10px;
+						} 
+						.hiddenmessege {color:red; width:500px; text-align:center; margin:20px 0;}
+							
+						#submitPopup {
+						    border-radius: 8px; padding: 10px 30px; margin:20px 175px 0 175px;
+						    border: 1px solid #aaa; width: 150px;
+						    color: white; background-color: black;
+						    font-weight: bold; cursor: pointer;			    			    
+						}
+						#submitPopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
+						/*이메일변경 CSS 종료*/
 			
-			.emailinput input{
-				width: 250px;
-				height : 30px;
-				margin-bottom: 15px;
-			}
+			.passwordckwrap {
+				width:500px; text-align:center;
+				}
+				.passwordckwrap input{display:inline-block; width:300px; height:40px; outline:none; 
+								border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;}
+				.passwordckwrap button{border-radius: 8px; margin:10px 0 0 10px;
+						    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
+						    font-weight: bold; cursor: pointer;	}	
+				.passwordckwrap select {width:225px; height:40px; outline:none; margin:30px 10px;}
+				
+				.pwdquestion {font-size:12px; margin-left:10px;}
+					.passwordckwrap>#newpassword{text-align:left;}
+					.passwordckwrap>#newpassword>input{margin-left:58px;}
 			
-			.emailpwd{
-				background-color:white;
-				border : 1px solid #a2a2a2;
-				width : 100px; height : 25px;
-				cursor: pointer;
-			} 
+			.phonewrap {
+				width:500px; text-align:left;
+			}		
+				.phonewrap input{
+					display:inline-block; width:350px; height:40px; outline:none; margin-left:50px;
+								border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;
+				}
+				.phonewrap button{border-radius: 8px; margin:10px 0 0 10px;
+						    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
+						    font-weight: bold; cursor: pointer;					
+				}
+					#phonePopup {border-radius: 8px; margin:20px 0 10px 175px;
+						    border: 1px solid #aaa; width: 150px; height:30px; color: white; background-color: black;
+						    font-weight: bold; cursor: pointer;				
+					}
 </style>
 
 </head>
@@ -266,73 +274,67 @@
 		<div class="emaailbackcolor">
 		<!-- 이메일 변경 팝업 -->
 		<div class="popup popup-overlay" id="popupOverlay" >
-	        <div class="content">
-	        <div class="title">변경<i class="fa-solid fa-x" id="closePopup"></i></div>
-	        <!-- 이메일 변경 -->
-	     	<template v-if="keyword == 'email'">
-	            <h2 style="padding-bottom:15px;">이메일주소 변경</h2>
-	            <p>
-	                <div style="padding-bottom:15px;">기존 이메일주소 : {{masked.maskedEmail}}</div>
-	                <div class="emailinput"><input placeholder="대충 변경할 이메일" v-model="editEmail"></div>
-	                <div style="color: red;">{{emailMessage}}</div>
-	                <div class="emailinput">
-	              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-	               	</div> 
-	               	<button @click="fnPwdCheck" class="emailpwd" >비밀번호 인증</button>
-	            </p>
-	            	 <div class="cmd">
-	       				<button id="submitPopup" @click="fnSubmitPopup">제출</button>          
-	        		 </div>
-	        </template>
-	        </div>
+		        <div class="content">
+		        <div class="title"><h3>변경</h3><i class="fa-solid fa-x" id="closePopup"></i></div>
+			        <!-- 이메일 변경 -->
+					<template v-if="keyword == 'email'">						     		            
+		                <div class="nowemail"><h3>이메일주소 : {{masked.maskedEmail}}</h3></div>
+		                <div class="emailinput"><input placeholder="변경할 이메일주소를 입력하시오." v-model="editEmail" autofocus></div>
+		                <div class="hiddenmessege">{{emailMessage}}</div>
+		                <div class="emailinput">
+		              		<input type="password" v-model="pwd" placeholder="비밀번호 확인" @keyup.enter="fnPwdCheck">
+		               		<button @click="fnPwdCheck" class="emailpwd" >비밀번호 인증</button>
+		               	</div>               	
+			            <button id="submitPopup" @click="fnSubmitPopup">제출</button> 		            	 
+		    		</template>
+		        
+		    
 	        <!-- 비밀번호 변경 -->
-	     	<template v-if="keyword == 'pwd'">
-	            <p>대충 비밀번호 변경 주의 사항(없어도됨)</p>
-	            <p>
-	                <div><input type="password" placeholder="기존 비밀번호 입력" v-model="pwd"><button @click="fnPwdCheck">확인</button></div>
-	                <div v-if="pwdFlg">
-		                <select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="checkPwdHint">
-							<option disabled selected>비밀번호 찾기 질문</option>
-							<option value="1">가장 좋아하는 동물은?</option>
-							<option value="2">가장 좋아하는 음식은?</option>
-							<option value="3">가장 좋아하는 색은?</option>
-							<option value="4">가장 좋아하는 운동선수이름은?</option>
-							<option value="5">자신의 취미나 특기는?</option>
-							<option value="6">가장 좋아하는 운동은?</option>
-							<option value="7">가장 좋아하는 티비프로그램은?</option>
-							<option value="8">가장 좋아하는 책은?</option>
-							<option value="9">가장 좋아하는 영화는?</option>
-						</select>
-		               <div><input placeholder="정답" v-model="hintAnswer"></div>
-		               <div style="color: red;">{{pwdMessage}}</div>
-		               <button @click="fnHintCheck">확인</button>
-	               </div>
-	                <div v-if="hintPwdFlg">
-	              		<div><input type="password" v-model="editPwd" placeholder="새 비밀번호"></div>
-	              		<div><input type="password" v-model="editPwd2" placeholder="비밀번호 확인"></div>
-	               	</div> 
-	            </p>
-	            	 <div class="cmd">
-	       				<button id="submitPopup" @click="fnSubmitPwdEdit">제출</button>          
-	        		 </div>
-	        </template>
+	     			<template v-if="keyword == 'pwd'">
+	     			<div class="passwordckwrap">	
+		             	<input type="password" placeholder="기존 비밀번호 입력" v-model="pwd" autofocus @keyup.enter="fnPwdCheck"><button @click="fnPwdCheck">확인</button>
+		                <div v-if="pwdFlg">
+		                	<span id="pwdquestion">비밀번호 찾기 질문</span>		                
+			                <select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="checkPwdHint">
+								<option disabled selected>비밀번호 찾기 질문</option>
+								<option value="1">가장 좋아하는 동물은?</option>
+								<option value="2">가장 좋아하는 음식은?</option>
+								<option value="3">가장 좋아하는 색은?</option>
+								<option value="4">가장 좋아하는 운동선수이름은?</option>
+								<option value="5">자신의 취미나 특기는?</option>
+								<option value="6">가장 좋아하는 운동은?</option>
+								<option value="7">가장 좋아하는 티비프로그램은?</option>
+								<option value="8">가장 좋아하는 책은?</option>
+								<option value="9">가장 좋아하는 영화는?</option>
+							</select>
+			               <input placeholder="정답" v-model="hintAnswer" @keyup.enter="fnHintCheck">
+			               <button id="hintPopup" @click="fnHintCheck">확인</button>
+			               <div style="color: red;">{{pwdMessage}}</div>
+			               
+		               </div>
+		                <div v-if="hintPwdFlg" id="newpassword">
+		              		<input type="password" v-model="editPwd" placeholder="새 비밀번호">
+		              		<input type="password" v-model="editPwd2" placeholder="비밀번호 확인">
+		               		<button id="passwordPopup" @click="fnSubmitPwdEdit">제출</button>
+		               	</div>		            	 
+		       		</div>
+	      		  </template>
 	        
 	        <!-- 연락처 변경 -->
 	     	<template v-if="keyword == 'phone'">
-	            <p>대충 전화번호 변경 주의 사항(없어도됨)</p>
-	            <p>
-	               <div><input placeholder="아이디" v-model="checkId"></div>
-	               <div><input placeholder="비밀번호" v-model="pwd"></div>
-	               <div><input placeholder="이메일" v-model="editEmail"></div>
+	            <div class="phonewrap">	            
+	               <input placeholder="아이디" v-model="checkId">
+	               <input placeholder="비밀번호" v-model="pwd">
+	               <input placeholder="이메일" v-model="editEmail">
 	               <button @click="fnAllCheck">인증</button>
 	               <div style="color: red;">{{phoneMessage}}</div>
 	               <div v-if="PhoneFlg">
-	                	<div><input placeholder="새 전화번호" v-model="editPhone"></div>
-	                </div>
-	            </p>
-	            	 <div class="cmd">
-	       				<button id="submitPopup" @click="fnSubmitPhoneEdit">제출</button>          
-	        		 </div>
+	                	<input placeholder="새 전화번호" v-model="editPhone">
+	                	<button id="phonePopup" @click="fnSubmitPhoneEdit">제출</button>  
+	               </div>
+	           
+	            	 
+	        	</div>	        	
 	        </template>
 	        
 	        <!-- 신발 사이즈 변경 -->
@@ -371,15 +373,10 @@
 	       				<button id="submitPopup" @click="fnRemoveUser">제출</button>          
 	        		 </div>
 	        </template>
-	        
-	       
 	        </div>
-	        
+	        </div>
 	    </div> 
-
-   
-   
-</div>
+	</div>
 </body>
 <%@ include file="../header/footer.jsp"%>
 </html>
@@ -444,7 +441,7 @@
 				const regexEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일 정규식
 				
 				if(!regexEmail.test(self.editEmail)){
-					self.emailMessage = "이메일 형식에 맞게 입력하시오";
+					self.emailMessage = "이메일 형식에 맞게 입력하시오.";
 					
 					return;
 				}else {
@@ -464,12 +461,11 @@
 					type : "POST",
 					data : param,
 					success : function(data) {
-						alert("대충 수정됐다 라는 엘럿창");
+						alert("수정이 완료됐습니다");
 						document.getElementById("popupOverlay").style.display = "none";
 						self.fnGetInfo();
 					}
-				}); 
-				
+				}); 				
 			},
 			// id pwd 일치한지
 			fnPwdCheck : function(){
