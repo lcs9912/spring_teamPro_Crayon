@@ -27,6 +27,12 @@ public class Auction {
 	//T1_PRODUCT_IMG
 	private String pImgPath; //상품 이미지 저장경로
 	private String pImgName; //상품 이미지 파일명
+	
+	private String brandName; // 브랜드이름
+	private String transactionPrice; // 거래가격
+	private String size;
+	
+	
 	public String getAuctionNumber() {
 		return auctionNumber;
 	}
