@@ -19,19 +19,91 @@
 	#b, #s {
 		opacity : 0;
 	}
+input[type="text"]{
+width:470px;
+height:40px;
+outline: none;
+border:none;
+border-bottom:1px solid #eee;
+
+}
+.imgarea{
+width:600px;
+float:right;
+margin: 30px 0 20px 0;
+}
+.picarea{
+width:600px;
+height:600px;
+background-color:#eee;
+float:left;
+}
+.leftarea{
+width:600px;
+float:left;
+margin: 30px 0 20px 0;
+}
+.headtitlename{
+width: 120px;
+padding-top : 10px;
+
+}
+.leftarea div{
+float:left;
+height:45px;
+}
+.searchbtn{
+float:right;
+margin-top:10px;
+background-color:tomato;
+border:1px solid tomato;
+border-radius:10px;
+color:white;
+}
+.searchbtn:hover{
+background-color:red;
+}
+.productbtn{
+background-color : tomato;
+width:150px;
+height:60px;
+border:none;
+color:white;
+border-radius:10px;
+text-align:center;
+}
+.productbtn:hover{
+background-color:red;
+}
+.area{
+width:100%;
+}
+.areadetail{
+width:1200px;
+margin : 0 auto;
+}
+.areadetail h2{
+text-align : center;
+}
 </style>
 </head>
 <body>
 <div id="app">
-	<div>
-		<img :src="info.pImgPath" style="max-width : 300px"> 
-		<div><input v-model="info.pModel" type="text" placeholder="모델번호"></div>
-		<div>
-		<button @click="fnGetProductInfo">모델번호로 상품찾기</button>
+	
+	<div class="area">
+	<div class="areadetail"><h2>상품등록</h2>
+		<div class="leftarea">
+		
+		
+		<div><span class="headtitlename">모델번호 입력 : </span><input v-model="info.pModel" type="text" placeholder="모델번호 입력"></div>
+		<div style="width:580px;">
+		<button class="searchbtn" @click="fnGetProductInfo">모델번호로 상품찾기</button>
 		</div>
-		<div><input v-model="info.productName" type="text" placeholder="상품이름"></div>
+		
+		<div><span class="headtitlename">상품이름 : </span><input v-model="info.productName" type="text" placeholder="상품이름"></div>
 		
 		<div>
+		<span class="headtitlename">상품사이즈</span>
 			<select v-model="info.productSize">
 				<option value="a">사이즈</option>
 				<option value="0">ONE SIZE</option>
@@ -69,13 +141,18 @@
 				<option value="32">290</option>
 			</select>
 		</div>
-		<div><input v-model="info.productColor" type="text" placeholder="상품컬러"></div>
-		<div><input v-model="info.auctionStartPrice" type="text" placeholder="시작가격"></div>
-		<div><input v-model="info.auctionMaxPrice" type="text" placeholder="최대가격"></div>
-		<div><input v-model="info.productLaunchPrice" type="text" placeholder="발매가"></div>
-		<div>*시작일자<input v-model="info.auctionStartDate" type="date" placeholder="마감일자"></div>
+		
+		<div><span class="headtitlename">상품컬러 : </span><input v-model="info.productColor" type="text" placeholder="상품컬러"></div>
+		
+		<div><span class="headtitlename">시작가격 : </span><input v-model="info.auctionStartPrice" type="text" placeholder="시작가격"></div>
+		
+		<div><span class="headtitlename">최대가격 : </span><input v-model="info.auctionMaxPrice" type="text" placeholder="최대가격"></div>
+		
+		<div><span class="headtitlename">발매가 : </span><input v-model="info.productLaunchPrice" type="text" placeholder="발매가"></div>
+		<div style="width:300px;">*시작일자<input v-model="info.auctionStartDate" type="date" placeholder="시작일자"></div>
 		<div>*마감일자<input v-model="info.auctionEndDate" type="date" placeholder="마감일자"></div>
-		<div>
+		<div style="width:300px;">
+		<span class="headtitlename">카테고리1</span>
 			<select  v-model="info.productCategorie1">
 				<option value="0">카테고리1</option>
 				<option value="1">남자</option>
@@ -85,6 +162,7 @@
 			</select>
 		</div>
 		<div>
+		<span class="headtitlename">카테고리2</span>
 			<select v-model="info.productCategorie2">
 				<option value="0">카테고리2</option>
 				<option value="1">상의</option>
@@ -101,13 +179,22 @@
 				<option value="12">모자</option>
 			</select>
 		</div>
-		<div><input value="info.productBrand" v-model="info.brandName" type="text" placeholder="브랜드"></div>
+		
+		<div>브랜드 : <input value="info.productBrand" v-model="info.brandName" type="text" placeholder="브랜드"></div>
+		<div>
 		
 	</div>
-	<div>
-		<button @click="fnUpProduct">상품등록</button>
+	<div style="width:600px; text-align:center; margin-top:10px;">
+<button class="productbtn" @click="fnUpProduct">상품등록</button>
+		</div>
+		</div>
+		<div class="picarea">
+	<img class="imgarea" :src="info.pImgPath" style="max-width : 600px; max-height:600px;">
+	</div>
+	</div>
 	</div>
 </div>
+
 </body>
 </html>
 <script>
