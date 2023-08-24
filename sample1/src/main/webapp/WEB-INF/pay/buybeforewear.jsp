@@ -6,7 +6,7 @@
 	<script src="../js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<meta charset="UTF-8">
-	<title>Insert title here shoes</title>
+	<title>select the size</title>
 <style>
 *{
 		margin:0;
@@ -114,12 +114,12 @@ background-color: #B5B5B5;
 	<div class="productcontents">
 		<div class="productheader" style="display: flex; align-items: center;">
     <div class="productinfo">
-        사진데이터
+        <img src="../img/product/2023722114928756.jpg" style="max-width : 80px">
     </div>
     <div style="margin-left: 10px;">
-        <div class="productdetailhead">ID</div>
-        <div class="productdetailname">NAME</div>
-        <div class="productdetailtransname">TRANSNAME</div>
+        <div class="productdetailhead">모델번호</div>
+        <div class="productdetailname">상품영문명</div>
+        <div class="productdetailtransname">상품한글명</div>
     </div>
 </div>
 

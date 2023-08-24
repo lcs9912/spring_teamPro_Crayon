@@ -9,11 +9,9 @@
 	<title>배송/결제페이지</title>
 <style>
 *{
-		margin:0;
-		padding:0;
+	margin:0;
+	padding:0;
 }
-
-
 .contentsarea{
     margin: 0 auto;
     max-width: 780px;
@@ -22,149 +20,145 @@
    
 }
 .productcontents{
-box-shadow : 2px 3px 5px 0px #eee;
-padding: 32px 32px 28px;
- background-color: white;
- border-bottom : 1px solid #eee;
+	box-shadow : 2px 3px 5px 0px #eee;
+	padding: 32px 32px 28px;
+	background-color: white;
+	border-bottom : 1px solid #eee;
 }
 .productheader{
-width:100%;
+	width:100%;
 }
 .productinfo{
-width:80px;
-height:80px;
-background-color:#eee;
-display:inline-block;
-
+	width:80px;
+	height:80px;
+	background-color:#eee;
+	display:inline-block;
 }
 .addrsearch{
-padding: 32px 32px 28px;
- background-color: white;
- border-bottom : 1px solid #eee;
+	padding: 32px 32px 28px;
+	background-color: white;
+	border-bottom : 1px solid #eee;
 }
-
 .addradd div{
-padding-top:10px;
-line-height: 30px; 
+	padding-top:10px;
+	line-height: 30px; 
 }
 .addradd button{
-width:100%;
-height:50px;
-border-radius:10px;
-text-align:left;
-padding-left:10px;
-border:1px solid #eee;
-background-color:white;
-cursor:pointer;
+	width:100%;
+	height:50px;
+	border-radius:10px;
+	text-align:left;
+	padding-left:10px;
+	border:1px solid #eee;
+	background-color:white;
+	cursor:pointer;
 }
 .packageas{
-padding-bottom:15px;
+	padding-bottom:15px;
 }
 .pointarea{
-padding: 32px 32px 28px;
- background-color: white;
- border-top:1px solid #eee;
+	padding: 32px 32px 28px;
+	background-color: white;
+	border-top:1px solid #eee;
 }
 .pointnum{
-padding-top:15px;
-width:100%;
-
+	padding-top:15px;
+	width:100%;
 }
 .pointnum input[type="text"]{
-height:50px;
-border-radius:10px;
-padding-left : 10px;
-width:85%;
+	height:50px;
+	border-radius:10px;
+	padding-left : 10px;
+	width:85%;
 }
 
 .pointnum button{
-margin-left : 20px;
-border-radius:15px;
-background: rgba(34,34,34,.2);
-color:white;
-width:11%;
-border : 1px solid #eee;
-height:30px;
-font-size : 13px;
-cursor:pointer;
+	margin-left : 20px;
+	border-radius:15px;
+	background: rgba(34,34,34,.2);
+	color:white;
+	width:11%;
+	border : 1px solid #eee;
+	height:30px;
+	font-size : 13px;
+	cursor:pointer;
 }
 
 .allpayarea{
-padding: 32px 32px 28px;
- background-color: white;
- border-top:1px solid #eee;
+	padding: 32px 32px 28px;
+	background-color: white;
+	border-top:1px solid #eee;
 }
 .allpayinfo{
-font-size:13px;
-font-weight:bold;
-padding: 32px 32px 28px;
- background-color: white;
+	font-size:13px;
+	font-weight:bold;
+	padding: 32px 32px 28px;
+	background-color: white;
 }
 
 .priceinfo{
-padding: 32px 32px 28px;
- background-color: white;
- width:100%;
- border-top : 1px solid #eee;
+	padding: 32px 32px 28px;
+	background-color: white;
+	width:100%;
+	border-top : 1px solid #eee;
 }
 
 .priceinfo div{
-padding-top:5px;
+	padding-top:5px;
 }
 
 .priceinfosubtitle{
-color : rgba(34,34,34,.5);
+	color : rgba(34,34,34,.5);
 }
 
 .payagreearea{
-padding: 32px 32px 28px;
- background-color: white;
- border-top : 1px solid #eee;
+	padding: 32px 32px 28px;
+	background-color: white;
+	border-top : 1px solid #eee;
 }
 
 .noticeheader{
-width:90%;
-font-size: 13px;
-line-height: 18px;
+	width:90%;
+	font-size: 13px;
+	line-height: 18px;
 }
 
 .noticegroup{
-border-bottom: 1px solid #eee;
-padding-top:28px;
+	border-bottom: 1px solid #eee;
+	padding-top:28px;
 }
 
 .noticecontents{
-width:90%;
-color: rgba(34,34,34,.5);
-    font-size: 13px;
-    line-height: 16px;
-    padding-bottom : 28px;
-    display:inline-block;
+	width:90%;
+	color: rgba(34,34,34,.5);
+	font-size: 13px;
+	line-height: 16px;
+	padding-bottom : 28px;
+	display:inline-block;
 }
 input[type=checkbox] {
-cursor:pointer;
--ms-transform: scale(2);
--moz-transform: scale(2);
--webkit-transform: scale(2);
--o-transform: scale(2);
-
+	cursor:pointer;
+	-ms-transform: scale(2);
+	-moz-transform: scale(2);
+	-webkit-transform: scale(2);
+	-o-transform: scale(2);
 }
 .productheader{
-width:100%;
+	width:100%;
 }
 .lastpaybtn{
-background-color:white;
-padding-bottom:20px;
+	background-color:white;
+	padding-bottom:20px;
 }
 .lastpaybtn button{
-background-color:#a2a2a2;
-border:none;
-width:90%;
-height:50px;
-border-radius:15px;
-color:white;
-font-size:25px;
-margin-top:10px;
+	background-color:#a2a2a2;
+	border:none;
+	width:90%;
+	height:50px;
+	border-radius:15px;
+	color:white;
+	font-size:25px;
+	margin-top:10px;
 }
 </style>
 
@@ -176,34 +170,30 @@ margin-top:10px;
 	
 	<div class="contentsarea">
 		<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
-	
 			<div class="productcontents">
-		<div class="productheader" style="display: flex; align-items: center;">
+				<div class="productheader" style="display: flex; align-items: center;">
 	   				 <div class="productinfo">
-	        			사진데이터
+	        			<img :src="img.pImgPath">
 	    			</div>
-	    			
-		    <div style="margin-left: 10px;">
-		        <div class="productdetailhead">ID</div>
-		        <div class="productdetailname">NAME</div>
-		        <div class="productdetailtransname">TRANSNAME</div>
-		    </div>
-	    
-		</div>
+		    		<div style="margin-left: 10px;">
+			        	<div class="productdetailhead"><strong>{{uId}}</strong></div>
+			        	<div class="productdetailname"><strong>{{uName}}</strong></div>
+		    		</div>
+				</div>
 			</div>
-	
+			
 		<div class="addrsearch">
-	<h3 style="width:80%; display:inline-block;">배송 주소</h3>
-	<a href="#" style="float:right; color: rgba(34,34,34,.5);
-    font-size: 13px;">+ 새 주소 추가</a>
+			<h3 style="width:80%; display:inline-block;">배송 주소</h3>
+			<a href="#" style="float:right; color: rgba(34,34,34,.5);
+		    font-size: 13px;">+ 새 주소 추가</a>
     
-    <div class="addradd">
-    <div><button style="background-color:#fafafa; color: rgba(34,34,34,.5);">주소를 추가해주세요.</button></div>
-    <div>
-    <button style="line-height: 30px;">요청사항 없음
-    <i class="fa-solid fa-chevron-right" style="float:right; padding-right:15px; line-height: 30px;"></i></button>
-    </div>
-    </div>
+    		<div class="addradd">
+    			<div><button style="background-color:#fafafa; color: rgba(34,34,34,.5);">주소를 추가해주세요.</button></div>
+    			<div>
+				    <button style="line-height: 30px;">요청사항 없음
+				    <i class="fa-solid fa-chevron-right" style="float:right; padding-right:15px; line-height: 30px;"></i></button>
+			    </div>
+			</div>
 		</div>
 		
 	<div class="packageasarea" style="background-color:white; padding:35px; ">
@@ -212,33 +202,29 @@ margin-top:10px;
 		</div>
 		
 			<div class="displayiteminfo">
-			<div style="display:inline-block; width:100px; text-align:center;">
-			<i class="fa-solid fa-box fa-3x"></i></div>
-			
-			<div style="width:400px; display:inline-block;">
-			<div style="display:inline-block; width:400px;">일반배송 3,000원</div>
-			<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
-			검수 후 배송 ・ 5-7일 내 도착 예정</div>
-			</div>
+				<div style="display:inline-block; width:100px; text-align:center;">
+				<i class="fa-solid fa-box fa-3x"></i></div>
+				
+				<div style="width:400px; display:inline-block;">
+					<div style="display:inline-block; width:400px;">일반배송 3,000원</div>
+					<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
+					검수 후 배송 ・ 5-7일 내 도착 예정</div>
+				</div>
 			</div>
 
 			<div class="displayiteminfo">
-			<div style="display:inline-block; width:100px; text-align:center;">
-			<i class="fa-solid fa-house fa-3x"></i></div>
-			<div style="width:400px; display:inline-block;">
-			<div style="display:inline-block; width:400px; padding-top:10px;">
-			창고보관 첫 30일 무료</div>
-			<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
-			배송 없이 창고에 보관 · 빠르게 판매 가능</div>
-    <div>
-    
-
-    </div>
-    </div>
-    
-	</div>
-
+				<div style="display:inline-block; width:100px; text-align:center;">
+					<i class="fa-solid fa-house fa-3x"></i>
+				</div>
+				<div style="width:400px; display:inline-block;">
+					<div style="display:inline-block; width:400px; padding-top:10px;">
+					창고보관 첫 30일 무료</div>
+					<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
+					배송 없이 창고에 보관 · 빠르게 판매 가능</div>
+		    		<div></div>
+	    		</div>
 			</div>
+	</div>
 			
 			<div class="pointarea">
 				<div>
@@ -256,10 +242,11 @@ margin-top:10px;
 			
 			
 			<div class="allpayarea">
-			<h3>최종 주문 정보</h3>
+				<h3>최종 주문 정보</h3>
 			</div>
 			<div class="allpayinfo">
 			총 결제금액
+			<img :src="img.pImgPath">
 			<div style="float:right; font-size:20px; line-height:10px;">
 			-
 			</div>
@@ -358,6 +345,53 @@ margin-top:10px;
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
-
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],
+		img : {},
+		proNum : "1",
+		pName : "(W) Nike Dunk Low Light Smoke Grey",
+		pImgPath : "",
+		proInfo : {},
+		modelNum : "",
+		uId : "${sessionId}",
+		uName : "${sessionName}"
+	},// data
+	methods : {
+		//구매 할 상품정보 불러오기
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {proNum : self.proNum};
+            $.ajax({
+                url : "productInfo.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+					self.proInfo = data.proInfo;
+                 	self.modelNum = data.proInfo.productModel; // 모델번호
+                }
+            }); 
+        },
+        //상품 사진 불러오기
+        fnGetImg : function() {
+        	var self = this;
+        	var nparmap = {pName : self.pName};
+        	$.ajax({
+				url : "productImg.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data){
+					console.log(data);
+					self.img = data.img;
+				}
+			});
+		},
+	}, // methods
+	created : function() {
+		var self = this;
+	}// created
+});
 </script>
