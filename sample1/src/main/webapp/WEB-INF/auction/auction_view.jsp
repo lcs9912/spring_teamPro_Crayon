@@ -349,7 +349,7 @@ padding:10px 0px 0px 15px;
 	}
 </style>
 </head>
-<%-- <%@ include file="../header/mainheader.jsp"%> --%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 <div id="app">
 	

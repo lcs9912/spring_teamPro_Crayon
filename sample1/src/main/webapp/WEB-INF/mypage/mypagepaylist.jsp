@@ -103,14 +103,14 @@
 					
 				</div>
 				<div class="paylist">
-					
+					<div>보유 포인트 : {{info.userPoint}}P</div>
 					<table v-if='pointList != ""'>
 						<tr>
 							<th>내역</th>
 							<th>날짜</th>
 							<th>비고</th>
 						</tr>
-						<tr v-for="item in paginatedList">
+						<tr v-for="item in paginatedList" :key="item.qnaNumber">
 							<td>{{item.type}}</td>
 							<td>{{item.pointHistory}}</td>
 							<td>{{item.pointDate}}</td>
@@ -149,7 +149,7 @@ var app = new Vue({
 		info : {},
 		pointList : [],
 		currentPage: 1,
-	    itemsPerPage: 15,
+	    itemsPerPage: 10,
 	},// data
 	methods : {
 		fnGetInfo : function() {
@@ -206,7 +206,7 @@ var app = new Vue({
 		      const endIndex = startIndex + this.itemsPerPage;
 		      return this.pointList.slice(startIndex, endIndex);
 		    },
-		  },
+		  
 	}, // methods
 	created : function() {
 		var self = this;
