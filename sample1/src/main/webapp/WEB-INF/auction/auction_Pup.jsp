@@ -6,7 +6,7 @@
 	<script src="../js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<meta charset="UTF-8">
-	<title>상품등록페이지</title>
+	<title>경매물품 등록페이지</title>
 <style>
 	label :hover {
 		border-bottom : 3px solid black;
@@ -91,7 +91,7 @@ text-align : center;
 <div id="app">
 	
 	<div class="area">
-	<div class="areadetail"><h2>상품등록</h2>
+	<div class="areadetail"><h2>경매등록</h2>
 		<div class="leftarea">
 		
 		
@@ -185,7 +185,7 @@ text-align : center;
 		
 	</div>
 	<div style="width:600px; text-align:center; margin-top:10px;">
-<button class="productbtn" @click="fnUpProduct">상품등록</button>
+<button class="productbtn" @click="fnUpProduct">경매등록</button>
 		</div>
 		</div>
 		<div class="picarea">
