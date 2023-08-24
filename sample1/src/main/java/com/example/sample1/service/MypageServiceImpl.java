@@ -41,5 +41,10 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		return mypageMapper.selectUserPointList(map);
 	}
+	@Override
+	public int addUserAccount(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mypageMapper.insertUserAccount(map);
+	}
 
 }

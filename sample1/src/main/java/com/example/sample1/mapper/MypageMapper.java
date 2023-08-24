@@ -18,5 +18,7 @@ public interface MypageMapper {
 	int updateUserImg(HashMap<String, Object> map);
 	// 유저 포인트 사용 내욕
 	List<Mypage> selectUserPointList(HashMap<String, Object> map);
+	// 유저 계좌등록
+	int insertUserAccount(HashMap<String, Object> map);
 
 }

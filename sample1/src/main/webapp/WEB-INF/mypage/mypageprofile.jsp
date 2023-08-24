@@ -450,7 +450,6 @@
 			// 유저 이름 변경
 			fnChangName : function(){
 				var self = this;
-				var self = this;
 				if(!self.pwdFlg){
 					alert("비밀번호를 인증하시오");
 					return;

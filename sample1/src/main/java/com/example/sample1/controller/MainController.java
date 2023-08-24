@@ -32,7 +32,8 @@ public class MainController {
 	
 	@RequestMapping("/mainpageshopping.do")  //메인 shop 메뉴 선택할 때 열리는  카테고리 페이지
     public String mainpageshopping(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/main/mainpageshopping";
+		request.setAttribute("map", map);
+		return "/main/mainpageshopping";
     }		
 	
 	@RequestMapping("/mainpageranking.do") //메인페이지 랭킹메뉴 선택할 때 열리는 페이지

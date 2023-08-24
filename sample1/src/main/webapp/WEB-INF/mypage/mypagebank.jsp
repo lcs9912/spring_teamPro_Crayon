@@ -76,57 +76,63 @@
 					<div class="bankinfobox">
 						<h4>은행명</h4>					
 						<div class="editbankname">
-							<input type="text" placeholder="선택하세요" class="editinput">
-							<select class="bankchoice">
-								<option>국민은행</option>
-								<option>신한은행</option>
-								<option>우리은행</option>
-								<option>하나은행</option>
-								<option>기업은행</option>
-								<option>농협은행</option>
-								<option>우체국</option>
+							<input type="text" v-model="uBank" placeholder="선택하세요" class="editinput">
+							<select v-model="uBank" class="bankchoice">
+								<option value="직접입력">직접입력</option>
+								<option value="국민은행">국민은행</option>
+								<option value="신한은행">신한은행</option>
+								<option value="우리은행">우리은행</option>
+								<option value="하나은행">하나은행</option>
+								<option value="기업은행">기업은행</option>
+								<option value="농협은행">농협은행</option>
+								<option value="우체국">우체국</option>
 							</select>
 						</div>
 					</div>			
 					<div class="bankinfobox">
 						<h4>계좌번호</h4>
 						<div class="editbanknumber">
-							<input type="text" class="editinput" placeholder="-없이 입력하세요.">
+							<input type="text" v-model="uAccount" class="editinput" placeholder="-없이 입력하세요.">
 						</div>
 					</div>
 					<div class="bankinfobox">
 						<h4>예금주</h4>
 						<div class="accounthoder">
-							<input type="text" placeholder="예금주명을 정확히 입력하세요." class="editinput">
+							<input type="text" v-model="aName" placeholder="예금주명을 정확히 입력하세요." class="editinput">
 						</div>
+						<button @click="fnSubmit">입력</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	
+</div>
 </body>
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-var headerApp = new Vue({
-	el : '#headerApp',
+var app = new Vue({
+	el : '#app',
 	data : {
-		loginOut : "${sessionId}"
+		uId : "${sessionId}",
+		uBank : "", // 은행명
+		uAccount : "", // 계좌번호
+		aName : "", // 예금주
 	},// data
 	methods : {
-		fnCheck : function(){
+		// 계좌 등록
+		fnSubmit : function(){
 			var self = this;
-			var nparmap = {}
+			var nparmap = {uId : self.uId, uBank : self.uBank, uAccount : self.uAccount, aName : self.aName};			 
 			  $.ajax({
-	                url:"list.dox", 
+	                url:"/addUserAcc.dox", 
 	                dataType:"json", 
 	                type : "POST",  
 	                data : nparmap, 
 	                success : function(data) {  
-						
+						alert("성공!");
 	                }
-	            });  
-		},
+	            }); 
+			}
 	}, // methods
 	created : function() {
 		var self = this;

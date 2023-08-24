@@ -256,10 +256,11 @@
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body>
-	<div id="headerApp">
+	<div id="app">
         <div class="shopwrap">
             <!-- 쇼핑 페이지 전체감싸기 태그.  쇼핑 메뉴, 슬라이드 브랜드 선택 영역, 세로 상세품목 선택영역, 상품전시 영역 시작 -->
-            <h1>SHOP</h1>
+            <h1 v-if='searchName == ""'>SHOP</h1>
+            <input  v-if='searchName != ""' v-model="searchName">
             <nav class="shopnav">
                 <!--쇼핑메뉴 시작-->
                 <div class="navmenu">
@@ -794,15 +795,16 @@
             </div><!--세로 상세품목 선택영역, 상품전시 영역 시작-->
         </div><!-- 쇼핑 페이지 전체감싸기 태그, 슬라이드 메뉴, 세로 메뉴, 상품전시 영역 종료 -->
     </div>	
-	</div>
+
 </body>
 
 </html>
 <script>
-var headerApp = new Vue({
-    el : '#headerApp',
+var app = new Vue({
+    el : '#app',
     data : {
-        loginOut : "${sessionId}"
+        loginOut : "${sessionId}",
+        searchName : "${map.searchName}",
     },// data
     methods : {
         fnCheck : function(){

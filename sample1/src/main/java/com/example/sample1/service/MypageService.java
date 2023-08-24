@@ -14,6 +14,8 @@ public interface MypageService {
 	int editUserImg(HashMap<String, Object> map);
 	// 유저 포인트사용 내역 출력
 	List<Mypage> searchUserPointList(HashMap<String, Object> map);
+	// 유저 계좌 등록
+	int addUserAccount(HashMap<String, Object> map);
 	
 	
 }

@@ -35,4 +35,5 @@ public interface UserService {
 	User searchUserJoinSize(HashMap<String, Object> map);
 	
 	
+	
 }

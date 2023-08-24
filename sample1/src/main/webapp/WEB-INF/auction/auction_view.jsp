@@ -451,6 +451,7 @@ var app = new Vue({
                  data : nparmap,
                  success : function(data) { 
                 	 alert("관심등록 완료.");
+                	 location.reload();
                  	
                  }
              }); 
@@ -465,6 +466,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                	 alert("관심등록 해제완료.");
+               	location.reload(); // 새로고침은...나의 선물,,
                 	
                 }
             }); 

@@ -114,7 +114,7 @@ a {
 					<img src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png">
 				</div>
 				<div class="profileinner2">
-					<strong>{{nickname}}</strong><a href="#" type="button" style="margin-left : 10px;">프로필 관리</a>
+					<strong>{{nickname}}</strong><a href="mypageprofile.do" type="button" style="margin-left : 10px;">프로필 관리</a>
 					<p>팔로워<b>0</b>        팔로잉<b>0</b></p>
 					<strong>{{sessionId}}</strong> <!-- 유저아이디 -->
 				</div>

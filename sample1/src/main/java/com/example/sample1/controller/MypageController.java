@@ -142,6 +142,17 @@ public class MypageController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	// 유저 포인트 사용 내역 출력
+	@RequestMapping(value = "/addUserAcc.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String addUserAcc(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		mypageService.addUserAccount(map);
+		
+								
+		return new Gson().toJson(resultMap);
+	}
+	
 	// 유저 프로필 사진 변경
 	@RequestMapping(value = "/editUserImg.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
