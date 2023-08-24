@@ -42,7 +42,7 @@ float : right;
 border-left : 1px solid #eee;
 width : 600px;
 padding-left : 40px;
-
+margin-bottom : 50px;
 }
 .selldanger{
 margin-top : 10px;
@@ -282,8 +282,7 @@ cursor: pointer;
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body> 
 <div id="app">
 	<div class ="productcontents">
@@ -297,7 +296,7 @@ cursor: pointer;
 		<p>{{proInfo.productName}}</p>
 		</div>
 		<div class="subtitle2">
-		<p>타이틀값2</p>
+		<p>{{proInfo.productKname}}</p>
 		</div>
 
 		
