@@ -62,6 +62,13 @@ public class AuctionController {
 		return "/auction/auction_Pup";
 	}
 	
+	// Auction 페이지 
+		@RequestMapping("/auction.do") 
+		public String auction(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			request.setAttribute("map", map);
+			return "/auction/auction";
+		}
+	
 	
 	
 	

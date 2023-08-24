@@ -166,14 +166,14 @@ font-size: 18px;
 }
 .interestbtn{
 
-width:600px;
+width:360px;
 background-color:white;
 border: 1px solid #ebebeb;
 border-radius: 10px;
 margin-top : 10px;
-text-align:center;
 padding-top : 15px;
 padding-bottom : 15px;
+margin-left:120px;
 font-size: 15px;
 font-weight: 400;
 font-size:15px;
@@ -293,6 +293,7 @@ font-size:25px;
 }
 .bidderlisttitle{
 padding:15px 0px 0px 15px;
+margin-left:120px;
 font-size : 18px;
 }
 .bidderlist{
@@ -318,7 +319,32 @@ padding:10px 0px 0px 15px;
   padding-top:3px;
   font-size:16px;
   }
-
+  .biddernum{
+  float:right;
+  }
+  .starttime,.endtime{
+  display:inline-block;
+  width:49%;
+  text-align:center;
+  font-weight:bold;
+  
+  }
+	.startendtime{
+	width:100%;
+	text-align:center;
+	margin-bottom:10px;
+	}
+	.actionendtime{
+	border-top:1px solid #eee;
+	padding-top:10px;
+	}
+	.startendnum{
+	margin-top:5px;
+	font-size:20px;
+	}
+	.starttime{
+	border-right:1px solid #eee;
+	}
 </style>
 
 </head>
@@ -330,14 +356,26 @@ padding:10px 0px 0px 15px;
 	<div class="rightcolumn">
 	
 		<div class="toptitlebox">
+		<div class="startendtime">
+		
+		<div class="starttime">경매 시작날짜
+		<div class="startendnum">00000000</div>
+		</div>
+		
+		<div class="endtime">경매 마감날짜
+		<div class="startendnum">00000000</div>
+			</div>
+		</div>
+		
+		
 		<div>
-		<p class="brandheader">경매 번호 : {{info.auctionNumber}}</p>
+		<p class="brandheader">{{proInfo.brandName}} 1</p>
 		</div>
 		<div class="subtitle">
 		<p>{{proInfo.productName}}</p>
 		</div>
 		<div class="subtitle2">
-		<p>경매 물품 : {{info.auctionProduct}}</p>
+		<p>타이틀값2</p>
 		</div>
 
 		
@@ -346,9 +384,18 @@ padding:10px 0px 0px 15px;
 		<span style="color: #646363;">사이즈</span>
 		<span class="sizebtn" style="font-weight: bold; font-size:16px;">모든사이즈</span>
 		</div>
+		
 		<div class="recentsell" style="border: none;">
 		<span style="color: #646363; font-size: 13px;">최근 거래가</span>
 		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{resent.transactionPrice}}원</span>
+		</div>
+		
+		<div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">경매 시작가격</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">원</span>
+		</div><div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">경매 한도가격</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">원</span>
 		</div>
 		</div>
 		
@@ -382,31 +429,28 @@ padding:10px 0px 0px 15px;
 		</div>
 		</div><!-- productinfodetail -->
 		
-		<div class="btnaction" v-if="info.duplicateStatus=='N'||info.duplicateStatus==null">
+		<div class="btnaction">
 		
-		<button class="buyaction" @click="fnAuctionJoin()">
+		<button class="buyaction">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰하기</strong>
 		</button>
 
 		</div>
-		<div class="btnaction"  v-else>
 		
-		<button class="buyaction" @click="fnAuctionCheck()">
-		<strong class="nowbuy" style='box-shadow:1px px 0px px'>참여확인하기</strong>
-		</button>
-
-		</div>
-		<div class="interestbtn" style="cursor: pointer">
+		<div style="width:600px;">
+		<div class="interestbtn" style="cursor: pointer;text-align:center;">
 		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
 		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
 		관심상품<strong> {{proInfo.productInterest}}</strong>
 		</div>
-		
-		<div class="actiontimearea">
-		<div class="actionendtime">경매 남은시간</div>
-		<div class="endtimenum">00:00:00</div>
 		</div>
 		
+		<div class="actiontimearea">
+		
+		<div class="actionendtime">경매 남은시간</div>
+		<div class="endtimenum">00:00:00</div>
+	
+		</div>
 		</div>
 		
 		
@@ -414,6 +458,7 @@ padding:10px 0px 0px 15px;
 		<div class="displayitem">
 			<div class="displayitemtitle">
 			<span class="bidderlisttitle">입찰자 리스트</span>
+			<span class="biddernum">참여자 수 : 000명</span>
 			</div>
 		</div>
 		
@@ -421,14 +466,19 @@ padding:10px 0px 0px 15px;
 		<div class="displaybidderbox" style="overflow: auto;">
 		
 		<table>
-		<tr >
+		<tr>
 		<th style="border-right:1px solid #eee;">아이디</th>
 		<th>입찰시간</th>
 		</tr>
-
-		<tr v-for="item in list">
-		<td>{{item.userId}}</td>
-		<td>{{item.auctionDate}}</td>
+		
+		<tr>
+		<td>sakjd</td>
+		<td>time</td>
+		</tr>
+		
+		<tr>
+		<td>sakjd</td>
+		<td>time<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>1</td>
 		</tr>
 		</table>
 		
@@ -534,17 +584,6 @@ var app = new Vue({
             name: [],
             data: [],
         }],
-        //
-        list : [],
-		info : {},
-		auctionNumber : "${map.auctionNumber}",
-		text: "",
-		uId : "${sessionId}",
-		Name : "${sessionName}",
-		status : "${sessionStatus}",
-		selectItem : [],
-		//
-        
         chartOptions: {
             chart: {
                 type: 'line',
@@ -805,50 +844,10 @@ var app = new Vue({
                 },
             }); 
         },
-        fnGetList : function(){
-            var self = this;
-            var nparmap = {auctionNumber : self.auctionNumber, uId : self.uId};
-            $.ajax({
-                url : "/auction/view.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) { 
-                	console.log(data);
-                	self.info = data.info;
-                }
-            }); 
-        },
-        fnAuctionJoin : function(){
-          	var self = this;
-           	$.pageChange("join.do", {auctionNumber :self.auctionNumber});       
-        },
-        fnAuctionCheck : function(){
-            var self = this;
-           	$.pageChange("check.do", {auctionNumber : self.auctionNumber});    
-        },
-        fnGetJoinList : function(){
-            var self = this;
-            var nparmap = {auctionNumber : self.auctionNumber};
-            $.ajax({
-                url : "/auction/user/list.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) { 
-                	console.log(data);
-                	self.list = data.list;
-                }
-            }); 
-        },
-        
-        
        
     },
     created: function () {
         var self = this;
-        self.fnGetList();
-		 self.fnGetJoinList();
         self.fnProList();
         self.fnGetImg();
         window.addEventListener('scroll', this.handleScroll);
