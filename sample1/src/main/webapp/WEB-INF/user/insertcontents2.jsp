@@ -19,14 +19,14 @@ text-align:center;
 h2{
 text-align:center;
 }
-body{
-text-align : center;
-}
+
 </style>
 
 
 
 <body>
+<div class="contentswrap">
+
 <h1>개인정보 수집 및 이용</h1>
 <br><br>
 크레용(주)(이하 회사)는 서비스 제공을 위하여 아래와 같이 개인정보를 수집 및 이용 및 제공합니다.
@@ -78,5 +78,6 @@ text-align : center;
 개인정보의 수집 및 이용에 대한 동의를 거부하시더라도 서비스의 이용은 가능합니다.
 
 <h3>다만, 수집 및 이용을 거부하신 정보와 연계된 서비스(회원 가입 및 프로필 관리, 매입/매출 거래처 등록, ID/비밀번호 찾기)는 동의 전까지 일부 또는 전체를 이용하실 수 없습니다.</h3>
+</div>
 </body>
 </html>

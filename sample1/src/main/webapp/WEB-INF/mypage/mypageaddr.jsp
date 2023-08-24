@@ -123,15 +123,22 @@ a {	text-decoration:none;
 			    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);		    
 			 }
 			.popup > .title{
-			    border-radius: 15px 15px 0 0;
+				border-radius: 15px 15px 0 0;
 			    min-height: 40px; color: white;
-			    background-color: black; padding: 10px 15px;
+			    background-color: #ccc; padding: 10px 15px;
 			    box-sizing: border-box; font-weight: bold;
-			    text-align: center;
+			    text-align: center;			
 			}
 			.popup > .content {
 			    padding: 20px;
 			    box-sizing: border-box;
+			}
+			
+			.addrInput {
+				width:500px; margin-top:20px;
+			}
+			.addrInput input{
+				width:400px; height:30px; border:0px solid; border-bottom:1px solid #ccc; outline:none;
 			}
 			.popup > .cmd {
 			    bottom: 0; min-height: 40px;
@@ -233,22 +240,16 @@ a {	text-decoration:none;
         <div class="title">새 주소 추가<i class="fa-solid fa-x" id="closePopup"></i></div>
         <div class="content" style="text-align:center;">
         <!-- 이메일 변경 -->
-     	<div id="addrInput">
-         	<div>우편번호</div>
-            <div><input v-model="zipNo"><button @click="fnSearchAddr" >열려라 참깨</button></div>
-            <div>주소</div>
-            <div><input v-model="addr"></div>
-            <div>상세주소</div>
-            <div><input v-model="detailAddr"></div>
+     	<div class="addrInput">
+         	<label>우편번호</label><input v-model="zipNo"><button @click="fnSearchAddr" >상세주소 찾기</button>
+            <label>주소</label><input v-model="addr">
+            <label>상세주소<input v-model="detailAddr"></label>
             <label><input type="checkbox">기본 배송지로 설정</label>
-            
-            	 <div class="cmd">
-       				<button id="submitPopup" @click="fnSumbitPop">제출</button>          
-        		 </div>
-        
+            <div class="cmd">
+       			<button id="submitPopup" @click="fnSumbitPop">제출</button>          
+        	</div>
         </div>
- </div>
-        
+ 		</div>
     </div>
 </div>
 </body>

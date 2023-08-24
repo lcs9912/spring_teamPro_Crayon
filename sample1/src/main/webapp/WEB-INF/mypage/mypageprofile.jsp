@@ -177,7 +177,7 @@
 			.popup > .title{
 			    border-radius: 15px 15px 0 0;
 			    min-height: 40px; color: white;
-			    background-color: black; padding: 10px 15px;
+			    background-color: #ccc; padding: 10px 15px;
 			    box-sizing: border-box; font-weight: bold;
 			    text-align: center;
 			}
@@ -185,12 +185,19 @@
 			    padding: 20px;
 			    box-sizing: border-box;
 			}
+			.emailinput {
+				width:500px; margin-top:20px;
+			}
+				.emailinput input {
+					width:450px; height:50px; border:0px solid; border-bottom:1px solid #ccc; outline:none;
+				}
+				.emailpwd {margin-top:30px; width:180px; height:40px; background:#fff; border-radius:15px;}
 			.popup > .cmd {
 			    bottom: 0; min-height: 40px;
 			    padding: 15px 15px; box-sizing: border-box;
 			    border-radius: 0 0 15px 15px;
 			    min-height: 40px; text-align: right;
-			    width: 300px;
+			    width: 300px; position:relative;
 			}
 			.cmd button {
 			    border-radius: 8px; padding: 5px 10px;
@@ -198,11 +205,11 @@
 			    color: white; background-color: black;
 			    font-weight: bold; cursor: pointer;
 			    position: absolute;
-			    top : 409px; left: 265px;
+			    top : 380px; left: 225px;
 			}
 			.cmd button:hover {
-			    color: #fff; background-color: #000;
-			    border-color: #000;
+			    color: #000; background-color: #fff;
+			    border-color: #ccc;
 			}
 			.title i{
 				cursor: pointer;
@@ -278,7 +285,6 @@
 						<button class="editbtn" @click="fnpopup('name')">변경</button>
 					</div>
 				</div>
-				
 			</div>
 		</div><!--프로필관리 태그영역 종료-->
 	</div><!--프로필관리 태그영역 시작-->
@@ -289,45 +295,38 @@
 	<div class="popup popup-overlay" id="popupOverlay" >
         <div class="title">변경<i class="fa-solid fa-x" id="closePopup"></i></div>
         <div class="content" style="text-align:center;">
-        <!-- 닉네임 변경 -->
-        <template v-if="keyword == 'nick'">
-            <h2 style="padding-bottom:15px;">닉네임 변경</h2>
-            <p>
-                <div style="padding-bottom:15px;"></div>
-               <div class="emailinput"><input placeholder="대충 변경할 닉네임" v-model="nickName">닉네임 입력</div>
-               <div style="color: red;">메세지</div>
+	        <!-- 닉네임 변경 -->
+	        <template v-if="keyword == 'nick'">
+	            <h2 style="padding-bottom:15px;">닉네임 변경</h2>
                 <div class="emailinput">
-              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-               	</div> 
-               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>               	
-            </p>
-            <div class="cmd">
-       			<button id="submitPopup" @click="fnChangNickname">제출</button>          
-        	</div>
-        </template>
+	               	<input placeholder="대충 변경할 닉네임" v-model="nickName">
+	                <div style="color: red;">메세지</div>
+	                <input type="password" v-model="pwd" placeholder="비밀번호 확인">
+	                <button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>      
+	            </div>               	         	
+	            <div class="cmd">
+	       			<button id="submitPopup" @click="fnChangNickname">제출</button>          
+	        	</div>
+	        </template>
         
         <!-- 이름 변경 -->
-        <template v-if="keyword == 'name'">
-            <h2 style="padding-bottom:15px;">이름 변경</h2>
-            <p>
-            	<div style="padding-bottom:15px;"></div>
-                <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">이름 입력</div>
-                <div style="color: red;">메세지</div>
-                <div class="emailinput">
-              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
-               	</div> 
-               	<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>               	
-            </p>
-            	 <div class="cmd">
-       				<button id="submitPopup" @click="fnChangName">제출</button>          
-        		 </div>
-        </template>
+	        <template v-if="keyword == 'name'">
+	            <h2 style="padding-bottom:15px;">이름 변경</h2>
+	            	<div style="padding-bottom:15px;"></div>
+	                <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">
+	                	<div style="color: red;">메세지</div>
+	              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
+	              		<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>   
+	               	</div> 
+	               	<div class="cmd">
+	       				<button id="submitPopup" @click="fnChangName">제출</button>          
+	        		</div>
+	        </template>
         </div>
-  
     </div>       
   	</div>
 </body>
-	<%@ include file="../header/footer.jsp"%>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 	var app = new Vue({
@@ -385,9 +384,6 @@
 				} else{
 					self.imgFlg = false;
 				}
-				
-				
-				
 			},
 			// 프로필 이미지 변경
 			fnImgEdit : function(){
