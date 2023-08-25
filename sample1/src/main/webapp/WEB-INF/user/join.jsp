@@ -170,11 +170,9 @@ margin-left : 17%;
 border: 1px solid black;
 padding : 10px;
 border-radius: 30px;
+margin-bottom:30px;
 }
 
-tbody{
-border: 1px solid black;
-}
 .selectgender{
 text-align:center;
 }
@@ -193,11 +191,12 @@ margin-bottom:5px;
 
 </head>
 <%@ include file="../header/shopheader.jsp"%>
-<%-- <%@ include file="../logo.jsp"%> --%>
-<hr>
 <body>
-<div id="app" style="width:1900px;">
+<div id="app">
+<div>
 	<h1>회원가입</h1>
+	
+
 <section class="idsection">
 		<table>
 <tbody>
@@ -312,6 +311,7 @@ margin-bottom:5px;
 		<a href="login.do" ><button class="btnhover">취소</button></a>
 		</td>
 		</div>
+</div>
 </div>
 </body>
 <%@ include file="../header/footer.jsp"%>
