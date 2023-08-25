@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.sample1.model.Search;
-import com.example.sample1.model.Test;
-import com.example.sample1.service.ProductService;
-import com.example.sample1.service.TestService;
+import com.example.sample1.model.Main;
+import com.example.sample1.service.MainService;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class MainController {
 	
 	@Autowired
-	TestService mainService;
+	MainService mainService;
 		
 	@RequestMapping("/mainslider.do") //메인 페이지 슬라이더
     public String mainpageslider(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -51,5 +49,13 @@ public class MainController {
         return "/main/mainpagewoman";
     }
 
-	
+	// SHOP 리스트 출력
+	@RequestMapping(value = "/shopList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String ShopList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Main> shopList = mainService.searchShopList(map);
+		resultMap.put("shopList", shopList);
+		return new Gson().toJson(resultMap);
+	}
 }

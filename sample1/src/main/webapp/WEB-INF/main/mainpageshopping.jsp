@@ -38,7 +38,7 @@
             display: inline-block; float: left; 
             margin: 12px 20px 12px 0; font-size: 17px;}
 
-        .shopcontainer {clear: both;}
+        
         
 
 
@@ -126,7 +126,11 @@
                                 text-align: center;
                                 color: #777;
                             }
-
+							.clearfix::after {
+							    content: "";
+							    display: table;
+							    clear: both;
+							}
                         /*상품 세로선택영역 숨겨진 div CSS종료*/
 
                 /*상품카테고리 세로메뉴 영역 종료*/
@@ -156,10 +160,16 @@
             width: 980px;
             height: 401px;
             margin-bottom:50px;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 가로로 4개씩 나열 */
+            gap: 5px; /* 각 상품 사이의 간격 */
         }
 
+		.goodsblock {
+		    display: flex;
+		    flex-wrap: wrap;
+		    gap: 5px;
+		}
             .goodsblock article {
                 width: 230px;
                 height: 401px;
@@ -432,364 +442,38 @@
                 <div class="goodsdisplay">
                     <!--상품전시 영역 시작-->
                     <div class="goodsinfo">
-                        <span>상품 5000</span>
-                        <span>인기순</span>
+                        <span>상품 5000</span> <!-- 검색된 상품 갯수 -->
+                        <span>인기순</span> <!-- 정렬 조건 -->
                     </div>
-                    <div class="goodsblock">
+                    
+                    <div class="goodsblock" v-for="(group, index) in shopListGrouped" :key="index">
                         <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                        <article>
-                            <a href="#">
-                                <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-                                <picture>
-                                    <!-- 업로드 된 이미지 파일 추가되는 태그-->
-                                    <span>거래 2,859</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-                                </picture>
-                                <div><h5>Yeezy</h5></div><!--상품명-->
-                                <div class="goodsmanual">
-                                    <p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-                                    <p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>138,000</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>2365</span>
-                                    <span>60</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 540</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-                                </picture>
-                                <div><h5>Essentials</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-                                    <p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>82,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>1,104</span>
-                                    <span>11</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 740</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike Air Force 1 '07 Fresh Black</p>
-                                    <p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>141,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>3,602</span>
-                                    <span>30</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 3,480</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-                                    <p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>179,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>6,522</span>
-                                    <span>434</span>
-                                </div>
-                            </a>
-                        </article>
-                    </div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
-                    <div class="goodsblock">
-                        <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                        <article>
-                            <a href="#">
-                                <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-                                <picture>
-                                    <!-- 업로드 된 이미지 파일 추가되는 태그-->
-                                    <span>거래 2,859</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-                                </picture>
-                                <div><h5>Yeezy</h5></div><!--상품명-->
-                                <div class="goodsmanual">
-                                    <p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-                                    <p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>138,000</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>2365</span>
-                                    <span>60</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 540</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-                                </picture>
-                                <div><h5>Essentials</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-                                    <p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>82,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>1,104</span>
-                                    <span>11</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 740</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike Air Force 1 '07 Fresh Black</p>
-                                    <p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>141,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>3,602</span>
-                                    <span>30</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 3,480</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-                                    <p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>179,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>6,522</span>
-                                    <span>434</span>
-                                </div>
-                            </a>
-                        </article>
-                    </div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
-                    <div class="goodsblock">
-                        <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                        <article>
-                            <a href="#">
-                                <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-                                <picture>
-                                    <!-- 업로드 된 이미지 파일 추가되는 태그-->
-                                    <span>거래 2,859</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-                                </picture>
-                                <div><h5>Yeezy</h5></div><!--상품명-->
-                                <div class="goodsmanual">
-                                    <p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-                                    <p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>138,000</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>2365</span>
-                                    <span>60</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 540</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-                                </picture>
-                                <div><h5>Essentials</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-                                    <p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>82,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>1,104</span>
-                                    <span>11</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 740</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike Air Force 1 '07 Fresh Black</p>
-                                    <p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>141,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>3,602</span>
-                                    <span>30</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 3,480</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-                                    <p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>179,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>6,522</span>
-                                    <span>434</span>
-                                </div>
-                            </a>
-                        </article>
-                    </div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
-                    <div class="goodsblock">
-                        <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                        <article>
-                            <a href="#">
-                                <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-                                <picture>
-                                    <!-- 업로드 된 이미지 파일 추가되는 태그-->
-                                    <span>거래 2,859</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-                                </picture>
-                                <div><h5>Yeezy</h5></div><!--상품명-->
-                                <div class="goodsmanual">
-                                    <p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-                                    <p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>138,000</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>2365</span>
-                                    <span>60</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 540</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-                                </picture>
-                                <div><h5>Essentials</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-                                    <p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>82,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>1,104</span>
-                                    <span>11</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 740</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike Air Force 1 '07 Fresh Black</p>
-                                    <p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>141,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>3,602</span>
-                                    <span>30</span>
-                                </div>
-                            </a>
-                        </article>
-                        <article>
-                            <a href="#">
-                                <picture>
-                                    <span>거래 3,480</span>
-                                    <img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-                                </picture>
-                                <div><h5>Nike</h5></div>
-                                <div class="goodsmanual">
-                                    <p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-                                    <p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-                                </div>
-                                <div class="goodsprice">
-                                    <h4>179,000원</h4>
-                                    <p>즉시구매가</p>
-                                </div>
-                                <div>
-                                    <span>6,522</span>
-                                    <span>434</span>
-                                </div>
-                            </a>
-                        </article>
+                        <div  v-for="item in group" :key="item.productId" class="goodsitem">
+	                        <article>  <!-- v-for 시작  -->
+	                            <a @click="fnProInfo(item.productModel)"> 
+	                                <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
+	                                <picture >
+	                                    <!-- 업로드 된 이미지 파일 추가되는 태그-->
+	                                    
+	                                    <img :src="item.pImgPath">
+	                                </picture>
+	                                <div><h5>{{item.brandName}}</h5></div><!--브랜드 명-->
+	                                <div class="goodsmanual">
+	                                    <p>{{item.productName}}</p><!--상품명 영문-->
+	                                    <p>{{item.productKname}}</p><!--상품명 한문-->
+	                                </div>
+	                                <div class="goodsprice">
+	                                    <h4>{{item.buyminprice}}</h4>
+	                                    <p>즉시구매가</p>
+	                                </div>
+	                                <div>
+	                                    <span>관심 갯수 : {{item.productInterest}}</span>  <!-- 관심 갯수 -->
+	                                    
+	                                </div>
+	                            </a>
+	                        </article>
+                        </div>
+                       
                     </div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
                 </div><!--상품전시 영역 종료-->
             </div><!--세로 상세품목 선택영역, 상품전시 영역 시작-->
@@ -803,27 +487,51 @@
 var app = new Vue({
     el : '#app',
     data : {
-        loginOut : "${sessionId}",
+    	shopList : [],
+        uId : "${sessionId}",
         searchName : "${map.searchName}",
     },// data
+    computed: {
+        shopListGrouped() {
+            // 상품 리스트를 4개씩 그룹화하여 반환하는 계산된 속성
+            const grouped = [];
+            for (let i = 0; i < this.shopList.length; i += 4) {
+                grouped.push(this.shopList.slice(i, i + 4));
+            }
+            return grouped;
+        }
+    },
     methods : {
-        fnCheck : function(){
+    	// SHOP 리스트 출력
+        fnGetList : function(){
             var self = this;
-            var nparmap = {}
+            var nparmap = {searchName : self.searchName}
+            console.log(self.searchName);
               $.ajax({
-                    url:"list.dox",
+                    url:"/shopList.dox",
                     dataType:"json",
                     type : "POST",
                     data : nparmap,
                     success : function(data) {
-
+                    	self.shopList = data.shopList;
+                    	console.log(self.shopList);
+                    	console.log(self.searchName);
+                    	
+						
                     }
                 });
+        },
+        // 상품상세페이지 이동
+        fnProInfo : function(productModel){
+        	var self = this;
+        	$.pageChange("/product.do", {modelNum : productModel});
+        	console.log(productModel);
+        	
         },
     }, // methods
     created : function() {
         var self = this;
-
+		self.fnGetList();
     }// created
 });
 

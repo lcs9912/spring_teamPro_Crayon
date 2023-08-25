@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.sample1.mapper.MainMapper">
+
+	<!-- SHOP 리스트 출력 -->
+	<select id="selectShopList" parameterType="hashmap"
+		resultType="com.example.sample1.model.Main">
+		SELECT * 
+		FROM T1_PRODUCT_UPDATE U
+		INNER JOIN T1_PRODUCT_IMG I
+		ON I.PRODUCT_NAME = U.PRODUCT_NAME
+		INNER JOIN T1_PRODUCT_BRAND B
+		ON B.PRODUCT_BRAND = U.PRODUCT_BRAND
+		LEFT JOIN(
+				SELECT PRODUCT_MODEL, MIN(PRODUCT_PRICE) AS BUYMINPRICE
+				FROM T1_PRODUCT_UPDATE 
+				WHERE SELLBUY = 'B'
+				GROUP BY PRODUCT_MODEL
+		) M ON M.PRODUCT_MODEL = U.PRODUCT_MODEL
+		WHERE 1=1
+		<if test="searchName != '' and  searchName != null">
+			AND (U.PRODUCT_NAME LIKE  '%' || #{searchName} || '%'
+					 OR U.PRODUCT_KNAME LIKE '%' || #{searchName} || '%'
+					 OR B.BRAND_NAME LIKE '%' || #{searchName} || '%')
+		</if>
+		GROUP BY U.PRODUCT_MODEL
+		ORDER BY U.PRODUCT_INTEREST DESC;
+	</select>
+	
+	
+	
+	
+</mapper>
