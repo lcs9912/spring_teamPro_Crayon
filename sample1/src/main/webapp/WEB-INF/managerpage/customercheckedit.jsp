@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+
 <script src="https://kit.fontawesome.com/047f82d071.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -14,11 +15,17 @@ table {
 	border-collapse: collapse;
 	text-align: center;
 	width:1000px;
+
 }
 
 th, td {
-	border: 1px solid black;
+	border-bottom: 1px solid black;
 	padding: 5px 10px;
+
+}
+
+th{
+background-color:#eee;
 }
 
 li {
@@ -52,9 +59,35 @@ a {	text-decoration:none;
 			margin:10px 10px;
 		}	
 		
-	
-
-
+	.cstbtn{
+	float:right;
+	margin-top:10px;
+	}
+	.cstbtn button{
+	background-color:white;
+	width:70px;
+	height:30px;
+	border-radius:10px;
+	cursor:pointer;
+	}
+	.cstbtn button:hover{
+	background-color:#eee;
+	}
+	.movebtn {
+	width:1000px;
+	margin-top : 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.movebtn button{
+width : 40px;
+height: 30px;
+background-color : white;
+font-weight: bold;
+cursor: pointer;
+border : 1px solid #eee;
+}
 </style>
 
 </head>
@@ -81,15 +114,17 @@ a {	text-decoration:none;
 		
 		</nav>
 		<div class="sailcontainer">
-		
+		<div>
+		<h3 style="margin-bottom:15px;">회원목록</h3>
 		<table>
 		<tr>
 		<th>선택</th>
 		<th>아이디</th>
 		<th>이름</th>
 		<th>나이</th>
-		<th>전화번호</th>
+		<th>상태</th>
 		<th>포인트</th>
+		<th>가입일</th>
 		
 		</tr>
 		
@@ -100,14 +135,39 @@ a {	text-decoration:none;
 		<td></td>
 		<td></td>
 		<td></td>
+		<td></td>
 		</tr>
 		
+		
 		</table>
+		<div class="cstbtn">
+		<button>조회</button>
+		<button>수정</button>
+		<button>삭제</button>		
+		</div>
 		
 		
+		
+
+</div>
 
 
-
+		</div>
+				<div class="movebtn">
+				  <button @click="changePage(-1)">
+				    <i class="fa-solid fa-chevron-left"></i>
+				  </button>
+				  
+				  <button class="selectpagebtn"
+				  v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+				  :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+				  :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+				  {{ pageNumber }}
+				 </button>
+				
+				  <button @click="changePage(1)">
+				    <i class="fa-solid fa-chevron-right"></i>
+				  </button>
 		</div>
 	</div>
 	</div>
@@ -116,5 +176,55 @@ a {	text-decoration:none;
 	<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+var app = new Vue({
+	  el: '#app',
+	  data: {
+	    list: [],
+	    currentPage: 1,
+	    itemsPerPage: 10,
+	  },
+	  methods: {
+	    fnGetList: function () {
+	      var self = this;
+	      var nparmap = {};
+	      $.ajax({
+	        url: "",/* 페이징경로 입력필!!*/
+	        dataType: "json",
+	        type: "POST",
+	        data: nparmap,
+	        success: function (data) {
+	          self.list = data.list;
+	          console.log(self.list);
+	        },
+	      });
+	    },
+	    changePage: function (offset) {
+	      this.currentPage += offset;
+	      if (this.currentPage < 1) {
+	        this.currentPage = 1;
+	      } else if (this.currentPage > this.totalPages) {
+	        this.currentPage = this.totalPages;
+	      }
+	      this.fnGetList();
+	    },
+	    goToPage: function (pageNumber) {
+	      this.currentPage = pageNumber;
+	      this.fnGetList();
+	    },
+	  }, // methods end
+	  computed: {
+	    totalPages: function () {
+	      return Math.ceil(this.list.length / this.itemsPerPage);
+	    },
+	    paginatedList: function () {
+	      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+	      const endIndex = startIndex + this.itemsPerPage;
+	      return this.list.slice(startIndex, endIndex);
+	    },
+	  },
+	  created: function () {
+	    var self = this;
+	    self.fnGetList();
+	  },
+	});
 </script>
