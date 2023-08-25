@@ -2,12 +2,16 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-eco.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/047f82d071.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style>
-* {margin:0; padding:0; box-sizing : border-box;}
+* {
+
+margin:0; padding:0; box-sizing : border-box;}
+
 
 table {
 	border: 1px solid black;

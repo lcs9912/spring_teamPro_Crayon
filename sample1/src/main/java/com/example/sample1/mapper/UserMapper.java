@@ -45,4 +45,5 @@ public interface UserMapper {
 	// 마이페이지 유저테이블 사이즈 테이블 조인 출력
 	User selectUserJoinSize(HashMap<String, Object> map);
 	
+	
 }

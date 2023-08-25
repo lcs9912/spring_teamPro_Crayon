@@ -10,12 +10,17 @@
     <script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
     <title>CrayoN shop, style페이지 헤더 인클루드 수정페이지</title>
     <style>
-        * {
+        * { font-family: 'GmarketSansMedium';
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-		
+		@font-face {
+		    font-family: 'GmarketSansMedium';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
         li {
             list-style: none; outline:none;
         }
@@ -90,7 +95,7 @@
                 width: 200px;
                 height: 50px;
                 font-size: 35px;
-                letter-spacing: -5px;
+                letter-spacing: -7px;
             }
             .headermainlogo > h1:hover{
             	animation:jelly 1s ease;

@@ -8,7 +8,15 @@
 <title>Insert title here</title>
 
 <style>
-* {margin:0; padding:0; box-sizing : border-box;}
+* {font-family: 'GmarketSansMedium';
+margin:0; padding:0; box-sizing : border-box;}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 table {
 	border: 1px solid black;
@@ -88,6 +96,7 @@ font-weight: bold;
 cursor: pointer;
 border : 1px solid #eee;
 }
+
 </style>
 
 </head>
@@ -141,6 +150,7 @@ border : 1px solid #eee;
 		
 		</table>
 		<div class="cstbtn">
+		<button>초기화</button>
 		<button>조회</button>
 		<button>수정</button>
 		<button>삭제</button>		
