@@ -349,49 +349,210 @@ padding:10px 0px 0px 15px;
 	}
 </style>
 </head>
-<%@ include file="../header/shopheader.jsp"%>
+
 <body>
 <div id="app">
+	<div class ="productcontents">
+	<div class="rightcolumn">
+		<div class="toptitlebox">
+		
+		<div class="startendtime">
+			<div class="starttime">경매 시작날짜
+				<div class="startendnum">{{info.auctionStartDate}}</div>
+			</div>
+			<div class="endtime">경매 마감날짜
+				<div class="startendnum">{{info.auctionEndDate}}</div>
+			</div>
+		</div>
+		
+		<div>
+		<p class="brandheader">경매 번호 : {{info.auctionNumber}} </p>
+		</div>	
+		<div class="subtitle">
+		<p>경매 물품이름 : {{info.auctionProduct}}</p>
+		</div>
+		<div class="subtitle2">
+		<p>경매 물품 : 한글</p>
+		</div>
+		
+		<div class="sizeandrecent">
+		<div class="detailsize">
+		<span style="color: #646363;">사이즈</span>
+		<span class="sizebtn" style="font-weight: bold; font-size:16px;">모든사이즈</span>
+		</div>
+		<div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">최근 거래가</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">최근원</span>
+		</div>
+		<div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">경매 시작가격</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{info.auctionStartPrice}}원</span>
+		</div><div class="recentsell" style="border: none;">
+		<span style="color: #646363; font-size: 13px;">경매 한도가격</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{info.auctionMaxPrice}}원</span>
+		</div>
+		</div>
+		
+		<div class="productinfodetail">
+		<div class="productdetailheader">상품정보
+		</div>
+
+		<div class="productlist">
+		
+			<div class="detailproductheader">
+			모델번호
+			<div style="color:black; font-size:14px; font-weight: bold;">모델번호
+			</div>
+			</div>
+
+			<div class="detailproductheader">
+			출시일
+			<div style="color:black; font-size:14px;">출시일</div>
+			</div>
+			
+			<div class="detailproductheader">
+			컬러
+			<div style="color:black; font-size:14px;">컬러</div>
+			</div>
+			
+			<div class="detailproductheader" style="border-right:none;">
+			발매가
+			<div style="color:black; font-size:14px;">발매가 ￦</div>
+			</div>
+
+		</div>
+		</div><!-- productinfodetail -->
+		
+		
+		<div class="btnaction" v-if="info.duplicateStatus=='Y'||info.duplicateStatus==null">	
+		<button class="buyaction" @click="fnAuctionJoin()">
+		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰하기</strong>
+		</button>
+		</div>
+		<div class="btnaction" v-else>	
+		<button class="buyaction" @click="fnAuctionCheck()">
+		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰확인하기</strong>
+		</button>
+		</div>
+		
+		<div style="width:600px;">
+		<div class="interestbtn" style="cursor: pointer;text-align:center;">
+		<i class="fa-solid fa-bookmark" v-if="info.aLikeUser==null"  @click="fnAuctionLike()"></i> <!--좋아용 -->
+		<i class="fa-regular fa-bookmark" v-else @click="fnAuctionUnLike()"></i>  <!-- 해제-->
+		관심상품<strong> 전체관심cnt</strong>
+		</div>
+		</div>
+		
+		<div class="actiontimearea">
+		
+		<div class="actionendtime">경매 남은시간</div>
+		<div class="endtimenum">00:00:00</div>
 	
-	<div>경매 번호 : {{info.auctionNumber}}</div>
-	<div>물품 사진 :<img :src="info.pImgPath" style="max-width : 100px">
-	</div>
-	<div>경매 물품 : {{info.auctionProduct}}</div>
-	<div>경매 시작가격 :{{info.auctionStartPrice}}</div>
-	<div>경매 한도가격 : {{info.auctionMaxPrice}}</div>
-	<div>시작시간 : {{info.auctionStartDate}}</div>
-	<div>마감시간 : {{info.auctionEndDate}}</div>
-	<div>참여자수  : {{info.usercnt}}</div>
-	
-	<div v-if="info.aLikeUser==null">
-	<button @click="fnAuctionLike()">좋아요 </button>
-	</div>
-	
-	<div v-else>
-	<button @click="fnAuctionUnLike()">좋아요해제 </button>
-	</div>
-	
-	<div v-if="info.duplicateStatus=='Y'||info.duplicateStatus==null">
-	<button @click="fnAuctionJoin()">참여하기 </button> 
-	</div>
-	
-	<div v-else>
-	<button @click="fnAuctionCheck()">참여확인하기 </button>
-	</div>
-	
-	<table >
-		<tr v-for="item in list">
-			<td>아이디: {{item.userId}} : </td>
-			<td>참가시간 : {{item.auctionDate}} </td>	
+		</div>
+		</div>
+		
+			
+		<div class="displayitem">
+			<div class="displayitemtitle">
+			<span class="bidderlisttitle">입찰자 리스트</span>
+			<span class="biddernum">참여자 수 :{{info.usercnt}}명</span>
+			</div>
+		</div>
+		
+		<div class="displaypoint">
+		<div class="displaybidderbox" style="overflow: auto;">
+		
+		<table>
+		<tr>
+		<th style="border-right:1px solid #eee;">아이디</th>
+		<th>입찰시간</th>
 		</tr>
-	</table> 
-	
+		
+		<tr v-for="item in list">
+		<td>{{item.userId}} </td>
+		<td>{{item.auctionDate}}</td>
+		</tr>
+
+		</table>	
+		</div>
+		</div>
+		
+		<div class="displayitem">
+			
+			<div class="displayitemwaytitle">배송 정보</div>
+			<div class="displayiteminfo">
+			<div style="display:inline-block; width:100px; text-align:center;">
+			<i class="fa-solid fa-box fa-3x"></i></div>
+			
+			<div style="width:400px; display:inline-block;">
+			<div style="display:inline-block; width:400px;">일반배송 3,000원</div>
+			<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
+			검수 후 배송 ・ 5-7일 내 도착 예정</div>
+			</div>
+			</div>
+
+			<div class="displayiteminfo">
+			<div style="display:inline-block; width:100px; text-align:center;">
+			<i class="fa-solid fa-house fa-3x"></i></div>
+			<div style="width:400px; display:inline-block;">
+			<div style="display:inline-block; width:400px; padding-top:10px;">
+			창고보관 첫 30일 무료</div>
+			<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
+			배송 없이 창고에 보관 · 빠르게 판매 가능</div>
+			</div>
+			</div>
+			</div>
+			
+		<div class="displaygraph">
+    			<div id="chart">
+     			   <apexchart type="line" height="200px" width="600px" :options="chartOptions" :series="series"></apexchart>
+   				 </div>
+		</div>
+		
+		<div class="displaybuybefore">
+			
+			<div class="buybeforeread">
+			구매 전 꼭 확인해주세요!
+			</div>	
+			<div class="buybeforecontents">배송기간 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;">
+			</i></div>
+			<div class="buybeforecontents">검수 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+			</div>
+			<div class="buybeforecontents">구매 환불/취소/교환 안내
+			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+			</div>
+			
+		</div>
+	</div>
+		
+	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
+		<div class="leftcolumnbox">
+		<img :src="info.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
+		</div>
+		
+		
+		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
+		<span class="caremark">주의</span>
+		<span class="dangertext">판매 거래 주의사항</span>
+		<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
+		</div>
+		
+		</div>	
+		
+		
+		</div>
 </div>
+
 </body>
 </html>
 <script>
 var app = new Vue({
 	el : '#app',
+	components: {
+        apexchart: VueApexCharts,
+      },
 	data : {
 		list : [],
 		info : {},
@@ -401,8 +562,68 @@ var app = new Vue({
 		Name : "${sessionName}",
 		status : "${sessionStatus}",
 		selectItem : [],
-		
-		
+		scrollPosition: 0,
+		series: [{
+            name: [],
+            data: [],
+        }],
+		 chartOptions: {
+	            chart: {
+	                type: 'line',
+	                zoom: {
+	                    enabled: false
+	                },
+	                toolbar: {
+	                    show: false, // 다운로드 버튼 숨기기
+	                },
+	            },
+	            dataLabels: {
+	                enabled: false,
+	            }, 
+	            stroke: {
+	                curve: 'straight',
+	                colors: '#ff0000',
+	                width: 3,
+	            },
+	            title: {
+	                align: 'left'
+	            },
+	            grid: {
+	                show: false
+	            },
+	            xaxis: {
+	                labels : {show : false},
+	                axisTicks : {show : false},
+	                axisBorder : {show : false},
+	                categories : [],
+	                min : "",
+	                tooltip: {
+	                    enabled: false, 
+	                    marker: { show: true }, // 이 부분을 추가하여 점을 숨깁니다.
+	                    
+	            	   
+	                  },
+	                },
+	            
+	            yaxis: {
+		              
+		              min: 0,
+		              max: "",
+		            },
+		            tooltip: {
+		                enabled: true,
+		                marker: { show: false }, // 이 부분을 추가하여 점을 숨깁니다.
+		                
+		               
+		           		
+		            },
+		            markers: {
+		                size: 0, // 점의 크기를 0으로 설정하여 점을 숨깁니다.
+		                hover: {
+		                    sizeOffset: 0 // 마우스 호버 시 크기 변경 없이 숨기기
+		                }
+		            },
+	        }
 	},// data
 	methods : {
 		fnGetList : function(){
@@ -419,9 +640,10 @@ var app = new Vue({
                 }
             }); 
         },
-        fnAuctionJoin : function(){
-          	var self = this;
-           	$.pageChange("join.do", {auctionNumber :self.auctionNumber});       
+   
+        fnAuctionJoin: function() {
+            var self = this;
+            window.open("join.do?auctionNumber=" + self.auctionNumber, "_blank", "width=800,height=600");
         },
         fnAuctionCheck : function(){
             var self = this;
@@ -471,6 +693,50 @@ var app = new Vue({
                 }
             }); 
        },
+       fnGetChart : function(){
+           var self = this;
+           var nparmap = {modelNum : self.modelNum};
+           console.log("차트 모델번호"+self.modelNum);
+           $.ajax({
+               url : "/chartlist.dox",
+               dataType:"json",	
+               type : "POST", 
+               data : nparmap,
+               success : function(data) { 
+               	self.list = data.list;
+					var price = [];
+					var tdate = [];
+					var won = "원";
+					console.log(self.list);
+					for(var i=0; i<self.list.length; i++){
+						price.push(self.list[i].avgdate);
+						tdate.push(self.list[i].ressentdate);
+	
+					}
+					
+					self.series = [{
+						name : "",
+						data : price
+						}];
+					
+					
+					const maxValue = Math.max.apply(null, price);
+					const roundedMaxValue = Math.ceil(maxValue);
+					const yMaxValue = roundedMaxValue * 1.5;
+					self.chartOptions = {
+							xaxis : {categories : tdate},
+					    yaxis: {
+					        max: yMaxValue,
+					        min : 0,
+					    },
+					  
+					   
+					}; 
+					
+				
+               },
+           }); 
+       }
       
      
       
@@ -479,7 +745,7 @@ var app = new Vue({
 		var self = this;
 		 self.fnGetList();
 		 self.fnGetJoinList();
-		 
+		 window.addEventListener('scroll', this.handleScroll);
 	  
 		
 	}// created

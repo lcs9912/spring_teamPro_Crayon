@@ -508,6 +508,7 @@ padding:10px 0px 0px 15px;
 			배송 없이 창고에 보관 · 빠르게 판매 가능</div>
 			</div>
 			</div>
+			
 			</div>
 			<div class="displaygraph">
     			<div id="chart">
@@ -566,8 +567,7 @@ var app = new Vue({
     data: {
     	img : {},
     	pImgPath : "",
-    	pName : "Stussy 8 Ball T-Shirt White - 22SS",
-    	
+    	pName : "Stussy 8 Ball T-Shirt White - 22SS",	
         model: "",
         scrollPosition: 0,
         sessionId : "${sessionId}",

@@ -40,11 +40,10 @@ display:inline-block;
 vertical-align: top;
 }
 .payarea{
-margin :0 auto;
+margin-top:10px;
+display:inline-block;
 width:350px;
 height:300px;
-text-align:center;
-padding-top : 30px;
 }
 .payarea input{
 width:250px;
@@ -75,22 +74,47 @@ background-color:#eee;
 <body>
 <div id="app">
 <h2>입찰하기</h2>
-
+<div class="auctiontextarea">
+	<table>
+	<tr>
+	<th>경매 번호</th>
+	<th>경매 물품</th>
+	<th>경매 시작가격</th>
+	<th>경매 한도가격</th>
+	<th>시작 시간</th>
+	<th>마감 시간</th>
+	<th>보유포인트</th>
+	</tr>
 	
+	<tr>
+	<td>{{info.auctionNumber}}2312213</td>
+	<td>{{info.auctionProduct}}231221323122132312213</td>
+	<td>{{info.auctionStartPrice}}2312213</td>
+	<td>{{info.auctionMaxPrice}}2312213</td>
+ 	<td>{{info.auctionStartDate}}2312213</td>
+	<td>{{info.auctionEndDate}}2312213</td>
+	<td>0<b>P</b></td>
+	</tr>
 
-
+	</table>
+	</div>
+	
+	<div style="text-align:center;">
+	<div class="picarea">
+		1
+	</div>
 	
 	<div class="payarea">
 		<div style="text-align:center; font-size:25px; color:#a2a2a2">입찰 금액</div> 
 		<div style="text-align:center; margin-top:5px;"><input type="text" id="number" v-model="info.aJoinPrice">P</div>
-		<div style="text-align:right; margin-right:50px;">내 보유 포인트 <b>P</b></div>
 		<div style="text-align:right; margin-right:50px;">입찰 후 포인트 <b>P</b></div>
+		
 		<div class="auctionbtnarea">
 			<button class="auctionbtn" @click="fnJoin">입찰 신청</button>
 			</div>
 	</div>
 
-
+</div>
 
 </div>
 </body>
