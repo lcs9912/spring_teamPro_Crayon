@@ -45,8 +45,8 @@ height:40px;
 background-color:#eee;
 }
 .auctioneditbtn{
-text-align:center;
-width:900px;
+text-align: right;
+width:1100px;
 margin : 0 auto;
 margin-bottom: 30px;
 margin-top: 10px;

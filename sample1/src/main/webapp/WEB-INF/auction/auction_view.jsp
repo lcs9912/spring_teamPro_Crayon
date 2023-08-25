@@ -372,13 +372,13 @@ padding:10px 0px 0px 15px;
 		<p>경매 물품이름 : {{info.auctionProduct}}</p>
 		</div>
 		<div class="subtitle2">
-		<p>경매 물품 : 한글</p>
+		<p>경매 물품 : {{info1.productKname}}</p>
 		</div>
 		
 		<div class="sizeandrecent">
 		<div class="detailsize">
 		<span style="color: #646363;">사이즈</span>
-		<span class="sizebtn" style="font-weight: bold; font-size:16px;">모든사이즈</span>
+		<span class="sizebtn" style="font-weight: bold; font-size:16px;">{{info1.size}}</span>
 		</div>
 		<div class="recentsell" style="border: none;">
 		<span style="color: #646363; font-size: 13px;">최근 거래가</span>
@@ -401,23 +401,23 @@ padding:10px 0px 0px 15px;
 		
 			<div class="detailproductheader">
 			모델번호
-			<div style="color:black; font-size:14px; font-weight: bold;">모델번호
+			<div style="color:black; font-size:14px; font-weight: bold;">{{info1.productModel}}
 			</div>
 			</div>
 
 			<div class="detailproductheader">
-			출시일
-			<div style="color:black; font-size:14px;">출시일</div>
+			카테고리
+			<div style="color:black; font-size:14px;">{{info1.c2Text}}</div>
 			</div>
 			
 			<div class="detailproductheader">
 			컬러
-			<div style="color:black; font-size:14px;">컬러</div>
+			<div style="color:black; font-size:14px;">{{info1.productColor}}</div>
 			</div>
 			
 			<div class="detailproductheader" style="border-right:none;">
 			발매가
-			<div style="color:black; font-size:14px;">발매가 ￦</div>
+			<div style="color:black; font-size:14px;">{{info1.productLaunchPrice}}￦</div>
 			</div>
 
 		</div>
@@ -556,8 +556,11 @@ var app = new Vue({
 	data : {
 		list : [],
 		info : {},
+		info1 : {},
 		
 		auctionNumber : "${map.auctionNumber}",
+		
+		
 		text: "",
 		uId : "${sessionId}",
 		Name : "${sessionName}",
@@ -638,6 +641,22 @@ var app = new Vue({
                 success : function(data) { 
                 	console.log(data);
                 	self.info = data.info;
+                	 self.fnProInfo(self.info);
+                }
+            }); 
+        },
+        fnProInfo : function(info){
+            var self = this;
+            var nparmap = {proname : info.auctionProduct};
+            $.ajax({
+                url : "/auction/proinfo.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.info1 = data.info1;
+                	console.log(self.info1);
+                	
                 }
             }); 
         },
@@ -745,7 +764,9 @@ var app = new Vue({
 	created : function() {
 		var self = this;
 		 self.fnGetList();
+		
 		 self.fnGetJoinList();
+		
 		 window.addEventListener('scroll', this.handleScroll);
 	  
 		

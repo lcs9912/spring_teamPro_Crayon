@@ -193,14 +193,15 @@
         </div>
     </div>
 </body>
-<%@ include file="mainmancate.jsp"%>
+<%@ include file="../auction/mainmancate.jsp"%>
 </html>
 
 <script>
     var headerApp = new Vue({
         el: '#headerApp',
         data: {
-            loginOut: "${sessionId}"
+            loginOut: "${sessionId}",
+            list : [],
         },// data
         methods: {
             fnCheck: function () {

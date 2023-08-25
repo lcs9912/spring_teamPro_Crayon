@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.sample1.model.Auction;
+import com.example.sample1.model.Main;
 import com.example.sample1.model.Product;
 
 public interface AuctionService {
@@ -32,4 +33,8 @@ public interface AuctionService {
 	int endAuction(HashMap<String, Object> map);
 	
 	Auction searchAuctionEndInfo (HashMap<String, Object> map);
+	
+	Product selectProInfo (HashMap<String, Object> map);
+	
+	List<Main> seachMain(HashMap<String, Object> map);
 }

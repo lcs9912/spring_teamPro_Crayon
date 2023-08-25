@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.sample1.model.Auction;
+import com.example.sample1.model.Main;
 import com.example.sample1.model.Product;
 
 @Mapper
@@ -27,6 +28,7 @@ public interface AuctionMapper {
 	
 	List<Auction>selectAuctionUserJoinList(HashMap<String, Object> map);
 	
+	
 	int insertAuctionLike (HashMap<String, Object> map);
 	
 	int deleteAuctionLike (HashMap<String, Object> map);
@@ -36,4 +38,8 @@ public interface AuctionMapper {
 	int insertAuctionResult (HashMap<String, Object> map);
 	
 	Auction selectAuctionEndInfo (HashMap<String, Object> map);
+	
+	Product selectProInfo (HashMap<String, Object> map);
+	// 메인테스트 
+	List<Main>selectTmain(HashMap<String, Object> map);
 }
