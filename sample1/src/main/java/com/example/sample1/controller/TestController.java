@@ -38,7 +38,7 @@ public class TestController {
 	
 	@RequestMapping("/testheader.do") //테스트용 shopping 헤더 페이지
     public String test2(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/test/testmainheader_sh";
+        return "/test/1919";
     }
 	
 	@RequestMapping("/testmainheader.do") //테스트용 main 헤더 페이지
