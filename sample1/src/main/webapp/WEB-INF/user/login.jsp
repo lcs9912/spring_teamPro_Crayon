@@ -9,24 +9,23 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- 아이디인풋 아
 <title>로그인</title>
 <style>
 main {
-	padding: 20px;
+	width:100%; height:700px;
 }
 
 .loginsection {
 	width: 500px;
 	heigth: 700px;
-	margin: 150px auto;
+	margin: 0 auto;
 	background-color: #white;
 	padding: 50px;
 }
 
 .loginsection h1 {
-	text-align: center;
+		text-align: center; display: inline-block;
+	    width: 300px; height: 50px; margin-bottom:30px;
+        font-size: 50px; 
 }
 
-.loginsection form {
-	margin-top: 20px;
-}
 
 .loginsection div {
 	margin-bottom: 10px;
@@ -39,36 +38,24 @@ main {
 }
 
 .loginsection input[type="text"], .loginsection input[type="password"] {
-	border: none;
-	border-bottom: 2px solid #A8A5A5;
-	width: 70%;
-	padding: 5px;
-	margin-left: 50px;
+	border: none; border-bottom: 2px solid #A8A5A5;
+	width: 100%; font-size:18px; outline:none;
+	padding: 8px;
 }
 /* 로그인 회원가입버튼 */
 .loginsection button{
-	width: 60%;
-	padding: 20px;
-	background-color: #D2CECE;
-	color: #fff;
-	border-radius: 10px;
-	border: 0px;
-	margin-top: 30px;
-	margin-right: 22px;
+	width: 60%;	padding: 20px; font-size:18px;
+	background-color: #ccc; cursor: pointer;
+	color: #fff; border-radius: 10px;
+	border: 0px; margin-top: 30px; outline:none;
 }
-.loginwindow button {
+.loginsection button:hover {
 	cursor: pointer;
-	background-color: #333;
+	background-color: black;
 }
 
 
-.loginwindow button:hover {
-	background-color: #333;
-}
-
-
-
-.loginwindownot {
+ .loginwindownot {
 	text-align: center;
 	padding-top: 10px;
 }
@@ -77,35 +64,20 @@ main {
 	text-align: center;
 }
 
-
-.loginsection input[type="text"]:hover, .loginsection input[type="password"]:hover
-	{
-	border-bottom-color: #555;
-	width: 70%;
-}
-
 .loginwindow {
 	padding-top: 10px;
-}
-
-.select {
-	text-align: center;
-}
-
-.head1 {
-	text-align: left;
 }
 
 .loginlogo {
 	text-align: center;
 }
 
-.loginsection input[type="text"]:focus, .loginsection input[type="password"]:focus
+/* .loginsection input[type="text"]:focus, .loginsection input[type="password"]:focus
 	{
 	border-bottom-color: #black;
 	outline: none;
 	width: 70%;
-}
+} */
 
 .idpwd {
 	padding-left: 50px;
@@ -113,44 +85,37 @@ main {
 }
 
 .idpwdwhere {
-	padding-top: 30px;
+	padding:20px 0;
 	font-weight: bold;
 	color : black;
 }
 
 .logindownmenu {
 	text-align: center;
-	margin-right: 4px;
 	margin-top: 50px;
 }
 
-.logindownmenu a {
-	text-decoration: none;
-	color: black;
-}
-
 .logindownmenu a:hover {
-	font-weight: bold;
+	font-weight: bold; 
 }
 .input-container {
     position: relative;
 }
 
 #loginbox{
-	border: 1px solid black;
-	border-radius: 30px;
+	border: 0px solid #ccc;
+	border-radius: 30px;	
 }
 
 .icon {
     position: absolute;
-    top: 8px;
-    left: 310px; 
+    top: 10px;
+    left: 400px; 
     transform: translateY(-50%);
 }
 .fa-square-caret-down{
 	cursor: pointer;
-	margin-left: 310px;
-	
+	margin:20px 0 20px 400px;	
 	}
 	
 
@@ -161,37 +126,32 @@ main {
 
 <body>
 <div id="app">
-	<header> </header>
-
 	<main class="mainw">
-	
 		<section class="loginsection">
-			<!-- <div class="loginlogo">
-				<a href="main.do" class="logo"> <img src="../logoimg/logo.png"></a>
-			</div> -->
-
-
+			 <div class="loginlogo">
+				<h1><a href="mainslider.do">
+                       CrayoN
+                    </a>
+                </h1>            
+			</div>
 			<!-- 로그인클릭후 이동파일 -->
 			<div id="loginbox">  <!-- 로그인 입력부분 테두리 -->
 			
 				<div class="idpwdwhere">
-					<span class="idpwd" >아이디</span>
+					아이디
 				</div>
 				<div class="input-container">
-					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">				
+					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter" placeholder="아이디" ref="idInput">				
 					<i class="fa-solid fa-user icon"></i>
-					
-				</div>
-				<i v-if="!idflg" class="fa-solid fa-square-caret-down" @click="fnEnter"></i>
+					<i v-if="!idflg" class="fa-solid fa-square-caret-down" @click="fnEnter"></i>
+				</div>				
 				<div v-if="idflg">
 					<div class="idpwdwhere">
-						<span class="idpwd" >비밀번호</span> 
+						비밀번호 
 					</div>
 					<div  class="input-container">
 						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
 						<i class="fa-solid fa-lock icon"></i>
-						
-						
 					</div>
 				</div>
 			
@@ -202,13 +162,11 @@ main {
 				<button class="loginbtn"  @click="fnLogin">로그인</button> 
 			</div>
 			<div class="logindownmenu">
-				<ul>
-
+				<p>
 					<span><a href="idsearch.do">아이디찾기 |</a></span>
 					<span><a href="pwdsearch.do">비밀번호찾기 |</a></span>
 					<span><a href="join.do">회원가입</a></span>
-
-				</ul>
+				</p>
 			</div>
 		</div>
 

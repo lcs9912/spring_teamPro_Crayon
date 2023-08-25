@@ -9,23 +9,21 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- 아이디인풋 아
 <title>로그인</title>
 <style>
 main {
-	padding: 20px;
+	width:100%; height:800px;
 }
 
 .loginsection {
 	width: 500px;
 	heigth: 700px;
-	margin: 150px auto;
+	margin: 0 auto;
 	background-color: #white;
 	padding: 50px;
 }
 
 .loginsection h1 {
-	text-align: center;
-}
-
-.loginsection form {
-	margin-top: 20px;
+		text-align: center; display: inline-block;
+	    width: 300px; height: 50px; margin-bottom:30px;
+        font-size: 50px; 
 }
 
 .loginsection div {
@@ -39,33 +37,21 @@ main {
 }
 
 .loginsection input[type="text"], .loginsection input[type="password"] {
-	border: none;
-	border-bottom: 2px solid #A8A5A5;
-	width: 70%;
-	padding: 5px;
-	margin-left: 50px;
+	border: none; border-bottom: 2px solid #A8A5A5;
+	width: 100%; font-size:18px; outline:none;
+	padding: 8px;
 }
 /* 로그인 회원가입버튼 */
 .loginsection button{
-	width: 60%;
-	padding: 20px;
-	background-color: #D2CECE;
-	color: #fff;
-	border-radius: 10px;
-	border: 0px;
-	margin-top: 30px;
-	margin-right: 22px;
+	width: 60%;	padding: 20px; font-size:18px;
+	background-color: #ccc; cursor: pointer;
+	color: #fff; border-radius: 10px;
+	border: 0px; margin-top: 30px; outline:none;
 }
-.loginwindow button {
-	cursor: pointer;
+
+.loginsection button:hover {
 	background-color: #333;
 }
-
-
-.loginwindow button:hover {
-	background-color: #333;
-}
-
 
 
 .loginwindownot {
@@ -77,12 +63,6 @@ main {
 	text-align: center;
 }
 
-
-.loginsection input[type="text"]:hover, .loginsection input[type="password"]:hover
-	{
-	border-bottom-color: #555;
-	width: 70%;
-}
 
 .loginwindow {
 	padding-top: 10px;
@@ -100,22 +80,14 @@ main {
 	text-align: center;
 }
 
-.loginsection input[type="text"]:focus, .loginsection input[type="password"]:focus
-	{
-	border-bottom-color: #black;
-	outline: none;
-	width: 70%;
-}
-
 .idpwd {
 	padding-left: 50px;
 	padding-top: 100px;
 }
 
 .emailpwdwhere {
-	padding-top: 30px;
-	font-weight: bold;
-	color : black;
+	padding-top: 30px; font-weight: bold;
+	
 }
 
 .logindownmenu {
@@ -124,10 +96,6 @@ main {
 	margin-top: 50px;
 }
 
-.logindownmenu a {
-	text-decoration: none;
-	color: black;
-}
 
 .logindownmenu a:hover {
 	font-weight: bold;
@@ -137,8 +105,7 @@ main {
 }
 
 #searchidbox{
-	border: 1px solid black;
-	border-radius: 30px;
+	width:100%
 }
 
 .icon {
@@ -148,21 +115,15 @@ main {
     transform: translateY(-50%);
 }
 #pwdhint{
-text-align:center;
-margin-left: 20%;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-color: #A8A5A5;
+	text-align:center; margin-bottom: 15px; padding:2px;
+	margin-left:43px; border: 1px solid #ccc; border-radius:5px;
+	color: #555;
 }
-.hintinput{
-text-align:center;
 
-}
 </style>
 
 </head>
 <%@ include file="../header/shopheader.jsp"%>
-
 <body>
 <div id="app">
 	<header> </header>
@@ -170,24 +131,24 @@ text-align:center;
 	<main class="mainw">
 	
 		<section class="loginsection">
-			<!-- <div class="loginlogo">
-				<a href="main.do" class="logo"> <img src="../logoimg/logo.png"></a>
-			</div> -->
-
+			<div class="loginlogo">
+				<h1>
+					<a href="mainslider.do">CrayoN</a>
+                </h1>    
+			</div>
 
 			<!-- 로그인클릭후 이동파일 -->
 			<div id="searchidbox">  <!-- 로그인 입력부분 테두리 -->
 			
 				<div class="emailpwdwhere">
-					<span class="idpwd">아이디</span>
+					아이디
 				</div>
 				<div class="input-container">
 					<input type="text" id="id"  autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
-
 				</div>
 				<div>
 					<div class="emailpwdwhere">
-						<span class="idpwd" >이름</span> 
+						이름
 					</div>
 					<div class="input-container">
 					<input type="text" id="name" autofocus @keyup.enter="fnEnter"  placeholder="이름" ref="idInput">
@@ -195,24 +156,20 @@ text-align:center;
 				</div>
 				<div>
 					<div class="emailpwdwhere">
-						<span class="idpwd" >비밀번호찾기 질문</span> 
+						비밀번호찾기 질문
+						<select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+							<option disabled selected>비밀번호 찾기 질문</option>
+					  		<option value="1">가장 좋아하는 동물은?</option>
+					  		<option value="2">가장 좋아하는 음식은?</option>
+							<option value="3">가장 좋아하는 색은?</option>
+							<option value="4">가장 좋아하는 운동선수이름은?</option>
+							<option value="5">자신의 취미나 특기는?</option>
+							<option value="6">가장 좋아하는 운동은?</option>
+							<option value="7">가장 좋아하는 티비프로그램은?</option>
+							<option value="8">가장 좋아하는 책은?</option>
+							<option value="9">가장 좋아하는 영화는?</option>
+						</select>
 					</div>
-					<tr class="hintinput">
-				<td>
-					<select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
-						<option disabled selected>비밀번호 찾기 질문</option>
-				  		<option value="1">가장 좋아하는 동물은?</option>
-				  		<option value="2">가장 좋아하는 음식은?</option>
-						<option value="3">가장 좋아하는 색은?</option>
-						<option value="4">가장 좋아하는 운동선수이름은?</option>
-						<option value="5">자신의 취미나 특기는?</option>
-						<option value="6">가장 좋아하는 운동은?</option>
-						<option value="7">가장 좋아하는 티비프로그램은?</option>
-						<option value="8">가장 좋아하는 책은?</option>
-						<option value="9">가장 좋아하는 영화는?</option>
-					</select>
-				</td>
-			</tr>
 					<div class="input-container">
 					<input type="text" id="birth" autofocus @keyup.enter="fnEnter"  placeholder="비밀번호찾기 정답" ref="idInput">
 
