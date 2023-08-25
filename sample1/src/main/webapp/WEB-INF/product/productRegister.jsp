@@ -165,15 +165,14 @@
 				<option value="1">상의</option>
 				<option value="2">하의</option>
 				<option value="3">아우터</option>
-				<option value="4">신발</option>
-				<option value="5">스니커즈</option>
-				<option value="6">부츠</option>
-				<option value="7">프랫</option>
-				<option value="8">로퍼</option>
-				<option value="9">가방</option>
-				<option value="10">지갑</option>
-				<option value="11">시계</option>
-				<option value="12">모자</option>
+				<option value="4">스니커즈</option>
+				<option value="5">부츠</option>
+				<option value="6">프랫</option>
+				<option value="7">로퍼</option>
+				<option value="8">가방</option>
+				<option value="9">지갑</option>
+				<option value="10">시계</option>
+				<option value="11">모자</option>
 			</select>
 		</div>
 		<div>
@@ -232,11 +231,11 @@ var app = new Vue({
 	    computedSizeOptions() {
 	      if (this.product.pCategorie2 === '1' || this.product.pCategorie2 === '3') {
 	        return this.sList.slice(1, 8); // 상의,아우터 카테고리인 경우 1(XXS)부터 8(XXL)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7'|| this.product.pCategorie2 === '8') {
+	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7') {
 	        return this.sList.slice(18,32); // 신발 카테고리인 경우 18(220)부터 32(290)까지만 보여주도록 처리
 	      } else if (this.product.pCategorie2 === '2'){
 	        return this.sList.slice(9,17); // 하의 카테고리에 경우 9(28)부터 17(36)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'|| this.product.pCategorie2 === '12'){
+	      } else if (this.product.pCategorie2 === '8' || this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'){
 	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
 	      }
 	    },
@@ -344,13 +343,18 @@ var app = new Vue({
 		// 브랜드이름 직접입력 추가
 		fnAddBrand : function (){
 			var self = this;
-			var nparmap = {brandName : self.product.brand};
+			var nparmap = {brandName : self.directInputBrand};
 			$.ajax({
 				url : "addBrand.dox",
 				dataType : "json",
 				type : "POST",
 				data : nparmap,
 				success : function(data){
+					console.log(data);
+					self.list.push(data);
+					self.fnGetBrandName();
+					self.directInputBrand = '';
+					self.showDirectInput = false;
 				}
 			});
 		},

@@ -6,10 +6,10 @@
 	<!-- 상품등록 -->
 	<insert id="insertProduct" parameterType="hashmap">
 		INSERT INTO T1_PRODUCT_UPDATE
-			(PRODUCT_MODEL, PRODUCT_NAME, PRODUCT_KNAME, PRODUCT_SIZE, PRODUCT_PRICE, PRODUCT_UPDATE, USER_ID, SELLBUY, PRODUCT_COLOR,
+			(PRODUCT_MODEL, PRODUCT_NAME, PRODUCT_KNAME, PRODUCT_SIZE, PRODUCT_PRICE, PRODUCT_UPDATE, PRODUCT_ENDDATE, USER_ID, SELLBUY, PRODUCT_COLOR,
 				PRODUCT_LAUNCH_PRICE, PRODUCT_CATEGORIE1, PRODUCT_CATEGORIE2,PRODUCT_BRAND)
 		VALUES
-			(#{pModel}, #{pName}, #{kName}, #{pSize}, #{pPrice}, CURRENT_TIMESTAMP, #{uId}, #{sellBuy}, #{pColor}, #{launch}, #{pCategorie1}, #{pCategorie2}, #{brand})
+			(#{pModel}, #{pName}, #{kName}, #{pSize}, #{pPrice}, CURRENT_TIMESTAMP, #{endDate}, #{uId}, #{sellBuy}, #{pColor}, #{launch}, #{pCategorie1}, #{pCategorie2}, #{brand})
 	</insert>
 	
 	<!-- 상품이미지 업로드 -->
@@ -46,7 +46,7 @@
 	<insert id="insertBrand" parameterType="hashmap">
 		INSERT INTO T1_PRODUCT_BRAND(BRAND_NAME)
 		VALUES (#{brandName})
-	</insert><!-- 여기까지 지우면 됨 -->
+	</insert>
 	
 	<!-- 상품 상세정보 -->
 	<select id="selectProductInfo" parameterType="hashmap"

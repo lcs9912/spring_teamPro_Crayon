@@ -95,10 +95,10 @@ public class ProductController {
 	}
 	
 	// 주문/정산 배송페이지
-		@RequestMapping("/orderandsettle.do") 
-		public String orderandsettle(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-			return "/pay/orderandsettle";
-		}
+	@RequestMapping("/orderandsettle.do") 
+	public String orderandsettle(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/pay/orderandsettle";
+	}
 	
 	//.dox
 	//상품 사이즈 조회

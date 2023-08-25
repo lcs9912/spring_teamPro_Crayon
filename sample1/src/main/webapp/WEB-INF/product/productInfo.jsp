@@ -458,7 +458,6 @@ cursor: pointer;
 	</div>
 </div>
 </body>
-
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
