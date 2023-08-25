@@ -314,7 +314,7 @@ cursor: pointer;
 		
 		<div class="btnaction">
 		
-		<a href="buybeforewear.do"><button class="buyaction">
+		<a href="buyforsize.do"><button class="buyaction">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
 		<div style="padding-top:3px;"><b>{{minBuy.buyminprice}}원</b></div>
 		<div style="padding-top:5px;">즉시 구매가</div>
@@ -404,12 +404,12 @@ cursor: pointer;
 
 			<div class="displayiteminfo">
 			<div style="display:inline-block; width:100px; text-align:center;">
-			<i class="fa-solid fa-house fa-3x"></i></div>
+			<i class="fa-solid fa-fire fa-3x"></i></div>
 			<div style="width:400px; display:inline-block;">
 			<div style="display:inline-block; width:400px; padding-top:10px;">
-			창고보관 첫 30일 무료</div>
+			불꽃배송 7,000원 (500,000원이상 결제시 3,000원)</div>
 			<div style="width:400px; display:inline-block; border-bottom:1px solid #eee; padding-bottom:15px; color:#a2a2a2;">
-			배송 없이 창고에 보관 · 빠르게 판매 가능</div>
+			검수 후 당일 배송 ・ 1-2일 내 도착 예정</div>
 			</div>
 			</div>
 			</div>
@@ -426,13 +426,14 @@ cursor: pointer;
 			</div>
 			
 			<div class="buybeforecontents">배송기간 안내
-			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;">
-			</i></div>
+				<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+				
+			</div>
 			<div class="buybeforecontents">검수 안내
-			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+				<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
 			</div>
 			<div class="buybeforecontents">구매 환불/취소/교환 안내
-			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
+				<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
 			</div>
 			
 			
@@ -442,17 +443,14 @@ cursor: pointer;
 	</div>
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-		<img :src="img.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
+			<img :src="img.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
 		</div>
-		
-		
 		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
-		<span class="caremark">주의</span>
-		<span class="dangertext">판매 거래 주의사항</span>
-		<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
+			<span class="caremark">주의</span>
+			<span class="dangertext">판매 거래 주의사항</span>
+			<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
 		</div>
-		
-		</div>
+	</div>
 	
 	
 	</div>
@@ -468,18 +466,17 @@ var app = new Vue({
       },
     data: {
     	img : {},
-    	pImgPath : "",
-    	pName : "",
+    	pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue",
     	
         model: "",
         scrollPosition: 0,
         sessionId : "${sessionId}",
         proInfo : {}, // 리스트로 수정 예정 물품 정보 
         resent : {}, // 최근 거래가
-        modelNum : "CZ0790-104", // 모델변호
+        modelNum : "", // 모델변호
         minSell : "", // 즉시 판매가
         minBuy : "", // 즉시 구매가
-        proNum : 1, // 상품 번호
+        proNum : "221", // 상품 번호
       
         interestFlg : false, // 관심상품 조회
 		series: [{

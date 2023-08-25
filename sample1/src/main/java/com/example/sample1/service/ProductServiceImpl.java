@@ -27,6 +27,12 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productMapper.selectSize(map);
 	}
+	// 상품 구매/판매시 사이즈 조회
+	@Override
+	public List<Product> viewPaySize(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectPaySize(map);
+	}
 	//상품 브랜드 조회
 	@Override
 	public List<Product> viewBrand(HashMap<String, Object> map) {

@@ -36,6 +36,13 @@
 		FROM T1_PRODUCT_SIZE
 	</select>
 	
+	<!--판매/구매 사이즈 조회 -->
+	<select id="selectPaySize" parameterType="hashmap" resultType="com.example.sample1.model.Product">
+		SELECT SIZE
+		FROM T1_PRODUCT_SIZE
+		WHERE PRODUCT_SIZE = #{productSize}
+	</select>
+	
 	<!-- 브랜드 조회 -->
 	<select id="selectBrand" resultType="com.example.sample1.model.Product">
 		SELECT *

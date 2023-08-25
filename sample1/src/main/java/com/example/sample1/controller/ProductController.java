@@ -51,9 +51,9 @@ public class ProductController {
 	}
 	
 	// 구매전 상의 페이지
-	@RequestMapping("/buybeforewear.do") 
+	@RequestMapping("/buyforsize.do") 
 	public String buybeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/buybeforewear";
+		return "/pay/buyforsize";
 	}
 	// 판매전 상의 페이지
 	@RequestMapping("/sellbeforewear.do") 
@@ -116,6 +116,15 @@ public class ProductController {
 		resultMap.put("size", list);
 		return new Gson().toJson(resultMap);
 	}
+	//상품 사이즈 조회
+	 @RequestMapping(value = "/pay/size.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String paySize(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Product> list = productService.viewSize(map);
+		resultMap.put("size", list);
+		return new Gson().toJson(resultMap);
+		}
 	// 상품 브랜드 조회
 	@RequestMapping(value = "/brand.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

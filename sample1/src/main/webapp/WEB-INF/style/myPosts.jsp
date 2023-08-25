@@ -116,7 +116,7 @@ a {
 </style>
 
 </head>
-<%@ include file="../header/mainheader.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 <div id="app">
 	<div class="mypagewrap">

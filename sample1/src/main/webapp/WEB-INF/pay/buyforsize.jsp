@@ -108,14 +108,23 @@
 		border-color: black; /* 선택 시 테두리 색상 변경 */
 		color: red;
 	}
-	ul {
-		
+	.custom-button {
+	  background-color: white;
+	  border: 1px solid black;
+	  padding: 10px;
+	  margin: 5px;
+	  cursor: pointer;
+	}
+	
+	.custom-button.clicked {
+		background-color: black;
+		border: 1px solid white;
+		color : white;
 	}
 </style>
 
 </head>
-<%@ include file="../header/header1.jsp"%>
-<%@ include file="../header/header2.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 <body> 
 <div id="app" style="margin-top : 100px; background-color:#fafafa;;">
 	<div class="contentsarea">
@@ -123,12 +132,12 @@
 			<div class="productcontents">
 				<div class="productheader" style="display: flex; align-items: center;">
 				    <div class="productinfo">
-				        <img src="../img/product/2023722114928756.jpg" style="max-width : 80px">
+				        <img :src="img.pImgPath" style="max-width : 80px">
 				    </div>
 				    <div style="margin-left: 10px;">
-				        <div class="productdetailhead">모델번호</div>
-				        <div class="productdetailname">상품영문명</div>
-				        <div class="productdetailtransname">상품한글명</div>
+				        <div class="productdetailhead">{{proInfo.productModel}}</div>
+				        <div class="productdetailname">{{proInfo.productName}}</div>
+				        <div class="productdetailtransname">{{proInfo.productKname}}</div>
 				    </div>
 				</div>
 				
@@ -137,7 +146,8 @@
 			<div class="productdetailsizarea">
 				<ul>
 					<li>
-						<button v-for="sItem in computedSizeOptions" :value="sItem.productSize" class="custom-button">
+						<button v-for="sItem in computedSizeOptions" :value="sItem.productSize" class="custom-button"
+						:class="{ 'clicked': sItem.clicked }" @click="handleButtonClick(sItem)">
 							<div>
 								<p>{{sItem.size}}</p>
 								<p>구매입찰</p>
@@ -150,20 +160,20 @@
 			<div class="buyboxarea1">
 				<a href="buyagree.do"><button class="buy-button" disabled>구매입찰</button></a>
 			</div>
-			<div class="buyboxarea2">
-				<a href="buyagree.do">
-					<button class="buy-button" disabled>
-						<storng>가격</storng>
-						<p>불꽃배송(1~2일소요)</p>	
-					</button>
-				</a>
-				<a href="buyagree.do">
-					<button class="buy-button" disabled>
-						<storng>가격</storng>
-						<p>일반배송(5~7일소요)</p>
-					</button>
-				</a>
-			</div>
+<!-- 			<div class="buyboxarea2"> -->
+<!-- 				<a href="buyagree.do"> -->
+<!-- 					<button class="buy-button" disabled> -->
+<!-- 						<strong>가격</storng> -->
+<!-- 						<p>불꽃배송(1~2일소요)</p>	 -->
+<!-- 					</button> -->
+<!-- 				</a> -->
+<!-- 				<a href="buyagree.do"> -->
+<!-- 					<button class="buy-button" disabled> -->
+<!-- 						<strong>가격</storng> -->
+<!-- 						<p>일반배송(5~7일소요)</p> -->
+<!-- 					</button> -->
+<!-- 				</a> -->
+<!-- 			</div> -->
 		</div>
 	</div>
 </div>
@@ -176,6 +186,9 @@ var app = new Vue({
 	data : {
 		list : [],
 		sList : [],
+		img : {},
+		pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue",
+		proInfo : {},
 		product :{
 			pName : "",
 			pModel : "",
@@ -185,27 +198,53 @@ var app = new Vue({
 			launch : "",
 			endDate : "",
 			pCategorie1 : "0",
-			pCategorie2 : "1",
+			pCategorie2 : "4",
 			brand : "100",
 			sellBuy : "",
 			uId : "${sessionId}"
 		},
+		proNum : "221", // 상품 번호
 	},// data
 	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
 	computed: {
 	    computedSizeOptions() {
 	      if (this.product.pCategorie2 === '1' || this.product.pCategorie2 === '3') {
 	        return this.sList.slice(1, 8); // 상의,아우터 카테고리인 경우 1(XXS)부터 8(XXL)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7'|| this.product.pCategorie2 === '8') {
+	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7') {
 	        return this.sList.slice(18,32); // 신발 카테고리인 경우 18(220)부터 32(290)까지만 보여주도록 처리
 	      } else if (this.product.pCategorie2 === '2'){
 	        return this.sList.slice(9,17); // 하의 카테고리에 경우 9(28)부터 17(36)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'|| this.product.pCategorie2 === '12'){
+	      } else if (this.product.pCategorie2 === '8' || this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'){
 	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
 	      }
-	    },
+	    }, 
 	  },
 	methods : {
+		 handleButtonClick(sItem) {
+		      // 버튼 클릭 시 해당 버튼의 clicked 속성 값을 토글
+		      sItem.clicked = !sItem.clicked;
+		    },
+		//상품 정보 불러오기
+		fnProList : function(){
+    		var self = this; 
+            var nparmap = {proNum : self.proNum};
+             $.ajax({
+                 url : "/productInfo.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) { 
+                 	self.proInfo = data.proInfo;
+                 	
+                 	self.modelNum = data.proInfo.productModel; // 모델번호
+                 	
+                 	console.log("proinfo"+ self.proInfo);
+                 	
+                 	console.log("모델번호"+self.modelNum);
+                 	
+                 }
+             }); 
+    	},
      	// 사이즈 조회
 		fnGetSize : function () {
 			var self = this;
@@ -221,10 +260,27 @@ var app = new Vue({
 				}
 			})
 		},
+		//상품 사진 불러오기
+        fnGetImg : function() {
+        	var self = this;
+        	var nparmap = {pName : self.pName};
+        	$.ajax({
+				url : "productImg.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data){
+					console.log(data);
+					self.img = data.img;
+				}
+			});
+		},
 	}, // methods
 	created : function() {
 		var self = this;
-		self.fnGetSize()
+		self.fnGetSize();
+		self.fnGetImg();
+		self.fnProList();
 	}// created
 });
 </script>
