@@ -102,7 +102,7 @@ public class ProductController {
 	//
 	@RequestMapping("/sellBuy.do") 
 	public String sellBuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/product/sellBuy";
+		return "/pay/sellBuy";
 	}
 	
 	//.dox
