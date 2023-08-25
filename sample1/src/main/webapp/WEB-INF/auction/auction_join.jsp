@@ -130,7 +130,10 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	alert("참여 완료하셨습니다.");
-                	window.history.back();
+                	window.close(); // 팝업 창 닫기
+                	if (window.opener) {
+                        window.opener.location.reload();
+                    }
                 }
             }); 
         },

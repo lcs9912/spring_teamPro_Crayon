@@ -437,8 +437,8 @@ padding:10px 0px 0px 15px;
 		
 		<div style="width:600px;">
 		<div class="interestbtn" style="cursor: pointer;text-align:center;">
-		<i class="fa-solid fa-bookmark" v-if="info.aLikeUser==null"  @click="fnAuctionLike()"></i> <!--좋아용 -->
-		<i class="fa-regular fa-bookmark" v-else @click="fnAuctionUnLike()"></i>  <!-- 해제-->
+		<i class="fa-regular fa-bookmark" v-if="info.aLikeUser==null"  @click="fnAuctionLike()"></i> <!--좋아용 -->
+		<i class="fa-solid fa-bookmark" v-else @click="fnAuctionUnLike()"></i>  <!-- 해제-->
 		관심상품<strong> 전체관심cnt</strong>
 		</div>
 		</div>
@@ -556,6 +556,7 @@ var app = new Vue({
 	data : {
 		list : [],
 		info : {},
+		
 		auctionNumber : "${map.auctionNumber}",
 		text: "",
 		uId : "${sessionId}",
@@ -751,7 +752,7 @@ var app = new Vue({
 	}// created
 });
 function openPopup(url) {
-    const popup = window.open(url, 'popupWindow', 'width=800,height=600,scrollbars=yes');
+    const popup = window.open(url, 'popupWindow', 'width=700,height=700,scrollbars=yes');
     popup.focus();
 }
 </script>
