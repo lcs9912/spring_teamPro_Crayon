@@ -186,26 +186,23 @@
 			    box-sizing: border-box;
 			}
 			.emailinput {
-				width:500px; margin-top:20px;
+				width:100%; margin:20px 0 40px 0;
 			}
 				.emailinput input {
 					width:450px; height:50px; border:0px solid; border-bottom:1px solid #ccc; outline:none;
 				}
-				.emailpwd {margin-top:30px; width:180px; height:40px; background:#fff; border-radius:15px;}
+				.emailpwd {margin-top:30px; width:150px; height:40px; background:#fff; border-radius:15px;}
 			.popup > .cmd {
-			    bottom: 0; min-height: 40px;
-			    padding: 15px 15px; box-sizing: border-box;
-			    border-radius: 0 0 15px 15px;
-			    min-height: 40px; text-align: right;
-			    width: 300px; position:relative;
+			    margin-top:20px;
+			    border-radius: 0 0 15px 15px; min-height: 40px; text-align: center;
+			    width: 500px; line-height: height:80px;
 			}
 			.cmd button {
-			    border-radius: 8px; padding: 5px 10px;
-			    border: 1px solid #aaa; width: 80px;
+			    border-radius:15px; padding: 10px 10px;
+			    border: 1px solid #aaa; width: 100px; 
 			    color: white; background-color: black;
 			    font-weight: bold; cursor: pointer;
-			    position: absolute;
-			    top : 380px; left: 225px;
+			    
 			}
 			.cmd button:hover {
 			    color: #000; background-color: #fff;

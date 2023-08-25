@@ -6,173 +6,124 @@
 <title>마이페이지 로그인정보 페이지</title>
 
 <style>
-	* {margin:0; padding:0; box-sizing:border-box;}
-
-	li {
-		list-style:none;
-		}
-	
-	
-	a {	
-		text-decoration:none;
-		color: inherit;
-		cursor:point;
-		}
-	
-	.mypagewrap {
-		width:1200px; margin:50px auto;
-		}
-	.myinfonav {
-		float:left; width:200px; color:#000;
-		}
 		
-	.myinfo h2{
-			margin-bottom:20px;
-		}	
-	
+	.mypagewrap {width:1200px; margin:50px auto;}
+	.myinfonav {float:left; width:200px; color:#000;}
+	.myinfo h2{margin-bottom:20px;}	
+	.myinfo h3{margin:30px 0;}	
+	.myinfo ul li{margin:10px 0;}	
+		.editlogininfo{width:1000px; float:left; margin-bottom:100px;}        
 		
-	.myinfo h3{
-			margin:30px 0;
-		}	
+		.edithead {padding-bottom:15px; border-bottom:3px solid #000;}
 		
-	.myinfo ul li{
-		margin:10px 0;
-		}	
+		.loginedit {width:480px; padding-top:10px;}	
+			
+			.editinner h4 {margin-bottom:25px; margin-top:30px;}
+			
+			.editebox {width:480px; height:55px; border-bottom: 1px solid #e9e9e9;}
 	
-	.editlogininfo{
-		width:1000px; float:left; margin-bottom:100px;
-		}        
-	.edithead {
-		padding-bottom:15px; border-bottom:3px solid #000;
-		}
-	.loginedit {
-		width:480px; padding-top:10px;
-	}
-
-		.editinner h4 {
-			margin-bottom:25px; margin-top:30px;
-		}
-		.editebox {
-			width:480px; height:55px; border-bottom: 1px solid #e9e9e9;
-		}
-
-		.editebox h6 {
-			color:#ccc; margin-top:25px;
-		}
-
-		.editebox .editbtn{
-			border:1px solid #e9e9e9; background-color: #fff; border-radius: 10px; width:50px; height:30px;	
-			color:#777; font-size: 12px;	
-		}
-		.editinput {
-			border:0 solid; font-size:20px; margin-top: 20px; width:421px;
-		}
-
-		.agreeelement {
-			margin-top:30px; height: 50px; margin-top:50px;
-		}
-			.agreeelement p {
-				display: inline-block; width:250px; color:#555;
-			}
-			.agreeelement div{
-				display: inline-block; color:#555;
-			}
-			.agreeelement div label{
-				margin:0 10px 0 20px;
-			}
-
-			.resignbtn {
-				border:0px solid #e9e9e9; background-color: #fff; border-radius: 10px; width:70px; height:30px;	
-				color:#777; font-size: 15px; margin-top: 30px; text-decoration-line: underline;
-			}	
-			.spanBut button{
-				float: right;
-				cursor: pointer;
-			}
+			.editebox h6 {color:#ccc; margin-top:25px;}
+	
+			.editebox .editbtn{border:1px solid #e9e9e9; background-color: #fff; 
+						border-radius: 10px; width:50px; height:30px; color:#777; font-size: 12px;}
 			
-			/* 팝업 레이어 */
-			body{
-			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
-			    background-repeat: no-repeat;
-			    background-size: cover;
-			    position:relative;
-			}
-			
-			html, body{
-			    width: 100%;
-			    height: 100%;
-			    padding: 0;
-			    margin: 0;
-			}
-			
-			.popup-overlay {
-				display: none; position: absolute;
-			  	top: 0; left: 0;
-			  	width: 100%; height: 100%;
-			   	background-color: rgba(51,51,51,0.3);
-			  	z-index: 3000;
-			} 
-			.content {
-			    width:500px; border-radius:15px; padding-bottom:40px;
-			    margin:10% auto; background:#fff;
-			}		
-			
-			.title{
-			    min-height: 40px; margin-bottom:10px; border-radius:15px 15px 0 0;
-			    color: white; background-color: #ccc; padding: 10px 15px;
-			    box-sizing: border-box; font-weight: bold; 
-			    text-align: center; position:relative; 
-			}
+			.editinput {border:0 solid; font-size:20px; margin-top: 19px; width:421px;}
+				.editinput>span {display:inline-block; height:31px; }
+					#selectSize {margin-left:290px; background-color: #fff; border-radius: 10px; text-align:center;
+								 border:1px solid #e9e9e9; width:90px; height:27px; outline:none; font-size:15px;}
+								 
+			.agreeelement {margin-top:30px; height: 50px; margin-top:50px;}
 				
-					.fa-x{position: absolute; top: 15px; right: 15px; cursor: pointer;}
-					/*이메일변경 CSS 시작*/
-					.nowemail {width:500px; height:50px; margin-top:30px; font-size:16px;}
-					.nowemail h3{width:500px; height:50px; text-align:center;}
-					.emailinput{width: 400px; height : 70px;margin-left:60px; border-bottom:1px solid #ccc;}
-						.emailinput input{width: 300px; height : 60px; outline:none; border:0px solid; font-size:16px;}
-						.emailpwd{background-color:white; border : 1px solid #a2a2a2; font-size:13px;
-							width : 90px; height : 25px; cursor: pointer; margin-top:10px;
-						} 
-						.hiddenmessege {color:red; width:500px; text-align:center; margin:20px 0;}
-							
-						#submitPopup {
-						    border-radius: 8px; padding: 10px 30px; margin:20px 175px 0 175px;
-						    border: 1px solid #aaa; width: 150px;
-						    color: white; background-color: black;
-						    font-weight: bold; cursor: pointer;			    			    
-						}
-						#submitPopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
-						/*이메일변경 CSS 종료*/
-			
-			.passwordckwrap {
-				width:500px; text-align:center;
-				}
-				.passwordckwrap input{display:inline-block; width:300px; height:40px; outline:none; 
-								border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;}
-				.passwordckwrap button{border-radius: 8px; margin:10px 0 0 10px;
-						    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
-						    font-weight: bold; cursor: pointer;	}	
-				.passwordckwrap select {width:225px; height:40px; outline:none; margin:30px 10px;}
+				.agreeelement p {display: inline-block; width:250px; color:#555;}
 				
-				.pwdquestion {font-size:12px; margin-left:10px;}
-					.passwordckwrap>#newpassword{text-align:left;}
-					.passwordckwrap>#newpassword>input{margin-left:58px;}
-			
-			.phonewrap {
-				width:500px; text-align:left;
-			}		
-				.phonewrap input{
-					display:inline-block; width:350px; height:40px; outline:none; margin-left:50px;
-								border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;
+				.agreeelement div{display: inline-block; color:#555;}
+				
+				.agreeelement div label{margin:0 10px 0 20px;}
+	
+				.resignbtn {border:0px solid #e9e9e9; background-color: #fff; border-radius: 10px; width:70px; height:30px;	
+							color:#777; font-size: 15px; margin-top: 30px; text-decoration-line: underline;}	 
+				
+				.spanBut button{float: right; cursor: pointer;}
+					
+				
+				
+				
+				/* 팝업 레이어 */
+						
+				.popup-overlay {
+					display: none; position: absolute;
+				  	top: 0; left: 0; width: 100%; height: 100%;
+				   	background-color: rgba(51,51,51,0.3);
+				  	z-index: 3000;
+				} 
+				.content {
+				    width:500px; border-radius:15px; padding-bottom:40px;
+				    margin:10% auto; background:#fff;
+				}		
+				
+				.title{
+				    min-height: 40px; margin-bottom:10px; border-radius:15px 15px 0 0;
+				    color: white; background-color: #ccc; padding: 10px 15px;
+				    box-sizing: border-box; font-weight: bold; 
+				    text-align: center; position:relative; 
 				}
-				.phonewrap button{border-radius: 8px; margin:10px 0 0 10px;
-						    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
-						    font-weight: bold; cursor: pointer;					
-				}
-					#phonePopup {border-radius: 8px; margin:20px 0 10px 175px;
-						    border: 1px solid #aaa; width: 150px; height:30px; color: white; background-color: black;
-						    font-weight: bold; cursor: pointer;				
+					
+						.fa-x{position: absolute; top: 15px; right: 15px; cursor: pointer;}
+						/*이메일변경 CSS 시작*/
+						.nowemail {width:500px; height:50px; margin-top:30px; font-size:16px;}
+						.nowemail h3{width:500px; height:50px; text-align:center;}
+						.emailinput{width: 400px; height : 70px;margin-left:60px; border-bottom:1px solid #ccc;}
+							.emailinput input{width: 300px; height : 60px; outline:none; border:0px solid; font-size:16px;}
+							.emailpwd{background-color:white; border : 1px solid #a2a2a2; font-size:13px;
+								width : 90px; height : 25px; cursor: pointer; margin-top:10px; border-radius:5px;
+							} 
+							.hiddenmessege {color:red; width:500px; text-align:center; margin:20px 0;}
+								
+							#submitPopup {
+							    border-radius: 15px; padding: 10px 30px; margin:20px 175px 0 175px;
+							    border: 1px solid #aaa; width: 150px;
+							    color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;			    			    
+							}
+							#submitPopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
+							/*이메일변경 CSS 종료*/
+				
+				.passwordckwrap {
+					width:500px; text-align:center;
 					}
+					.passwordckwrap input{display:inline-block; width:300px; height:40px; outline:none; 
+									border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;}
+					.passwordckwrap button{border-radius: 8px; margin:10px 0 0 10px;
+							    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;	}	
+							    .passwordckwrap button:hover {color:#333; background:#fff; border:1px solid #ccc;}
+					.passwordckwrap select {width:225px; height:40px; outline:none; margin:30px 10px; border:0px solid; border-bottom:1px solid #ccc;}
+					
+					.pwdquestion {font-size:12px; margin-left:10px;}
+						.passwordckwrap>#newpassword{text-align:left;}
+						.passwordckwrap>#newpassword>input{margin-left:58px;}
+				
+				.phonewrap {
+					width:500px; text-align:left;
+				}		
+					.phonewrap input{
+						display:inline-block; width:350px; height:40px; outline:none; margin-left:50px;
+									border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;
+					}
+					.phonewrap button{border-radius: 8px; margin:10px 0 0 10px;
+							    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;					
+					}
+						.phonewrap button:hover {color:#333; background:#fff; border:1px solid #ccc;}
+						#phonePopup {border-radius: 15px; margin:20px 0 10px 175px;
+							    border: 1px solid #aaa; width: 150px; height:40px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;				
+						}
+						#phonePopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
+						#memberPopup{border-radius: 15px; margin:20px 0 10px 175px;
+							    border: 1px solid #aaa; width: 150px; height:40px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;}
+						#memberPopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
 </style>
 
 </head>
@@ -240,11 +191,9 @@
 									<span v-if="sizeFlg">
 										<select id="selectSize" v-model="productSize">
 											<option v-for="item in sizeList" :value="item.productSize">{{item.size}}</option>
-										</select>
-										
-										
+										</select>										
 									</span>
-									<button @click="fnSizeEdit" v-if="sizeFlg">확인</button>
+									<button @click="fnSizeEdit" v-if="sizeFlg" class="editbtn">확인</button>
 									<button class="editbtn" v-if="!sizeFlg" @click="sizeFlg = !sizeFlg">변경</button>
 								</span>
 								
@@ -343,26 +292,22 @@
 	                	<input placeholder="새 전화번호" v-model="editPhone">
 	                	<button id="phonePopup" @click="fnSubmitPhoneEdit">제출</button>  
 	               </div>
-	           
-	            	 
 	        	</div>	        	
 	        </template>
 	        
 	       
 	        
 	        <!-- 회원 탈퇴 -->
-	        <template v-if="keyword == 'remove'">
-	            <p>회원 탈퇴</p>
-	            <p>
-	                <div><input placeholder="아이디" v-model="checkId"></div>
-	                <div><input placeholder="비밀번호" v-model="pwd"></div>
-	                <div><input placeholder="이메일" v-model="editEmail"></div>
-	                <div><button @click="fnAllCheck">확인</button></div>
-	                
-	            </p>
-	          		 <div class="cmd">
-	       				<button id="submitPopup" @click="fnRemoveUser">제출</button>          
-	        		 </div>
+	        <template v-if="keyword == 'remove'">	            
+	            <div class="phonewrap">
+	                <input placeholder="아이디" v-model="checkId">
+	                <input placeholder="비밀번호" v-model="pwd">
+	                <input placeholder="이메일" v-model="editEmail">
+	                <button @click="fnAllCheck">확인</button>	                            
+	          		<div class="cmd">
+	       				<button id="memberPopup" @click="fnRemoveUser">제출</button>          
+	        		</div>
+	        	</div>
 	        </template>
 	        </div>
 	        </div>

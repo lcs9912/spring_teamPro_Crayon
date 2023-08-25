@@ -85,35 +85,15 @@ a {	text-decoration:none;
 			    background-color: #fff;
 			    padding: 20px; border-radius: 10px;
 			    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-			}
-			
-			#popupTitleBox{
-				background-color: black;
-			}
-			
-			#popupTitleBox i{
-				cursor: pointer; color: white;
-			}
-			#popupTitle{
-				color: white; font-weight: bold;
-			}
-			html, body{
-			    width: 100%; height: 100%;
-			    padding: 0; margin: 0;			    
-			}
+			}	
+						
 			
 			body{
 			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
 			    background-repeat: no-repeat; background-size: cover;
 			    background-position: center;		    
 			}
-			body.dimmed::before{
-			    content: '';
-			    position: fixed; left: 0;
-			    right: 0; top: 0;
-			    bottom: 0; background-color: rgba(0, 0, 0, 0.5); /* 배경을 불투명하게 만듭니다 */
-			    z-index: 999; /* 레이어 팝업보다 뒤에 위치하도록 z-index 조정 */    			  
-			}
+		
 			.popup {
 			    z-index: 1; position: fixed;
 			    top: 50%; left: 50%;
@@ -126,56 +106,43 @@ a {	text-decoration:none;
 				border-radius: 15px 15px 0 0;
 			    min-height: 40px; color: white;
 			    background-color: #ccc; padding: 10px 15px;
-			    box-sizing: border-box; font-weight: bold;
-			    text-align: center;			
+			    box-sizing: border-box; font-weight: bold;			    
 			}
 			.popup > .content {
-			    padding: 20px;
-			    box-sizing: border-box;
+			    padding: 20px; box-sizing: border-box;
 			}
 			
-			.addrInput {
-				width:500px; margin-top:20px;
-			}
-			.addrInput input{
-				width:400px; height:30px; border:0px solid; border-bottom:1px solid #ccc; outline:none;
-			}
-			.popup > .cmd {
-			    bottom: 0; min-height: 40px;
-			    padding: 15px 15px; box-sizing: border-box;
-			    border-radius: 0 0 15px 15px;
-			    min-height: 40px; text-align: right;
-			    width: 300px;
-			}
-			.cmd button {
-			    border-radius: 8px; padding: 5px 10px;
-			    border: 1px solid #aaa; width: 80px;
-			    color: white; background-color: black;
-			    font-weight: bold; cursor: pointer;
-			    position: absolute;
-			    top : 409px; left: 265px;
-			}
-			.cmd button:hover {
-			    color: #fff; background-color: #000;
-			    border-color: #000;
-			}
-			.title i{
-				cursor: pointer;
-			}
-			.fa-x{
-				position: absolute;
-				top: 10px;
-				right: 10px;
-			}
-		#addrInput input{
-			border: 1px solid;
-		}
-		
-		button{
-			cursor: pointer;
-		}
-		
-		
+				.addrInput input{
+					width:360px; height:30px; border:0px solid; border-bottom:1px solid #ccc; outline:none; 
+				}
+				.addrInput #addrspot{margin-right:50px;}
+				.addrInput label {display:inline-block; width:80px; margin:20px 0 20px 10px;}
+				.addrInput button {margin-left:15px; background:black; color:#fff; padding:4px 3px; border-radius:10px; font-weight:bold;}
+				.addrInput #addrdetail{margin-right:100px;}
+				.addrInput #addrcheckbox{display:inline-block; width:18px; height:18px; margin:30px 0 0 190px; line-height:-20px; padding:10px;}
+				.addrInput #addrchecklabel{display:inline-block; width:310px; margin-top:0; font-size:18px; font-weight:bold; }
+				.addrInput button:hover {color:#000; background-color: #fff; border-color: #ccc;}	
+				.addrInput .cmd {
+				    bottom: 0; min-height: 40px;
+				    padding: 20px 20px; box-sizing: border-box;
+				    border-radius: 0 0 15px 15px; margin-top:20px;
+				    min-height: 40px; width: 100%; 
+				} 
+				.cmd button {
+				    border-radius: 8px; padding: 10px 30px; margin:0 auto;
+				    border: 1px solid #aaa; width: 120px; display:block;
+				    color: white; background-color: black;
+				    font-weight: bold; cursor: pointer;				    
+				}
+				.cmd button:hover {
+				     color: #000; background-color: #fff; border-color: #ccc;
+				}
+				.title i{
+					cursor: pointer; position: absolute; top: 15px; right: 15px;
+				}
+			
+				
+				
  
 /*주소록 영역 CSS 종료*/
 
@@ -238,13 +205,13 @@ a {	text-decoration:none;
 	
 	<div class="popup popup-overlay" id="popupOverlay" >
         <div class="title">새 주소 추가<i class="fa-solid fa-x" id="closePopup"></i></div>
-        <div class="content" style="text-align:center;">
+        <div class="content">
         <!-- 이메일 변경 -->
      	<div class="addrInput">
-         	<label>우편번호</label><input v-model="zipNo"><button @click="fnSearchAddr" >상세주소 찾기</button>
-            <label>주소</label><input v-model="addr">
-            <label>상세주소<input v-model="detailAddr"></label>
-            <label><input type="checkbox">기본 배송지로 설정</label>
+         	<label for="addrnum">우편번호</label><input v-model="zipNo" id="addrnum"><button @click="fnSearchAddr" >상세주소 찾기</button>
+            <label for="addrspot">주소</label><input v-model="addr" id="addrspot">
+            <label for="addrdetail">상세주소</label><input v-model="detailAddr" id="addrdetail">
+            <input type="checkbox" id="addrcheckbox"><label for="addrcheckbox" id="addrchecklabel">기본 배송지로 설정</label>
             <div class="cmd">
        			<button id="submitPopup" @click="fnSumbitPop">제출</button>          
         	</div>
