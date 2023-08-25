@@ -13,6 +13,7 @@ table {
 	border: 1px solid black;
 	border-collapse: collapse;
 	text-align: center;
+	width:1000px;
 }
 
 th, td {
@@ -83,12 +84,22 @@ a {	text-decoration:none;
 		
 		<table>
 		<tr>
-		<th>회원정보</th>
+		<th>선택</th>
 		<th>아이디</th>
 		<th>이름</th>
 		<th>나이</th>
+		<th>전화번호</th>
 		<th>포인트</th>
-		<th></th>
+		
+		</tr>
+		
+		<tr>
+		<td><input type="checkbox"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 		</tr>
 		
 		</table>
