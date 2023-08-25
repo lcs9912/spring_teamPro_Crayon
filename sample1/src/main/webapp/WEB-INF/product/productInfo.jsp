@@ -469,14 +469,14 @@ var app = new Vue({
     data: {
     	img : {},
     	pImgPath : "",
-    	pName : "Stussy Basic Stussy Hoodie Black 2023",
+    	pName : "",
     	
         model: "",
         scrollPosition: 0,
         sessionId : "${sessionId}",
         proInfo : {}, // 리스트로 수정 예정 물품 정보 
         resent : {}, // 최근 거래가
-        modelNum : "", // 모델변호
+        modelNum : "CZ0790-104", // 모델변호
         minSell : "", // 즉시 판매가
         minBuy : "", // 즉시 구매가
         proNum : 1, // 상품 번호
