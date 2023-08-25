@@ -140,8 +140,8 @@ main {
 				<div class="idpwdwhere">
 					아이디
 				</div>
-				<div class="input-container">
-					<input type="text" id="id" v-model="uId" autofocus @keyup.enter="fnEnter" placeholder="아이디" ref="idInput">				
+				<div class="input-container" >
+					<input type="text" id="id" v-model="uId"  @keyup.enter="fnEnter" @keydown.tab="fnEnter"  placeholder="아이디" ref="idInput">				
 					<i class="fa-solid fa-user icon"></i>
 					<i v-if="!idflg" class="fa-solid fa-square-caret-down" @click="fnEnter"></i>
 				</div>				
