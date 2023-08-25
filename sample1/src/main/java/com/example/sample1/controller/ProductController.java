@@ -100,9 +100,9 @@ public class ProductController {
 		return "/pay/orderandsettle";
 	}
 	//
-	@RequestMapping("/sellBuy.do") 
+	@RequestMapping("/nowsell.do") 
 	public String sellBuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/sellBuy";
+		return "/pay/nowsell";
 	}
 	
 	//.dox

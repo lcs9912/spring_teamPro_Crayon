@@ -175,7 +175,7 @@ color:white;
 border-radius:10px;
 height:35px;
 width:80px;
-
+cursor:pointer
 }
 .banktitle{
 width:80px;
