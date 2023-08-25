@@ -12,8 +12,8 @@
 * {margin:0; padding:0;}
 
 table {
-margin-top : 10px;
-	width : 800px;
+	margin-top :30px;
+	width : 1000px;
 	border: 1px solid #black;
 	border-collapse: collapse;
 	text-align: center;
@@ -27,9 +27,8 @@ td{
 color : #a2a2a2;
 }
 
-
 .customerwrap {
-	width:1200px; margin:0 auto;
+	width:100%; height:600px;
 	}
 	
 customernav {
@@ -38,8 +37,7 @@ customernav {
 
 
 .customernav{
-padding-bottom: 20px;
-margin-left: 50px;
+width:1200px; margin:50px auto;
 }
 .customernav ul li a{
 padding-top : 20px;
@@ -62,14 +60,16 @@ padding-top : 20px;
 
 
 .contentsarea{
-width : 800px;
-margin-left : 200px;
+width : 1000px;
+float:left; 
 padding-bottom : 10px;
-border-bottom: 3px solid #222;
-}
 
+}
+.contentsarea h3{
+	border-bottom: 3px solid #222; padding-bottom:15px;
+}
 .dropdownlist{
-width : 800px;
+width : 1000px;
 margin-left : 200px;
 padding-bottom : 10px;
 border-bottom: 3px solid #222;
@@ -79,13 +79,12 @@ a{
 text-decoration : none;
 }
 .qnacontents{
-margin-left : 200px;
+width:1000px;
 }
 .qnacontents tr td{
 color : black;
 border: 1px solid white;
 border-bottom: 1px solid #eee;
-
 }
 
 .morebtn {
@@ -101,18 +100,17 @@ border:1px solid #eee;
 </head>
 <body>
 	<div id="app">
-	<div class="customerwrap">
-		<customernav>
+	<div class="customerwrap">		
 		<div class="customernav">
-			<h2>고객센터</h2>
+		<customernav>
+			<h1>고객센터</h1>
 			<ul>
 				<li><a href="faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
 				<li><a href="onetoone.do" style="color: black;">1:1 문의 게시판</a></li>
 			</ul>
-		</div>
 		</customernav>
 		
-				<div class="contentsarea"><h3>자주 묻는 질문</h3></div>
+				<div class="contentsarea"><h3>자주 묻는 질문</h3>
 				
 				<table>
 
@@ -135,8 +133,8 @@ border:1px solid #eee;
 				<table class="qnacontents">
 				<tr>
 				<td align="center" style="width:200px; font-weight: bold;">자주묻는 질문</td>
-				<td align="left" style="width:800px;">가품 ・ 손상/오염/사용감 있는 상품 판매에 대한 제재</td>
-				<td align="right" style="width:100px;"><i class="fa-solid fa-plus"></i></td>
+				<td align="left" style="width:1000px;">가품 ・ 손상/오염/사용감 있는 상품 판매에 대한 제재</td>
+				<td align="right" style="width:120px;"><i class="fa-solid fa-plus"></i></td>
 				
 				
 				</tr>
@@ -146,6 +144,8 @@ border:1px solid #eee;
 				<td colspan="3" style="border: none;"><button  class="morebtn" style="cursor: pointer;">더보기<i class="fa-solid fa-chevron-down"></i></button><td>
 				</tr>
 				</table>
+				</div>
+				</div>
 				</div>
 	</div>
 

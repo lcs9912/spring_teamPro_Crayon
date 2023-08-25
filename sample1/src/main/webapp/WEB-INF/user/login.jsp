@@ -153,8 +153,7 @@ main {
 						<input type="password" id="pwd" v-model="pwd" @keyup="fnbut" @keyup.enter="fnLogin" ref="pwdInput">
 						<i class="fa-solid fa-lock icon"></i>
 					</div>
-				</div>
-			
+				</div>			
 			<div class="loginwindownot" v-if="!pwdflg">
 				<button class="loginbtn" >로그인</button> 
 			</div>

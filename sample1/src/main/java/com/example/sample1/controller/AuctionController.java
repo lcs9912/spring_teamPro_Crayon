@@ -70,8 +70,6 @@ public class AuctionController {
 		}
 	
 	
-	
-	
 	//Aution 리스트 출력
 	@RequestMapping(value = "/auction/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

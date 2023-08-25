@@ -13,7 +13,7 @@
 
 table {
 margin-top : 10px;
-	width : 800px;
+	width : 1000px;
 	border: 1px solid #a2a2a2;
 	border-collapse: collapse;
 	text-align: center;
@@ -28,18 +28,17 @@ th, td {
 
 
 .customerwrap {
-	width:1200px; margin:0 auto;
+	width:100%;
 	}
 	
 .customernav {
-	float:left; width:200px; color:#000;
+	width:1200px; margin:50px auto;
 	}
-
-
-.customernav{
-padding-bottom: 20px;
-margin-left: 50px;
+customernav{
+		float:left; width:200px; color:#000;
 }
+
+
 .customernav ul li a{
 padding-top : 20px;
 text-decoration:none;
@@ -60,10 +59,13 @@ padding-top : 20px;
 
 
 .contentsarea{
-width : 800px;
-margin-left : 200px;
-padding-bottom : 10px;
-border-bottom: 3px solid #222;
+width : 1000px;
+float:left;
+margin-bottom : 150px;
+}
+
+.contentsarea h3{
+	border-bottom: 3px solid #222; padding-bottom:15px;
 }
 
 .dropdownlist li{
@@ -97,9 +99,8 @@ background-color : white;
 border : 1px solid #A2A2A2;
 padding : 5px;
 font-weight: bold;
-margin-top : 5px;
+margin: 25px 10px 10px 0;
 cursor: pointer;
-margin-right : 1px;
 }
 
 .qnaallselectnot{
@@ -107,9 +108,8 @@ background-color : white;
 border : 1px solid #A2A2A2;
 padding : 5px;
 font-weight: bold;
-margin-top : 5px;
+margin: 25px 10px 10px 0;
 cursor: pointer;
-margin-right : 1px;
 }
 
 
@@ -156,7 +156,6 @@ border : 1px solid #eee;
 background-color : #eee;
 }
 
-
 .selectpagebtn:hover {
   background-color: #808080;;
   border: 1px solid black;
@@ -166,68 +165,62 @@ background-color : #eee;
   color: #eee;
 }
 
-
 </style>
 <%@ include file="../header/shopheader.jsp"%>
 </head>
 <body>
 	<div id="app">
 	<div class="customerwrap">
-		<customernav>
 		<div class="customernav">
-			<h2>고객센터</h2>
-			<ul>
-				<li><a href="faq.do" style="color: black;">자주 묻는 질문</a></li>
-				<li><a href="onetoone.do" style="color: black; font-weight: bold;">1:1 문의 게시판</a></li>
-			</ul>
-		</div>
+		<customernav>
+			<h1>고객센터</h1>
+				<ul>
+					<li><a href="faq.do" style="color: black;">자주 묻는 질문</a></li>
+					<li><a href="onetoone.do" style="color: black; font-weight: bold;">1:1 문의 게시판</a></li>
+				</ul>		
 		</customernav>
 		
-				<div class="contentsarea"><h3>1:1 문의 게시판</h3></div>
+		<div class="contentsarea"><h3>1:1 문의 게시판</h3>
 
-<table>
-<tbody>
-				<button class="qnaallselect">전체선택</button>
-				<button class="qnaallselectnot">선택해제</button>
+			<table>
 				<tbody>
-				
-				<tr class="onetoonehead">
-				<th>선택</th>
-				<th><div align="center">번 호</div></th>
-				<th><div align="center">제 목</div></th>
-				<th><div align="center">작성자</div></th>
-				<th><div align="center">작성일</div></th>
-				<th><div align="center">조회수</div></th>
-				<th><div align="center">처리상태</div></th>
-				</tr>
-				
-				
-				<tr v-for="item in paginatedList" :key="item.qnaNumber">
-				
-				  <td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
-				  <td>{{ item.qnaNumber }}</td>
-				  <td align="left">
-				    <a href="javascript:;">
-				      <span style="font-weight: bold;">[{{ item.qnaTypeName }}]</span> {{ item.qnaTitle }}
-				    </a>
-				  </td>
-				  <td>{{ item.userId }}</td>
-				  <td>{{ item.qnaDate }}</td>
-				  <td>{{ item.qnaCnt }}</td>
-				  <td>{{ item.qnaAnsweryn }}</td>
-</tr>
- 
-				</tbody>
-				</table>
+					<button class="qnaallselect">전체선택</button>
+					<button class="qnaallselectnot">선택해제</button>
+					<tbody>
+					<tr class="onetoonehead">
+					<th>선택</th>
+					<th><div align="center">번 호</div></th>
+					<th><div align="center">제 목</div></th>
+					<th><div align="center">작성자</div></th>
+					<th><div align="center">작성일</div></th>
+					<th><div align="center">조회수</div></th>
+					<th><div align="center">처리상태</div></th>
+					</tr>
+					
+					<tr v-for="item in paginatedList" :key="item.qnaNumber">
+					  <td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
+					  <td>{{ item.qnaNumber }}</td>
+					  <td align="left">
+					    <a href="javascript:;">
+					      <span style="font-weight: bold;">[{{ item.qnaTypeName }}]</span> {{ item.qnaTitle }}
+					    </a>
+					  </td>
+					  <td>{{ item.userId }}</td>
+					  <td>{{ item.qnaDate }}</td>
+					  <td>{{ item.qnaCnt }}</td>
+					  <td>{{ item.qnaAnsweryn }}</td>
+					</tr> 
+					</tbody>
+			</table>
 				
 
 				<div align="right" style="width:1000px;">
-				<button class="qnaeditbtn">수정</button>
-				<button class="qnadeletbtn">삭제</button>
-				<button class="onetooneEditbtn">글쓰기</button>
+					<button class="qnaeditbtn">수정</button>
+					<button class="qnadeletbtn">삭제</button>
+					<button class="onetooneEditbtn">글쓰기</button>
 				</div>
 				
-		<div class="movebtn">
+			<div class="movebtn">
 				  <button @click="changePage(-1)">
 				    <i class="fa-solid fa-chevron-left"></i>
 				  </button>
@@ -242,12 +235,13 @@ background-color : #eee;
 				  <button @click="changePage(1)">
 				    <i class="fa-solid fa-chevron-right"></i>
 				  </button>
-		</div>
+			</div>
+			</div>
 				
-	</div>
+		</div>
 
 	</div>
-
+</div>
 	
 	
 </body>
