@@ -45,6 +45,8 @@ width:350px;
 height:300px;
 text-align:center;
 padding-top : 30px;
+border:1px solid #eee;
+border-radius:10px;
 }
 .payarea input{
 width:250px;
@@ -83,8 +85,8 @@ background-color:#eee;
 	<div class="payarea">
 		<div style="text-align:center; font-size:25px; color:#a2a2a2">입찰 금액</div> 
 		<div style="text-align:center; margin-top:5px;"><input type="text" id="number" v-model="info.aJoinPrice">P</div>
-		<div style="text-align:right; margin-right:50px;">내 보유 포인트 <b>P</b></div>
-		<div style="text-align:right; margin-right:50px;">입찰 후 포인트 <b>P</b></div>
+		<div style="text-align:center; margin-top:10px;">내 보유 포인트 <b>P</b></div>
+		<div style="text-align:center; margin-top:10px;">입찰 후 포인트 <b>P</b></div>
 		<div class="auctionbtnarea">
 			<button class="auctionbtn" @click="fnJoin">입찰 신청</button>
 			</div>
