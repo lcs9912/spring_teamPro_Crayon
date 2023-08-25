@@ -222,7 +222,7 @@
                         <li><a href="mainslider.do">HOME</a></li>
                         <li><a href="style.do">STYLE</a></li>
                         <li><a href="mainpageshopping.do">SHOP</a></li>
-                        <li><a href="mainpageshopping.do">UP</a></li>
+                        <li><a href="mainpageshopping.do">UP<i class="fa-solid fa-plus"></i></a></li>
                         <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     </ul>
                 </div><!--헤더 대분류 메뉴영역 종료-->
