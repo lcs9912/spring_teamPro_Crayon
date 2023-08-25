@@ -27,7 +27,7 @@ h1 {
 
 table {
 table-layout: fixed;
-	width: 800px;
+	width: 600px;
 	margin: 0 auto;
 	padding: 20px;
 
@@ -165,12 +165,10 @@ text-align:center;
 .idsection{
 text-align:center;
 width : 1200px;
-display: inline-block;
-margin-left : 17%;
-border: 1px solid black;
+margin : 0 auto;
 padding : 10px;
 border-radius: 30px;
-margin-bottom:30px;
+
 }
 
 .selectgender{
@@ -187,17 +185,27 @@ display:block;
 .aa{
 margin-bottom:5px;
 }
+.idsectionarea{
+width:100%;
+margin-bottom:50px;
+margin-top : 50px;
+}
+.joinarea{
+
+}
 </style>
 
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body>
 <div id="app">
-<div>
-	<h1>회원가입</h1>
+<div class="idsectionarea">
+	
 	
 
 <section class="idsection">
+<h1>회원가입</h1>
+<div class="joinarea">
 		<table>
 <tbody>
 			<tr>
@@ -310,6 +318,7 @@ margin-bottom:5px;
 		<button @click="fnJoin" class="btnhover">가입</button>
 		<a href="login.do" ><button class="btnhover">취소</button></a>
 		</td>
+		</div>
 		</div>
 </div>
 </div>
