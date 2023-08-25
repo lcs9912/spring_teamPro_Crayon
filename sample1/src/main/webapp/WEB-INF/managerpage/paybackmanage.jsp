@@ -40,10 +40,10 @@ a {	text-decoration:none;
 	.mypagewrap {
 		width:1200px; margin:50px auto;
 		clear:both; 
-		height:600px;
+		height:1000px;
 		} 
  	.mypagenav {
-		float:left; width:200px; color:#000;
+		float:left; width:200px; color:#000;height:800px;
 		} 
 		
 	.myinfo h2{
@@ -80,6 +80,10 @@ a {	text-decoration:none;
   display: flex;
   justify-content: center;
 }
+.sailcontainer{
+width:1000px;
+float:left;
+}
 .movebtn button{
 width : 40px;
 height: 30px;
@@ -100,7 +104,7 @@ border : 1px solid #eee;
 				<h2><a href="manager.do">관리자 페이지</a></h2>
 			<h3>회원 관리</h3>
 			<ul>
-			<li style="color:tomato;"><a href="checkedit.do">회원 조회/수정</a></li>
+			<li ><a href="checkedit.do">회원 조회/수정</a></li>
 			
 			</ul>
 		</div>
@@ -109,22 +113,23 @@ border : 1px solid #eee;
 		</div>
 		
 				<div class="myinfo">
-			<h3><a href="paybackmanage.do">환불 관리</a></h3>
+			<h3 style="color:tomato;"><a href="paybackmanage.do">환불 관리</a></h3>
 		</div>
 		
 		</nav>
 		<div class="sailcontainer">
 		<div>
-		<h3 style="margin-bottom:15px;">회원목록</h3><h4 style="float:right;">총 : 명</h4>
+		<h3 style="margin-bottom:15px;">답변 관리</h3>
 		<table>
 		<tr>
 		<th>선택</th>
 		<th>아이디</th>
-		<th>이름</th>
-		<th>나이</th>
-		<th>상태</th>
 		<th>포인트</th>
+		<th>상태</th>
 		<th>가입일</th>
+		<th>문의시간</th>
+		<th>답변시간</th>
+		<th>답변상태</th>
 		
 		</tr>
 		
@@ -136,6 +141,7 @@ border : 1px solid #eee;
 		<td></td>
 		<td></td>
 		<td></td>
+		<td>대기중</td>
 		</tr>
 		
 		
@@ -169,6 +175,66 @@ border : 1px solid #eee;
 				    <i class="fa-solid fa-chevron-right"></i>
 				  </button>
 		</div>
+				<div class="sailcontainer">
+		<div>
+		<h3 style="margin-bottom:15px;">답변 처리</h3>
+		<table>
+		<tr>
+		<th>선택</th>
+		<th>아이디</th>
+		<th>포인트</th>
+		<th>상태</th>
+		<th>가입일</th>
+		<th>문의시간</th>
+		<th>답변시간</th>
+		<th>답변상태</th>
+		
+		</tr>
+		
+		<tr>
+		<td><input type="checkbox"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>답변완료</td>
+		</tr>
+		
+		
+		</table>
+		<div class="cstbtn">
+		<button>조회</button>
+		<button>수정</button>
+		<button>삭제</button>		
+		</div>
+		
+		
+		
+
+</div>
+
+
+		</div>
+				<div class="movebtn">
+				  <button @click="changePage(-1)">
+				    <i class="fa-solid fa-chevron-left"></i>
+				  </button>
+				  
+				  <button class="selectpagebtn"
+				  v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+				  :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+				  :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+				  {{ pageNumber }}
+				 </button>
+				
+				  <button @click="changePage(1)">
+				    <i class="fa-solid fa-chevron-right"></i>
+				  </button>
+		</div>
+		
+		
 	</div>
 	</div>
 

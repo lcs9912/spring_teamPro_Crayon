@@ -146,19 +146,19 @@ a {	text-decoration:none;
 	<div class="mypagewrap">
 		<nav class="mypagenav">
 		<div class="myinfo">
-				<h2><a href="mypage.do">관리자 페이지</a></h2>
+				<h2><a href="manager.do">관리자 페이지</a></h2>
 			<h3>회원 관리</h3>
 			<ul>
-			<li>회원 조회/수정</li>
+			<li><a href="checkedit.do">회원 조회/수정</a></li>
 			
 			</ul>
 		</div>
 				<div class="myinfo">
-			<h3>물품 관리</h3>
+			<h3><a href="productmanage.do">물품 관리</a></h3>
 		</div>
 		
 				<div class="myinfo">
-			<h3>환불 관리</h3>
+			<h3><a href="paybackmanage.do">환불 관리</a></h3>
 		</div>
 		
 		</nav>
