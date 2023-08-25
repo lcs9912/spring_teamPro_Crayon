@@ -99,6 +99,11 @@ public class ProductController {
 	public String orderandsettle(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/pay/orderandsettle";
 	}
+	//
+	@RequestMapping("/sellBuy.do") 
+	public String sellBuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/product/sellBuy";
+	}
 	
 	//.dox
 	//상품 사이즈 조회
