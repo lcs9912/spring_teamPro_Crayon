@@ -228,16 +228,16 @@
                         <ul class="headerKindList">
                             <!-- 헤더 종류별 리스트 -->
                              <li>
-                                <a href="mainpageranking.do" :class="{active : activeValue == '1'}">추천</a>
+                                <a href="mainpageranking.do" :class="{active : activeValue == '0'}">추천</a>
                             </li>
                             <li>
-                                <a href="mainpageranking.do" :class="{active : activeValue == '2'}">랭킹</a>
+                                <a href="mainpageranking.do" :class="{active : activeValue == '1'}">랭킹</a>
                             </li>
                             <li>
-                                <a href="mainpageman.do" :class="{active : activeValue == '3'}">남성</a>
+                                <a href="mainpageman.do" :class="{active : activeValue == '2'}">남성</a>
                             </li>
                             <li>
-                                <a href="mainpagewoman.do" :class="{active : activeValue == '4'}">여성</a>
+                                <a href="mainpagewoman.do" :class="{active : activeValue == '3'}">여성</a>
                             </li>
                             <li>
                                 <a href="#" @click="fnActive('4')">신발</a>

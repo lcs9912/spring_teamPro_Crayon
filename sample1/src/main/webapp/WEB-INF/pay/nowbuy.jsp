@@ -264,8 +264,8 @@ display:none;
 					</div>
 				
 					<div class="allpaybtnarea">
-					<button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button>
-					<button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button>
+					<a href="payandpackage.do"><button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button></a>
+					<a href="payandpackage.do"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button></a>
 					</div>
 			</div>
 			

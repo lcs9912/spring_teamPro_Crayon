@@ -121,7 +121,7 @@ border : 1px solid #eee;
 		<th>선택</th>
 		<th>아이디</th>
 		<th>이름</th>
-		<th>나이</th>
+		<th>성별</th>
 		<th>상태</th>
 		<th>포인트</th>
 		<th>가입일</th>
