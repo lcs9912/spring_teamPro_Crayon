@@ -297,48 +297,30 @@
                         <div class="allcatearea catearea">
                             <!--카테고리 인풋영역 시작 -->                          
                             <div class="allcatebox cateselect">
-                                카테고리
-                                <p>모든 카테고리</p>
+                                카테고리1
+                                <p>더보기</p>
                             </div>
                             <div class="allcatecheck catecheckbox">
-                                <p class="catecheckptag">카테고리</p>
-                                <input type="checkbox" id="topwear" name="goodsallcate" class="checkbox">
-                                <label for="topwear"><span class="eventcheckbox"></span>상의</label>
-                                <input type="checkbox" id="lowest" name="goodsallcate" class="checkbox">
-                                <label for="lowest"><span class="eventcheckbox"></span>하의</label>
-                                <input type="checkbox" id="outer" name="goodsallcate" class="checkbox">
-                                <label for="outer"><span class="eventcheckbox"></span>아우터</label>
-                                <input type="checkbox" id="shoes" name="goodsallcate" class="checkbox">
-                                <label for="shoes"><span class="eventcheckbox"></span>신발</label>
-                                <input type="checkbox" id="sneakers" name="goodsallcate" class="checkbox">
-                                <label for="sneakers"><span class="eventcheckbox"></span>스니커즈</label>                                
-                                <input type="checkbox" id="boots" name="goodsallcate" class="checkbox">
-                                <label for="boots"><span class="eventcheckbox"></span>부츠</label>
-                                <input type="checkbox" id="flatshoes" name="goodsallcate" class="checkbox">
-                                <label for="flatshoes"><span class="eventcheckbox"></span>플랫슈즈</label>
-                                <input type="checkbox" id="loafer" name="goodsallcate" class="checkbox">
-                                <label for="loafer"><span class="eventcheckbox"></span>로퍼</label>
-                                <input type="checkbox" id="bag" name="goodsallcate" class="checkbox">
-                                <label for="bag"><span class="eventcheckbox"></span>가방</label>
-                                <input type="checkbox" id="wallet" name="goodsallcate" class="checkbox">
-                                <label for="wallet"><span class="eventcheckbox"></span>지갑</label>
-                                <input type="checkbox" id="watch" name="goodsallcate" class="checkbox">
-                                <label for="watch"><span class="eventcheckbox"></span>시계</label>
-                                <input type="checkbox" id="cap" name="goodsallcate" class="checkbox">
-                                <label for="cap"><span class="eventcheckbox"></span>모자</label>
+                                <p class="catecheckptag">카테고리1</p>
+	                                <div  v-for="itemCate1 in cate1">
+		                                <input type="checkbox" id="topwear" :value="itemCate1.categorie1" v-model="cate1Value" @click="fnCate()" name="goodsallcate" class="checkbox">
+		                                <label for="topwear"><span class="eventcheckbox"></span>{{itemCate1.c1Text}}</label>
+	                               </div>
                             </div>
                         </div><!--카테고리 div영역 종료 -->
+                        
+                        
                         <div class="genderarea catearea"><!--성별 div영역 시작 -->
                             <div class="genderbox cateselect">
-                                성별
-                                <p>모든 성별</p>
+                                카테고리 2
+                                <p>더보기</p>
                             </div>
                             <div class="gendercheck catecheckbox">
-                                <p class="gendercheckptag">성별</p>
-                                <input type="checkbox" id="male" name="goodsallcate" class="checkbox">
-                                <label for="male"><span class="eventcheckbox"></span>남성</label>
-                                <input type="checkbox" id="female" name="goodsallcate" class="checkbox">
-                                <label for="female"><span class="eventcheckbox"></span>여성</label>
+                                <p class="gendercheckptag">카테고리2</p>
+	                                <div v-for="itemCate2 in cate2">
+		                                <input type="checkbox" id="male" :value="itemCate2.categorie2" v-model="cate2Value" @click="fnCate()" name="goodsallcate" class="checkbox">
+		                                <label for="male"><span class="eventcheckbox"></span>{{itemCate2.c2Text}}</label>
+	                                </div>
                             </div>
                         </div><!--성별 div영역 종료 -->
                         <div class="sizearea catearea"><!--사이즈 div영역 시작 -->                            
@@ -441,7 +423,7 @@
                 <div class="goodsdisplay">
                     <!--상품전시 영역 시작-->
                     <div class="goodsinfo">
-                        <span>상품 5000</span> <!-- 검색된 상품 갯수 -->
+                        <span>상품 {{shopList.length}}</span> <!-- 검색된 상품 갯수 -->
                         <span>인기순</span> <!-- 정렬 조건 -->
                     </div>
                     
@@ -487,8 +469,14 @@ var app = new Vue({
     el : '#app',
     data : {
     	shopList : [],
+    	cate1 : [],
+    	cate2 : [],
         uId : "${sessionId}",
         searchName : "${map.searchName}",
+        
+        // 카테고리 값
+        cate1Value : [],
+        cate2Value : [],
     },// data
     computed: {
         shopListGrouped() {
@@ -520,6 +508,25 @@ var app = new Vue({
                     }
                 });
         },
+        fnCateList : function(){
+            var self = this;
+            var nparmap = {searchName : self.searchName}
+            console.log(self.searchName);
+              $.ajax({
+                    url:"/searchCate.dox",
+                    dataType:"json",
+                    type : "POST",
+                    data : nparmap,
+                    success : function(data) {
+                    	self.cate1 = data.cate1;
+                    	self.cate2 = data.cate2;
+                    	console.log(self.cate1);
+                    	console.log(self.cate2);
+                    	
+						
+                    }
+                });
+        },
         // 상품상세페이지 이동
         fnProInfo : function(productModel){
         	var self = this;
@@ -527,10 +534,16 @@ var app = new Vue({
         	console.log(productModel);
         	
         },
+        // 카테고리 검색
+        fnCate : function(){
+        	var self = this;
+        	console.log(self.cate1Value);
+        }
     }, // methods
     created : function() {
         var self = this;
 		self.fnGetList();
+		self.fnCateList();
     }// created
 });
 

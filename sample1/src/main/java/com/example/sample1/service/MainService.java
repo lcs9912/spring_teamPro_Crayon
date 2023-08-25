@@ -11,4 +11,7 @@ public interface MainService {
 	
 	// SHOP 리스트 출력
 	List<Main> searchShopList(HashMap<String, Object> map);
+	// 카테고리 1 , 2
+	HashMap<String, Object> searchCategorie(HashMap<String, Object> map);
+	
 }

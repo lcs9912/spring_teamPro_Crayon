@@ -21,15 +21,23 @@
 		) M ON M.PRODUCT_MODEL = U.PRODUCT_MODEL
 		WHERE 1=1
 		<if test="searchName != '' and  searchName != null">
-			AND (U.PRODUCT_NAME LIKE  '%' || #{searchName} || '%'
-					 OR U.PRODUCT_KNAME LIKE '%' || #{searchName} || '%'
-					 OR B.BRAND_NAME LIKE '%' || #{searchName} || '%')
+			AND (U.PRODUCT_NAME LIKE  CONCAT('%',#{searchName},'%')
+					 OR U.PRODUCT_KNAME LIKE CONCAT('%',#{searchName},'%')
+					 OR B.BRAND_NAME LIKE CONCAT('%',#{searchName},'%'))
 		</if>
 		GROUP BY U.PRODUCT_MODEL
-		ORDER BY U.PRODUCT_INTEREST DESC;
+		ORDER BY U.PRODUCT_INTEREST DESC
 	</select>
 	
 	
-	
-	
+	<!-- 카테고리 1 -->
+	<select id="selectCategorie1" parameterType="hashmap"
+		resultType="com.example.sample1.model.Main">
+		SELECT * FROM T1_PRODUCT_CATEGORIE1	
+	</select>
+	<!-- 카테고리 2 -->
+	<select id="selectCategorie2" parameterType="hashmap"
+		resultType="com.example.sample1.model.Main">
+		SELECT * FROM T1_PRODUCT_CATEGORIE2	
+	</select>
 </mapper>

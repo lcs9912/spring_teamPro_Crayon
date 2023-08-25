@@ -14,4 +14,8 @@ public interface MainMapper {
 	
 	// SHOP 리스트 출력
 	List<Main> selectShopList (HashMap<String, Object> map);
+	// 카테고리 1
+	List<Main> selectCategorie1(HashMap<String, Object> map);
+	// 카테고리 2
+	List<Main> selectCategorie2(HashMap<String, Object> map);
 }

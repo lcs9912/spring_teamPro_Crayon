@@ -58,4 +58,14 @@ public class MainController {
 		resultMap.put("shopList", shopList);
 		return new Gson().toJson(resultMap);
 	}
+	
+	// SHOP 리스트 출력
+	@RequestMapping(value = "/searchCate.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchCate(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = mainService.searchCategorie(map);
+		
+		return new Gson().toJson(resultMap);
+	}
 }

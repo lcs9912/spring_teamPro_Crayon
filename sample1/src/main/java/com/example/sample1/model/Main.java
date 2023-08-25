@@ -42,8 +42,7 @@ public class Main {
 	// T1_PRODUCT_SIZE
 	private String size;
 	
-	private int sellminprice; // 즉시 판매가격
-	private int buyminprice; // 즉시 구매가격
+	
 	private String recenttransaction; // 최근거래가
 	
 	//T1_TRANSACTION

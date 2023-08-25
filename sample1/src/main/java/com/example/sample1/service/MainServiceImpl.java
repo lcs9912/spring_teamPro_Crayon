@@ -20,6 +20,19 @@ public class MainServiceImpl implements MainService{
 		return mainMapper.selectShopList(map);
 	}
 
+	@Override
+	public HashMap<String, Object> searchCategorie(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Main> cate1 =  mainMapper.selectCategorie1(map); // 카테고리 1
+		List<Main> cate2 =  mainMapper.selectCategorie2(map); // 카테고리 1
+		resultMap.put("cate1", cate1);
+		resultMap.put("cate2", cate2);
+		return resultMap;
+	}
+
+	
+
 	
 	
 
