@@ -32,6 +32,7 @@ a {	text-decoration:none;
 	.mypagewrap {
 		width:1200px; margin:50px auto;
 		clear:both; 
+		height:600px;
 		}
 	.mypagenav {
 		float:left; width:200px; color:#000;
@@ -43,11 +44,11 @@ a {	text-decoration:none;
 	
 		
 	.myinfo h3{
-			margin:30px 0;
+			margin: 30px 0px 10px;
 		}	
 		
 	.myinfo ul li{
-			margin:10px 0;
+			margin:10px 10px;
 		}	
 		
 	
@@ -118,16 +119,9 @@ a {	text-decoration:none;
 	    	.listdv{
 	    		height:325px; margin:0; text-align:center; line-height:200px;
 	     	}
+
 	     	
-	     	.joygooddv {
-	     		height:325px; margin:0; text-align:center; line-height:100px;
-	     		background-color:rgb(248,248,248); border-radius:20px;
-	     	}
-	     	
-			.joygooddv button{
-				border:1px solid #999; border-radius:10px; padding:8px;
-				margin-left:5px; 
-			}
+
 			.pointaddbtn{
 				margin-top:10px; background-color:white;
 				border: 1px solid #999; border-radius: 10px;
@@ -152,25 +146,21 @@ a {	text-decoration:none;
 	<div class="mypagewrap">
 		<nav class="mypagenav">
 		<div class="myinfo">
-			<h2><a href="mypage.do">마이 페이지</a></h2>
-			<h3>쇼핑 정보</h3>
+				<h2><a href="mypage.do">관리자 페이지</a></h2>
+			<h3>회원 관리</h3>
 			<ul>
-				<li><a href="mypagebuylist.do">구매 내역</a></li>
-				<li><a href="mypageselllist.do">판매 내역</a></li>				
-				<li><a href="mypageproductinter.do">관심 상품</a></li>
+			<li>회원 조회/수정</li>
+			
 			</ul>
 		</div>
-		<div class="myinfo">
-			<h3>내 정보</h3>
-			<ul>
-				<li><a href="mypagelogininfo.do">로그인 정보</a></li>
-				<li><a href="mypageprofile.do">프로필 관리</a></li>
-				<li><a href="mypageaddr.do">주소록</a></li>
-				<li><a href="mypagepaylist.do">결제 정보</a></li>
-				<li><a href="mypagebank.do">판매 정산 계좌</a></li>				
-				<li><a href="mypageaddpoint.do">포인트 충전</a></li>
-			</ul>
+				<div class="myinfo">
+			<h3>물품 관리</h3>
 		</div>
+		
+				<div class="myinfo">
+			<h3>환불 관리</h3>
+		</div>
+		
 		</nav>
 		<div class="sailcontainer">
 			<div class="profilearea">
@@ -192,79 +182,12 @@ a {	text-decoration:none;
 					<a href="mypageaddpoint.do"><button class="pointaddbtn">포인트충전</button></a>
 				</div>
 				<div class="profileinner4">
-					<p>일반회원</p>
-					<p>회원등급</p>
+					<p>관리자</p>
 				</div>
 
 			</div>
-			<div class="mylist">
-				<div class="listhead">
-				<h2>구매내역</h2>
-				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
-				</div>
-				<div class="viewdv">
-				<ul class="listul">
-					<li>
-						<p>전체</p>
-						<p>0</p>
-					</li>
-					<li>
-						<p>입찰 중</p>
-						<p>0</p>
-					</li>
-					<li>
-						<p>진행 중</p>
-						<p>0</p>
-					</li>
-					<li>
-						<p>종료</p>
-						<p>0</p>
-					</li>
-				</ul>
-				</div>
-				<div class="listdv">
-					<p>거래내역이 없습니다</p>
-				</div>
-			</div>
-			<div class="mylist">
-				<div class="listhead">
-				<h2>판매내역</h2>
-				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
-				</div>
-				<div class="viewdv">
-				<ul class="listul">
-					<li>
-						<p>전체</p>
-						<p>0</p>
-					</li>
-					<li>
-						<p>입찰 중</p>
-						<p>0</p>
-					</li>
-					<li>
-						<p>진행 중</p>
-						<p>0</p>
-					</li>
-					<li>
-						<p>종료</p>
-						<p>0</p>
-					</li>
-				</ul>
-				</div>
-				<div class="listdv">
-					<p>거래내역이 없습니다</p>
-				</div>
-			</div>
-			<div class="mylist">
-				<div class="listhead">
-				<h2>관심상품</h2>
-				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
-				</div>
-				<div class="joygooddv">
-					<p>추가하신 관심상품이 없습니다.</p>
-					<button><a href="mainpageshopping.do">shop 바로가기</a></button>
-				</div>
-			</div>
+
+
 		</div>
 	</div>
 	</div>
