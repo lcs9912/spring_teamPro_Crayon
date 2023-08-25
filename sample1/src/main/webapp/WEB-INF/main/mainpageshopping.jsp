@@ -18,7 +18,6 @@
             margin: 10px auto;
             z-index: 900;            
         }
-
             .shopwrap h1 {
                 height: 70px;
                 text-align: center;

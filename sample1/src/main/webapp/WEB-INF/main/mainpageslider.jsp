@@ -17,7 +17,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            height: 450px;
+            height: 550px;
             overflow: hidden;
         }
 
@@ -29,12 +29,12 @@
 
         .slide {
             flex-shrink: 0; width: 100%;
-            height: 100%; background-position: center;
+            height: 100%; background-position-y: 13%;
             background-size: cover;
         }
 
             .slide h1 {
-                text-align: center; margin-top: 185px;
+                text-align: center; margin-top: 255px;
                 color: #fff; font-size: 50px;
             }
                 .innertext {animation: innertext 4s ease-in-out infinite;}
@@ -44,7 +44,7 @@
                 }
 
         .slide-button {
-            position: absolute; top: 50%;
+            position: absolute; top: 55%;
             transform: translateY(-50%);
             font-size: 80px; color: #fff;
             z-index: 1; background: transparent;
@@ -103,27 +103,27 @@
             <button class="slide-button slide-prev">&lt;</button>
             <button class="slide-button slide-next">&gt;</button>
             <div class="slider">
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617476-52258cff-0aeb-4299-b0d3-82a1bb2c8f1f.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263018347-2e717a24-d0c7-47db-b892-40dd90821d46.gif');">
                     <h1 class="innertext">
-                        Limited Edition 경매로 입찰
+                       Get Your CrayoN
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263030471-4930e198-91cf-4610-8fd9-5e1ba7f67a8e.gif');">
                     <h1 class="innertext">
                         Luxury Item, Rare Goods!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263016426-b1d3eaff-4eb9-4832-81c0-56bce993bd2c.gif');">
                     <h1 class="innertext">
                         완벽한 당신을 위한 최고의 선택!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263013223-409c63c4-2638-42ea-a097-c57553630b4d.gif'); ">
                     <h1 class="innertext">
                         Hot Summer Sale Event!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263003100-bec63b61-deca-4e29-b578-24948b3006d7.jpg');">
                     <h1 class="innertext">
                         Luxury Item, Rare Goods!
                     </h1>                    
@@ -224,7 +224,7 @@
 
     // 이미지 슬라이더 스크립트
     let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 4000);
+    let slideInterval = setInterval(nextSlide, 3700);
 
     function moveToSlide(index) {
         if (index < 0) {
@@ -250,7 +250,7 @@
 
     function startSlideInterval() {
         pauseSlideInterval();
-        slideInterval = setInterval(nextSlide, 4000);
+        slideInterval = setInterval(nextSlide, 3700);
     }
     $('.slide-prev').on('click', function () {
         moveToSlide(currentSlide - 1);

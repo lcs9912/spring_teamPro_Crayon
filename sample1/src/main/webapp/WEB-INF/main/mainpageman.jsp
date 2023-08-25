@@ -34,17 +34,17 @@
         }
 
             .slide h1 {
-                text-align: center; margin-top: 185px;
+                text-align: center; margin-top: 255px;
                 color: #fff; font-size: 50px;
             }
-                .innertext {animation: innertext 4s ease-in-out infinite;}
+                .innertext {animation: innertext 3.7s ease-in-out infinite;}
 
                 @keyframes innertext {
                     from {opacity: 0; font-size:40px;} to {opacity: 1; font-size:50px;}
                 }
 
         .slide-button {
-            position: absolute; top: 50%;
+            position: absolute; top: 55%;
             transform: translateY(-50%);
             font-size: 80px; color: #fff;
             z-index: 1; background: transparent;
@@ -226,7 +226,7 @@
 
     // 이미지 슬라이더 스크립트
     let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 4000);
+    let slideInterval = setInterval(nextSlide, 3700);
 
     function moveToSlide(index) {
         if (index < 0) {
@@ -252,7 +252,7 @@
 
     function startSlideInterval() {
         pauseSlideInterval();
-        slideInterval = setInterval(nextSlide, 4000);
+        slideInterval = setInterval(nextSlide, 3700);
     }
     $('.slide-prev').on('click', function () {
         moveToSlide(currentSlide - 1);
