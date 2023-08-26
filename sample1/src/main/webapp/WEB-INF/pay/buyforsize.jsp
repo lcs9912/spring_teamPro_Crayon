@@ -59,6 +59,11 @@
 		text-align:center;
 		height: 500px;
 	}
+	.selected { /* 선택 시 변경 효과 */
+		background-color: black;
+		border-color: white; 
+		color: tomato;
+	}
 	.custom-button{
 		background-color:white;
 		border : 1px solid #E1E1E1;
@@ -103,24 +108,6 @@
 		background-color: #B5B5B5;
 		float : left;
 	}
-	.selected {
-		background-color: #eee;
-		border-color: black; /* 선택 시 테두리 색상 변경 */
-		color: red;
-	}
-	.custom-button {
-	  background-color: white;
-	  border: 1px solid black;
-	  padding: 10px;
-	  margin: 5px;
-	  cursor: pointer;
-	}
-	
-	.custom-button.clicked {
-		background-color: black;
-		border: 1px solid white;
-		color : white;
-	}
 </style>
 
 </head>
@@ -132,9 +119,11 @@
 			<div class="productcontents">
 				<div class="productheader" style="display: flex; align-items: center;">
 				    <div class="productinfo">
-				        <img :src="img.pImgPath" style="max-width : 80px">
+				    	<!-- 상품이미지 출력 -->
+				        <img :src="img.pImgPath" style="max-width : 80px"> 
 				    </div>
 				    <div style="margin-left: 10px;">
+				    	<!-- 모델번호,상품명,한글명 출력 -->
 				        <div class="productdetailhead">{{proInfo.productModel}}</div>
 				        <div class="productdetailname">{{proInfo.productName}}</div>
 				        <div class="productdetailtransname">{{proInfo.productKname}}</div>
@@ -144,36 +133,40 @@
 			</div>
 	
 			<div class="productdetailsizarea">
-				<ul>
-					<li>
-						<button v-for="sItem in computedSizeOptions" :value="sItem.productSize" class="custom-button"
-						:class="{ 'clicked': sItem.clicked }" @click="handleButtonClick(sItem)">
-							<div>
-								<p>{{sItem.size}}</p>
-								<p>구매입찰</p>
-							</div>
+			  <button v-for="sItem in computedSizeOptions" :key="sItem.productSize"
+			          :class="['custom-button', { selected: selectedSize === sItem.productSize }]"
+			          @click="handleSizeButtonClick(sItem.productSize)">
+			    <!-- 사이즈+가격 출력 \\ 재고 없으면 구매입찰 출력 -->
+			    <div>{{ sItem.size }}</div>
+			    <div>{{price}}</div>
+			  </button>
+			</div>
+			
+			<div v-if="selectedSize"  class="buyboxarea1">
+				<!-- 구매입찰이 아닌경우 -->
+				<div v-if="price !== '구매입찰'">
+					<a href="buyagree.do">
+						<button class="buy-button" disabled>
+							<strong>가격</storng>
+							<p>불꽃배송(1~2일소요)</p>	
 						</button>
-					</li>
-				</ul>
+					</a>
+					<a href="buyagree.do">
+						<button class="buy-button" disabled>
+							<strong>가격</storng>
+							<p>일반배송(5~7일소요)</p>
+						</button>
+					</a>
+				</div>
+				<!-- 구매입찰이 필요한 경우 -->
+				<div v-if="price === '구매입찰'" class="buyboxarea1">
+					<a href="buyagree.do"><button class="buy-button" disabled>구매입찰</button></a>
+				</div>
+				<div v-else  class="buyboxarea1">
+				</div>
 			</div>
-	
-			<div class="buyboxarea1">
-				<a href="buyagree.do"><button class="buy-button" disabled>구매입찰</button></a>
-			</div>
-<!-- 			<div class="buyboxarea2"> -->
-<!-- 				<a href="buyagree.do"> -->
-<!-- 					<button class="buy-button" disabled> -->
-<!-- 						<strong>가격</storng> -->
-<!-- 						<p>불꽃배송(1~2일소요)</p>	 -->
-<!-- 					</button> -->
-<!-- 				</a> -->
-<!-- 				<a href="buyagree.do"> -->
-<!-- 					<button class="buy-button" disabled> -->
-<!-- 						<strong>가격</storng> -->
-<!-- 						<p>일반배송(5~7일소요)</p> -->
-<!-- 					</button> -->
-<!-- 				</a> -->
-<!-- 			</div> -->
+			
+			
 		</div>
 	</div>
 </div>
@@ -184,11 +177,11 @@
 var app = new Vue({
 	el : '#app',
 	data : {
-		list : [],
-		sList : [],
-		img : {},
-		pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue",
-		proInfo : {},
+		selectedSize: null,
+		sList : [], // size 호출 시 
+		img : {}, // 상품이미지 주소경로 호출
+		pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue", //상품이미지사진 상품이름으로 호출
+		proInfo : {}, // 상품상세정보 호출
 		product :{
 			pName : "",
 			pModel : "",
@@ -198,12 +191,13 @@ var app = new Vue({
 			launch : "",
 			endDate : "",
 			pCategorie1 : "0",
-			pCategorie2 : "4",
+			pCategorie2 : "4", // 카테고리2 데이터값에 맞는 size 데이터 호출
 			brand : "100",
 			sellBuy : "",
-			uId : "${sessionId}"
+			uId : "${sessionId}" // TRANSACTION 테이블에 거래내역 입력시 USER_ID 데이터 필요함
 		},
 		proNum : "221", // 상품 번호
+		price : "87000", // 결과확인용, 이전페이지에서 값 넘겨 받아와야함
 	},// data
 	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
 	computed: {
@@ -218,11 +212,13 @@ var app = new Vue({
 	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
 	      }
 	    }, 
+	    isBuyButtonEnabled() {
+		      return this.selectedSize !== null;	
+		    },
 	  },
-	methods : {
-		 handleButtonClick(sItem) {
-		      // 버튼 클릭 시 해당 버튼의 clicked 속성 값을 토글
-		      sItem.clicked = !sItem.clicked;
+	methods : { // 사이즈값 선택시 선택값에 따른 결제 버튼 활성화
+		 handleSizeButtonClick(productSize) {
+		      this.selectedSize = this.selectedSize === productSize ? null : productSize;
 		    },
 		//상품 정보 불러오기
 		fnProList : function(){

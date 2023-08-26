@@ -18,7 +18,7 @@ public interface ProductMapper {
 	//상품 사이즈 조회
 	List<Product> selectSize(HashMap<String, Object> map);
 	//상품 구매/판매 처리 시 사이즈 조회
-	List<Product> selectPaySize(HashMap<String, Object> map);
+	Integer selectPaySize(HashMap<String, Object> map);
 	//상품 브랜드 조회
 	List<Product> selectBrand(HashMap<String, Object> map);
 	//브랜드 이름 직접입력

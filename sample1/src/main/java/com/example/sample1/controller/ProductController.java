@@ -26,7 +26,6 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	//페이지 할당
 	// 상품상세 페이지
 	@RequestMapping("/product.do") 
     public String info(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -106,7 +105,7 @@ public class ProductController {
 		return "/pay/nowsell";
 	}
 	
-	//.dox
+	//
 	//상품 사이즈 조회
 	 @RequestMapping(value = "/size.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -121,8 +120,8 @@ public class ProductController {
 	@ResponseBody
 	public String paySize(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Product> list = productService.viewSize(map);
-		resultMap.put("size", list);
+		Integer size = productService.viewPaySize(map);
+		resultMap.put("size", size);
 		return new Gson().toJson(resultMap);
 		}
 	// 상품 브랜드 조회

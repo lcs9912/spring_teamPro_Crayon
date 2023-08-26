@@ -473,11 +473,10 @@ var app = new Vue({
         sessionId : "${sessionId}",
         proInfo : {}, // 리스트로 수정 예정 물품 정보 
         resent : {}, // 최근 거래가
-        modelNum : "", // 모델변호
         minSell : "", // 즉시 판매가
         minBuy : "", // 즉시 구매가
-        proNum : "221", // 상품 번호
-      
+        proNum : "", // 상품 번호
+        modelNum: "${map.modelNum}",
         interestFlg : false, // 관심상품 조회
 		series: [{
             name: [],

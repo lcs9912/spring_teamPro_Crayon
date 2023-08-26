@@ -366,13 +366,18 @@
 var app = new Vue({
 	el : '#app',
 	data : {
-		list : [],
 		size : "",
+		sizel : [
+			{size : ""}
+		],
 		img : {},
 		proNum : "221",
 		pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue",
 		pImgPath : "",
-		proInfo : {},
+		proInfo : {
+			
+		},
+		proInfo1 : {},
 		modelNum : "",
 		uId : "${sessionId}",
 		uName : "${sessionName}"
@@ -395,7 +400,7 @@ var app = new Vue({
                  	console.log(self.proInfo);
                  	
                  	console.log("모델번호"+self.modelNum);
-                 	
+                 	self.fnGetSize(self.proInfo);
                  }
              }); 
     	},
@@ -415,18 +420,20 @@ var app = new Vue({
 			});
 		},
 		// 사이즈 조회
-		fnGetSize : function () {
+		fnGetSize : function (proInfo1) {
 			var self = this;
-			var nparmap = {productSize : self.proInfo.productSize};
-			console.log(self.proInfo.productSize); //undefined
+			console.log("proInfo1", proInfo1); //19
+			var nparmap = {productSize : proInfo1.productSize};
+			
 			$.ajax({
 				url : "/pay/size.dox",
 				dataType : "json",
 				type : "POST",
 				data : nparmap,
 				success : function(data){
+					console.log("data ===>> ", data);
 					self.size = data.size;
-					console.log(self.proInfo.productSize); // 19
+					console.log(self.sizel); // 19
 				}
 			})
 		},
@@ -435,11 +442,12 @@ var app = new Vue({
 		var self = this;
 		self.fnProList();
 		self.fnGetImg();
-// 		self.fnGetSize();
+		console.log("self.proInfo ==>", self.proInfo);
+		self.fnGetSize(self.proInfo);
 	},// created
 	mounted: function() {
 	    var self = this;
-	    self.fnGetSize(); // 데이터 로딩 후 fnGetSize 호출
+	     // 데이터 로딩 후 fnGetSize 호출
 	}
 });
 </script>

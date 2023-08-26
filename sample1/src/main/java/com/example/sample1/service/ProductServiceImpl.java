@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 	// 상품 구매/판매시 사이즈 조회
 	@Override
-	public List<Product> viewPaySize(HashMap<String, Object> map) {
+	public Integer viewPaySize(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return productMapper.selectPaySize(map);
 	}
