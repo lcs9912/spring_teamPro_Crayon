@@ -8,10 +8,7 @@
     <script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>shopping 페이지 틀작업</title>
-
 <style>
-
-
         /*SHOP영역 CSS 시작*/ 
         .shopwrap {
             width: 1200px;
@@ -22,7 +19,6 @@
                 height: 70px;
                 text-align: center;
             }
-
         .shopnav {           
             height: 55px; width:1200px;
             border-bottom: 1px solid #e6e4e4;
@@ -36,18 +32,14 @@
         .navmenu > ul > li {
             display: inline-block; float: left; 
             margin: 12px 20px 12px 0; font-size: 17px;}
-
         
         
-
-
         /*상품카테고리 세로선택 영역 시작*/
         aside {
             width: 220px;
             float: left;
             top:120px;
         }
-
         .sidecate {
             width: 220px;
             background: #fff;
@@ -65,8 +57,6 @@
             .sidecate::-webkit-scrollbar-track {
                 background-color: rgba(255, 255, 255, 0); /* 스크롤바 배경색을 투명하게 설정 */
             }
-
-
             .sidecate h4 { /*상품 세로선택영역 숨겨진 div CHERK CSS 시작*/
                 width: 200px; height: 52px; margin-top: 25px;
             }
@@ -78,21 +68,20 @@
                     display: block; font-size: 15px;
                     cursor: pointer; padding-top: 15px;                  
                 }
-
                     .sidecate .cateselect p {
                         margin-top:10px; font-size: 16px;color: #e6e4e4;
                     }
-
-                    .sidecate .catecheckbox {display: none;}
+                    
                         .catecheckbox label{
                             width:180px; display:inline-block;
                         }
-
                         .catecheckbox p {
                             font-size: 16px; margin: 20px 0; cursor: pointer;
                         }
                         
-                            .shoessize td {
+                       
+                        
+                            .shoessize {
                                 border: 1px solid #a7a6a6;
                                 width: 61px; height: 35px;
                                 margin: 4px 7px 4px 0;
@@ -101,7 +90,7 @@
                                 line-height: 35px; color: #777;
                             }
                            
-                            .wearsize td {
+                            .wearsize  {
                                 border: 1px solid #a7a6a6;
                                 height: 35px;
                                 line-height: 28px;
@@ -111,12 +100,10 @@
                                 text-align: center;
                                 color: #777;
                             }
-
                             .clothsize {
                                 margin: 20px 0;
                             }
-
-                            .clothsize td {
+                            .clothsize  {
                                 border: 1px solid #a7a6a6;
                                 width: 61px; height: 35px;
                                 line-height: 35px;
@@ -131,30 +118,25 @@
 							    clear: both;
 							}
                         /*상품 세로선택영역 숨겨진 div CSS종료*/
-
                 /*상품카테고리 세로메뉴 영역 종료*/
         
         /*상품 품목별 전시영역 시작*/
         .goodsdisplay { /*상품 품목별 4개씩 분류 전시 영역*/
             float: left; width: 980px; margin-bottom:30px;
         }
-
         .goodsinfo {
             width: 980px;
             height: 24px;
             margin: 20px 0 24px 0;
         }
-
             .goodsinfo span:nth-child(1) {
                 float: left;
                 font-size: 14px;
                 color: #333;
             }
-
             .goodsinfo span:nth-child(2) {
                 float: right;
             }
-
         .goodsblock {
             width: 980px;
             height: 401px;
@@ -163,7 +145,6 @@
             grid-template-columns: repeat(4, 1fr); /* 가로로 4개씩 나열 */
             gap: 5px; /* 각 상품 사이의 간격 */
         }
-
 		.goodsblock {
 		    display: flex;
 		    flex-wrap: wrap;
@@ -175,18 +156,15 @@
                 background: #fff;
                 border-radius: 10px;
             }
-
                 .goodsblock article picture {
                     width: 230px;
                     height: 230px;
                     position: relative;
                 }
-
                     .goodsblock article picture img {
                         border-radius: 10px;
                         margin-bottom: 7px;
                     }
-
                     .goodsblock article picture > span {
                         position: absolute;
                         top: 10px;
@@ -195,73 +173,35 @@
                         font-weight: bold;
                     }
                 /*상품이미지 내부 거래수 스팬태그*/
-
                 .goodsmanual p {
                     font-size: 13px;
                     margin: 3px;
                 }
-
                     .goodsmanual p:nth-child(2) {
                         font-size: 11px;
                         color: #ccc;
                     }
                 /*상품설명 영,한 p태그 두개 영역*/
-
                 .goodsprice h4 {
                     margin-top: 5px;
                 }
-
                 .goodsprice p {
                     font-size: 11px;
                     color: #ccc;
                 }
             /*상품 품목별 전시영역 종료*/
         /*SHOP영역 CSS 종료*/
-
             /*체크박스 버튼 젤리 애니매이션 효과 CSS 시작*/
-            .checkbox {display:none;}
-            .checked {
-                border-color: transparent;
-                background: #333;
-                animation: jelly 0.6s ease;
-            }
-            .eventcheckbox::after {
-                content: '';
-                position: absolute;
-                top: 39%;
-                left: 8%;
-                width: 10px;
-                height: 6px;
-                border-left: solid white 3px;
-                border-bottom: solid white 3px;
-                transform-origin: top left;
-                transform: rotate(-45deg);          
-            }
-
-            .checkbox:checked ~ .eventcheckbox::after {
-                transform-origin: top right;
-                opacity: 1;    
-            }
-
-            .eventcheckbox {display:inline-block; position:relative; margin-right:5px;
-                            width:18px; height:18px; border:1px solid #c8ccd4;
-                            border-radius:3px; transition:background 0.1s ease;
-                            cursor:pointer; vertical-align:middle;}
-    
-            @keyframes jelly {
-                from{transform:scale(1, 1);}
-                30%{transform:scale(1.25, 0.75);}
-                40%{transform:scale(0.75, 1.25);}
-                50%{transform:scale(1.15, 0.85);}
-                65%{transform:scale(0.95, 1.05);}
-                75%{transform:scale(1.05, 0.95);}
-                to{transform:scale(1, 1);}
+            /* .checkbox {display: none;} */
+          
+            
+            .sizearea input[type="checkbox"] { display: none; }
+            .sizearea  label {
+            	width: 50px;
             }
             /*체크박스 버튼 젤리 애니매이션 효과 CSS 종료*/
-
 	
 </style>
-
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body>
@@ -295,127 +235,106 @@
                     <div class="sidecate">
                         <h4>필터</h4>
                         <div class="allcatearea catearea">
-                            <!--카테고리 인풋영역 시작 -->                          
-                            <div class="allcatebox cateselect">
+                            <!--카테고리 인풋영역 시작 -->         
+                            
+                                             
+                            <div class="allcatebox cateselect" v-if="!cate1Flg" @click="cate1Flg = true">  <!-- 클릭 하면 카테고리 on -->
                                 카테고리1
                                 <p>더보기</p>
                             </div>
-                            <div class="allcatecheck catecheckbox">
-                                <p class="catecheckptag">카테고리1</p>
-	                                <div  v-for="itemCate1 in cate1">
-		                                <input type="checkbox" id="topwear" :value="itemCate1.categorie1" v-model="cate1Value" @click="fnCate()" name="goodsallcate" class="checkbox">
-		                                <label for="topwear"><span class="eventcheckbox"></span>{{itemCate1.c1Text}}</label>
-	                               </div>
-                            </div>
+                            <div class="allcatecheck catecheckbox"  v-else>
+                                <p class="catecheckptag" @click="cate1Flg = false">카테고리1</p>  <!-- 클릭 하면 카테고리 off -->
+                                <div v-for="itemCate1 in cate1">
+	                                <label>
+				                    	<input type="checkbox" name="goodsallcate" class="checkbox">
+										<span class="eventcheckbox"></span>{{itemCate1.c1Text}}
+			                        </label>
+                          		</div>
                         </div><!--카테고리 div영역 종료 -->
                         
                         
-                        <div class="genderarea catearea"><!--성별 div영역 시작 -->
-                            <div class="genderbox cateselect">
-                                카테고리 2
+                        
+                        <div class="genderarea catearea"><!--카테고리2 div영역 시작 -->
+                            <div class="genderbox cateselect" v-if="!cate2Flg" @click="cate2Flg = true">
+                                카테고리2
                                 <p>더보기</p>
                             </div>
-                            <div class="gendercheck catecheckbox">
-                                <p class="gendercheckptag">카테고리2</p>
-	                                <div v-for="itemCate2 in cate2">
-		                                <input type="checkbox" id="male" :value="itemCate2.categorie2" v-model="cate2Value" @click="fnCate()" name="goodsallcate" class="checkbox">
-		                                <label for="male"><span class="eventcheckbox"></span>{{itemCate2.c2Text}}</label>
-	                                </div>
+                            <div class="gendercheck catecheckbox" v-else>
+                                <p class="gendercheckptag" @click="cate2Flg = false">카테고리2</p>
+                                <div v-for="itemCate2 in cate2">
+                                	<label>
+		                                <input type="checkbox" name="goodsallcate" class="checkbox">
+		                                <span class="eventcheckbox"></span>{{itemCate2.c2Text}}
+	                                </label>
+                                </div>
                             </div>
                         </div><!--성별 div영역 종료 -->
                         <div class="sizearea catearea"><!--사이즈 div영역 시작 -->                            
-                            <div class="sizebox cateselect">
+                            <div class="sizebox cateselect" v-if="!sizeFlg" @click="sizeFlg = true">
                                 사이즈
                                 <p>모든 사이즈</p>
                             </div>
-                            <div class="sizecheck catecheckbox">
+                            <div class="sizecheck catecheckbox" v-else>
                                 <!--사이즈 테이블 영역 시작-->
-                                <p class="sizecheckptag">사이즈</p>
-                                <p>신발</p>
-                                <table class="shoessize">
-                                    <tr>
-                                        <td><a href="#">220</a></td>
-                                        <td><a href="#">225</a></td>
-                                        <td><a href="#">230</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">235</a></td>
-                                        <td><a href="#">240</a></td>
-                                        <td><a href="#">245</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">250</a></td>
-                                        <td><a href="#">255</a></td>
-                                        <td><a href="#">260</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">265</a></td>
-                                        <td><a href="#">270</a></td>
-                                        <td><a href="#">275</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">280</a></td>
-                                        <td><a href="#">285</a></td>
-                                        <td><a href="#">290</a></td>
-                                    </tr>
-                                </table>
-                                <p>의류</p>
-                                <table class="wearsize">
-                                    <tr>
-                                        <td><a href="#">XXS</a></td>
-                                        <td><a href="#">XS</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">S</a></td>
-                                        <td><a href="#">M</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">L</a></td>
-                                        <td><a href="#">XL</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">XXL</a></td>
-                                        <td><a href="#">XXXL</a></td>
-                                    </tr>
-                                </table>
-                                <table class="clothsize">
-                                    <tr>
-                                        <td><a href="#">28</a></td>
-                                        <td><a href="#">29</a></td>
-                                        <td><a href="#">30</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">31</a></td>
-                                        <td><a href="#">32</a></td>
-                                        <td><a href="#">33</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">34</a></td>
-                                        <td><a href="#">35</a></td>
-                                        <td><a href="#">36</a></td>
-                                    </tr>
-                                </table>
+                                <p class="sizecheckptag" @click="sizeFlg = false">사이즈</p>
+                                
+                                <p>상의</p>
+                                <div v-for="topItem in topList" class="wearsize">  
+	                                <label>                             
+		                                <input type="checkbox" :value="topItem.productSize" v-model="topSize" @change="fnCateSearch">
+		                                {{topItem.size}}
+		                            </label>
+                                </div>
+                                
+                                <p>하의</p>
+                                <div v-for="bottomItem in bottomList" class="clothsize">
+                                    <label>
+	                                    <input type="checkbox" :value="bottomItem.productSize" v-model="bottomSize" @change="fnCateSearch">
+	                                    <span>{{bottomItem.size}}</span>  
+                                    </label>                               
+                                </div>
+                                
+                               	<p>신발</p>
+                                <div v-for="shoesItem in shoesList" class="shoessize">
+                                	<label>
+	                                    <input type="checkbox" :value="shoesItem.productSize" v-model="shoesSize" @change="fnCateSearch">
+	                                    <span>{{shoesItem.size}}</span>
+                                    </label>
+                                </div>
+                                
                             </div><!--사이즈 테이블 영역 종료-->
                         </div><!--사이즈 div영역 종료 -->
                         <div class="pricearea catearea"><!--가격 div영역 시작 -->                            
-                            <div class="pricebox cateselect">
+                            <div class="pricebox cateselect" v-if="!priceFlg" @click="priceFlg = true">
                                 가격
                                 <p>모든 가격</p>
                             </div>
-                            <div class="pricecheck catecheckbox">
-                                <p class="pricecheckptag">가격</p>
-                                <input type="checkbox" id="tenlow" name="goodsallcate" class="checkbox">
-                                <label for="tenlow"><span class="eventcheckbox"></span>10만 이하</label>
-                                <input type="checkbox" id="tenhigh" name="goodsallcate" class="checkbox">
-                                <label for="tenhigh"><span class="eventcheckbox"></span>10~30만원</label>
-                                <input type="checkbox" id="thirtyhigh" name="goodsallcate" class="checkbox">
-                                <label for="thirtyhigh"><span class="eventcheckbox"></span>30~50만원</label>
-                                <input type="checkbox" id="fiftyhigh" name="goodsallcate" class="checkbox">
-                                <label for="fiftyhigh"><span class="eventcheckbox"></span>50~100만원</label>
-                                <input type="checkbox" id="hundredhigh" name="goodsallcate" class="checkbox">
-                                <label for="hundredhigh"><span class="eventcheckbox"></span>100~300만원</label>
-                                <input type="checkbox" id="threehunredhigh" name="goodsallcate" class="checkbox">
-                                <label for="threehunredhigh"><span class="eventcheckbox"></span>300만 이상</label>
+                            <div class="pricecheck catecheckbox" v-else>
+                                <p class="pricecheckptag"  @click="priceFlg = false">가격</p>
+                                <label>
+	                                <input type="checkbox" name="goodsallcate" class="checkbox">
+	                                <span class="eventcheckbox"></span>10만 이하
+                                </label>
+                                <label>
+	                                <input type="checkbox" name="goodsallcate" class="checkbox">
+	                                <span class="eventcheckbox"></span>10~30만원
+                                </label>
+                                <label>
+	                                <input type="checkbox" name="goodsallcate" class="checkbox">
+	                                <span class="eventcheckbox"></span>30~50만원
+                                </label>
+                                <label>
+	                                <input type="checkbox" name="goodsallcate" class="checkbox">
+	                                <span class="eventcheckbox"></span>50~100만원
+                                </label>
+                                <label>
+	                                <input type="checkbox" name="goodsallcate" class="checkbox">
+	                                <span class="eventcheckbox"></span>100~300만원
+                                </label>
+                                <label>
+	                                <input type="checkbox" name="goodsallcate" class="checkbox">
+	                                <span class="eventcheckbox"></span>300만 이상
+                                </label>
                             </div>
                         </div><!--가격 인풋영역 종료 -->
                     </div>
@@ -460,23 +379,31 @@
             </div><!--세로 상세품목 선택영역, 상품전시 영역 시작-->
         </div><!-- 쇼핑 페이지 전체감싸기 태그, 슬라이드 메뉴, 세로 메뉴, 상품전시 영역 종료 -->
     </div>	
-
 </body>
-
 </html>
 <script>
 var app = new Vue({
     el : '#app',
     data : {
     	shopList : [],
-    	cate1 : [],
-    	cate2 : [],
         uId : "${sessionId}",
         searchName : "${map.searchName}",
-        
-        // 카테고리 값
-        cate1Value : [],
-        cate2Value : [],
+        cate1 : [],
+    	cate2 : [],
+    	shoesList : [],
+    	topList : [],
+    	bottomList : [],
+    	
+    	// 사이즈 벨류
+    	shoesSize : [],
+    	topSize : [],
+    	bottomSize : [],
+    	
+    	// 카테고리 플러그
+        cate1Flg : false,
+        cate2Flg : false,
+        sizeFlg : false,
+        priceFlg : false,
     },// data
     computed: {
         shopListGrouped() {
@@ -508,6 +435,7 @@ var app = new Vue({
                     }
                 });
         },
+        // 카테고리 리스트 출력
         fnCateList : function(){
             var self = this;
             var nparmap = {searchName : self.searchName}
@@ -520,8 +448,6 @@ var app = new Vue({
                     success : function(data) {
                     	self.cate1 = data.cate1;
                     	self.cate2 = data.cate2;
-                    	console.log(self.cate1);
-                    	console.log(self.cate2);
                     	
 						
                     }
@@ -534,70 +460,48 @@ var app = new Vue({
         	console.log(productModel);
         	
         },
-        // 카테고리 검색
-        fnCate : function(){
-        	var self = this;
-        	console.log(self.cate1Value);
-        }
+        // 사이즈 테이블 리스트
+        fnSizeList : function(){
+			var self = this;
+			var param = {};
+			$.ajax({
+				url : "/size.dox",
+				dataType : "json",
+				type : "POST",
+				data : param,
+				success : function(data) {
+					self.topList = data.size.slice(0,8);
+					self.bottomList = data.size.slice(8,17);
+					self.shoesList = data.size.slice(17,32);
+					
+				}
+			});
+		},
+		// 카테고리 검색
+		fnCateSearch : function(){
+			var self = this;
+			console.log(self.topSize);
+			console.log(self.bottomSize);
+			console.log(self.shoesSize);
+		}
+      
+       
     }, // methods
     created : function() {
         var self = this;
 		self.fnGetList();
 		self.fnCateList();
+		self.fnSizeList();
     }// created
 });
+    
 
-    $(function () {//사이드카테고리 선택영역에서 영역클릭 시 div가 보여지고 감춰지는 스크립트
-        $(".allcatebox").on("click", function () {//모든 카테고리 div를 클릭하면
-            $(".allcatecheck").show();//카테고리 체크박스 div를 보여주고
-            $(this).hide(); // 모든 카테고리 div를 숨김
-        });
-        $(".catecheckptag").on("click", function () {//모든 체크박스의 P태그를 클릭하면
-            $(".allcatebox").show();//모든 카테고리를 보여주고
-            $(".allcatecheck").hide(); // 카테고리 체크박스 div를 숨김
-        });
-
-        $(".genderbox").on("click", function () {//클래스만 젠더로 바꾸고 카테고리와 같은 함수명령
-            $(".gendercheck").show();
-            $(this).hide();
-        });
-        $(".gendercheckptag").on("click", function () {
-            $(".genderbox").show();
-            $(".gendercheck").hide();
-        });
-
-        $(".sizebox").on("click", function () {
-            $(".sizecheck").show();
-            $(this).hide();
-        });
-
-        $(".sizecheckptag").on("click", function () {//클래스만 사이즈로 바꿈
-            $(".sizebox").show();
-            $(".sizecheck").hide();
-        });
-        $(".pricebox").on("click", function () {
-            $(".pricecheck").show();
-            $(this).hide();
-        });
-
-        $(".pricecheckptag").on("click", function () {//클래스만 가격으로 바꿈
-            $(".pricebox").show();
-            $(".pricecheck").hide();
-        });
-    });
-
-   $(function () {
-        $("input[type='checkbox']").change(function () {
-            $(this).next("label").find(".eventcheckbox").toggleClass("checked");
-        });
-   	}); 
         
    $(document).ready(function () {
         // 스크롤 이벤트 처리
         $(window).scroll(function () {
             var scrollTop = $(window).scrollTop(); // 스크롤 위치 가져오기 
             var sidecateHeight = $(".sidecate").height();
-
             // shopnav 위치 조정
             if (scrollTop > 80) {
                 $(".shopnav").css({ "position": "fixed", "top": "80" });
