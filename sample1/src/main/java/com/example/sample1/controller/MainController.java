@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.sample1.model.Main;
 import com.example.sample1.service.MainService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -62,12 +64,34 @@ public class MainController {
 	@ResponseBody
 	public String ShopList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
+		// 카테고리 검색
+	      if (map.get("sizeArr") != null) {
+	         String json = map.get("sizeArr").toString();
+	         ObjectMapper mapper = new ObjectMapper();
+	         List<Object> sizeArr = mapper.readValue(json, new TypeReference<List<Object>>(){});
+	         map.put("sizeArr", sizeArr);
+	      }
+	      if (map.get("cate1Value") != null) {
+		         String json = map.get("cate1Value").toString();
+		         ObjectMapper mapper = new ObjectMapper();
+		         List<Object> cate1Value = mapper.readValue(json, new TypeReference<List<Object>>(){});
+		         map.put("cate1Value", cate1Value);
+		      }
+	      if (map.get("cate2Value") != null) {
+		         String json = map.get("cate2Value").toString();
+		         ObjectMapper mapper = new ObjectMapper();
+		         List<Object> cate2Value = mapper.readValue(json, new TypeReference<List<Object>>(){});
+		         map.put("cate2Value", cate2Value);
+		      }
+	      
+	    // 카테고리 검색  리스트 출력 
 		List<Main> shopList = mainService.searchShopList(map);
 		resultMap.put("shopList", shopList);
 		return new Gson().toJson(resultMap);
 	}
 	
-	// SHOP 리스트 출력
+	// 카테고리 리스트 출력
 	@RequestMapping(value = "/searchCate.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String searchCate(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -85,6 +109,8 @@ public class MainController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
+	
+	 
 	
 	
 }

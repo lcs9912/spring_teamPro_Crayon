@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.sample1.model.Mypage;
+import com.example.sample1.model.Product;
 
 public interface MypageService {
 	//유저 프로필 정보 변경 (닉네임, 이름)
@@ -16,6 +17,8 @@ public interface MypageService {
 	List<Mypage> searchUserPointList(HashMap<String, Object> map);
 	// 유저 계좌 등록
 	int addUserAccount(HashMap<String, Object> map);
+	// 유저 관심 리스트
+	List<Product> searchUserLikeList(HashMap<String, Object> map);
 	
 	
 }

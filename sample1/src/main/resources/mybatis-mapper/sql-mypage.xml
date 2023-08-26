@@ -48,5 +48,23 @@
    			INSERT INTO T1_USER_ACCOUNT
 			VALUES (#{uId}, #{uBank}, #{uAccount}, #{aName})
    	</insert>
+   	 
+   	<select id="selectUserLikeList" parameterType="hashmap"
+   		resultType="com.example.sample1.model.Product">
+   			SELECT *
+			FROM T1_PRODUCT_LIKE L
+			INNER JOIN T1_USER_TBL U
+			ON L.USER_ID = U.USER_ID
+			INNER JOIN T1_PRODUCT_UPDATE P
+			ON P.PRODUCT_SELL_NUMBER = L.PRODUCT_MODEL
+			INNER JOIN T1_PRODUCT_SIZE S
+			ON S.PRODUCT_SIZE = P.PRODUCT_SIZE
+			INNER JOIN T1_PRODUCT_IMG I
+			ON I.PRODUCT_NAME = P.PRODUCT_NAME
+			INNER JOIN T1_PRODUCT_BRAND B
+			ON B.PRODUCT_BRAND = P.PRODUCT_BRAND
+			WHERE L.USER_ID = #{uId}
+			GROUP BY L.PRODUCT_MODEL	
+   	</select>
    	
 </mapper>

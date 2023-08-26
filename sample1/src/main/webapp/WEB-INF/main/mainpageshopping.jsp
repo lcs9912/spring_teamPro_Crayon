@@ -200,6 +200,15 @@
             	width: 50px;
             }
             /*체크박스 버튼 젤리 애니매이션 효과 CSS 종료*/
+            .red {
+			  background-color: red;
+			}
+			.green {
+			  background-color: green;
+			}
+			.blue {
+			  background-color: blue;
+			}
 	
 </style>
 </head>
@@ -208,8 +217,8 @@
 	<div id="app">
         <div class="shopwrap">
             <!-- 쇼핑 페이지 전체감싸기 태그.  쇼핑 메뉴, 슬라이드 브랜드 선택 영역, 세로 상세품목 선택영역, 상품전시 영역 시작 -->
-            <h1 v-if='searchName == ""'>SHOP</h1>
-            <input  v-if='searchName != ""' v-model="searchName">
+            <h1 v-if="!searchFlg">SHOP</h1>
+            <input  v-if="searchFlg" v-model="searchName" @keyup.enter="fnGetList"><i class="fa-solid fa-xmark" v-if="searchFlg" @click="searchFlg = !searchFlg"></i>
             <nav class="shopnav">
                 <!--쇼핑메뉴 시작-->
                 <div class="navmenu">
@@ -246,7 +255,9 @@
                                 <p class="catecheckptag" @click="cate1Flg = false">카테고리1</p>  <!-- 클릭 하면 카테고리 off -->
                                 <div v-for="itemCate1 in cate1">
 	                                <label>
-				                    	<input type="checkbox" name="goodsallcate" class="checkbox">
+				                    	<input type="checkbox" name="goodsallcate" 
+				                    	:value="itemCate1.categorie1" v-model="cate1Value"
+				                    	class="checkbox" @change="fnGetList">
 										<span class="eventcheckbox"></span>{{itemCate1.c1Text}}
 			                        </label>
                           		</div>
@@ -263,7 +274,9 @@
                                 <p class="gendercheckptag" @click="cate2Flg = false">카테고리2</p>
                                 <div v-for="itemCate2 in cate2">
                                 	<label>
-		                                <input type="checkbox" name="goodsallcate" class="checkbox">
+		                                <input type="checkbox" name="goodsallcate" 
+		                                :value="itemCate2.categorie2" v-model="cate2Value"
+		                                class="checkbox" @change="fnGetList">
 		                                <span class="eventcheckbox"></span>{{itemCate2.c2Text}}
 	                                </label>
                                 </div>
@@ -281,7 +294,7 @@
                                 <p>상의</p>
                                 <div v-for="topItem in topList" class="wearsize">  
 	                                <label>                             
-		                                <input type="checkbox" :value="topItem.productSize" v-model="topSize" @change="fnCateSearch">
+		                                <input type="checkbox" :value="topItem.productSize" v-model="sizeArr" @change="fnGetList">
 		                                {{topItem.size}}
 		                            </label>
                                 </div>
@@ -289,7 +302,7 @@
                                 <p>하의</p>
                                 <div v-for="bottomItem in bottomList" class="clothsize">
                                     <label>
-	                                    <input type="checkbox" :value="bottomItem.productSize" v-model="bottomSize" @change="fnCateSearch">
+	                                    <input type="checkbox" :value="bottomItem.productSize" v-model="sizeArr" @change="fnGetList">
 	                                    <span>{{bottomItem.size}}</span>  
                                     </label>                               
                                 </div>
@@ -297,7 +310,7 @@
                                	<p>신발</p>
                                 <div v-for="shoesItem in shoesList" class="shoessize">
                                 	<label>
-	                                    <input type="checkbox" :value="shoesItem.productSize" v-model="shoesSize" @change="fnCateSearch">
+	                                    <input type="checkbox" :value="shoesItem.productSize" v-model="sizeArr" @change="fnGetList">
 	                                    <span>{{shoesItem.size}}</span>
                                     </label>
                                 </div>
@@ -394,16 +407,21 @@ var app = new Vue({
     	topList : [],
     	bottomList : [],
     	
-    	// 사이즈 벨류
-    	shoesSize : [],
-    	topSize : [],
-    	bottomSize : [],
+    	
+    	
+    	
+    	// 검색 벨류
+    	sizeArr : [],
+    	cate1Value : [],
+    	cate2Value : [],
     	
     	// 카테고리 플러그
         cate1Flg : false,
         cate2Flg : false,
         sizeFlg : false,
         priceFlg : false,
+        attachRed : false,
+        searchFlg : false,
     },// data
     computed: {
         shopListGrouped() {
@@ -419,8 +437,19 @@ var app = new Vue({
     	// SHOP 리스트 출력
         fnGetList : function(){
             var self = this;
-            var nparmap = {searchName : self.searchName}
-            console.log(self.searchName);
+            var arrSize = JSON.stringify(self.sizeArr);
+            var arrCate1 = JSON.stringify(self.cate1Value);
+            var arrCate2 = JSON.stringify(self.cate2Value);
+            var nparmap = {
+            		searchName : self.searchName,
+            		sizeArr : arrSize,
+            		cate1Value : arrCate1,
+            		cate2Value : arrCate2
+            }
+            //console.log(self.searchName);
+           
+			//console.log(self.cate1Value);
+			//console.log(self.cate2Value);
               $.ajax({
                     url:"/shopList.dox",
                     dataType:"json",
@@ -429,7 +458,8 @@ var app = new Vue({
                     success : function(data) {
                     	self.shopList = data.shopList;
                     	console.log(self.shopList);
-                    	console.log(self.searchName);
+                    	console.log(self.sizeArr);
+                    	
                     	
 						
                     }
@@ -438,7 +468,9 @@ var app = new Vue({
         // 카테고리 리스트 출력
         fnCateList : function(){
             var self = this;
-            var nparmap = {searchName : self.searchName}
+            
+            var nparmap = {searchName : self.searchName};
+            
             console.log(self.searchName);
               $.ajax({
                     url:"/searchCate.dox",
@@ -457,7 +489,7 @@ var app = new Vue({
         fnProInfo : function(productModel){
         	var self = this;
         	$.pageChange("/product.do", {modelNum : productModel});
-        	console.log(productModel);
+        	
         	
         },
         // 사이즈 테이블 리스트
@@ -477,12 +509,15 @@ var app = new Vue({
 				}
 			});
 		},
-		// 카테고리 검색
-		fnCateSearch : function(){
+		// 헤더 검색인풋
+		fnSearchFlg : function(){
 			var self = this;
-			console.log(self.topSize);
-			console.log(self.bottomSize);
-			console.log(self.shoesSize);
+			if(self.searchName != '' && self.searchName != null){
+				self.searchFlg = true;
+			} else{
+				self.searchFlg = false;
+			}
+			console.log(self.searchFlg);
 		}
       
        
@@ -492,6 +527,7 @@ var app = new Vue({
 		self.fnGetList();
 		self.fnCateList();
 		self.fnSizeList();
+		self.fnSearchFlg();
     }// created
 });
     

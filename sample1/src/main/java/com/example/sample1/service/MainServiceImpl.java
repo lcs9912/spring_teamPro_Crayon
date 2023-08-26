@@ -14,12 +14,14 @@ public class MainServiceImpl implements MainService{
 	@Autowired
 	MainMapper mainMapper;
 
+	// shop 리스트 출력
 	@Override
 	public List<Main> searchShopList(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return mainMapper.selectShopList(map);
 	}
 
+	// 카테고리 리스트 출력
 	@Override
 	public HashMap<String, Object> searchCategorie(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -32,6 +34,7 @@ public class MainServiceImpl implements MainService{
 	}
 
 	
+	// 검색 
 	@Override
 	public List<Main> seachMain(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub

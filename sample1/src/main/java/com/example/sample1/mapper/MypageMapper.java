@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.sample1.model.Mypage;
+import com.example.sample1.model.Product;
 
 @Mapper
 public interface MypageMapper {
@@ -20,5 +21,7 @@ public interface MypageMapper {
 	List<Mypage> selectUserPointList(HashMap<String, Object> map);
 	// 유저 계좌등록
 	int insertUserAccount(HashMap<String, Object> map);
+	// 우저 관심 리스트
+	List<Product> selectUserLikeList(HashMap<String, Object> map);
 
 }

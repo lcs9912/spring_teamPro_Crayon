@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.sample1.mapper.MypageMapper;
 
 import com.example.sample1.model.Mypage;
+import com.example.sample1.model.Product;
 
 
 @Service
@@ -45,6 +46,11 @@ public class MypageServiceImpl implements MypageService{
 	public int addUserAccount(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return mypageMapper.insertUserAccount(map);
+	}
+	@Override
+	public List<Product> searchUserLikeList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mypageMapper.selectUserLikeList(map);
 	}
 
 }

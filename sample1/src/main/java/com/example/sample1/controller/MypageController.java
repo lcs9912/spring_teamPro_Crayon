@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.sample1.model.Mypage;
+import com.example.sample1.model.Product;
 import com.example.sample1.service.MypageService;
 import com.google.gson.Gson;
 
@@ -149,6 +150,17 @@ public class MypageController {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		mypageService.addUserAccount(map);
 		
+								
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 유저 포인트 사용 내역 출력
+	@RequestMapping(value = "/likeList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String likeList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Product> likeList = mypageService.searchUserLikeList(map);
+		resultMap.put("likeList", likeList);
 								
 		return new Gson().toJson(resultMap);
 	}

@@ -25,6 +25,24 @@
 					 OR U.PRODUCT_KNAME LIKE CONCAT('%',#{searchName},'%')
 					 OR B.BRAND_NAME LIKE CONCAT('%',#{searchName},'%'))
 		</if>
+		<if test="sizeArr != null  and sizeArr.size() > 0">
+		AND U.PRODUCT_SIZE IN
+			<foreach item="sizeItem" index="index" open="(" close=")" separator="," collection="sizeArr">
+               #{sizeItem}
+            </foreach>
+		</if>
+		<if test="cate1Value != null and cate1Value.size() > 0">
+	    AND U.PRODUCT_CATEGORIE1 IN
+			<foreach item="cate1Item" index="index" open="(" close=")" separator="," collection="cate1Value">
+				#{cate1Item}
+			</foreach>
+		</if>
+		<if test="cate2Value != null and cate2Value.size() > 0">
+	    AND U.PRODUCT_CATEGORIE2 IN
+			<foreach item="cate2Item" index="index" open="(" close=")" separator="," collection="cate1Value">
+				#{cate2Item}
+			</foreach>
+		</if>
 		GROUP BY U.PRODUCT_MODEL
 		ORDER BY U.PRODUCT_INTEREST DESC
 	</select>

@@ -154,12 +154,14 @@
 				
 		<div class="interestarea">
 			<ul>
-				<li>
-				<div class="productpicture">상품사진</div>
+				<li v-for="item in likeList">
+				<div class="productpicture">
+					<img :src="item.pImgPath"> 
+				</div>
 					<div class="productdetail">
-						<div class="productname">상품이름</div>
-						<div class="productinfo">상품설명</div>
-						<div class="productsize">size</div>
+						<div class="productname">{{item.brandName}}</div>
+						<div class="productinfo">{{item.productName}}</div>
+						<div class="productsize">{{item.size}}</div>
 					</div>
 				<button class="buybtn">
 					<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
@@ -168,25 +170,6 @@
 					<span class="delete">삭제</span>
 				</button>
 				</li>
-
-
-		<li>
-		<div class="productpicture">상품사진</div>
-			<div class="productdetail">
-				
-				<div class="productname">상품이름</div>
-				<div class="productinfo">상품설명</div>
-				<div class="productsize">size</div>
-
-			</div>
-			<button class="buybtn">
-				<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
-				<div style="padding-top:3px;"><b>000,000원</b></div>
-				<div style="padding-top:5px;">즉시 구매가</div>
-				<span class="delete">삭제</span>
-			</button>
-	
-		</li>
 	</ul>
 				</div>
 				
@@ -200,5 +183,32 @@
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+var app = new Vue({
+	el : '#app',
+	data : {
+		likeList : [],
+		uId : "${sessionId}"
+	},// data
+	methods : {
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {uId : self.uId};
+            $.ajax({
+                url : "/likeList.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.likeList = data.likeList;
+                	console.log(self.likeList);
+                	
+                }
+            }); 
+        },
+	}, // methods
+	created : function() {
+		var self = this;
+		self.fnGetList();
+	}// created
+});
 </script>
