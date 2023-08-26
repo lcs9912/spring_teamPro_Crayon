@@ -122,7 +122,7 @@
         <div class="goodsdisplay">
             <!--상품전시 영역 시작-->
             <div class="ranktitle">
-                <p>남성 인기 품목</p>		
+                <p>여성 인기 품목</p>		
             </div>
             <div class="goodsblock" v-for="(group, index) in shopListGrouped" :key="index" >
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
