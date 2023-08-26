@@ -88,11 +88,6 @@ public class AuctionServiceImpl implements AuctionService{
 		return auctionMapper.selectProInfo(map);
 	}
 
-	@Override
-	public List<Main> seachMain(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return auctionMapper.selectTmain(map);
-	}
 
 
 

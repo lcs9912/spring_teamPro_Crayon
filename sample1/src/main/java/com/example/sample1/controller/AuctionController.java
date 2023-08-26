@@ -70,12 +70,7 @@ public class AuctionController {
 			return "/auction/auction";
 		}
 		
-		// MAIN 페이지 
-				@RequestMapping("/tmain.do") 
-				public String tmain(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-					request.setAttribute("map", map);
-					return "/auction/mainmancate";
-				}
+	
 	
 	//Aution 리스트 출력
 	@RequestMapping(value = "/auction/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -191,14 +186,6 @@ public class AuctionController {
 				resultMap.put("info1", info);
 				return new Gson().toJson(resultMap);
 				}
-			//main리스트 출력
-				@RequestMapping(value = "/shopmanList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-				@ResponseBody
-				public String mainList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-					HashMap<String, Object> resultMap = new HashMap<String, Object>();
-					List<Main> list =auctionService.seachMain(map);
-					resultMap.put("list", list);
-					return new Gson().toJson(resultMap);
-				}
+		
 			
 }

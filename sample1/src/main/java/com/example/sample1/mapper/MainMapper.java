@@ -18,4 +18,7 @@ public interface MainMapper {
 	List<Main> selectCategorie1(HashMap<String, Object> map);
 	// 카테고리 2
 	List<Main> selectCategorie2(HashMap<String, Object> map);
+	
+	// 메인cate 
+		List<Main>selectTmain(HashMap<String, Object> map);
 }

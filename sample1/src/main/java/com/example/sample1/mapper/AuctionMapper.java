@@ -40,6 +40,5 @@ public interface AuctionMapper {
 	Auction selectAuctionEndInfo (HashMap<String, Object> map);
 	
 	Product selectProInfo (HashMap<String, Object> map);
-	// 메인테스트 
-	List<Main>selectTmain(HashMap<String, Object> map);
+	
 }

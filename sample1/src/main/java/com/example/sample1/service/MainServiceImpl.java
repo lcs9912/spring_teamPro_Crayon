@@ -32,7 +32,11 @@ public class MainServiceImpl implements MainService{
 	}
 
 	
-
+	@Override
+	public List<Main> seachMain(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mainMapper.selectTmain(map);
+	}
 	
 	
 

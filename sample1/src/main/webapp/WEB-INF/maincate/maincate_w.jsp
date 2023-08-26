@@ -168,6 +168,7 @@
         data: {
             loginOut: "${sessionId}",
             list : [],
+            maingate : "2",
         },// data
         computed: {
             shopListGrouped() {
@@ -195,7 +196,7 @@
             },
             fnGetList : function(){
                 var self = this;
-                var nparmap = {}
+                var nparmap = {cate1Num : self.maingate}
                   $.ajax({
                         url:"/shopmanList.dox",
                         dataType:"json",

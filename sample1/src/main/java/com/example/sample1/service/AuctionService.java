@@ -36,5 +36,5 @@ public interface AuctionService {
 	
 	Product selectProInfo (HashMap<String, Object> map);
 	
-	List<Main> seachMain(HashMap<String, Object> map);
+
 }

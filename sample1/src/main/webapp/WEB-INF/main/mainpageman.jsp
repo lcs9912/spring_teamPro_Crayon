@@ -193,7 +193,10 @@
         </div>
     </div>
 </body>
-<%@ include file="../auction/mainmancate.jsp"%>
+<%@ include file="../maincate/maincate_m.jsp"%>
+<%@ include file="../maincate/maincate_w.jsp"%>
+<%@ include file="../maincate/maincate_s.jsp"%>
+<%@ include file="../maincate/maincate_a.jsp"%>
 </html>
 
 <script>

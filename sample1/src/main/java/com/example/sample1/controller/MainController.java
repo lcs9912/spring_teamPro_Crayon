@@ -48,7 +48,15 @@ public class MainController {
     public String mainpagewslider(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/main/mainpagewoman";
     }
-
+	
+	// MAINcate 페이지 
+	@RequestMapping("/tmain.do") 
+	public String tmain(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
+		return "/maincate/maincate_m";
+	}
+	
+	
 	// SHOP 리스트 출력
 	@RequestMapping(value = "/shopList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -68,4 +76,15 @@ public class MainController {
 		
 		return new Gson().toJson(resultMap);
 	}
+	//maincate리스트 출력
+	@RequestMapping(value = "/shopmanList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String mainList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Main> list =mainService.seachMain(map);
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
+	
+	
 }
