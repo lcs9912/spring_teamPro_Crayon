@@ -98,7 +98,7 @@
 </head>
 <%@ include file="../header/mainheader.jsp"%>
 <body>
-    <div id="headerApp">        
+    <div id="app">        
         <div class="slider-wrap">
             <button class="slide-button slide-prev">&lt;</button>
             <button class="slide-button slide-next">&gt;</button>
@@ -200,8 +200,8 @@
 </html>
 
 <script>
-    var headerApp = new Vue({
-        el: '#headerApp',
+    var app = new Vue({
+        el: '#app',
         data: {
             loginOut: "${sessionId}",
             list : [],

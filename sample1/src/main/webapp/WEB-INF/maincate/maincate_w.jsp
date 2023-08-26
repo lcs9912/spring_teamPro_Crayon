@@ -117,7 +117,7 @@
 </head>
 
 <body>
-	<div id="app">
+	<div id=headerAppW>
   	<div class="rankwrap">
         <div class="goodsdisplay">
             <!--상품전시 영역 시작-->
@@ -163,8 +163,8 @@
 </html>
 
 <script>
-    var app = new Vue({
-        el: '#app',
+    var headerAppW = new Vue({
+        el: '#headerAppW',
         data: {
             loginOut: "${sessionId}",
             list : [],
