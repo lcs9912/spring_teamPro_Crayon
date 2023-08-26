@@ -230,10 +230,7 @@ font-size: 18px;
 width:600px;
 margin-top:30px;
 display:block;
-
 }
-
-
 
 .displaybidderbox{
 width:600px;

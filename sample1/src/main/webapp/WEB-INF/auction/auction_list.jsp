@@ -14,25 +14,26 @@
 		border-collapse: collapse;
 		text-align : center;
 		margin: 0 auto;
+		width:1200px;
 	}
 	th, td {
 		border : 1px solid black;
 		padding : 5px 10px;
 	}
 	th{
-	background-color:#eee;
+	background-color:tomato; color:#fff;
 	}
 	td{
 	height:120px;
-	width:120px;
+	width:45px;
 	}
 
-a{
-text-decoration-line: none;
-	color:black;
+
+.auctionwrap {
+	width:100%;
 }
-a:hover{
-border-bottom:2px solid black;
+.auctiontable {
+	width:1200px; margin:180px auto;
 }
 .endbtn{
 background-color:white;
@@ -45,24 +46,24 @@ height:40px;
 background-color:#eee;
 }
 .auctioneditbtn{
-text-align: right;
-width:1100px;
-margin : 0 auto;
-margin-bottom: 30px;
-margin-top: 10px;
+text-align: right; margin-top:20px;
+width:1200px;
 }
 .editbtn{
 background-color:white;
 border:1px solid #a2a2a2;
-border-radius:5px;
-margin-top : 5px;
+border-radius:10px; width:100px; height:50px;
+
 }
 .editbtn:hover{
-background-color:#eee;
+background-color:tomato; color:#fff;
 }
 .picarea{
-max-width:120px;
-max-height:120px;
+width:120px; 
+height:110px;
+}
+.picarea:hover img{
+	transform:scale(1.1); 
 }
 .movebtn {
   text-align: center;
@@ -83,61 +84,63 @@ font-size:20px;
 }
 </style>
 </head>
+<%@ include file="../header/mainheader.jsp"%>
 <body>
 <div id="app">
-	<div style="margin-bottom : 5px; margin-left : 2px;">
-	</div>
-	<div class="auctiontable">
-	<div style="text-align:center; font-weight:bold; font-size:25px; margin-bottom:15px;">경매등록</div>
-	<table>
-		<tr>
-			<th>경매번호</th>
-			<th>물품 사진</th>		
-			<th>경매물품(상품이름)</th>
-			<th>시작가격</th>
-			<th>참여인원</th>
-			<th>시작날짜</th>
-			<th>마감날짜</th>
-			<th>종료버튼</th>	
-		</tr>
-		
-		<tr v-for="item in paginatedItems" v-if="item.auctionEndyn!='Y'">			
-			<td class="auctionnum">{{item.auctionNumber}}</td>
-			<td class="picarea"><img :src="item.pImgPath" style="max-width : 100px"></td> 
-			<td ><a @click="fnView(item)" href="javascript:;"> {{item.auctionProduct}}</td>
-			<td>{{item.auctionStartPrice}}</td>			
-			<td>{{item.usercnt}}</td>			
-			<td>{{item.auctionStartDate}}</td>
-			<td>{{item.auctionEndDate}}</td>
-			<td v-if="isAuctionExpired(item)"><button @click="fnAuctionEndU(item)">종료</button></td>
-			<td v-else></td>
-		</tr>
-		
-	</table>
-	<div class="auctioneditbtn">
-	<!-- <div v-if="status=='U'"> -->
-	<button class="editbtn" @click="fnAuctionAdd">경매 등록</button>
-	<!-- </div> -->
-	</div>
-	<div class="movebtn">
-    <button @click="changePage(-1)">
-        <i class="fa-solid fa-chevron-left"></i>
-    </button>
-    
-    <button class="selectpagebtn"
-        v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
-        :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
-        :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
-        {{ pageNumber }}
-    </button>
-    
-    <button @click="changePage(1)">
-        <i class="fa-solid fa-chevron-right"></i>
-    </button>
-</div>
+	<div class="auctionwrap">	
+		<div class="auctiontable">
+		<div style="text-align:center; margin:45px 0;"><h1>경매등록</h1></div>
+		<table>
+			<tr>
+				<th>경매번호</th>
+				<th>물품 사진</th>		
+				<th>경매물품(상품이름)</th>
+				<th>시작가격</th>
+				<th>참여인원</th>
+				<th>시작날짜</th>
+				<th>마감날짜</th>
+				<th>종료버튼</th>	
+			</tr>
+			
+			<tr v-for="item in paginatedItems" v-if="item.auctionEndyn!='Y'">			
+				<td class="auctionnum">{{item.auctionNumber}}</td>
+				<td class="picarea"><img :src="item.pImgPath"></td> 
+				<td><a @click="fnView(item)" href="javascript:;"> {{item.auctionProduct}}</td>
+				<td>{{item.auctionStartPrice}}</td>			
+				<td>{{item.usercnt}}</td>			
+				<td>{{item.auctionStartDate}}</td>
+				<td>{{item.auctionEndDate}}</td>
+				<td v-if="isAuctionExpired(item)"><button @click="fnAuctionEndU(item)">종료</button></td>
+				<td v-else></td>
+			</tr>
+			
+		</table>
+		<div class="auctioneditbtn">
+		<!-- <div v-if="status=='U'"> -->
+		<button class="editbtn" @click="fnAuctionAdd">경매 등록</button>
+		<!-- </div> -->
+		</div>
+		<div class="movebtn">
+	    <button @click="changePage(-1)">
+	        <i class="fa-solid fa-chevron-left"></i>
+	    </button>
+	    
+	    <button class="selectpagebtn"
+	        v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+	        :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+	        :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+	        {{ pageNumber }}
+	    </button>
+	    
+	    <button @click="changePage(1)">
+	        <i class="fa-solid fa-chevron-right"></i>
+	    </button>
+		</div>
+		</div>
 	</div>
 </div>
 </body>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({

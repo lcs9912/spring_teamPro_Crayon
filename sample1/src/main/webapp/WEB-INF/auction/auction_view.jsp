@@ -280,7 +280,6 @@ cursor: pointer;
     padding: 8px 10px;
     font-size: 12px;
     border-radius: 4px;
-    
 }
 .actiontimearea{
 text-align:center;
@@ -349,7 +348,7 @@ padding:10px 0px 0px 15px;
 	}
 </style>
 </head>
-
+<%@ include file="../header/mainheader.jsp"%>
 <body>
 <div id="app">
 	<div class ="productcontents">
@@ -436,7 +435,7 @@ padding:10px 0px 0px 15px;
 		</div>
 		
 		<div style="width:600px;">
-		<div class="interestbtn" style="cursor: pointer;text-align:center;">
+		<div class="interestbtn" style="cursor: pointer; text-align:center;">
 		<i class="fa-regular fa-bookmark" v-if="info.aLikeUser==null"  @click="fnAuctionLike()"></i> <!--좋아용 -->
 		<i class="fa-solid fa-bookmark" v-else @click="fnAuctionUnLike()"></i>  <!-- 해제-->
 		관심상품<strong> 전체관심cnt</strong>
@@ -523,7 +522,6 @@ padding:10px 0px 0px 15px;
 			<div class="buybeforecontents">구매 환불/취소/교환 안내
 			<i class="fa-solid fa-chevron-down" style="float:right; display:inline-block;"></i>
 			</div>
-			
 		</div>
 	</div>
 		
@@ -532,7 +530,6 @@ padding:10px 0px 0px 15px;
 		<img :src="info.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
 		</div>
 		
-		
 		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
 		<span class="caremark">주의</span>
 		<span class="dangertext">판매 거래 주의사항</span>
@@ -540,12 +537,11 @@ padding:10px 0px 0px 15px;
 		</div>
 		
 		</div>	
-		
-		
 		</div>
 </div>
 
 </body>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({
@@ -731,14 +727,12 @@ var app = new Vue({
 					for(var i=0; i<self.list.length; i++){
 						price.push(self.list[i].avgdate);
 						tdate.push(self.list[i].ressentdate);
-	
 					}
 					
 					self.series = [{
 						name : "",
 						data : price
 						}];
-					
 					
 					const maxValue = Math.max.apply(null, price);
 					const roundedMaxValue = Math.ceil(maxValue);
@@ -749,26 +743,18 @@ var app = new Vue({
 					        max: yMaxValue,
 					        min : 0,
 					    },
-					  
 					   
 					}; 
-					
-				
                },
            }); 
        }
-      
-     
       
 	}, // methods
 	created : function() {
 		var self = this;
 		 self.fnGetList();
-		
 		 self.fnGetJoinList();
-		
 		 window.addEventListener('scroll', this.handleScroll);
-	  
 		
 	}// created
 });
