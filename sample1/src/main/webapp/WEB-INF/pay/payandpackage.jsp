@@ -376,7 +376,7 @@ var app = new Vue({
 		pImgPath : "",
 		proInfo : {
 			
-		},
+		},	
 		proInfo1 : {},
 		modelNum : "",
 		uId : "${sessionId}",
