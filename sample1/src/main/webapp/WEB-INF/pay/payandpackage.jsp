@@ -190,13 +190,13 @@
 			<div class="productcontents">
 				<div class="productheader" style="display: flex; align-items: center;">
 	   				 <div class="productinfo">
-	        			<img :src="img.pImgPath">
+	        			<img :src="proInfo.pImgPath">
 	    			</div>
 		    		<div style="margin-left: 10px;">
 			        	<div class="productdetailhead">{{proInfo.productModel}}</div>
 			        	<div class="productdetailname">{{proInfo.productName}}</div>
 			        	<div class="productdetailtransname">{{proInfo.productKname}}</div>
-			        	<div class="productdetailsize">{{size}}</div>
+			        	<div class="productdetailsize">{{proInfo.size}}</div>
 		    		</div>
 				</div>
 			</div>
@@ -204,9 +204,10 @@
 		<div class="addrsearch">
 			<h3 style="width:80%; display:inline-block;">배송 주소</h3>
 			<a href="#" style="float:right; color: rgba(34,34,34,.5);
-		    font-size: 13px;">+ 새 주소 추가</a>
+		    font-size: 13px;">+ 새 주소 추가</a> <!-- 마이페이지 주소 추가 api 팝업 복사해서 가져오기 -->
     
     		<div class="addradd">
+    			<!-- 주소테이블에 정보가 없으면 주소를 추가해수세요 정보가 있으면 출력 -->
     			<div><button style="background-color:#fafafa; color: rgba(34,34,34,.5);">주소를 추가해주세요.</button></div>
     			<div>
 				    <button style="line-height: 30px;">요청사항 없음
@@ -371,9 +372,8 @@ var app = new Vue({
 			{size : ""}
 		],
 		img : {},
-		proNum : "221",
-		pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue",
-		pImgPath : "",
+		proNum : "${map.proNum}",
+	
 		proInfo : {
 			
 		},	
@@ -384,7 +384,7 @@ var app = new Vue({
 	},// data
 	methods : {
 		//상품 정보 불러오기
-		fnProList : function(){
+		fnProInfo : function(){
     		var self = this; 
             var nparmap = {proNum : self.proNum};
              $.ajax({
@@ -393,57 +393,25 @@ var app = new Vue({
                  type : "POST", 
                  data : nparmap,
                  success : function(data) { 
-                 	self.proInfo = data.proInfo;
+                 	self.proInfo = data.info[0];
                  	
-                 	self.modelNum = data.proInfo.productModel; // 모델번호
+                 	
                  	
                  	console.log(self.proInfo);
                  	
-                 	console.log("모델번호"+self.modelNum);
-                 	self.fnGetSize(self.proInfo);
+                 	
+                 
                  }
              }); 
     	},
-        //상품 사진 불러오기
-        fnGetImg : function() {
-        	var self = this;
-        	var nparmap = {pName : self.pName};
-        	$.ajax({
-				url : "productImg.dox",
-				dataType : "json",
-				type : "POST",
-				data : nparmap,
-				success : function(data){
-					console.log(data);
-					self.img = data.img;
-				}
-			});
-		},
-		// 사이즈 조회
-		fnGetSize : function (proInfo1) {
-			var self = this;
-			console.log("proInfo1", proInfo1); //19
-			var nparmap = {productSize : proInfo1.productSize};
-			
-			$.ajax({
-				url : "/pay/size.dox",
-				dataType : "json",
-				type : "POST",
-				data : nparmap,
-				success : function(data){
-					console.log("data ===>> ", data);
-					self.size = data.size;
-					console.log(self.sizel); // 19
-				}
-			})
-		},
+        
 	}, // methods
 	created : function() {
 		var self = this;
-		self.fnProList();
-		self.fnGetImg();
-		console.log("self.proInfo ==>", self.proInfo);
-		self.fnGetSize(self.proInfo);
+		self.fnProInfo();
+		
+		
+		
 	},// created
 	mounted: function() {
 	    var self = this;

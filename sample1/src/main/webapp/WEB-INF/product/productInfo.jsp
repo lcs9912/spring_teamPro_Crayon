@@ -352,9 +352,9 @@ cursor: pointer;
 		</div>
 		
 		<div class="interestbtn" style="cursor: pointer">
-		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
-		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
-		관심상품<strong> 상품의 관심 갯수</strong>
+		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove(proInfo.productSellNumber)"></i> <!-- 저장 O -->
+		<i class="fa-regular fa-bookmark" @click="fnInterest(proInfo.productSellNumber)" v-if="!interestFlg"></i>  <!-- 저장 X-->
+		관심상품<strong> {{proInfo.productInterest}}</strong>
 		</div>
 		</div>
 		
@@ -493,7 +493,7 @@ var app = new Vue({
     data: {
     	proList : [], // 모델번호 상품 리스트
     	proInfo : {}, // 리스트 0번째 정보
-    	
+    	interest : {}, // 관심상품 조회
     	modelNum: "${map.modelNum}", // 메인에서 넘어온 모델 번호
     	
     	
@@ -508,6 +508,7 @@ var app = new Vue({
         minBuy : "", // 즉시 구매가
         proNum : "", // 상품 번호
        
+        
         interestFlg : false, // 관심상품 조회
         resentFlg : false, // 구매내역 유무
         sellMinFlg : false,
@@ -614,15 +615,17 @@ var app = new Vue({
 						self.buyMinFlg = true;
                  	};
                  	self.fnGetChart();
+                 	self.fnInterestInfo(self.proInfo.productSellNumber);
                  }
              });
     	},
     	
     	
     	// 유저 관심상품 조회
-    	fnInterestInfo : function(){
+    	fnInterestInfo : function(proNum){
     		var self = this;
-    		var nparmap = {proNum : self.proNum, uId : self.sessionId};
+    		var nparmap = {proNum : proNum, uId : self.sessionId};
+    		console.log(proNum);
             $.ajax({
                 url : "/proInterestInfo.dox",
                 dataType:"json",	
@@ -630,8 +633,8 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	self.interest = data.interest;
-                	console.log("관심"+data.interest);
-                	if(self.interest != undefined){
+                	console.log(self.interest);
+                	if(self.interest != "" && self.interest != null){
                 		self.interestFlg = true;
                 		return;
                 	}else{
@@ -642,10 +645,10 @@ var app = new Vue({
             });
     	},
     	 // 관심상품 등록
-         fnInterest : function(){
+         fnInterest : function(proNum){
         	var self = this;
-        	var nparmap = {proNum : self.proNum, uId : self.sessionId, proSize : self.proInfo.productSize};
-        	console.log("등록"+ self.proInfo.productSize);
+        	var nparmap = {proNum : proNum, uId : self.sessionId, proSize : self.proInfo.productSize};
+        	console.log(self.proInfo.productSize);
         	console.log("관심 세션아이디"+self.sessionId);
         	if(self.sessionId == undefined || self.sessionId  == ''){
         		
@@ -669,9 +672,9 @@ var app = new Vue({
             });
         }, 
         // 관심상품 해제
-        fnInterestRemove : function(){
+        fnInterestRemove : function(proNum){
         	var self = this;
-			var nparmap = {proNum : self.proNum, uId : self.sessionId};
+			var nparmap = {proNum : proNum, uId : self.sessionId};
         	
         	$.ajax({
                 url : "/proInterestRemove.dox",

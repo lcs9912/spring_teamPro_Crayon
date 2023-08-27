@@ -29,6 +29,9 @@ public interface ProductService {
 	Product searchInterest(HashMap<String, Object> map);
 	//유저 관심상품 삭제
 	int removeInterest(HashMap<String, Object> map);
+	// 상품 상세정보 pk
+	List<Product> searchProBuyInfo(HashMap<String, Object> map);
+	
 	
 
 }

@@ -123,7 +123,7 @@ margin-top:10px;
 				<div class="productheader" style="display: flex; align-items: center;">
 				    <div class="productinfo">
 				    	<!-- 상품이미지 출력 -->
-				        <img :src="img.pImgPath" style="max-width : 80px">
+				       <img :src="proInfo.pImgPath" style="max-width : 80px"> 	
 				    </div>
 				    <div style="margin-left: 10px;">
 				    	<!-- 모델번호,상품명,한글명,size 출력 -->
@@ -172,7 +172,7 @@ margin-top:10px;
 					</div>
 				</div>
 				<div class="continuebtn" style="width:100%; text-align:center;">
-					<a href="nowbuy.do"><button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">구매 계속</button></a>
+					<a @click="fnNowBuy"><button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">구매 계속</button></a>
 				</div>
 			</div>
 		</div>
@@ -192,8 +192,7 @@ var app = new Vue({
         agreements: [false, false, false, false],
         list : [],
 		sList : [],
-		img : {},
-		pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue", // 상품사진을 상품이름으로 호출
+		
 		proInfo : {},
 		product :{
 			pCategorie2 : "4",
@@ -201,7 +200,7 @@ var app = new Vue({
 			sellBuy : "",
 			uId : "${sessionId}"
 		},
-		proNum : "221", // 상품 모델 번호로 상품 정보를 호출
+		proNum : "${map.proNum}", // 상품 모델 번호로 상품 정보를 호출
     },
     computed: {
     	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
@@ -222,7 +221,7 @@ var app = new Vue({
     },
     methods: {
     	//상품 정보 불러오기
-		fnProList : function(){
+		fnProInfo : function(){
     		var self = this; 
             var nparmap = {proNum : self.proNum};
              $.ajax({
@@ -231,53 +230,22 @@ var app = new Vue({
                  type : "POST", 
                  data : nparmap,
                  success : function(data) { 
-                 	self.proInfo = data.proInfo;
-                 	
-                 	self.modelNum = data.proInfo.productModel; // 모델번호
-                 	
-                 	console.log("proinfo"+ self.proInfo);
-                 	
-                 	console.log("모델번호"+self.modelNum);
-                 	
+                 	self.proInfo = data.info[0]; 	
+                 	console.log(self.proInfo);
+
                  }
              }); 
     	},
-     	// 사이즈 조회
-		fnGetSize : function () {
-			var self = this;
-			var nparmap = {};
-			$.ajax({
-				url : "size.dox",
-				dataType : "json",
-				type : "POST",
-				data : nparmap,
-				success : function(data){
-					self.sList = data.size;
-					console.log(data);
-				}
-			})
-		},
-		//상품 사진 불러오기
-        fnGetImg : function() {
-        	var self = this;
-        	var nparmap = {pName : self.pName};
-        	$.ajax({
-				url : "productImg.dox",
-				dataType : "json",
-				type : "POST",
-				data : nparmap,
-				success : function(data){
-					console.log(data);
-					self.img = data.img;
-				}
-			});
-		},
+    	fnNowBuy : function(){
+    		var self = this;
+    		$.pageChange("nowbuy.do", {proNum : self.proNum});
+    	}
+     	
     }, // methods
     created : function() {
 		var self = this;
-		self.fnGetSize();
-		self.fnGetImg();
-		self.fnProList();
+		
+		self.fnProInfo();
 	}// created
 });
 </script>

@@ -43,4 +43,6 @@ public interface ProductMapper {
 	int minusdateInterestCnt(HashMap<String, Object> map);
 	// 상품 출시일
 	Product selectProMindate(HashMap<String, Object> map);
+	// 상품 상세 정보 pk 
+	List<Product>selectProBuyInfo(HashMap<String, Object> map);
 }

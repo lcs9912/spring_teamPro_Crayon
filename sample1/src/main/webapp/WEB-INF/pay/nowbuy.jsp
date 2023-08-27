@@ -197,13 +197,13 @@ display:none;
 			<div class="productcontents">
 		<div class="productheader" style="display: flex; align-items: center;">
 	   				 <div class="productinfo">
-	        			사진데이터
+	        			<img :src="proInfo.pImgPath">
 	    			</div>
 	    			
 		    <div style="margin-left: 10px;">
-		        <div class="productdetailhead">ID</div>
-		        <div class="productdetailname">NAME</div>
-		        <div class="productdetailtransname">TRANSNAME</div>
+		        <div class="productdetailhead">{{proInfo.brandName}}</div>
+		        <div class="productdetailname">{{proInfo.productName}}</div>
+		        <div class="productdetailtransname">{{proInfo.productKname}}</div>
 		    </div>
 	    
 		</div>
@@ -213,14 +213,10 @@ display:none;
 				<div>
 					<div class="leftnow" style="border-right:1px solid #eee;">
 					즉시구매가
-					<div class="paynowbuy">000.000P
+					<div class="paynowbuy">{{proInfo.productPrice}}P
 					</div>
 					</div>
 				
-					<div class="rightnow">즉시판매가
-					<div class="paynowbuy">000.000P
-					</div>
-					</div>
 				
 				</div>
 		</div>
@@ -266,7 +262,7 @@ display:none;
 				
 					<div class="allpaybtnarea">
 					<a href="payandpackage.do"><button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button></a>
-					<a href="payandpackage.do"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button></a>
+					<a @click="fnListBuy"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button></a>
 					</div>
 			</div>
 			
@@ -283,27 +279,32 @@ var app = new Vue({
 	el : '#app',
 	data : {
 		proInfo : {},
-		sellNum : "${map.sellNum}",
+		proNum : "${map.proNum}",
 	},// data
 	methods : {
-		fnGetList : function(){
+		fnGetInfo : function(){
             var self = this;
-            var nparmap = {proNum : self.sellNum};
+            var nparmap = {proNum : self.proNum};
             $.ajax({
                 url : "/productInfo.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) { 
-                	self.proInfo = data.proInfo;
+                	self.proInfo = data.info[0];
                 	console.log(self.proInfo);
                 }
             }); 
+        },
+        // 마지막 결제 가보자..
+        fnListBuy : function(){
+        	var self = this;
+        	$.pageChange("/payandpackage.do", {proNum : self.proNum});
         }
 	}, // methods
 	created : function() {
 		var self = this;
-		self.fnGetList();
+		self.fnGetInfo();
 	}// created
 });
 /* 구매희망가 자동반점 */
