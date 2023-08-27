@@ -200,6 +200,13 @@
             	width: 50px;
             }
             /*체크박스 버튼 젤리 애니매이션 효과 CSS 종료*/
+            a{
+            	cursor: pointer;
+            }
+			
+			i {
+			cursor: pointer;	
+			}            
           
 	
 </style>
@@ -210,22 +217,22 @@
         <div class="shopwrap">
             <!-- 쇼핑 페이지 전체감싸기 태그.  쇼핑 메뉴, 슬라이드 브랜드 선택 영역, 세로 상세품목 선택영역, 상품전시 영역 시작 -->
             <h1 v-if="!searchFlg">SHOP</h1>
-            <input  v-if="searchFlg" v-model="searchName" @keyup.enter="fnGetList"><i class="fa-solid fa-xmark" v-if="searchFlg" @click="searchFlg = !searchFlg"></i>
+            <input  v-if="searchFlg" v-model="searchName" @keyup.enter="fnGetList(searchName)"><i class="fa-solid fa-xmark" v-if="searchFlg" @click="fnInputFlg"></i>
             <nav class="shopnav">
                 <!--쇼핑메뉴 시작-->
                 <div class="navmenu">
                     <ul>
-                        <li><a href="#">전체</a></li>
-                        <li><a href="#">럭셔리</a></li>
-                        <li><a href="#">상의</a></li>
-                        <li><a href="#">하의</a></li>
-                        <li><a href="#">아우터</a></li>
-                        <li><a href="#">신발</a></li>
-                        <li><a href="#">가방</a></li>
-                        <li><a href="#">지갑</a></li>
-                        <li><a href="#">시계</a></li>
-                        <li><a href="#">패션잡화</a></li>
-                        <li><a href="#">컬렉터블</a></li>
+                        <li><a @click="fnReset">전체</a></li>
+                        
+                        <li><a @click="fnReset">상의</a></li>
+                        <li><a @click="fnReset">하의</a></li>
+                        <li><a @click="fnReset">아우터</a></li>
+                        <li><a @click="fnReset">신발</a></li>
+                        <li><a @click="fnReset">가방</a></li>
+                        <li><a @click="fnReset">지갑</a></li>
+                        <li><a @click="fnReset">시계</a></li>
+                        <li><a @click="fnReset">패션잡화</a></li>
+                        
                     </ul>
                 </div>
             </nav><!--쇼핑메뉴 종료-->            
@@ -432,6 +439,7 @@ var app = new Vue({
             var arrSize = JSON.stringify(self.sizeArr);
             var arrCate1 = JSON.stringify(self.cate1Value);
             var arrCate2 = JSON.stringify(self.cate2Value);
+            console.log(self.seachName);
             var nparmap = {
             		searchName : self.searchName,
             		sizeArr : arrSize,
@@ -439,7 +447,6 @@ var app = new Vue({
             		cate2Value : arrCate2
             }
             //console.log(self.searchName);
-           
 			//console.log(self.cate1Value);
 			//console.log(self.cate2Value);
               $.ajax({
@@ -451,9 +458,11 @@ var app = new Vue({
                     	self.shopList = data.shopList;
                     	console.log(self.shopList);
                     	console.log(self.sizeArr);
-                    	
-                    	
-						
+                    	if(self.searchName != "" && self.searchName != null){
+                    		self.searchFlg = true;
+                    	}else{
+                    		self.searchFlg = false;
+                    	}	
                     }
                 });
         },
@@ -472,6 +481,7 @@ var app = new Vue({
                     success : function(data) {
                     	self.cate1 = data.cate1;
                     	self.cate2 = data.cate2;
+                    	console.log(self.cate1);
                     	
 						
                     }
@@ -481,8 +491,6 @@ var app = new Vue({
         fnProInfo : function(productModel){
         	var self = this;
         	$.pageChange("/product.do", {modelNum : productModel});
-        	
-        	
         },
         // 사이즈 테이블 리스트
         fnSizeList : function(){
@@ -510,7 +518,19 @@ var app = new Vue({
 				self.searchFlg = false;
 			}
 			console.log(self.searchFlg);
+		},
+		// 카테고리 전체 클릭시
+		fnReset : function(){
+			location.reload();
+		},
+		// 헤더 인풋 옆 x 클릭
+		fnInputFlg : function(){
+			var self = this;
+			self.searchName = "";
+			self.fnGetList();
+			self.searchFlg = false;
 		}
+		
       
        
     }, // methods

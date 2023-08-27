@@ -112,6 +112,11 @@ public class ProductServiceImpl implements ProductService{
 
 		return 0;
 	}
+	@Override
+	public List<Product> searchProBuyInfo(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectProBuyInfo(map);
+	}
 	
 	
 }

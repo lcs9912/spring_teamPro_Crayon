@@ -55,6 +55,14 @@ public class ProductController {
 		request.setAttribute("map", map);
 		return "/pay/buyforsize";
 	}
+	
+		// 구매전 상의 페이지 이찬신!@#@!#@!#!@$
+		@RequestMapping("/buyforsizeLCS.do") 
+		public String buyforsizeLCS(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			request.setAttribute("map", map);
+			return "/pay/buyforsize_LCS";
+		}
+	
 	// 판매전 상의 페이지
 	@RequestMapping("/sellbeforewear.do") 
 	public String sellbeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -76,6 +84,7 @@ public class ProductController {
 	// 구매동의 페이지
 	@RequestMapping("/buyagree.do") 
 	public String buyagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		return "/pay/buyagree";
 	}
 	// 판매동의 페이지
@@ -94,6 +103,7 @@ public class ProductController {
 	// 최종결제 페이지
 	@RequestMapping("/payandpackage.do") 
 	public String payandpackage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		return "/pay/payandpackage";
 	}
 	
@@ -217,6 +227,15 @@ public class ProductController {
  		
  		return new Gson().toJson(resultMap);
  	}
+ 	// 상품 상세정보 proNum 조건 
+  	@RequestMapping(value = "/productInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+  	@ResponseBody
+  	public String productInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+  		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+  		List<Product> info = productService.searchProBuyInfo(map);
+  		resultMap.put("info", info);
+  		return new Gson().toJson(resultMap);
+  	}
  	// 상품 이미지 보여주기
  	@RequestMapping(value = "/productImg.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
  	@ResponseBody

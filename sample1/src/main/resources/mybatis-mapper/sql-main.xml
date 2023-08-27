@@ -43,6 +43,12 @@
 				#{cate2Item}
 			</foreach>
 		</if>
+		<if test="priceValue != null and priceValue.size() > 0">
+		AND U.PRODUCT_PRICE BETWEEN
+			<foreach item="priceItem" index="index" open="(" close=")" separator="," collection="priceValue">
+				#{priceItem}
+			</foreach>
+		</if>
 		GROUP BY U.PRODUCT_MODEL
 		ORDER BY U.PRODUCT_INTEREST DESC
 	</select>
