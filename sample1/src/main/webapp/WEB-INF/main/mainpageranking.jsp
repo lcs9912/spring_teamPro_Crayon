@@ -10,6 +10,55 @@
 <script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
 <title>CrayoN 헤더 인클루드 수정페이지</title>
 <style>
+ .slider-wrap {
+            position: absolute;
+            top: 355px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            flex-shrink: 0; width: 100%;
+            height: 100%; background-position: center;
+            background-size: cover;
+        }
+
+            .slide h1 {
+                text-align: center; margin-top: 255px;
+                color: #fff; font-size: 50px;
+            }
+                .innertext {animation: innertext 3.7s ease-in-out infinite;}
+
+                @keyframes innertext {
+                    from {opacity: 0; font-size:40px;} to {opacity: 1; font-size:50px;}
+                }
+
+        .slide-button {
+            position: absolute; top: 55%;
+            transform: translateY(-50%);
+            font-size: 80px; color: #fff;
+            z-index: 1; background: transparent;
+            border: none; outline: none;
+            opacity: 0.5;
+        }
+
+        .slide-prev {
+            left: 15px;
+        }
+
+        .slide-next {
+            right: 15px;
+        }
+
 		 /*상품 품목별 전시영역 시작*/ 
 
 	 	.rankwrap {width:1200px; margin:170px auto;}
@@ -99,257 +148,131 @@
 				.dropdownbtn button{border:1px solid #ccc; font-size:16px; background:#fff;
 					width:100px; height:50px; border-radius: 15px;
 				}
+				 .headerKindList li a::after {
+            display: none;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            margin-top: 3px;
+        }
+
+        .headerKindList li a.active {
+            font-weight: bold;
+        }
+
+            .headerKindList li a.active::after {
+                display: block;
+            }
+				
             /*상품 품목별 전시영역 종료*/
 
 </style>
 </head>
 <%@ include file="../header/mainheader.jsp"%>
 <body>
-<div id="headerApp">	
+<div id="headerApp">
+  <div class="slider-wrap">
+            <button class="slide-button slide-prev">&lt;</button>
+            <button class="slide-button slide-next">&gt;</button>
+            <div class="slider">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617476-52258cff-0aeb-4299-b0d3-82a1bb2c8f1f.jpg');">
+                    <h1 class="innertext">
+                        Limited Edition 경매로 입찰
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                    <h1 class="innertext">
+                        Luxury Item, Rare Goods!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
+                    <h1 class="innertext">
+                        완벽한 당신을 위한 최고의 선택!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
+                    <h1 class="innertext">
+                        Hot Summer Sale Event!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                    <h1 class="innertext">
+                        Luxury Item, Rare Goods!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
+                    <h1 class="innertext">
+                        완벽한 당신을 위한 최고의 선택!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
+                    <h1 class="innertext">
+                        Hot Summer Sale Event!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                    <h1 class="innertext">
+                        Luxury Item, Rare Goods!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
+                    <h1 class="innertext">
+                        완벽한 당신을 위한 최고의 선택!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
+                    <h1 class="innertext">
+                        Hot Summer Sale Event!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                    <h1 class="innertext">
+                        Luxury Item, Rare Goods!
+                    </h1>
+                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
+                    <h1 class="innertext">
+                        완벽한 당신을 위한 최고의 선택!
+                    </h1>
+                </div>
+            </div>
+            <div class="radio-button">
+                <input type="radio" id="slide-dot-1" name="slide-control" checked>
+                <label for="slide-dot-1"></label>
+                <input type="radio" id="slide-dot-2" name="slide-control">
+                <label for="slide-dot-2"></label>
+                <input type="radio" id="slide-dot-3" name="slide-control">
+                <label for="slide-dot-3"></label>
+                <input type="radio" id="slide-dot-4" name="slide-control">
+                <label for="slide-dot-4"></label>
+                <input type="radio" id="slide-dot-5" name="slide-control">
+                <label for="slide-dot-5"></label>
+                <input type="radio" id="slide-dot-6" name="slide-control">
+                <label for="slide-dot-6"></label>
+                <input type="radio" id="slide-dot-7" name="slide-control">
+                <label for="slide-dot-7"></label>
+                <input type="radio" id="slide-dot-8" name="slide-control">
+                <label for="slide-dot-8"></label>
+                <input type="radio" id="slide-dot-9" name="slide-control">
+                <label for="slide-dot-9"></label>
+                <input type="radio" id="slide-dot-10" name="slide-control">
+                <label for="slide-dot-10"></label>
+                <input type="radio" id="slide-dot-11" name="slide-control">
+                <label for="slide-dot-11"></label>
+                <input type="radio" id="slide-dot-12" name="slide-control">
+                <label for="slide-dot-12"></label>
+            </div>
+        </div>	
 	<div class="rankwrap">
-	<div class="goodsdisplay">
-		<!--상품전시 영역 시작-->
-		<div class="ranktitle">
-			<p>남성 신발 인기 순위</p>		
-		</div>
-		<div class="goodsblock">
-			<!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-			<article>
-				<a href="#">
-					<!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-					<picture>
-						<!-- 업로드 된 이미지 파일 추가되는 태그-->						
-						<img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-					</picture>
-					<span>1</span>
-					<div><h5>Yeezy</h5></div><!--상품명-->
-					<div class="goodsmanual">
-						<p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-						<p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-					</div>
-					<div class="goodsprice">
-						<h4>138,000</h4>
-						<p>즉시구매가</p>
-					</div>				
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>
-						<img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-					</picture>
-					<span>2</span>
-					<div><h5>Essentials</h5></div>
-					<div class="goodsmanual">
-						<p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-						<p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-					</div>
-					<div class="goodsprice">
-						<h4>82,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-					</picture>
-					<span>3</span>
-					<div><h5>Nike</h5></div>
-					<div class="goodsmanual">
-						<p>Nike Air Force 1 '07 Fresh Black</p>
-						<p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-					</div>
-					<div class="goodsprice">
-						<h4>141,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-					</picture>
-					<span>4</span>
-					<div><h5>Nike</h5></div>
-					<div class="goodsmanual">
-						<p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-						<p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-					</div>
-					<div class="goodsprice">
-						<h4>179,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>			
-		</div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
-		<div class="dropdownbtn"><button>더보기</button></div>
-	</div><!--상품전시 영역 종료-->
-	<div class="goodsdisplay">
-		<!--상품전시 영역 시작-->
-		<div class="ranktitle">
-			<p>여성 신발 인기 순위</p>		
-		</div>
-		<div class="goodsblock">
-			<!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-			<article>
-				<a href="#">
-					<!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-					<picture>
-						<!-- 업로드 된 이미지 파일 추가되는 태그-->						
-						<img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-					</picture>
-					<span>1</span>
-					<div><h5>Yeezy</h5></div><!--상품명-->
-					<div class="goodsmanual">
-						<p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-						<p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-					</div>
-					<div class="goodsprice">
-						<h4>138,000</h4>
-						<p>즉시구매가</p>
-					</div>				
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-					</picture>
-					<span>2</span>
-					<div><h5>Essentials</h5></div>
-					<div class="goodsmanual">
-						<p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-						<p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-					</div>
-					<div class="goodsprice">
-						<h4>82,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-					</picture>
-					<span>3</span>
-					<div><h5>Nike</h5></div>
-					<div class="goodsmanual">
-						<p>Nike Air Force 1 '07 Fresh Black</p>
-						<p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-					</div>
-					<div class="goodsprice">
-						<h4>141,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-					</picture>
-					<span>4</span>
-					<div><h5>Nike</h5></div>
-					<div class="goodsmanual">
-						<p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-						<p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-					</div>
-					<div class="goodsprice">
-						<h4>179,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-		</div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
-		<div class="dropdownbtn"><button>더보기</button></div>			
-	</div><!--상품전시 영역 종료-->
-	<div class="goodsdisplay">
-		<!--상품전시 영역 시작-->
-		<div class="ranktitle">
-			<p>지금 많이 거래되는 상품</p>		
-		</div>
-		<div class="goodsblock">
-			<!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-			<article>
-				<a href="#">
-					<!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-					<picture>
-						<!-- 업로드 된 이미지 파일 추가되는 태그-->						
-						<img src="https://user-images.githubusercontent.com/137017779/261182897-49746f50-7bc3-4043-a112-80460cf58e86.jpg">
-					</picture>
-					<span>1</span>
-					<div><h5>Yeezy</h5></div><!--상품명-->
-					<div class="goodsmanual">
-						<p>Yeezy Gap Engineered By Balenciaga Dove 3/4 Sleeve T-Shirt Black</p><!--상품설명 영문-->
-						<p>이지 갭 엔지니어드 바이 발렌시아가 도브 3/4 슬리브 티셔츠 블랙</p><!--상품설명 영문-->
-					</div>
-					<div class="goodsprice">
-						<h4>138,000</h4>
-						<p>즉시구매가</p>
-					</div>				
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>
-						<img src="https://user-images.githubusercontent.com/137017779/261182852-4eb0781f-a06a-44bd-b488-d17791a9e155.jpg">
-					</picture>
-					<span>2</span>
-					<div><h5>Essentials</h5></div>
-					<div class="goodsmanual">
-						<p>Essentials The Black Collection T-Shirt Black - 23SS</p>
-						<p>에센셜 더 블랙 컬렉션 티셔츠 블랙 - 23SS</p>
-					</div>
-					<div class="goodsprice">
-						<h4>82,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182930-f7012e12-66cf-418a-a8ff-e2c5f588c8d2.jpg">
-					</picture>
-					<span>3</span>
-					<div><h5>Nike</h5></div>
-					<div class="goodsmanual">
-						<p>Nike Air Force 1 '07 Fresh Black</p>
-						<p>나이키 에어포스 1 '07 프레쉬 블랙</p>
-					</div>
-					<div class="goodsprice">
-						<h4>141,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-			<article>
-				<a href="#">
-					<picture>						
-						<img src="https://user-images.githubusercontent.com/137017779/261182978-b4e1127b-8294-476b-b284-7f9ca8e1bf84.jpg">
-					</picture>
-					<span>4</span>
-					<div><h5>Nike</h5></div>
-					<div class="goodsmanual">
-						<p>Nike x Peaceminusone Wide Pants Black (DR0096-010)</p>
-						<p>나이키 x 피스마이너스원 와이드 팬츠 블랙 (DR0096-010)</p>
-					</div>
-					<div class="goodsprice">
-						<h4>179,000원</h4>
-						<p>즉시구매가</p>
-					</div>					
-				</a>
-			</article>
-		</div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
-		<div class="dropdownbtn"><button>더보기</button></div>
-	</div><!--상품전시 영역 종료-->
+	
 	</div>
 </div>
 </body>
+<%@ include file="../maincate/maincate_m.jsp"%>
+<%@ include file="../maincate/maincate_w.jsp"%>
+<%@ include file="../maincate/maincate_s.jsp"%>
+<%@ include file="../maincate/maincate_a.jsp"%>
 </html>
 <script>
 var headerApp = new Vue({

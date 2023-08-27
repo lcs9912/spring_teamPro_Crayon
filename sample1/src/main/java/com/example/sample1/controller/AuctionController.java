@@ -29,7 +29,7 @@ public class AuctionController {
 	 
 	
 	// Auction리스트 출력
-	@RequestMapping("/auction/list.do") 
+	@RequestMapping("/auction.do") 
 	public String auctionList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		return "/auction/auction_list";
 	}
@@ -39,36 +39,31 @@ public class AuctionController {
 			return "/auction/tauction_list";
 		}
 	// Auction 상세보기 출력
-	@RequestMapping("/auction/view.do") 
+	@RequestMapping("/auctionview.do") 
 	public String auctionView(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
 		return "/auction/auction_view";
 	}
 	// Auction 입찰 
-	@RequestMapping("/auction/join.do") 
+	@RequestMapping("/auctionjoin.do") 
 	public String auctionjoin(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
 		return "/auction/auction_join";
 	}
 	// Auction 입찰확인 
-	@RequestMapping("/auction/check.do") 
+	@RequestMapping("/auctioncheck.do") 
 	public String auctionCheck(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
 		return "/auction/auction_check";
 	}
 	// Auction 물품등록 
-	@RequestMapping("/auction/update.do") 
+	@RequestMapping("/auctionupdate.do") 
 	public String auctionUpdate(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
 		return "/auction/auction_Pup";
 	}
 	
-	// Auction 페이지 
-		@RequestMapping("/auction.do") 
-		public String auction(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-			request.setAttribute("map", map);
-			return "/auction/auction";
-		}
+	
 		
 	
 	

@@ -177,11 +177,11 @@ var app = new Vue({
         
         fnView : function(item){
         	var self = this;
-        	$.pageChange("view.do", {auctionNumber :item.auctionNumber});
+        	$.pageChange("/auctionview.do", {auctionNumber :item.auctionNumber});
         },
         fnAuctionAdd : function(){
         	var self = this;
-        	location.href = "update.do";
+        	location.href = "auctionupdate.do";
         },
         
         fnAuctionEnd : function(info){

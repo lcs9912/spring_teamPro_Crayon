@@ -221,7 +221,7 @@
                         <li><a href="mainslider.do">HOME</a></li>
                         <li><a href="style.do">STYLE</a></li>
                         <li><a href="mainpageshopping.do">SHOP</a></li>
-                        <li><a href="mainpageshopping.do">UP<i class="fa-solid fa-plus"></i></a></li>
+                        <li><a href="productRegister.do">UP<i class="fa-solid fa-plus"></i></a></li>
                         <li class="#"><a href="search.do"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     </ul>
                 </div><!--헤더 대분류 메뉴영역 종료-->
@@ -231,7 +231,7 @@
                         <ul class="headerKindList">
                             <!-- 헤더 종류별 리스트 -->
                              <li>
-                                <a href="mainpageranking.do" :class="{active : activeValue == '0'}">추천</a>
+                                <a href="mainslider.do" :class="{active : activeValue == '0'}">추천</a>
                             </li>
                             <li>
                                 <a href="mainpageranking.do" :class="{active : activeValue == '1'}">랭킹</a>
@@ -249,7 +249,7 @@
                                 <a href="#" @click="fnActive('5')">악세사리</a>
                             </li>
                              <li>
-                                <a href="auction/list.do" @click="fnActive('6')">경매</a>
+                                <a href="auction.do" @click="fnActive('6')">경매</a>
                             </li>
                         </ul>
                     </div>
@@ -264,7 +264,7 @@ var hApp = new Vue({
 	el : '#hApp',
 	data : {
 		loginOut : "${sessionId}",
-		activeValue : "1"
+		activeValue : "0"
 	},// data
 	methods : {
 		fnCheck : function(){
