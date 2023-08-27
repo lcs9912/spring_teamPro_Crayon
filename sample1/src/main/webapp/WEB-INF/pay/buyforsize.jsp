@@ -177,6 +177,9 @@
 var app = new Vue({
 	el : '#app',
 	data : {
+		
+		modelNum : "${map.modelNum}", // 상품 상세 페이지에서 구매 클릭시 넘어 오는 값 (모델번호)
+		
 		selectedSize: null,
 		sList : [], // size 호출 시 
 		img : {}, // 상품이미지 주소경로 호출

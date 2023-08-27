@@ -24,7 +24,7 @@ public interface ProductMapper {
 	//브랜드 이름 직접입력
 	int insertBrand(HashMap<String, Object> map);// 여기까지 지우셈
 	// 상품상세정보
-	Product selectProductInfo(HashMap<String, Object> map);
+	List<Product> selectProductInfo(HashMap<String, Object> map);
 	// 즉시 판매가 
 	Product selectSellMinPrice(HashMap<String, Object> map);
 	// 즉시 구매가
@@ -41,4 +41,6 @@ public interface ProductMapper {
 	int plusInterestCnt(HashMap<String, Object> map);
 	//상품 테이블 관심 cnt - 1
 	int minusdateInterestCnt(HashMap<String, Object> map);
+	// 상품 출시일
+	Product selectProMindate(HashMap<String, Object> map);
 }

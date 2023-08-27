@@ -52,11 +52,13 @@ public class ProductController {
 	// 구매전 상의 페이지
 	@RequestMapping("/buyforsize.do") 
 	public String buybeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		return "/pay/buyforsize";
 	}
 	// 판매전 상의 페이지
 	@RequestMapping("/sellbeforewear.do") 
 	public String sellbeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		return "/pay/sellbeforewear";
 	}
 	
@@ -85,6 +87,7 @@ public class ProductController {
 	// 즉시 구매 페이지
 	@RequestMapping("/nowbuy.do") 
 	public String nowbuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		return "/pay/nowbuy";
 	}
 	
@@ -206,9 +209,9 @@ public class ProductController {
     }
     
     // 상품 상세정보
- 	@RequestMapping(value = "/productInfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@RequestMapping(value = "/productList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
  	@ResponseBody
- 	public String productInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 	public String productList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
  		HashMap<String, Object> resultMap = new HashMap<String, Object>();
  		resultMap = productService.searchProductInfo(map);
  		
@@ -252,15 +255,6 @@ public class ProductController {
    		return new Gson().toJson(resultMap);
    	}
 
-   	// 최근거래가
-   	@RequestMapping(value = "/product/resent.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-   	@ResponseBody
-   	public String productResent(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-   		Product resent = productService.searchResentPro(map);
-   		resultMap.put("resent", resent);
-
-   		return new Gson().toJson(resultMap);
-   	}
+   
  	
 }

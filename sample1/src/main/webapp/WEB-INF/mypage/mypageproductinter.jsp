@@ -111,12 +111,14 @@
 			line-height:25px;
 		}
 		.delete{
-			color: rgba(34,34,34,.8); display: inline;
+			color: rgba(34,34,34,.8); 
 		    font-size: 12px; letter-spacing: -.06px;
-		    margin-top: 6px; padding: 0 3px;
+		    margin-top: -9px;  margin-left: 968px;
+		    padding: 0 3px;
 		    -webkit-text-decoration: underline;
 		    text-decoration: underline;
-		    float:right;
+		    cursor: pointer;	
+		    
 		}
 </style>
 
@@ -163,12 +165,12 @@
 						<div class="productinfo">{{item.productName}}</div>
 						<div class="productsize">{{item.size}}</div>
 					</div>
-				<button class="buybtn">
+				<button class="buybtn" @click="fnNowBuy(item.productSellNumber)">
 					<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
-					<div style="padding-top:3px;"><b>000,000원</b></div>
+					<div style="padding-top:3px;"><b>{{item.productPrice}}원</b></div>
 					<div style="padding-top:5px;">즉시 구매가</div>
-					<span class="delete">삭제</span>
 				</button>
+				<div class="delete" @click="fnRemove(item.productSellNumber)">삭제</div>
 				</li>
 	</ul>
 				</div>
@@ -205,6 +207,28 @@ var app = new Vue({
                 }
             }); 
         },
+        // 즉시구매 페이지로 이동
+        fnNowBuy : function(sellNum){
+        	var self = this;
+        	console.log(sellNum);
+        	$.pageChange("/nowbuy.do", { sellNum : sellNum});
+        },
+        // 관심 해제
+        fnRemove : function(sellNum){
+        	var self = this;
+        	var nparmap = {proNum : sellNum, uId : self.uId};
+        	console.log(sellNum);
+            $.ajax({
+                url : "/proInterestRemove.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	location.reload();
+                	
+                }
+            }); 
+        }
 	}, // methods
 	created : function() {
 		var self = this;

@@ -188,6 +188,7 @@ display:none;
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body> 
+<div id="app">
 	<div id="app" style="margin-top : 100px; background-color:#fafafa;">
 	
 	<div class="contentsarea">
@@ -272,12 +273,39 @@ display:none;
 		</div>
 		</div>
 	</div>
+</div>
 </body>
 
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+var app = new Vue({
+	el : '#app',
+	data : {
+		proInfo : {},
+		sellNum : "${map.sellNum}",
+	},// data
+	methods : {
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {proNum : self.sellNum};
+            $.ajax({
+                url : "/productInfo.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.proInfo = data.proInfo;
+                	console.log(self.proInfo);
+                }
+            }); 
+        }
+	}, // methods
+	created : function() {
+		var self = this;
+		self.fnGetList();
+	}// created
+});
 /* 구매희망가 자동반점 */
 
 const input = document.querySelector('#number');

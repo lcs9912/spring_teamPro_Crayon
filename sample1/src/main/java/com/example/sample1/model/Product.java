@@ -24,6 +24,10 @@ public class Product {
 	private String productBrand; // 브랜드
 	private String productInterest; // 관심상품개수
 	
+	
+	private String mindate; // 출시일
+	private String resent; // 출시일
+	
 	//T1_PRODUCT_CATEGORIE1
 	private String categorie1; // 카테고리1 테이블 
 	private String c1Text; // 카테고리1 내용
@@ -45,6 +49,8 @@ public class Product {
 	private int sellminprice; // 즉시 판매가격
 	private int buyminprice; // 즉시 구매가격
 	private String recenttransaction; // 최근거래가
+	
+	
 	
 	//T1_TRANSACTION
 	private String transactionPrice; // 거래가격

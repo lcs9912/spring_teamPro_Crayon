@@ -60,15 +60,25 @@ public class ProductServiceImpl implements ProductService{
 	public HashMap<String, Object> searchProductInfo(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		Product proInfo =  productMapper.selectProductInfo(map); // 물품 상세페이지
+		List<Product> proList =  productMapper.selectProductInfo(map); // 물품 상세페이지
 		Product minSell = productMapper.selectSellMinPrice(map); // 즉시 판매가
 		Product minBuy = productMapper.selectBuyMinPrice(map); // 즉시 구매가
-		resultMap.put("proInfo", proInfo);
+		Product minDate = productMapper.selectProMindate(map); // 출시일
 		
-		if(map.get("modelNum") != null) {
-			resultMap.put("minSell", minSell);
-			resultMap.put("minBuy", minBuy);
+		
+		Product resent = productMapper.selectRecentTransaction(map); // 최근거래가
+		if(resent != null) {
+			resultMap.put("resent", resent); // 상품 리스트
 		}
+		
+		
+		resultMap.put("proList", proList); // 상품 리스트
+		
+		resultMap.put("minDate", minDate); // 출시일
+		
+		resultMap.put("minSell", minSell); // 즉시 판매가
+		resultMap.put("minBuy", minBuy); 	// 즉시 구매가
+		
 		
 		
 		return resultMap;
@@ -102,11 +112,6 @@ public class ProductServiceImpl implements ProductService{
 
 		return 0;
 	}
-	// 최근거래가
-	@Override
-	public Product searchResentPro(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return productMapper.selectRecentTransaction(map);
-	}
+	
 	
 }

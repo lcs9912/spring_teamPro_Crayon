@@ -280,6 +280,14 @@ cursor: pointer;
     border-radius: 4px;
     
 }
+#noChart{
+	height: 200px; 
+	width: 600px;
+	text-align: center;
+}
+
+
+
 </style>
 
 </head>
@@ -301,37 +309,52 @@ cursor: pointer;
 		</div>
 
 		
-		<div class="sizeandrecent">
-		<div class="detailsize">
-		<span style="color: #646363;">사이즈</span>
-		<span class="sizebtn" style="font-weight: bold; font-size:16px;">모든사이즈</span>
-		</div>
-		<div class="recentsell" style="border: none;">
+		<div class="sizeandrecent" v-if="resentFlg">
+	
+		<div class="recentsell" style="border: none;"  >
 		<span style="color: #646363; font-size: 13px;">최근 거래가</span>
-		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{resent.transactionPrice}}원</span>
+		<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{resent.transactionPrice}} 원</span>
+		</div>
+		</div>
+		
+		<div class="sizeandrecent" v-else>
+	
+		<div class="recentsell" style="border: none;"  >
+		<span style="color: #646363; font-size: 20px;">거래 내역이 없습니다.</span>
+		
 		</div>
 		</div>
 		
 		<div class="btnaction">
 		
-		<a href="buyforsize.do"><button class="buyaction">
-		<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
-		<div style="padding-top:3px;"><b>{{minBuy.buyminprice}}원</b></div>
-		<div style="padding-top:5px;">즉시 구매가</div>
-		</button></a>
+		<a @click="fnBuyPage">
+			<button class="buyaction">
+			<strong class="nowbuy" style='box-shadow:1px px 0px px'>구매</strong>
+			<div style="padding-top:3px;">
+				<b v-if="buyMinFlg">{{minBuy.buyminprice}}원</b>
+				<b v-else>0원</b>
+			</div>
+			<div style="padding-top:5px;">즉시 구매가</div>
+			</button>
+		</a>
 		
 		
-		<a href="sellbeforewear.do"><button class="sellaction">
-		<strong class="nowsell" style='box-shadow:1px px 0px px'>판매</strong>
-		<div style="padding-top:3px;"><b>{{minSell.sellminprice}}원</b></div>
-		<div style="padding-top:5px;">즉시 판매가</div>
-		</button></a>
+		<a @click="fnSellPage">
+		<button class="sellaction">
+			<strong class="nowsell" style='box-shadow:1px px 0px px'>판매</strong>
+			<div style="padding-top:3px;">
+				<b v-if="sellMinFlg">{{minSell.sellminprice}} 원</b>
+				<b v-else>0원</b>
+			</div>
+			<div style="padding-top:5px;">즉시 판매가</div>
+		</button>
+		</a>
 		</div>
 		
 		<div class="interestbtn" style="cursor: pointer">
 		<i class="fa-solid fa-bookmark" v-if="interestFlg" @click="fnInterestRemove"></i> <!-- 저장 O -->
 		<i class="fa-regular fa-bookmark" @click="fnInterest" v-if="!interestFlg"></i>  <!-- 저장 X-->
-		관심상품<strong> {{proInfo.productInterest}}</strong>
+		관심상품<strong> 상품의 관심 갯수</strong>
 		</div>
 		</div>
 		
@@ -349,7 +372,7 @@ cursor: pointer;
 
 			<div class="detailproductheader">
 			출시일
-			<div style="color:black; font-size:14px;">{{proInfo.productUpdate}}</div>
+			<div style="color:black; font-size:14px;">{{minDate.mindate}}</div>
 			</div>
 			
 			<div class="detailproductheader">
@@ -414,8 +437,11 @@ cursor: pointer;
 			</div>
 			</div>
 			<div class="displaygraph">
-    			<div id="chart">
+    			<div id="chart" v-if="resentFlg">
      			   <apexchart type="line" height="200px" width="600px" :options="chartOptions" :series="series"></apexchart>
+   				 </div>
+   				 <div id="noChart" v-else>
+   				 	<div>거래내역이 없습니다.</div>
    				 </div>
 			</div>
 			
@@ -443,7 +469,7 @@ cursor: pointer;
 	</div>
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-			<img :src="img.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
+			<img :src="proInfo.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
 		</div>
 		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
 			<span class="caremark">주의</span>
@@ -465,19 +491,28 @@ var app = new Vue({
         apexchart: VueApexCharts,
       },
     data: {
-    	img : {},
-    	pName : "Jordan 1 Retro Low OG Black and Dark Powder Blue",
+    	proList : [], // 모델번호 상품 리스트
+    	proInfo : {}, // 리스트 0번째 정보
+    	
+    	modelNum: "${map.modelNum}", // 메인에서 넘어온 모델 번호
+    	
     	
         model: "",
         scrollPosition: 0,
         sessionId : "${sessionId}",
-        proInfo : {}, // 리스트로 수정 예정 물품 정보 
+        
         resent : {}, // 최근 거래가
+        
+        minDate : {}, // 출시일
         minSell : "", // 즉시 판매가
         minBuy : "", // 즉시 구매가
         proNum : "", // 상품 번호
-        modelNum: "${map.modelNum}",
+       
         interestFlg : false, // 관심상품 조회
+        resentFlg : false, // 구매내역 유무
+        sellMinFlg : false,
+        buyMinFlg : false,
+        
 		series: [{
             name: [],
             data: [],
@@ -547,47 +582,43 @@ var app = new Vue({
     methods: {
     	fnProList : function(){
     		var self = this; 
-            var nparmap = {proNum : self.proNum};
+            var nparmap = {modelNum : self.modelNum};
            
              $.ajax({
-                 url : "/productInfo.dox",
+                 url : "/productList.dox",
                  dataType:"json",	
                  type : "POST", 
                  data : nparmap,
                  success : function(data) { 
-                 	self.proInfo = data.proInfo;
+                 	self.proList = data.proList; // 모델 번호 상품 리스트 
+                 	self.proInfo = data.proList[0]; // 상품 리스트의 0번째 값 
+                 	self.minSell = data.minSell; // 최근 판매가
+                 	self.minBuy = data.minBuy; // 최근 구매가
+                 	self.minDate = data.minDate; // 출시일
+                 	self.resent = data.resent; // 최근거래가
                  	
-                 	self.modelNum = data.proInfo.productModel; // 모델번호
                  	
-                 	console.log("proinfo"+ self.proInfo);
-                 	
-                 	console.log("모델번호"+self.modelNum);
+                 	console.log(self.resent); // 최근거래가
+                 	console.log(self.minDate.mindate); // 출시일
+                 	console.log(self.minSell); // 최근 판매가
+                 	console.log(self.minBuy); // 최근 구매가
+                 	console.log(self.proList); // 모델 번호 상품 리스트 
+                 	console.log(self.proInfo); // 상품 리스트의 0번째 값  
+                 	if(self.resent != "" && self.resent != null){
+                 		self.resentFlg = true;
+                 	};
+                 	if(self.minSell != "" && self.minSell != null){
+                 		self.sellMinFlg = true;
+                 	};
+					if(self.minBuy != "" && self.minBuy != null){
+						self.buyMinFlg = true;
+                 	};
                  	self.fnGetChart();
-                 	self.fnSellBuyMin();
-                 	self.fnInterestInfo();
-                 	self.fnResent();
                  }
-             }); 
+             });
     	},
-    	// 즉시 구매 판매 가격 
-    	fnSellBuyMin : function(){
-    		var self = this;
-    		var nparmap = {modelNum : self.modelNum};
-    		console.log(self.modelNum);
-             $.ajax({
-                url : "/productInfo.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) { 
-                	self.minSell = data.minSell;
-                	self.minBuy = data.minBuy;
-                	console.log("즉시 구매가"+self.minBuy);
-                	console.log("즉시 판매가"+self.minSell);
-
-                }
-            });  
-    	},
+    	
+    	
     	// 유저 관심상품 조회
     	fnInterestInfo : function(){
     		var self = this;
@@ -610,8 +641,8 @@ var app = new Vue({
                 }
             });
     	},
-    	// 관심상품 등록
-        fnInterest : function(){
+    	 // 관심상품 등록
+         fnInterest : function(){
         	var self = this;
         	var nparmap = {proNum : self.proNum, uId : self.sessionId, proSize : self.proInfo.productSize};
         	console.log("등록"+ self.proInfo.productSize);
@@ -636,7 +667,7 @@ var app = new Vue({
                 	
                 }
             });
-        },
+        }, 
         // 관심상품 해제
         fnInterestRemove : function(){
         	var self = this;
@@ -654,49 +685,20 @@ var app = new Vue({
                 }
             });
         },
-       // 최근 거래가
-       fnResent : function(){
-    	   var self = this;
-    	   var nparmap = {modelNum : self.modelNum};
-    	   console.log("최근거래가 모델번호"+self.modelNum);
-       	
-        	$.ajax({
-               url : "/product/resent.dox",
-               dataType:"json",	
-               type : "POST", 
-               data : nparmap,
-               success : function(data) { 
-               	self.resent = data.resent;
-               	
-               }
-           }); 
-       },
-        
-        fnBuy: function () {
+        // 구매 페이지로 이동
+        fnBuyPage: function () {
             var self = this;
-            $.pageChange("productBuy");
+            $.pageChange("buyforsize.do", {modelNum : self.modelNum});
+           
         }, 
-         fnSell: function () {
+        // 판매 페이지로 이동
+         fnSellPage: function () {
             var self = this;
+            $.pageChange("sellbeforewear.do", {modelNum : self.modelNum});
         },  
         handleScroll: function () {
             this.scrollPosition = window.scrollY;
         },
-        //상품 사진 불러오기
-        fnGetImg : function() {
-        	var self = this;
-        	var nparmap = {pName : self.pName};
-        	$.ajax({
-				url : "productImg.dox",
-				dataType : "json",
-				type : "POST",
-				data : nparmap,
-				success : function(data){
-					console.log(data);
-					self.img = data.img;
-				}
-			});
-		},
         
         // 차트 리스트
         fnGetChart : function(){
@@ -710,6 +712,9 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	self.list = data.list;
+                	if(self.list != "" && self.list != null){
+                		self.resentFlg = true;
+                	}
 					var price = [];
 					var tdate = [];
 					var won = "원";
@@ -724,7 +729,6 @@ var app = new Vue({
 						name : "",
 						data : price
 						}];
-					
 					
 					const maxValue = Math.max.apply(null, price);
 					const roundedMaxValue = Math.ceil(maxValue);
@@ -748,7 +752,7 @@ var app = new Vue({
     created: function () {
         var self = this;
         self.fnProList();
-        self.fnGetImg();
+        
         window.addEventListener('scroll', this.handleScroll);
         
     },

@@ -39,7 +39,7 @@
 		</if>
 		<if test="cate2Value != null and cate2Value.size() > 0">
 	    AND U.PRODUCT_CATEGORIE2 IN
-			<foreach item="cate2Item" index="index" open="(" close=")" separator="," collection="cate1Value">
+			<foreach item="cate2Item" index="index" open="(" close=")" separator="," collection="cate2Value">
 				#{cate2Item}
 			</foreach>
 		</if>

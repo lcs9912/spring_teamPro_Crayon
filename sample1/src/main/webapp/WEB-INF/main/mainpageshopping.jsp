@@ -200,15 +200,7 @@
             	width: 50px;
             }
             /*체크박스 버튼 젤리 애니매이션 효과 CSS 종료*/
-            .red {
-			  background-color: red;
-			}
-			.green {
-			  background-color: green;
-			}
-			.blue {
-			  background-color: blue;
-			}
+          
 	
 </style>
 </head>
@@ -293,7 +285,7 @@
                                 
                                 <p>상의</p>
                                 <div v-for="topItem in topList" class="wearsize">  
-	                                <label>                             
+	                                <label :class="{ 'active': sizeArr.includes(topItem.productSize) }">                             
 		                                <input type="checkbox" :value="topItem.productSize" v-model="sizeArr" @change="fnGetList">
 		                                {{topItem.size}}
 		                            </label>

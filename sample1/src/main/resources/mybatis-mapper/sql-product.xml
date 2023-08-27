@@ -61,7 +61,9 @@
 		SELECT * FROM T1_PRODUCT_UPDATE U 
 		INNER JOIN T1_PRODUCT_BRAND B
 		ON U.PRODUCT_BRAND = B.PRODUCT_BRAND
-		WHERE U.PRODUCT_SELL_NUMBER = #{proNum}	
+		INNER JOIN T1_PRODUCT_IMG I
+		ON I.PRODUCT_NAME = U.PRODUCT_NAME
+		WHERE U.PRODUCT_MODEL = #{modelNum}	
 	</select>
 	
 	<!-- 즉시  판매가 -->
@@ -83,15 +85,19 @@
 	<!-- 최근 거래가 -->
 	<select id="selectRecentTransaction" parameterType="hashmap"
 		resultType="com.example.sample1.model.Product">
-		SELECT *
+		SELECT  TRANSACTION_PRICE,MAX(TRANSACTION_DATE) AS MAXDATE
 		FROM T1_TRANSACTION T
-		INNER JOIN(
-			SELECT MAX(TRANSACTION_DATE) AS MAXDATE
-			FROM T1_TRANSACTION T
-			INNER JOIN T1_PRODUCT_UPDATE P 
-			ON T.PRODUCT_SELL_NUMBER = P.PRODUCT_SELL_NUMBER
-			WHERE P.PRODUCT_MODEL = #{modelNum}
-		) A ON T.TRANSACTION_DATE = A.MAXDATE
+		INNER JOIN T1_PRODUCT_UPDATE U
+		ON T.PRODUCT_SELL_NUMBER = U.PRODUCT_SELL_NUMBER
+		WHERE PRODUCT_MODEL = #{modelNum}
+	</select>
+	
+	<!-- 상품 출시일 -->
+	<select id="selectProMindate" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT MIN(PRODUCT_UPDATE) AS MINDATE
+		FROM T1_PRODUCT_UPDATE 
+		WHERE PRODUCT_MODEL = #{modelNum}
 	</select>
 	
 	<!-- 관심상품 조회 -->

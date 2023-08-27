@@ -189,6 +189,33 @@ background-color: #B5B5B5;
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],
+		modelNum : "${map.modelNum}", // 상품 상세 페이지에서 구매 클릭시 넘어 오는 값 (모델번호)
+	},// data
+	methods : {
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url : "list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.list = data.list;
+                }
+            }); 
+        }
+	}, // methods
+	created : function() {
+		var self = this;
+		self.fnGetList();
+	}// created
+});
+
 $(document).ready(function() {
 	$('.custom-button').click(function() {
 		$('.custom-button').removeClass('selected');
