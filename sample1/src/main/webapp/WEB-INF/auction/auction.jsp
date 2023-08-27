@@ -8,7 +8,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> <!-- 차트표 api -->
 	<script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script> <!-- 차트표 api vue -->	
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>경매상세페이지</title>
 <style>
 *{
 	margin:0;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.sample1.model.Auction;
 import com.example.sample1.model.Mypage;
 import com.example.sample1.model.User;
 
@@ -44,6 +45,8 @@ public interface UserMapper {
 	int updateUserSize(HashMap<String, Object> map);
 	// 마이페이지 유저테이블 사이즈 테이블 조인 출력
 	User selectUserJoinSize(HashMap<String, Object> map);
+	//관리자 유저 정보 리스트 불러오기 
+	List <User>selectUserList(HashMap<String, Object> map);
 	
 	
 }

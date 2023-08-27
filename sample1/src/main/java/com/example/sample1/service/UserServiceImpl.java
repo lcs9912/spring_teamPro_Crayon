@@ -137,5 +137,11 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userMapper.selectUserJoinSize(map);
 	}
+	//관리자용 유저 리스트 
+	@Override
+	public List<User> searchUserList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserList(map);
+	}
 
 }

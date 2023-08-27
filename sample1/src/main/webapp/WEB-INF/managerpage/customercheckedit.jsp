@@ -124,7 +124,7 @@ border : 1px solid #eee;
 		</nav>
 		<div class="sailcontainer">
 		<div>
-		<h3 style="margin-bottom:15px;">회원목록</h3><h4 style="float:right;">총 : 명</h4>
+		<h3 style="margin-bottom:15px;">회원목록</h3><h4 style="float:right;">총 : {{ulist.length}} 명</h4>
 		<table>
 		<tr>
 		<th>선택</th>
@@ -137,14 +137,14 @@ border : 1px solid #eee;
 		
 		</tr>
 		
-		<tr>
-		<td><input type="checkbox"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<tr v-for="item in ulist">
+		<td><input type="checkbox" :value="item.userId"></td>
+		<td>{{item.userId}}</td>
+		<td>{{item.userName}}</td>
+		<td>{{item.userGender}}</td>
+		<td>{{item.userState}}</td>
+		<td>{{item.userPoint}}</td>
+		<td>{{item.userJoindate}}</td>
 		</tr>
 		
 		
@@ -189,7 +189,8 @@ border : 1px solid #eee;
 var app = new Vue({
 	  el: '#app',
 	  data: {
-	    list: [],
+		 list : [],
+	    ulist: [],
 	    currentPage: 1,
 	    itemsPerPage: 10,
 	  },
@@ -198,13 +199,13 @@ var app = new Vue({
 	      var self = this;
 	      var nparmap = {};
 	      $.ajax({
-	        url: "",/* 페이징경로 입력필!!*/
+	        url: "/manager/userList.dox",/* 페이징경로 입력필!!*/
 	        dataType: "json",
 	        type: "POST",
 	        data: nparmap,
 	        success: function (data) {
-	          self.list = data.list;
-	          console.log(self.list);
+	          self.ulist = data.uList;
+	          console.log(self.ulist);
 	        },
 	      });
 	    },

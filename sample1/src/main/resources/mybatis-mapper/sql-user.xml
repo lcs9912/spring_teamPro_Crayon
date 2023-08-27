@@ -162,5 +162,12 @@
 			ON U.USER_SIZE = S.PRODUCT_SIZE
 			WHERE USER_ID = #{uId}
 	</select>
-
+	
+	<select id="selectUserList" parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+			SELECT * 
+			FROM T1_USER_TBL U
+			
+	</select>
+	
 </mapper>

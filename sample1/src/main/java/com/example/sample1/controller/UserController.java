@@ -242,6 +242,15 @@ public class UserController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	
+	//Aution 상세정보 출력
+			@RequestMapping(value = "/manager/userList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+			@ResponseBody
+			public String searchUserList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+				HashMap<String, Object> resultMap = new HashMap<String, Object>();
+				List<User> uList =  userService.searchUserList(map);
+				resultMap.put("uList", uList);
+											
+				return new Gson().toJson(resultMap);
+			}
 	
 }

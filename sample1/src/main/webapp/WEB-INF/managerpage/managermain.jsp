@@ -249,6 +249,7 @@ a {	text-decoration:none;
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";
 			}
+			self.fnGetInfo();
 			
 		}// created
 	});

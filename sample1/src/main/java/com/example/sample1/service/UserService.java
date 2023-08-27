@@ -33,6 +33,8 @@ public interface UserService {
 	int editUserSize(HashMap<String, Object> map);
 	// 마이페이지 유저테이블 사이즈 테이블 조인 출력 
 	User searchUserJoinSize(HashMap<String, Object> map);
+	//관리자 페이지 유저 리스트 
+	List <User> searchUserList(HashMap<String, Object> map);
 	
 	
 	
