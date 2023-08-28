@@ -20,5 +20,5 @@ public interface MainMapper {
 	List<Main> selectCategorie2(HashMap<String, Object> map);
 	
 	// 메인cate 
-		List<Main>selectTmain(HashMap<String, Object> map);
+	List<Main>selectTmain(HashMap<String, Object> map);
 }

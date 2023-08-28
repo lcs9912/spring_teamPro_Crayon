@@ -36,7 +36,7 @@ margin: 30px 0 20px 0;
 .picarea{
 width:600px;
 height:600px;
-background-color:#eee;
+background-color:#fff;
 float:left;
 }
 .leftarea{
