@@ -27,7 +27,7 @@ public class AuctionController {
 	
 	 @Autowired AuctionService auctionService;
 	 
-	
+	 
 	// Auction리스트 출력
 	@RequestMapping("/auction.do") 
 	public String auctionList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -65,8 +65,6 @@ public class AuctionController {
 	
 	
 		
-	
-	
 	//Aution 리스트 출력
 	@RequestMapping(value = "/auction/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -164,23 +162,23 @@ public class AuctionController {
 	}	
 		
 	//Aution 상세정보 출력
-			@RequestMapping(value = "/auction/endU.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-			@ResponseBody
-			public String auctionEndInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-				HashMap<String, Object> resultMap = new HashMap<String, Object>();
-				Auction info = auctionService.searchAuctionEndInfo(map);
-				resultMap.put("info1", info);
-				return new Gson().toJson(resultMap);
-			}	
-			//Aution 상세정보 출력
-			@RequestMapping(value = "/auction/proinfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-			@ResponseBody
-				public String proinfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-				HashMap<String, Object> resultMap = new HashMap<String, Object>();
-				Product info = auctionService.selectProInfo(map);
-				resultMap.put("info1", info);
-				return new Gson().toJson(resultMap);
-				}
+	@RequestMapping(value = "/auction/endU.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String auctionEndInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		Auction info = auctionService.searchAuctionEndInfo(map);
+		resultMap.put("info1", info);
+		return new Gson().toJson(resultMap);
+	}	
+	//Aution 상세정보 출력
+	@RequestMapping(value = "/auction/proinfo.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+		public String proinfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		Product info = auctionService.selectProInfo(map);
+		resultMap.put("info1", info);
+		return new Gson().toJson(resultMap);
+	}
 		
 			
 }

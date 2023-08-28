@@ -167,19 +167,19 @@ background-color : #eee;
 
 
 </style>
-<%@ include file="header/shopheader.jsp"%>
+<%@ include file="../header/shopheader.jsp"%>
 </head>
 <body>
 	<div id="app">
 		<div class="customerwrap">		
 			<div class="customernav">
-				<customernav>
+				<!-- <customernav> -->
 					<h1>고객센터</h1>
 					<ul>
 						<li><a href="faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
 						<li><a href="onetoone.do" style="color: black;">1:1 문의 게시판</a></li>
 					</ul>
-				</customernav>
+				<!-- </customernav> -->
 					
 				<div class="contentsarea"><h3>자주 묻는 질문</h3>
 				<table>
@@ -214,11 +214,11 @@ background-color : #eee;
 					<th><div align="center">처리상태</div></th>
 					</tr>
 					
-					<tr v-for="item in paginatedList" :key="item.qnaNumber" v-if="item.qnaTypeName===typeName ">
+					<tr v-for="item in paginatedList" :key="item.qnaNumber" >
 					  <td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
 					  <td>{{ item.qnaNumber }}</td>
 					  <td align="left">
-					    <a href="javascript:;">
+					    <a @click="fnlistView(item)" href="javascript:;" >
 					      <span style="font-weight: bold;">[{{ item.qnaTypeName }}]</span> {{ item.qnaTitle }}
 					    </a>
 					  </td>
@@ -233,8 +233,8 @@ background-color : #eee;
 
 				<div align="right" style="width:1000px;">
 					<button class="qnaeditbtn">수정</button>
-					<button class="qnadeletbtn">삭제</button>
-					<button class="onetooneEditbtn">글쓰기</button>
+					<button class="qnadeletbtn"  @click="fnQnaRemove()">삭제</button>
+					<button class="onetooneEditbtn" @click="fnQnaAdd()">글쓰기</button>
 				</div>
 				
 			<div class="movebtn">
@@ -263,8 +263,9 @@ background-color : #eee;
 	
 </body>
 </html>
-<%@ include file="header/footer.jsp"%>
+<%@ include file="../header/footer.jsp"%>
 <script>
+
 var app = new Vue({
 	el : '#app',
 	data : {
@@ -296,11 +297,11 @@ var app = new Vue({
         },
         fnQnaAdd : function(){
         	var self =this;
-        	location.href ="/qna/add.do"
+        	location.href ="../qnaadd.do"
         },
         fnlistView : function(item){
         	var self = this;
-        	$.pageChange("/qna/view.do", {qnaNumber :item.qnaNumber});
+        	$.pageChange("../qnaview.do", {qnaNumber :item.qnaNumber});
         },
         fnQnaRemove : function(){
         	var self = this;

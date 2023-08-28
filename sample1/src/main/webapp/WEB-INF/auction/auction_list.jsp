@@ -110,7 +110,7 @@ font-size:20px;
 				<td>{{item.usercnt}}</td>			
 				<td>{{item.auctionStartDate}}</td>
 				<td>{{item.auctionEndDate}}</td>
-				<td v-if="isAuctionExpired(item)"><button @click="fnAuctionEndU(item)">종료</button></td>
+				<td v-if="isAuctionExpired(item)"><button  @click="fnAuctionEndU(item)">종료</button></td>
 				<td v-else></td>
 			</tr>
 			

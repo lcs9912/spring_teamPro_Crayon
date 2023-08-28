@@ -45,7 +45,7 @@ public class UserController {
 	
 	@RequestMapping("/faq.do") 
     public String faq(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/faq";
+        return "/qna/faq";
     }
 	
 	@RequestMapping("/footer.do") 
@@ -100,7 +100,7 @@ public class UserController {
     public String onetoone(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
        
 
-		return "/user/onetoone";
+		return "/qna/onetoone";
     }
 
 	
