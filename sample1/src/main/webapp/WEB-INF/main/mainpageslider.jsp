@@ -20,6 +20,7 @@
             height: 570px;
             overflow: hidden;
         }
+				
 
         .slider {
             display: flex;
