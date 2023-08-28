@@ -9,29 +9,37 @@
 	<meta charset="UTF-8">
 	<title>STYLE</title>
 <style>
-body, div, img {
-    margin: 0;
-    padding: 0;
-    border: 0;
+* {
+	margin: 0;
+	padding : 0;
+	box-sizing : border-box;
+}
+.style-contents {
+	width:1200px;
+	clear:both;
+	margin:0 auto;
+	margin-top : 150px;
+	margin-bottom : 50px;
 }
 .image-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 10px; 
 }
 
 .grid-item {
   position: relative;
   width: 100%;
-  height: 400px; /* 원하는 높이를 지정 */
+  height: 400px /* 원하는 높이를 지정 */
   overflow: hidden;
 }
 
 .grid-item img {
-  width: 100%;
-  height: 100%;
+   width: 100%;
+   height: 100%;
   object-fit: cover;
   cursor: pointer;
+  margin : 0 auto;
 }
 
 /* 모달 스타일 */
@@ -68,69 +76,70 @@ img {
 	border-radius : 10px;
 }
 </style>
+<%@ include file="../header/shopheader.jsp"%>
 </head>
 <body>
 <div id="app">
-<div>
-	<ul class="image-grid">
-	<div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_1.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_2.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_3.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_4.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_5.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_6.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_7.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-     <div>
-	    <li class="grid-item">
-	      <img src="../img/style/style_8.jpg"></img>
-	    </li>
-		<strong>닉네임</strong>
-	 	<p>contents</p>
-     </div>
-  	</ul>
-</div>
+	<div class="style-contents">
+		<ul class="image-grid">
+		<div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_1.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_2.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_3.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_4.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_5.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_6.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_7.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	     <div>
+		    <li class="grid-item">
+		      <img src="../img/style/style_8.jpg"></img>
+		    </li>
+			<strong>닉네임</strong>
+		 	<p>contents</p>
+	     </div>
+	  	</ul>
+	</div>
 </div>
 <!-- Modal for displaying larger image -->
   <div class="modal">
@@ -140,6 +149,7 @@ img {
 
   <script src="script.js"></script>
 </body>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({

@@ -28,7 +28,7 @@ public class StyleController {
         return "style/styleMain";
     }
 	//style 작성페이지
-	@RequestMapping("/style/add.do") 
+	@RequestMapping("/addstyle.do") 
     public String styleAdd(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "style/styleAdd";
     }
