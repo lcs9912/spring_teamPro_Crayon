@@ -113,6 +113,8 @@
             /*상품 품목별 전시영역 종료*/    
 .goodsitem{
     cursor:pointer;
+    display:inline-block;
+    margin-right:5px;
     }
     .dropdownbtn button{
     cursor:pointer;
@@ -129,9 +131,9 @@
             <div class="ranktitle">
                 <p>남성 인기 품목</p>		
             </div>
-            <div class="goodsblock" v-for="(group, index) in shopListGrouped" :key="index" >
+            <div class="goodsblock" style="display:inline-block;">
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                <div  v-for="item in group" :key="item.productId" >
+                <div class="goodsitem" v-for="(item , index) in visibleItems" :key="index">
                 <article>
                     <a @click="fnProInfo(item.productModel)"> 
                         <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
@@ -157,10 +159,12 @@
                  </div>
      
         </div><!--상품전시 영역 종료-->
-         <div class="dropdownbtn"><button>더보기</button></div>
-        
+
  
-        </div>   
+        </div>  
+                 <div class="dropdownbtn" v-if="showMoreButton">
+        <button @click="showMoreItems">더보기</button>
+    		</div> 
     </div>
      </div>
 </body>
@@ -174,16 +178,18 @@
             loginOut: "${sessionId}",
             list : [],
             maingate : "4",
-            kind : "p"
+            kind : "p",
+            visibleItemCount: 4, // 한 번에 보여질 아이템 개수
+            visibleItemIndex: 0, // 현재 보여지는 아이템의 인덱스
         },// data
         computed: {
-            shopListGrouped() {
-                // 상품 리스트를 4개씩 그룹화하여 반환하는 계산된 속성
-                const grouped = [];
-                for (let i = 0; i < this.list.length; i += 4) {
-                    grouped.push(this.list.slice(i, i + 4));
-                }
-                return grouped;
+        	 // 현재 보여지는 아이템들을 계산된 속성으로 관리
+            visibleItems() {
+                return this.list.slice(0, this.visibleItemIndex + this.visibleItemCount);
+            },
+            // 더보기 버튼을 표시할지 여부를 결정하는 계산된 속성
+            showMoreButton() {
+                return this.visibleItemIndex + this.visibleItemCount < this.list.length;
             }
         },
         methods: {
@@ -222,7 +228,10 @@
             	var self = this;        
             	window.location.href = "/product.do?modelNum=" + encodeURIComponent(productModel);
             },
-            
+            // 더보기 버튼을 눌렀을 때 호출되는 메서드
+            showMoreItems() {
+                this.visibleItemIndex += this.visibleItemCount;
+            },
         }, // methods
         created: function () {
             var self = this;

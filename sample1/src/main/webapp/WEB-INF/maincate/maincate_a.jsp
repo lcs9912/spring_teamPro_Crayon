@@ -113,6 +113,8 @@
             /*상품 품목별 전시영역 종료*/    
     .goodsitem{
     cursor:pointer;
+    display:inline-block;
+    margin-right:5px;
     }
     .dropdownbtn button{
     cursor:pointer;
@@ -129,9 +131,9 @@
             <div class="ranktitle">
                 <p>악세사리 인기 품목</p>		
             </div>
-            <div class="goodsblock" >
+            <div class="goodsblock" style="display:inline-block;">
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                <div v-for="(item , index) in visibleItems" :key="index"  class="goodsitem">
+                <div class="goodsitem" v-for="(item , index) in visibleItems" :key="index">
                 <article>
                     <a @click="fnProInfo(item.productModel)"> 
                         <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
@@ -157,13 +159,16 @@
                 
                 
                  </div>
-        <div class="dropdownbtn" v-if="showMoreButton">
-        <button @click="showMoreItems">더보기</button>
-    		</div>
+       
  
         </div><!--상품전시 영역 종료-->
-      
         </div>   
+        
+       <div class="dropdownbtn" v-if="showMoreButton">
+        <button @click="showMoreItems">더보기</button>
+    		</div>
+    		
+        
     </div>
      </div>
 </body>
