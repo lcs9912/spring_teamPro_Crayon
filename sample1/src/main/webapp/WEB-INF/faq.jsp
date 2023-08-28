@@ -12,33 +12,33 @@
 * {margin:0; padding:0;}
 
 table {
-	margin-top :30px;
+margin-top : 10px;
 	width : 1000px;
-	border: 1px solid #black;
+	border: 1px solid #a2a2a2;
 	border-collapse: collapse;
 	text-align: center;
 }
 
 th, td {
 	border: 1px solid #eee;
-	padding: 20px 10px;
+	padding: 10px 5px;
+
 }
-td{
-color : #a2a2a2;
-}
+
+
 
 .customerwrap {
-	width:100%; height:600px;
+	width:100%;
 	}
 	
-customernav {
-	float:left; width:200px; color:#000;
+.customernav {
+	width:1200px; margin:50px auto;
 	}
-
-
-.customernav{
-width:1200px; margin:50px auto;
+customernav{
+		float:left; width:200px; color:#000;
 }
+
+
 .customernav ul li a{
 padding-top : 20px;
 text-decoration:none;
@@ -51,7 +51,6 @@ text-decoration:none;
 color : black;
 font-weight: bold;
 }
-
 	
 .customernav ul li{
 list-style : none;
@@ -61,39 +60,111 @@ padding-top : 20px;
 
 .contentsarea{
 width : 1000px;
-float:left; 
-padding-bottom : 10px;
-
+float:left;
+margin-bottom : 150px;
 }
+
 .contentsarea h3{
 	border-bottom: 3px solid #222; padding-bottom:15px;
 }
-.dropdownlist{
-width : 1000px;
-margin-left : 200px;
+
+.dropdownlist li{
+width: 1200px;
+list-style : none;
+padding-top : 10px;
 padding-bottom : 10px;
-border-bottom: 3px solid #222;
+border-bottom : 1px solid #eee;
+margin-left : 200px;
+margin-right : 200px;
+}
+.onetooneEditbtn {
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+}
+.qnadeletbtn {
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+margin-right : 1px;
+}
+.qnaallselect{
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin: 25px 10px 10px 0;
+cursor: pointer;
 }
 
-a{
-text-decoration : none;
-}
-.qnacontents{
-width:1000px;
-}
-.qnacontents tr td{
-color : black;
-border: 1px solid white;
-border-bottom: 1px solid #eee;
+.qnaallselectnot{
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin: 25px 10px 10px 0;
+cursor: pointer;
 }
 
-.morebtn {
-color : black;
-width: 80px;
+
+.qnaeditbtn{
+background-color : white;
+border : 1px solid #A2A2A2;
+padding : 5px;
+font-weight: bold;
+margin-top : 5px;
+cursor: pointer;
+margin-right : 1px;
+}
+
+td a:link {
+  color : black;
+  text-decoration: none;
+}
+td a:visited {
+  color : black;
+  text-decoration: none;
+}
+td a:hover {
+  color : black;
+  text-decoration: underline;
+}
+td a:active {
+  color : black;
+  text-decoration: none;
+}
+.movebtn {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.movebtn button{
+width : 40px;
 height: 30px;
-background-color:white;
-border:1px solid #eee;
+background-color : white;
+font-weight: bold;
+cursor: pointer;
+border : 1px solid #eee;
 }
+.onetoonehead{
+background-color : #eee;
+}
+
+.selectpagebtn:hover {
+  background-color: #808080;;
+  border: 1px solid black;
+}
+
+.selectpagebtn:hover .selectpagenum {
+  color: #eee;
+}
+
 
 </style>
 <%@ include file="header/shopheader.jsp"%>
@@ -111,33 +182,77 @@ border:1px solid #eee;
 				</customernav>
 					
 				<div class="contentsarea"><h3>자주 묻는 질문</h3>
-					<table>
-						<tbody>
-							<tr>
-								<td style="cursor:pointer; font-weight: bold; color:black">전체</td>
-								<td style="cursor:pointer">공지사항</td>
-								<td style="cursor:pointer">자주묻는 질문</td>
-							</tr>
-							
-							<tr class="onetooneselect">
-								<td style="cursor:pointer"><a href="onetoone.do" style="color : #A2A2A2;">1:1문의</a></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>	
-						
-					<table class="qnacontents">
-						<tr>
-							<td align="center" style="width:200px; font-weight: bold;">자주묻는 질문</td>
-							<td align="left" style="width:1000px;">가품 ・ 손상/오염/사용감 있는 상품 판매에 대한 제재</td>
-							<td align="right" style="width:120px;"><i class="fa-solid fa-plus"></i></td>
-						</tr>
+				<table>
 
-						<tr>
-							<td colspan="3" style="border: none;"><button  class="morebtn" style="cursor: pointer;">더보기<i class="fa-solid fa-chevron-down"></i></button><td>
-						</tr>
-					</table>
+				<tbody>
+
+				<tr>
+				<td style="cursor:pointer; font-weight: bold; color:black" >전체</td>
+				<td style="cursor:pointer" @click="setQnaType('공지사항')" >공지사항</td>
+				<td style="cursor:pointer" @click="setQnaType('자주묻는 질문')">자주묻는 질문</td>
+				</tr>
+				
+				<tr class="onetooneselect">
+				<td style="cursor:pointer"><a href="onetoone.do" style="color : #A2A2A2;">1:1문의</a></td>
+				<td></td>
+				<td></td>
+				</tr>
+				</tbody>
+				</table>
+					<table>
+				<tbody>
+					<button class="qnaallselect">전체선택</button>
+					<button class="qnaallselectnot">선택해제</button>
+					<tbody>
+					<tr class="onetoonehead">
+					<th>선택</th>
+					<th><div align="center">번 호</div></th>
+					<th><div align="center">제 목</div></th>
+					<th><div align="center">작성자</div></th>
+					<th><div align="center">작성일</div></th>
+					<th><div align="center">조회수</div></th>
+					<th><div align="center">처리상태</div></th>
+					</tr>
+					
+					<tr v-for="item in paginatedList" :key="item.qnaNumber" v-if="item.qnaTypeName===typeName ">
+					  <td><input type="checkbox" :value="item.qnaNumber" v-model="selectComment"></td>
+					  <td>{{ item.qnaNumber }}</td>
+					  <td align="left">
+					    <a href="javascript:;">
+					      <span style="font-weight: bold;">[{{ item.qnaTypeName }}]</span> {{ item.qnaTitle }}
+					    </a>
+					  </td>
+					  <td>{{ item.userId }}</td>
+					  <td>{{ item.qnaDate }}</td>
+					  <td>{{ item.qnaCnt }}</td>
+					  <td>{{ item.qnaAnsweryn }}</td>
+					</tr> 
+					</tbody>
+			</table>
+				
+
+				<div align="right" style="width:1000px;">
+					<button class="qnaeditbtn">수정</button>
+					<button class="qnadeletbtn">삭제</button>
+					<button class="onetooneEditbtn">글쓰기</button>
+				</div>
+				
+			<div class="movebtn">
+				  <button @click="changePage(-1)">
+				    <i class="fa-solid fa-chevron-left"></i>
+				  </button>
+				  
+				  <button class="selectpagebtn"
+				  v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+				  :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+				  :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+				  {{ pageNumber }}
+				 </button>
+				
+				  <button @click="changePage(1)">
+				    <i class="fa-solid fa-chevron-right"></i>
+				  </button>
+			</div>
 						
 				</div>
 			</div>
@@ -161,8 +276,10 @@ var app = new Vue({
 		selectComment : [] ,
 		currentPage: 1,
 		itemsPerPage: 15,
+		typeName : "",
 	},// data
 	methods : {
+		
 		fnGetList : function(){
             var self = this;
             var nparmap = {};
@@ -218,6 +335,11 @@ var app = new Vue({
             this.currentPage = pageNumber;
             this.fnGetList();
           },
+          
+          setQnaType: function (typeName) {
+              this.qnaType = typeName; // Set the qnaType based on the clicked cell's content
+              this.fnGetList(); // Call the list retrieval method with the new qnaType
+            },
         },
         computed: {
           totalPages: function () {
