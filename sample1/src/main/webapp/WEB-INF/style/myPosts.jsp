@@ -57,37 +57,29 @@ a {
 		}
 		.listhead {width:1200px; height:30px; margin-top:30px; border-bottom:1px solid #ccc;}
 			.tab_menu li {float : left; margin-right:25px; height:28px;}
-				/*.tab_menu li a{display:block;}*/
+				.tab_menu li a{display:block;}
 			.tab_menu li:nth-child(1) {border-bottom:2px solid #333; margin-top:3px;}
 				
     	.listdv{
-    		/* height:325px;  */ margin-top:20px; clear:both; 
+    		margin-top:40px; clear:both; 
     		width: 1200px; margin-bottom:50px; display: grid;
-            grid-template-columns: repeat(4, 1fr); gap: 5px;            
+            grid-template-columns: repeat(4, 1fr); justify-content: space-between;          
      		}
-     	.listdv{
-     		display: flex;
-		    flex-wrap: wrap;
-		    justify-content:space-between;
-     		}
-     		.listdv article {width: 230px;
-                height: 401px;
+     
+     		.listdv article {width:width:250px;
+                height: 401px; margin:0 20px;
                 background: #fff;
                 border-radius: 10px;
 				}
 				.listdv article picture {
-                    width: 230px;
-                    height: 230px;
-                    position: relative;
+                    width: 250px;
+                    height: 401px;                    
                 	}
                     .listdv article picture img {
                         border-radius: 10px;
                         margin-bottom: 7px;
                     }
 		
-		
-		
-		/*  */
 		
 		.follow-num {
 			font-weight : bold; 
