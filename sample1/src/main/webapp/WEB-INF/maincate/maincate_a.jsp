@@ -16,7 +16,7 @@
     	
         /*상품 품목별 전시영역 시작*/
 
-	 	.acsewrap {width:1200px; margin:0 auto; clear:both; margin-top:600px;}
+	 	.acsewrap {width:1200px; margin:0 auto; clear:both; margin-top:670px;}
 	 	.goodsdisplay { /*상품 품목별 4개씩 분류 전시 영역*/
             width: 1200px; margin-bottom:30px; 
         }
