@@ -21,12 +21,12 @@
 }
 .leftcolumnbox{
 background-color:#f4f4f4;
-width : 600px;
+width : 520px;
 height: 600px;
 display:block;
 }
 .leftbox{
-width:600px;
+width:520px;
 position: fixed;
 }
 
@@ -37,13 +37,13 @@ top: 650px;
 .rightcolumn{
 float : right;
 border-left : 1px solid #eee;
-width : 600px;
-padding-left : 40px;
-margin-bottom : 50px;
+width : 640px;
+padding-left:40px;
+margin-bottom : 150px;
 }
 .selldanger{
 margin-top : 10px;
-width : 600px;
+width : 520px;
 border-radius : 10px;
 background-color : #f6f6f6;
 }
@@ -294,7 +294,7 @@ cursor: pointer;
 	<div class ="productcontents">
 	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
 		<div class="leftcolumnbox">
-			<img :src="proInfo.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
+			<img :src="proInfo.pImgPath" style="max-width : 520px">  <!-- 상품 이미지 -->
 		</div>
 		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
 			<span class="caremark">주의</span>
