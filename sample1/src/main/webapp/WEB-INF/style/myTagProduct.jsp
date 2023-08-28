@@ -85,6 +85,15 @@ a {
 			color : black;
 			margin-left : 5px;
 		}
+		.else-btn {
+			border:1px solid #999; border-radius:10px; padding:8px; line-height : 30px; font-size : 12px; font-weight : bold; 
+			display:block; width:10%; margin:30 auto;
+		}
+		
+		.listdv-else {
+			margin-top:40px; height:30%; clear:both; 
+    		width: 1200px; margin-bottom:50px; text-align:center;
+		}
 </style>
 
 </head>
@@ -123,7 +132,7 @@ a {
 			<div class="mylist">
 				
 				<div class="listdv">
-					<div v-for="item in list" v-if="item.contents != null">
+					<div v-for="item in list">
 						<article> 
 	                        <a @click="fnProInfo(item.productModel)" type="button"> 
 	                            <picture>
@@ -134,9 +143,9 @@ a {
 	                        </a>
 	                    </article>
 					</div>
-					<div v-else style="margin-top : 100px;">
+					<div v-if="list.length == 0" style="margin-top : 100px;" class="listdv-else">
 						<p style="color : rgba(34,34,34,.8); font-size : 13px;">태그하신 상품이 없습니다.</p>
-						<a href="#" type="button" style="color : rgba(34,34,34,.8);">게시글 업로드</a>
+						<a class="else-btn" href="addstyle.do" type="button" style="color : rgba(34,34,34,.8);">게시글 업로드</a>
 					</div>
 				</div>
 			</div>

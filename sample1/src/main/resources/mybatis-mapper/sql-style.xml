@@ -5,17 +5,37 @@
 <mapper namespace="com.example.sample1.mapper.StyleMapper">
 
 	<!-- style 글 등록 -->
-	<insert id="insertStyle" parameterType="hashmap">
+	<insert id="insertStyle" parameterType="hashmap" useGeneratedKeys="true" keyProperty="idx" keyColumn="idx">
 		INSERT INTO T1_STYLE(USER_ID, USER_NICKNAME, TAG, CONTENTS,STYLE_DATE)
 		VALUES
 			(#{uId}, #{nickname}, #{tag}, #{contents},CURDATE())
 	</insert>
 	
-	<!-- style 글 조회 -->
+	<!-- style 이미지 업로드 -->
+	<insert id="insertStyelImg" parameterType="hashmap">
+		INSERT INTO T1_STYLE_IMG(IDX, S_IMG_PATH, S_IMG_NAME)
+		VALUES
+			(#{idx}, #{sImgPath}, #{sImgName})
+	</insert>
+	
+	<!-- 회원별(로그인완료) style 글,이미지 조회 -->
 	<select id="selectStyle" parameterType="hashmap"
 		resultType="com.example.sample1.model.Style">
-		SELECT USER_NICKNAME, TAG, CONTENTS, STYLE_DATE 
-		FROM T1_STYLE
-		WHERE USER_ID = #{uId}
+		SELECT S.USER_NICKNAME, S.TAG, S.CONTENTS, I.S_IMG_PATH, I.S_IMG_NAME
+		FROM T1_STYLE S
+		INNER JOIN T1_STYLE_IMG I
+			ON S.STYLE_NO = I.IDX
+		WHERE S.USER_ID = #{uId}
 	</select>
+	
+	<!-- style 메인페이지 조회 -->
+	<select id="selectAllStyle" parameterType="hashmap"
+		resultType="com.example.sample1.model.Style">
+		SELECT *
+		FROM T1_STYLE S
+		INNER JOIN T1_STYLE_IMG I
+			ON S.STYLE_NO = I.IDX
+	</select>
+	
+	
 </mapper>
