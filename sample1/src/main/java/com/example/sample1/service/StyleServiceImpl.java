@@ -16,16 +16,33 @@ public class StyleServiceImpl implements StyleService{
 
 	//스타일 글 등록
 	@Override
-	public int addStyle(HashMap<String, Object> map) {
+	public HashMap<String, Object> addStyle(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		return styleMapper.insertStyle(map);
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		styleMapper.insertStyle(map);
+		resultMap.put("idx", map.get("idx"));
+		return resultMap;
 	}
-
+	
+	//style 이미지 등록
+	@Override
+	public int addStyleImg(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return styleMapper.insertStyelImg(map);
+	}
+	
 	//style 글 조회
 	@Override
 	public List<Style> viewStyle(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return styleMapper.selectStyle(map);
+	}
+
+	//style 메인페이지 조회
+	@Override
+	public List<Style> viewAllStyle(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return styleMapper.selectAllStyle(map);
 	}
 	
 }

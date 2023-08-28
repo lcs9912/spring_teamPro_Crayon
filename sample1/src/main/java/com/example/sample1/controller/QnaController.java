@@ -26,19 +26,19 @@ public class QnaController {
 	QnaService qnaService;
 	
 	// Qna 리스트 출력
-	@RequestMapping("/qna/list.do") 
+	@RequestMapping("/qnalist.do") 
     public String QnaList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/qna/qna_list";
     }
 	
 	// Qna등록 출력 , Qna 수정 
-	@RequestMapping("/qna/add.do") 
+	@RequestMapping("/qnaadd.do") 
 	public String QnaAdd(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
 	     return "/qna/qna_add";
 	 }
 	// Qna상세정보 출력
-	@RequestMapping("/qna/view.do") 
+	@RequestMapping("/qnaview.do") 
 	public String QnaView(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
 	     return "/qna/qna_view";

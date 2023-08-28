@@ -100,53 +100,48 @@ border:1px solid #eee;
 </head>
 <body>
 	<div id="app">
-	<div class="customerwrap">		
-		<div class="customernav">
-		<customernav>
-			<h1>고객센터</h1>
-			<ul>
-				<li><a href="faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
-				<li><a href="onetoone.do" style="color: black;">1:1 문의 게시판</a></li>
-			</ul>
-		</customernav>
-		
+		<div class="customerwrap">		
+			<div class="customernav">
+				<customernav>
+					<h1>고객센터</h1>
+					<ul>
+						<li><a href="faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
+						<li><a href="onetoone.do" style="color: black;">1:1 문의 게시판</a></li>
+					</ul>
+				</customernav>
+					
 				<div class="contentsarea"><h3>자주 묻는 질문</h3>
-				
-				<table>
+					<table>
+						<tbody>
+							<tr>
+								<td style="cursor:pointer; font-weight: bold; color:black">전체</td>
+								<td style="cursor:pointer">공지사항</td>
+								<td style="cursor:pointer">자주묻는 질문</td>
+							</tr>
+							
+							<tr class="onetooneselect">
+								<td style="cursor:pointer"><a href="onetoone.do" style="color : #A2A2A2;">1:1문의</a></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>	
+						
+					<table class="qnacontents">
+						<tr>
+							<td align="center" style="width:200px; font-weight: bold;">자주묻는 질문</td>
+							<td align="left" style="width:1000px;">가품 ・ 손상/오염/사용감 있는 상품 판매에 대한 제재</td>
+							<td align="right" style="width:120px;"><i class="fa-solid fa-plus"></i></td>
+						</tr>
 
-				<tbody>
-
-				<tr>
-				<td style="cursor:pointer; font-weight: bold; color:black">전체</td>
-				<td style="cursor:pointer">공지사항</td>
-				<td style="cursor:pointer">자주묻는 질문</td>
-				</tr>
-				
-				<tr class="onetooneselect">
-				<td style="cursor:pointer"><a href="onetoone.do" style="color : #A2A2A2;">1:1문의</a></td>
-				<td></td>
-				<td></td>
-				</tr>
-				</tbody>
-				</table>
-				
-				<table class="qnacontents">
-				<tr>
-				<td align="center" style="width:200px; font-weight: bold;">자주묻는 질문</td>
-				<td align="left" style="width:1000px;">가품 ・ 손상/오염/사용감 있는 상품 판매에 대한 제재</td>
-				<td align="right" style="width:120px;"><i class="fa-solid fa-plus"></i></td>
-				
-				
-				</tr>
-		
-				
-				<tr>
-				<td colspan="3" style="border: none;"><button  class="morebtn" style="cursor: pointer;">더보기<i class="fa-solid fa-chevron-down"></i></button><td>
-				</tr>
-				</table>
+						<tr>
+							<td colspan="3" style="border: none;"><button  class="morebtn" style="cursor: pointer;">더보기<i class="fa-solid fa-chevron-down"></i></button><td>
+						</tr>
+					</table>
+						
 				</div>
-				</div>
-				</div>
+			</div>
+		</div>
 	</div>
 
 	
@@ -155,5 +150,90 @@ border:1px solid #eee;
 </html>
 <%@ include file="header/footer.jsp"%>
 <script>
-
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],		
+		qnaNumber :"",
+		uId : "${sessionuId}",
+		Name : "${sessionName}",
+		status : "${sessionStatus}",
+		selectComment : [] ,
+		currentPage: 1,
+		itemsPerPage: 15,
+	},// data
+	methods : {
+		fnGetList : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url : "/qna/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.list = data.list;
+                	console.log(self.list);
+                }
+            }); 
+        },
+        fnQnaAdd : function(){
+        	var self =this;
+        	location.href ="/qna/add.do"
+        },
+        fnlistView : function(item){
+        	var self = this;
+        	$.pageChange("/qna/view.do", {qnaNumber :item.qnaNumber});
+        },
+        fnQnaRemove : function(){
+        	var self = this;
+        	if(!confirm("정말 삭제할거냐")){
+         		 return;
+         	 }        
+        	var noList = JSON.stringify(self.selectComment);
+        	var nparmap = {selectComment : noList };
+        	 $.ajax({
+                 url : "/qna/deleteList.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) { 
+                	alert("삭제되었다");
+                	self.fnGetList();             
+                	self.selectComment = [];
+                 	
+                 }
+             }); 
+        },
+        changePage: function (offset) {
+            this.currentPage += offset;
+            if (this.currentPage < 1) {
+              this.currentPage = 1;
+            } else if (this.currentPage > this.totalPages) {
+              this.currentPage = this.totalPages;
+            }
+            this.fnGetList();
+          },
+          goToPage: function (pageNumber) {
+            this.currentPage = pageNumber;
+            this.fnGetList();
+          },
+        },
+        computed: {
+          totalPages: function () {
+            return Math.ceil(this.list.length / this.itemsPerPage);
+          },
+          paginatedList: function () {
+            const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+            const endIndex = startIndex + this.itemsPerPage;
+            return this.list.slice(startIndex, endIndex);
+          }
+       
+        
+	}, // methods
+	created : function() {
+		var self = this;
+		self.fnGetList();
+	}// created
+});
 </script>

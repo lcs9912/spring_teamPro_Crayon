@@ -13,7 +13,7 @@ public class Style {
 	private String styleDate;
 	
 	//T1_STYLE_IMG 테이블
-	private int no;
+	private int idx;
 	private String sImgPath;
 	private String sImgName;
 }

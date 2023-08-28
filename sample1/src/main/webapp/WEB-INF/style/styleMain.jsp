@@ -30,7 +30,7 @@
 .grid-item {
   position: relative;
   width: 100%;
-  height: 400px /* 원하는 높이를 지정 */
+  height: 600px /* 원하는 높이를 지정 */
   overflow: hidden;
 }
 
@@ -75,11 +75,42 @@
 img {
 	border-radius : 10px;
 }
+/*  */
+.header {
+	margin : 0 auto;
+	padding : 0;
+	margin-top : 80px;
+	text-align : center;
+}
+.header-inner {
+	width : 100%;
+	border : 1px solid #ccc;
+	margin-top : 50px;
+}
+.header-li{
+	margin : 0 auto;
+	margin-top : 100px;
+	width : 1200px;
+	height : 150px;
+	border-bottom : 1px solid #ccc;
+}
+
+
 </style>
 <%@ include file="../header/shopheader.jsp"%>
 </head>
 <body>
 <div id="app">
+<div class="header">
+<h1>STYLE</h1>
+</div>
+<div class="header-inner">
+</div>
+<div class="header-li">
+<ul>
+<li>1</li>	
+</ul>
+</div>
 	<div class="style-contents">
 		<ul class="image-grid">
 		<div>
@@ -138,6 +169,13 @@ img {
 			<strong>닉네임</strong>
 		 	<p>contents</p>
 	     </div>
+	     <div v-for="item in list">
+		    <li class="grid-item">
+		      <img src="{{item.sImgPath}}"></img>
+		    </li>
+			<strong>{{item.userNickname}}</strong>
+		 	<p>{{item.contents}}</p>
+	     </div>
 	  	</ul>
 	</div>
 </div>
@@ -147,7 +185,7 @@ img {
     <img class="modal-content" id="modal-image">
   </div>
 
-  <script src="script.js"></script>
+ 
 </body>
 <%@ include file="../header/footer.jsp"%>
 </html>
@@ -162,18 +200,19 @@ var app = new Vue({
             var self = this;
             var nparmap = {};
             $.ajax({
-                url : "list.dox",
+                url : "listAllStyle.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) { 
-                	self.list = data.list;
+                	self.list = data.all;
                 }
             }); 
         }
 	}, // methods
 	created : function() {
 		var self = this;
+		self.fnGetList();
 	}// created
 });
 

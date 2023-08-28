@@ -52,7 +52,7 @@
 		border : 2px solid #ddd;
 	}			
 	.selectfileareazone {
-					width:600px; float:left; margin:30px 0 20px 0;
+					width:600px; float:left; margin:30px 0 20px 0; 
 				}
 					.selectfileareazone p {height:30px; font-size:17px; font-weight:bold;
 								display:inline-block; width:510px; margin-bottom:10px;
@@ -63,7 +63,7 @@
 					.fileupload {
 						display: inline-block; width:82px; height:24px; line-height:24px; font-size:14px;
 						background-color:black; color: #fff; border-radius:3px; text-align:center;
-						cursor: pointer;
+						cursor: pointer; 
 					}
 </style>	
 </head>
@@ -100,9 +100,6 @@
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-console.log(Vue);
-Vue.use(Vue2Editor);
-const VueEditor = Vue2Editor.VueEditor;
 var app = new Vue({
 	el : '#app',
 	data : {

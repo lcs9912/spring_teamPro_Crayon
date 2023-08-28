@@ -130,11 +130,13 @@
             </div>
         </div>
     </div>
+    <div style="margin-top:670px;">
+		<%@ include file="../maincate/maincate_m.jsp"%>
+		<%@ include file="../maincate/maincate_w.jsp"%>
+		<%@ include file="../maincate/maincate_s.jsp"%>
+		<%@ include file="../maincate/maincate_a.jsp"%>    
+    </div>
 </body>
-<%@ include file="../maincate/maincate_m.jsp"%>
-<%@ include file="../maincate/maincate_w.jsp"%>
-<%@ include file="../maincate/maincate_s.jsp"%>
-<%@ include file="../maincate/maincate_a.jsp"%>
 </html>
 
 <script>
