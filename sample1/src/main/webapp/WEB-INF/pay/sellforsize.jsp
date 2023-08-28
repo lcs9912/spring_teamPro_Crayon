@@ -114,7 +114,7 @@
 <%@ include file="../header/shopheader.jsp"%>
 <body> 
 <div id="app" style="margin-top : 100px; background-color:#fafafa;;">
-	<div class="contentsarea">
+	<div v-if="buyFlg" class="contentsarea">
 		<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
 			<div class="productcontents">
 				<div class="productheader" style="display: flex; align-items: center;">
@@ -142,7 +142,7 @@
 			  </button>
 			</div>
 			
-			<div v-if="selectedSize"  class="buyboxarea1">
+			<div class="buyboxarea1">
 				<!-- 구매입찰이 아닌경우 -->
 				<div>
 					<a>
@@ -159,16 +159,15 @@
 					</a>
 				</div>
 				
-				<!-- 구매입찰이 필요한 경우 -->
-				<!-- <div v-if="productPrice === '구매입찰'" class="buyboxarea1">
-					<a href="buyagree.do"><button class="buy-button" @click="fnSell(selectedSize)" disabled>구매입찰</button></a>
-				</div>
-				<div v-else  class="buyboxarea1">
-				</div> -->
+				
 			</div>
 			
 			
 		</div>
+	</div>
+	<div v-if="!buyFlg" class="contentsarea">
+		즉시 구매 상품이 없습니다. 구매입찰 페이지로 넘어갑니다... 람쥐
+	
 	</div>
 </div>
 </body>
@@ -183,22 +182,35 @@ var app = new Vue({
 		sList : [], // size 호출 시 
 		proInfo : {}, // 상품상세정보 호출
 		proList : [],
+		buyFlg : false,
 	},// data
 	
 	  methods : { // 사이즈값 선택시 선택값에 따른 결제 버튼 활성화
 			 
-			//상품 정보 불러오기
+		//상품 정보 불러오기
 			fnProList : function(){
 	    		var self = this; 
 	            var nparmap = {modelNum : self.modelNum};
 	             $.ajax({
-	            	 url : "/productBuyList.dox",
+	                 url : "/productBuyList.dox",
 	                 dataType:"json",	
 	                 type : "POST", 
 	                 data : nparmap,
 	                 success : function(data) { 
-	                	self.proList = data.buyList;
-	                  	self.proInfo = data.buyList[0];
+	                 	self.proList = data.buyList;
+	                 	self.proInfo = data.buyList[0];
+	                 	if(data.buyList != "" &&  data.buyList != null){
+	                 		self.buyFlg = true;
+	                 	}else{
+	                 		self.buyFlg = false;
+	                 		alert("즉시 판매 상품이 없습니다. \n판매입찰 페이지로 이동합니다.");
+	                 			
+	                 		
+	                 		location.href = "/productRegister.do";
+	                 	}
+	                 	console.log(self.proList);
+	                 	console.log(self.proInfo);
+	                 	
 	                 }
 	             }); 
 	    	},

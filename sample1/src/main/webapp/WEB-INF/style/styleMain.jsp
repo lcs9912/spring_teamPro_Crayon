@@ -171,7 +171,7 @@ img {
 	     </div>
 	     <div v-for="item in list">
 		    <li class="grid-item">
-		      <img src="{{item.sImgPath}}"></img>
+		      <img :src="item.sImgPath"></img>
 		    </li>
 			<strong>{{item.userNickname}}</strong>
 		 	<p>{{item.contents}}</p>

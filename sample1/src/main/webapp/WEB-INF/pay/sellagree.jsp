@@ -208,8 +208,20 @@ var app = new Vue({
 		},
 		proNum : "${map.proNum}", // 상품 모델 번호로 상품 정보를 호출
 		delivery : "${map.delivery}",
-		}, //data		
+		}, //data	
     computed: {
+        	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
+        	 computedSizeOptions() {
+       	      if (this.product.pCategorie2 === '1' || this.product.pCategorie2 === '3') {
+       	        return this.sList.slice(1, 8); // 상의,아우터 카테고리인 경우 1(XXS)부터 8(XXL)까지만 보여주도록 처리
+       	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7') {
+       	        return this.sList.slice(18,32); // 신발 카테고리인 경우 18(220)부터 32(290)까지만 보여주도록 처리
+       	      } else if (this.product.pCategorie2 === '2'){
+       	        return this.sList.slice(9,17); // 하의 카테고리에 경우 9(28)부터 17(36)까지만 보여주도록 처리
+       	      } else if (this.product.pCategorie2 === '8' || this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'){
+       	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
+       	      }
+       	    }, 
     	allCheck: function() {
             return this.agreements.every(item => item === true);
         },
@@ -231,7 +243,7 @@ var app = new Vue({
              }); 
     	},
     	//판매동의 후 다음페이지로 이동
-    	fnNowBuy : function(){
+    	fnNowSell : function(){
     		var self = this;
     		$.pageChange("nowsell.do", {proNum : self.proNum, delivery : self.delivery});
     	}

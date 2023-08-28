@@ -90,7 +90,7 @@ public class ProductController {
 		request.setAttribute("map", map);
 		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
 		if(sessionId != "" && sessionId != null) {
-			return "/pay/sellbeforewear";
+			return "/pay/sellforsize";
 		} else {
 			return "redirect:/login.do";
 		}
