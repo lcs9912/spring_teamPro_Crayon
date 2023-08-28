@@ -117,10 +117,9 @@
     .dropdownbtn button{
     cursor:pointer;
     }
-               
+             
     </style>
 </head>
-
 <body>
 	<div id="headerAppMP">
   	<div class="rankwrap">

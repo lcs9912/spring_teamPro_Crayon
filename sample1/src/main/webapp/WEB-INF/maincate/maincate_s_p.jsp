@@ -106,7 +106,7 @@
 				.dropdownbtn {
 					height:100px; border-bottom:1px solid #ccc; text-align: center;
 				}
-
+   
 				.dropdownbtn button{border:1px solid #ccc; font-size:16px; background:#fff;
 					width:100px; height:50px; border-radius: 15px;
 				}

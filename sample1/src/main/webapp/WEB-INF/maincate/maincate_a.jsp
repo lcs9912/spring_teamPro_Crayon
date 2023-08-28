@@ -102,7 +102,6 @@
                     font-size: 11px;
                     color: #ccc;
                 }
-
 				.dropdownbtn {
 					height:100px; border-bottom:1px solid #ccc; text-align: center;
 				}
