@@ -16,11 +16,8 @@
 }
 
 .productcontents{
-	margin-left : auto;
-	margin-right : auto;
-	max-width : 1280px;
-	margin-top : 50px;
-	padding: 30px 40px 120px;
+	margin:50px auto;	
+	max-width : 1200px;		
 }
 .leftcolumnbox{
 background-color:#f4f4f4;
@@ -295,6 +292,16 @@ cursor: pointer;
 <body> 
 <div id="app">
 	<div class ="productcontents">
+	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
+		<div class="leftcolumnbox">
+			<img :src="proInfo.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
+		</div>
+		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
+			<span class="caremark">주의</span>
+			<span class="dangertext">판매 거래 주의사항</span>
+			<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
+		</div>
+	</div>
 	<div class="rightcolumn">
 	
 		<div class="toptitlebox">
@@ -467,16 +474,7 @@ cursor: pointer;
 		
 			
 	</div>
-	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
-		<div class="leftcolumnbox">
-			<img :src="proInfo.pImgPath" style="max-width : 600px">  <!-- 상품 이미지 -->
-		</div>
-		<div class="selldanger" style='box-shadow:2px 3px 5px 0px #eee; float:left;'>
-			<span class="caremark">주의</span>
-			<span class="dangertext">판매 거래 주의사항</span>
-			<p class="submarktext">반드시 보유한 상품만 판매하세요.</p>
-		</div>
-	</div>
+	
 	
 	
 	</div>

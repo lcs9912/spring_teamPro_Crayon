@@ -217,13 +217,14 @@
         <div class="shopwrap">
             <!-- 쇼핑 페이지 전체감싸기 태그.  쇼핑 메뉴, 슬라이드 브랜드 선택 영역, 세로 상세품목 선택영역, 상품전시 영역 시작 -->
             <h1 v-if="!searchFlg">SHOP</h1>
-            <input  v-if="searchFlg" v-model="searchName" @keyup.enter="fnGetList(searchName)"><i class="fa-solid fa-xmark" v-if="searchFlg" @click="fnInputFlg"></i>
+            
+            <input v-if="searchFlg" v-model="searchName" @keyup.enter="fnGetList(searchName)"><i class="fa-solid fa-xmark" v-if="searchFlg" @click="fnInputFlg"></i>
+            
             <nav class="shopnav">
                 <!--쇼핑메뉴 시작-->
                 <div class="navmenu">
                     <ul>
                         <li><a @click="fnReset">전체</a></li>
-                        
                         <li><a @click="fnReset">상의</a></li>
                         <li><a @click="fnReset">하의</a></li>
                         <li><a @click="fnReset">아우터</a></li>
@@ -244,7 +245,6 @@
                         <h4>필터</h4>
                         <div class="allcatearea catearea">
                             <!--카테고리 인풋영역 시작 -->         
-                            
                                              
                             <div class="allcatebox cateselect" v-if="!cate1Flg" @click="cate1Flg = true">  <!-- 클릭 하면 카테고리 on -->
                                 카테고리1
@@ -261,7 +261,6 @@
 			                        </label>
                           		</div>
                         </div><!--카테고리 div영역 종료 -->
-                        
                         
                         
                         <div class="genderarea catearea"><!--카테고리2 div영역 시작 -->
