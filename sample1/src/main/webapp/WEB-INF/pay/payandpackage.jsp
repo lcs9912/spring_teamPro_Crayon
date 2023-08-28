@@ -164,11 +164,11 @@
 	.productheader{
 		width:100%;
 	}
-	.lastpaybtn{
+	.continuebtn{
 		background-color:white;
 		padding-bottom:20px;
 	}
-	.lastpaybtn button{
+	.continuebtn button{
 		background-color:#a2a2a2;
 		border:none;
 		width:90%;
@@ -271,6 +271,10 @@
 				tbale button{
 					margin: 1px; auto;
 				}
+ .continuebtn button.continuebtn-active {
+            background-color: black;
+            cursor:pointer;
+        }
 </style>
 
 </head>
@@ -423,7 +427,7 @@
 	
 	<div class="noticeheader">판매자의 판매거부, 배송지연, 미입고 등의 사유가 발생할 경우, 거래가 취소될 수 있습니다.</div>
 	<div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[0]"></div>
 	<div class="noticecontents">앱 알림 해제, 알림톡 차단, 전화번호 변경 후 미등록 시에는 거래 진행 상태 알림을 받을 수 없습니다.
 	</div>
 	</div>
@@ -432,7 +436,7 @@
 	<div class="noticegroup">
 	<div class="noticeheader">창고 보관을 선택한 경우, 구매자에게 배송되지 않고 KREAM 창고에 보관됩니다.</div>
 <div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[1]"></div>
 	<div class="noticecontents">검수 합격 후 보관이 완료되면 창고 이용료(현재 첫 30일 무료)가 결제됩니다.
 </div>
 	</div>
@@ -441,20 +445,20 @@
 	<div class="noticegroup">
 	<div class="noticeheader">‘바로 결제하기’ 를 선택하시면 즉시 결제가 진행되며, 단순 변심이나 실수에 따른 구매 결정 후 취소는 불가능합니다.</div>
 		<div class="checkarea">
-	<div style="float:right; display:inline-block;"><input type="checkbox"></div>
+	<div style="float:right; display:inline-block;"><input type="checkbox" v-model="agreements[2]"></div>
 	<div class="noticecontents">본 거래는 개인간 거래로 전자상거래법(제17조)에 따른 청약철회(환불, 교환) 규정이 적용되지 않습니다. 단, 조작 실수 등을 고려하여 계정당 하루 1회 구매를 거부할 수 있습니다.
 	</div>
 	</div>
 	</div>
 	
 	<div class="noticegroup"  style="border:none;">
-	<div class="noticeheader" style="font-weight:bold; width:100%; font-size:15px;">구매 조건을 모두 확인하였으며, 거래 진행에 동의합니다.<input class="checkarea" type="checkbox" style="float:right; clear:both;"></div>
+	<div class="noticeheader" style="font-weight:bold; width:100%; font-size:15px;">구매 조건을 모두 확인하였으며, 거래 진행에 동의합니다.<input class="checkarea" type="checkbox"  v-model="agreements[3]" style="float:right; clear:both;"></div>
 
 </div>
 
 </div>
-<div class="lastpaybtn" style="width:100%; text-align:center;">
-<button v-if="payFlg" @click="fnLastBuy">결제하기</button>
+<div class="continuebtn" style="width:100%; text-align:center;">
+<button v-if="payFlg" @click="fnLastBuy" :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">결제하기</button>
 <button v-else>결제하기</button>
 </div>
 
@@ -523,7 +527,7 @@ var app = new Vue({
 		proInfo : {},	
 		userInfo : {},
 		uId : "${sessionId}",
-		
+		agreements: [false, false, false, false],
 		addrFlg : false, // 
 		lastPointFlg : false, // 결제후 잔여 포인트(음수인지 양수인지)
 		payFlg : false,
@@ -546,6 +550,12 @@ var app = new Vue({
 		
 		
 	},// data
+	 computed: {
+		 allCheck: function() {
+	            return this.agreements.every(item => item === true);
+	        },
+	    },
+	 
 	methods : {
 		//상품 정보 불러오기
 		fnProInfo : function(){
