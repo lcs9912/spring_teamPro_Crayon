@@ -50,6 +50,14 @@ public class MainController {
     public String mainpagewslider(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
         return "/main/mainpagewoman";
     }
+	@RequestMapping("/mainpages.do") //메인페이지 신발메뉴 선택할 때 열리는 페이지
+    public String mainpagew(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/main/mainpageS";
+    }
+	@RequestMapping("/mainpagea.do") //메인페이지 악세사리 메뉴 선택할 때 열리는 페이지
+    public String mainpagews(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+        return "/main/mainpageA";
+    }
 	
 	// MAINcate 페이지 
 	@RequestMapping("/tmain.do") 

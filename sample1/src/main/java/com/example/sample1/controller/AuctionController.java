@@ -104,7 +104,7 @@ public class AuctionController {
 			return new Gson().toJson(resultMap);
 	}	
 	//Product 상세정보 출력
-		@RequestMapping(value = "/auction/product.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@RequestMapping(value = "/product.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String ProductInfo(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -122,7 +122,7 @@ public class AuctionController {
 		return new Gson().toJson(resultMap);
 		}
 	//Aution 물품 등록
-			@RequestMapping(value = "auction/update.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+			@RequestMapping(value = "/update.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 			@ResponseBody
 			public String auctionP(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 				HashMap<String, Object> resultMap = new HashMap<String, Object>();

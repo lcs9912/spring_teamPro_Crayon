@@ -243,13 +243,13 @@
                                 <a href="mainpagewoman.do" :class="{active : activeValue == '3'}">여성</a>
                             </li>
                             <li>
-                                <a href="#" @click="fnActive('4')">신발</a>
+                                <a href="mainpages.do" :class="{active : activeValue == '4'}">신발</a>
                             </li>
                             <li>
-                                <a href="#" @click="fnActive('5')">악세사리</a>
+                                <a href="mainpagea.do":class="{active : activeValue == '5'}">악세사리</a>
                             </li>
                              <li>
-                                <a href="auction.do" @click="fnActive('6')">경매</a>
+                                <a href="auction.do" :class="{active : activeValue == '6'}">경매</a>
                             </li>
                         </ul>
                     </div>

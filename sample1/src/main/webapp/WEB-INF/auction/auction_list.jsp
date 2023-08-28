@@ -155,7 +155,7 @@ var app = new Vue({
 		selectComment : [] ,
 		endDateTimestamp : "",
 		currentTimestamp : "",
-		itemsPerPage: 5,
+		itemsPerPage: 6,
 	    currentPage: 1,
 	},// data
 	methods : {

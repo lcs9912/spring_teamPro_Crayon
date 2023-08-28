@@ -269,7 +269,7 @@ var app = new Vue({
 			success : function(data){
 				self.list = data.list;
 				alert("등록 완료.");
-				location.href = "list.do";
+				location.href = "auction.do";
 			}
 		});	
 	}
