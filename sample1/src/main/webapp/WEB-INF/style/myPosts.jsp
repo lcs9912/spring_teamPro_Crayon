@@ -40,16 +40,16 @@ a {
 			overflow: hidden;			
 		}
 		.profileinner2{
-			width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
+			width: 400px; margin-top:25px; height:120px; line-height:25px; color:#888; font-size:13px;
 			float:left;
 		}
 		.profileinner2 strong{
-			font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+			font-size:25px; color:#000; font-weight:bold; margin-bottom:5px;
 		}
 		.profileinner2 p {margin:5px 0;}
 		.profileinner2 a{
-				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-			 height:35px; line-height:15px;
+			display:inline-block; border:1px solid #999; border-radius:10px; 
+			height:35px; line-height:35px; padding:0 8px; margin-left:16px;
 			}
 		
 		.mylist{
@@ -101,10 +101,10 @@ a {
 				</div>
 				<div class="profileinner2">
 					<strong>{{nickname}}</strong>
-					<a href="mypageprofile.do">프로필 관리</a>
+					<a href="mypageprofile.do" type="button">프로필 관리</a>
 					<p>
-						<a href="#" style="border : none">팔로워<span class="follow-num">0</span></a>
-						<a href="#" style="border : none">팔로잉<span class="follow-num">0</span></a>
+						<a href="#" type="button" style="border : none">팔로워<span class="follow-num">0</span></a>
+						<a href="#" type="button" style="border : none">팔로잉<span class="follow-num">0</span></a>
 					</p>
 					<p><strong>{{sessionId}}</strong></p> <!-- 유저아이디 -->
 				</div>
@@ -126,7 +126,7 @@ a {
 				<div class="listdv">
 					<div v-for="item in list" v-if="item.contents != null">
 							<article> 
-	                            <a @click="fnProInfo(item.productModel)"> 
+	                            <a @click="fnProInfo(item.productModel)" type="button"> 
 	                                <picture>
 	                                    <img src="../img/style/style_9.jpg">
 	                                </picture>

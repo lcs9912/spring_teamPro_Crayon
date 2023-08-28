@@ -21,92 +21,63 @@ a {
 
 .mypagewrap {
 	width:1200px; margin:0 auto;
-	clear:both; margin-top:150px; margin-bottom:50px;
+	clear:both; margin-top:50px; margin-bottom:50px;
 	}
 
 
-.sailcontainer {float:left;}
+.sailcontainer {width:1200px;}
 	.profilearea {
-		width:1000px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
+		width:1200px; height:150px; border:2px solid #f8f8f8; border-radius:10px;
 		}
 		.profileinner1{
-			float:left; width: 100px; height:100px; margin:25px 40px;
-		}
+			width: 100px; height:100px; margin:25px 40px; float:left;					
+			}
 		.profileinner1 img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			border-radius: 70%;
-			overflow: hidden;
+			overflow: hidden;			
 		}
 		.profileinner2{
-			float:left; width: 200px; margin-top:25px; height:100px; line-height:25px; color:#888; font-size:13px;
+			width: 400px; margin-top:25px; height:120px; line-height:25px; color:#888; font-size:13px;
+			float:left;
 		}
 		.profileinner2 strong{
-			font-size:15px; color:#000; font-weight:bold; margin-bottom:5px;
+			font-size:25px; color:#000; font-weight:bold; margin-bottom:5px;
 		}
 		.profileinner2 p {margin:5px 0;}
 		.profileinner2 a{
-				display:inline-block; border:1px solid #999; border-radius:10px; padding:8px;
-			 height:35px; line-height:15px;
+			display:inline-block; border:1px solid #999; border-radius:10px; 
+			height:35px; line-height:35px; padding:0 8px; margin-left:20px;
 			}
 		
 		.mylist{
-			clear:both;
-			width:1000px; 
+			width:1200px; clear:both;
 		}
-		.listhead::after {
-		    content: "";
-		    display: table;
-		    clear: both;
-		}
-	
-		.listhead h2{
-			display:inline-block; float:left; margin:25px 0 10px 0;
-		}	
-		.listhead span {
-			display:inline-block; float:right; margin-top:35px;
-		}
-	
-		.viewdv{
-			margin-top : 8px;
-			margin-bottom : 10px;
-			border-top : 1px solid #ddd;
-		}
-			
-		
+		.listhead {width:1200px; height:30px; margin-top:30px; border-bottom:1px solid #ccc;}
+			.tab_menu li {float : left; margin-right:25px; height:31px;}
+				.tab_menu li a{display:block;}
+			.tab_menu li:nth-child(1) {margin-top:3px;}
+			.tab_menu li:nth-child(3) {border-bottom:2px solid #333;}
+				
     	.listdv{
-    		height:325px; margin:0; text-align:center;
-     	}
-     	
+    		margin-top:40px; height:30%; clear:both; 
+    		width: 1200px; margin-bottom:50px; text-align:center;
+     		}
+     		
      	
 		/*  */
-		li, ul {
-		float : left;
-		list-style : none;
-		text-decoration : none;
-		}
-		a {
-			text-decoration : none;
-			color : inherit;
-		}
-		
-		span {
-			margin-right : 30px;
-			text-underline-offset : 10px;
-		}
-		.tab3 {
-			text-decoration : underline;
-			text-decoration-thickness : 2px;
-			font-weight : bold;
-		}
+	
+	
 		.tab_contents {
 			border-top : 1px solid black;
 			border-bottom : 1px solid black;
 		}
 		/*  */
 		.listdv a {
-			border:1px solid #999; border-radius:10px; padding:8px; line-height : 50px; font-size : 12px; font-weight : bold; 
+			border:1px solid #999; border-radius:10px; padding:8px; line-height : 30px; font-size : 12px; font-weight : bold; 
+			display:block; width:10%; margin:30 auto;
 		}
 		.follow-num {
 			font-weight : bold; 
@@ -127,7 +98,7 @@ a {
 					<img :src="imgInfo.userImg">
 				</div>
 				<div class="profileinner2">
-					<strong>{{nickname}}</strong><a href="mypageprofile.do" type="button" style="margin-left : 10px;">프로필 관리</a>
+					<strong>{{nickname}}</strong><a href="mypageprofile.do" type="button">프로필 관리</a>
 					<p>
 						<a href="#" style="border : none">팔로워<span class="follow-num">0</span></a>
 						<a href="#" style="border : none">팔로잉<span class="follow-num">0</span></a>
@@ -149,11 +120,9 @@ a {
 						</li>
 					</ul>
 				</div>
-				<div class="viewdv">
-					
-				</div>
-				<div class="listdv" style="margin-top : 100px;">
-					<p  style="color : rgba(34,34,34,.8); font-size : 13px;">추가하신 스타일이 없습니다.</p>
+				
+				<div class="listdv">
+					<p style="color : rgba(34,34,34,.8); font-size : 13px; text-align:center; margin-top:200px;">추가하신 스타일이 없습니다.</p>
 					<a href="style.do" type="button" style="color : rgba(34,34,34,.8);">STYLE 바로가기</a>
 				</div>
 			</div>
