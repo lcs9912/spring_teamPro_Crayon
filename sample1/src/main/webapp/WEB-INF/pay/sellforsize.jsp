@@ -144,26 +144,27 @@
 			
 			<div v-if="selectedSize"  class="buyboxarea1">
 				<!-- 구매입찰이 아닌경우 -->
-				<div v-if="productPrice !== '구매입찰'">
+				<div>
 					<a>
-						<button class="buy-button"  style="margin-bottom : 10px;" @click="fnSell(selectedSize)" disabled>
+						<button class="buy-button" @click="fnSellFire(selectedSize)">
 							<strong>가격</storng>
-							<p>불꽃배송(1~2일소요)</p>	
+							<p>불꽃배송(1~2일소요)</p>
 						</button>
 					</a>
 					<a>
-						<button class="buy-button" disabled>
+						<button class="buy-button" @click="fnSell(selectedSize)">
 							<strong>가격</storng>
 							<p>일반배송(5~7일소요)</p>
 						</button>
 					</a>
 				</div>
+				
 				<!-- 구매입찰이 필요한 경우 -->
-				<div v-if="productPrice === '구매입찰'" class="buyboxarea1">
+				<!-- <div v-if="productPrice === '구매입찰'" class="buyboxarea1">
 					<a href="buyagree.do"><button class="buy-button" @click="fnSell(selectedSize)" disabled>구매입찰</button></a>
 				</div>
 				<div v-else  class="buyboxarea1">
-				</div>
+				</div> -->
 			</div>
 			
 			
@@ -177,31 +178,13 @@
 var app = new Vue({
 	el : '#app',
 	data : {
-		
-		modelNum : "1974870/1974870M", // 상품 상세 페이지에서 구매 클릭시 넘어 오는 값 (모델번호)
-		
+		modelNum : "${map.modelNum}", // 상품 상세 페이지에서 판매 클릭시 넘어 오는 값 (모델번호)
 		selectedSize: "",
 		sList : [], // size 호출 시 
 		proInfo : {}, // 상품상세정보 호출
 		proList : [],
 	},// data
-	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
-	/* computed: {
-	    computedSizeOptions() {
-	      if (this.product.pCategorie2 === '1' || this.product.pCategorie2 === '3') {
-	        return this.sList.slice(1, 8); // 상의,아우터 카테고리인 경우 1(XXS)부터 8(XXL)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7') {
-	        return this.sList.slice(18,32); // 신발 카테고리인 경우 18(220)부터 32(290)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '2'){
-	        return this.sList.slice(9,17); // 하의 카테고리에 경우 9(28)부터 17(36)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '8' || this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'){
-	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
-	      }
-	    }, 
-	    isBuyButtonEnabled() {
-		      return this.selectedSize !== null;	
-		    },
-	  }, */
+	
 	  methods : { // 사이즈값 선택시 선택값에 따른 결제 버튼 활성화
 			 
 			//상품 정보 불러오기
@@ -209,13 +192,13 @@ var app = new Vue({
 	    		var self = this; 
 	            var nparmap = {modelNum : self.modelNum};
 	             $.ajax({
-	                 url : "/productList.dox",
+	            	 url : "/productBuyList.dox",
 	                 dataType:"json",	
 	                 type : "POST", 
 	                 data : nparmap,
 	                 success : function(data) { 
-	                 	self.proList = data.proList;
-	                 	self.proInfo = data.proList[0];
+	                	self.proList = data.buyList;
+	                  	self.proInfo = data.buyList[0];
 	                 }
 	             }); 
 	    	},
@@ -234,20 +217,23 @@ var app = new Vue({
 					}
 				})
 			},
-			selectSize(size) {
-			      this.selectedSize = size; // 사이즈 선택 시 selectedSize 값을 업데이트
-			    },
 			// 사이즈 버튼 클릭
 			selectSize : function(proNum) {
 				var self = this;
 				self.selectedSize = proNum;
 	       		console.log(self.selectedSize);
 	   		},
-			// 구매 클릭
+	   		// 일반 배송 클릭
 	    	fnSell : function(proNum) {
-	        	var self = this;
-	        	$.pageChange("/sellagree.do", {proNum : proNum});
+	        	var delivery = 3000;
+	        	$.pageChange("/sellagree.do", {proNum : proNum, delivery : delivery});
+	        	
 	    	},
+	    	// 불꽃 배송 클릭
+	    	fnSellFire : function(proNum){
+	    		var delivery = 7000;
+	    		$.pageChange("/sellagree.do", {proNum : proNum, delivery : delivery});
+	    	}
 		}, // methods
 		created : function() {
 			var self = this;
