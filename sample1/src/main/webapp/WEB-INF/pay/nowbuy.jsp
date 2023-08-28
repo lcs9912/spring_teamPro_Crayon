@@ -133,9 +133,17 @@ font-size:13px;
 text-align:center;
 }
 .paydaybtn{
+text-align:center;
 width:100%;
 padding: 32px 32px 28px;
 
+}
+input[type="date"]{
+width:150px;
+height:60px;
+font-size:18px;
+border-radius:10px;
+text-align:center
 }
 .paydaybtn button{
 background-color:white;
@@ -254,11 +262,7 @@ display:none;
 		<div class="whatday">val일 (val.day 마감)</div>
 	
 			<div class="paydaybtn">
-			<button >1일</button>
-			<button>3일</button>
-			<button>7일</button>
-			<button>30일</button>
-			<button>60일</button>
+			<input type="date" @input="checkDateValidity">
 			</div>
 	
 	
@@ -270,7 +274,7 @@ display:none;
 					</div>
 				
 					<div class="allpaybtnarea">
-					<a @click="fnBuyRegister"><button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button></a>
+					<a @click="fnBuyRegister"><button class="leftallpaybtn" id="buycontinuebtn" disabled>구매입찰계속</button></a>
 					<a @click="fnListBuy"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button></a>
 					</div>
 			</div>
@@ -293,6 +297,7 @@ var app = new Vue({
 		payFlg : false,
 		
 		buyPay : "",
+		selectedDate: "", // 날짜저장데이터
 	},// data
 	methods : {
 		fnGetInfo : function(){
@@ -321,7 +326,20 @@ var app = new Vue({
     		$.pageChange("/productRegister.do", {proNum : self.proNum, buyPay : self.buyPay});
    	
         },
-       
+        checkDateValidity: function () {
+            // 유효한 날짜인지 확인
+            if (this.selectedDate) {
+                // 유효한 경우 "구매입찰계속" 버튼 활성화
+                document.getElementById("buycontinuebtn").disabled = true;
+                document.getElementById("buycontinuebtn").style.backgroundColor = 'black'; // 버튼 색상 변경
+                document.getElementById("buycontinuebtn").style.color = 'white'; // 버튼 텍스트 색상 변경
+            } else {
+                // 유효하지 않은 경우 버튼 비활성화
+                document.getElementById("buycontinuebtn").disabled = false;
+                document.getElementById("buycontinuebtn").style.backgroundColor = 'black'; // 버튼 색상 원래대로 변경
+                document.getElementById("buycontinuebtn").style.color = 'white'; // 버튼 텍스트 색상 변경
+            }
+        },
 	}, // methods
 	created : function() {
 		var self = this;

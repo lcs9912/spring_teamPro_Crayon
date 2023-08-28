@@ -132,6 +132,7 @@ font-size:13px;
 text-align:center;
 }
 .paydaybtn{
+text-align:center;
 width:100%;
 padding: 32px 32px 28px;
 
@@ -182,6 +183,13 @@ outline:none;
 }
 .rightallpaybtn{
 display:none;
+}
+input[type="date"]{
+width:150px;
+height:60px;
+font-size:18px;
+border-radius:10px;
+text-align:center
 }
 </style>
 
@@ -239,13 +247,12 @@ display:none;
 			<div class="paydayarea">
 				<div class="paydaytitle">입찰 마감기한</div>
 				<div class="whatday">val일 (val.day 마감)</div>
+				
 				<div class="paydaybtn">
-					<button >1일</button>
-					<button>3일</button>
-					<button>7일</button>
-					<button>30일</button>
-					<button>60일</button>
-				</div>
+			<input type="date" @input="checkDateValidity">
+			</div>
+			
+			
 			</div>
 	
 			<div class="paydaycontinuearea">
@@ -253,7 +260,7 @@ display:none;
 					총결제금액 다음화면에서 확인
 				</div>
 				<div class="allpaybtnarea">
-					<a href="orderandsettle.do"><button class="leftallpaybtn" id="buycontinuebtn">판매입찰계속</button></a>
+					<a href="orderandsettle.do"><button class="leftallpaybtn" id="buycontinuebtn" disabled>판매입찰계속</button></a>
 					<a href="orderandsettle.do"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시판매계속</button></a>
 				</div>
 			</div>
@@ -273,6 +280,7 @@ var app = new Vue({
 		proNum : "${map.proNum}",
 		delivery : "${map.delivery}",
 		payFlg : false,
+		selectedDate: "", // 날짜저장데이터
 	},// data
 	methods : {
 		fnGetInfo : function(){
@@ -293,7 +301,21 @@ var app = new Vue({
         fnListBuy : function(){
         	var self = this;
         	$.pageChange("/payandpackage.do", {proNum : self.proNum, delivery : self.delivery});
-        }
+        },
+        checkDateValidity: function () {
+            // 유효한 날짜인지 확인
+            if (this.selectedDate) {
+                // 유효한 경우 "구매입찰계속" 버튼 활성화
+                document.getElementById("buycontinuebtn").disabled = true;
+                document.getElementById("buycontinuebtn").style.backgroundColor = 'black'; // 버튼 색상 변경
+                document.getElementById("buycontinuebtn").style.color = 'white'; // 버튼 텍스트 색상 변경
+            } else {
+                // 유효하지 않은 경우 버튼 비활성화
+                document.getElementById("buycontinuebtn").disabled = false;
+                document.getElementById("buycontinuebtn").style.backgroundColor = 'black'; // 버튼 색상 원래대로 변경
+                document.getElementById("buycontinuebtn").style.color = 'white'; // 버튼 텍스트 색상 변경
+            }
+        },
 	}, // methods
 	created : function() {
 		var self = this;
@@ -327,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function() {
         leftAllPayBtn.style.display = "none";
         rightAllPayBtn.style.display = "block";
         
-        rightBuyBtn.style.backgroundColor = '#FF5E3D';
+        rightBuyBtn.style.backgroundColor = 'limegreen';
         leftBuyBtn.style.backgroundColor = '#ebebeb';
 
     });
@@ -338,7 +360,7 @@ document.addEventListener("DOMContentLoaded", function() {
         rightAllPayBtn.style.display = "none";
         
         rightBuyBtn.style.backgroundColor = '#ebebeb';
-        leftBuyBtn.style.backgroundColor = '#FF5E3D';
+        leftBuyBtn.style.backgroundColor = 'limegreen';
 
     });
 });

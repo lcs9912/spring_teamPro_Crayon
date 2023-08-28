@@ -210,7 +210,7 @@ var app = new Vue({
 		delivery : "${map.delivery}",
 		}, //data		
     computed: {
-        allCheck: function() {
+    	allCheck: function() {
             return this.agreements.every(item => item === true);
         },
     },
