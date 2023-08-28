@@ -20,9 +20,12 @@ import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProductController {
+	@Autowired
+	HttpSession session;
 	@Autowired
 	ProductService productService;
 	
@@ -36,80 +39,158 @@ public class ProductController {
 	@RequestMapping("/productRegister.do") 
     public String register(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
-		return "/product/productRegister";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/product/productRegister";
+		} else {
+			return "redirect:/login.do";
+		}
+		
     }
 	
 	// 구매전 신발 페이지
 	@RequestMapping("/buybeforeshoes.do") 
 	public String buybeforewindow(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	    return "/pay/buybeforeshoes";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/buybeforeshoes";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	// 판매전 신발 페이지
 	@RequestMapping("/sellbeforeshoes.do") 
 	public String sellbeforewindow(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-	    return "/pay/sellbeforeshoes";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/sellbeforeshoes";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 구매전 상의 페이지
 	@RequestMapping("/buyforsize.do") 
 	public String buybeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
-		return "/pay/buyforsize";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/buyforsize";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 판매전 상의 페이지
 	@RequestMapping("/sellbeforewear.do") 
 	public String sellbeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
-		return "/pay/sellbeforewear";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/sellbeforewear";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 구매전 하의 페이지
 	@RequestMapping("/buybeforeunderwear.do") 
 	public String buybeforeunderwear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/buybeforeunderwear";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/buybeforeunderwear";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	// 구매전 하의 페이지
 	@RequestMapping("/sellbeforeunderwear.do") 
 	public String sellbeforeunderwear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/sellbeforeunderwear";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/sellbeforeunderwear";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 구매동의 페이지
 	@RequestMapping("/buyagree.do") 
 	public String buyagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
-		return "/pay/buyagree";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/buyagree";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	// 판매동의 페이지
 	@RequestMapping("/sellagree.do") 
 	public String sellagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/sellagree";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/sellagree";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 즉시 구매 페이지
 	@RequestMapping("/nowbuy.do") 
 	public String nowbuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
-		return "/pay/nowbuy";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/nowbuy";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 최종결제 페이지
 	@RequestMapping("/payandpackage.do") 
 	public String payandpackage(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
-		return "/pay/payandpackage";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/payandpackage";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	// 주문/정산 배송페이지
 	@RequestMapping("/orderandsettle.do") 
 	public String orderandsettle(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/orderandsettle";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/orderandsettle";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	//
 	@RequestMapping("/nowsell.do") 
 	public String sellBuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-		return "/pay/nowsell";
+		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
+		if(sessionId != "" && sessionId != null) {
+			return "/pay/nowsell";
+		} else {
+			return "redirect:/login.do";
+		}
+		
 	}
 	
 	//
