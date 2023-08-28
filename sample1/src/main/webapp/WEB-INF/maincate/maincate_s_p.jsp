@@ -111,7 +111,12 @@
 					width:100px; height:50px; border-radius: 15px;
 				}
             /*상품 품목별 전시영역 종료*/    
-    
+    .goodsitem{
+    cursor:pointer;
+    }
+    .dropdownbtn button{
+    cursor:pointer;
+    }
                
     </style>
 </head>

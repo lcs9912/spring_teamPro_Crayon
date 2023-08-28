@@ -111,7 +111,12 @@
 					width:100px; height:50px; border-radius: 15px;
 				}
             /*상품 품목별 전시영역 종료*/    
-    
+.goodsitem{
+    cursor:pointer;
+    }
+    .dropdownbtn button{
+    cursor:pointer;
+    }
                
     </style>
 </head>
@@ -126,7 +131,7 @@
             </div>
             <div class="goodsblock" v-for="(group, index) in shopListGrouped" :key="index" >
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                <div  v-for="item in group" :key="item.productId" class="goodsitem">
+                <div  v-for="item in group" :key="item.productId" >
                 <article>
                     <a @click="fnProInfo(item.productModel)"> 
                         <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
