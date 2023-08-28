@@ -60,7 +60,7 @@
 
 				 /*상품등록 인풋 DIV 영역 시작*/
 				.productinputarea {
-					width: 600px; float: left; margin:30px 0 20px 0;
+					width: 600px; float: left; margin:30px 0 150px 0;
 				}
 					.productinputarea p {height:30px; font-size:17px; font-weight:bold;
 								margin-bottom:10px;
@@ -270,6 +270,7 @@ var app = new Vue({
 				return;
 			}
 			var nparmap = self.product;
+			console.log("dfsaf0");
 			$.ajax({
 				url : "addProduct.dox",
 				dataType : "json",
