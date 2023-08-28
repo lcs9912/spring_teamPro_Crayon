@@ -310,7 +310,7 @@
 	        	</div>
 	        </template>
 	        </div>
-	        </div>
+	        </div> <!-- 레이어 팝업 -->
 	    </div> 
 	</div>
 </body>

@@ -119,6 +119,82 @@ main {
 	margin-left:43px; border: 1px solid #ccc; border-radius:5px;
 	color: #555;
 }
+/* 팝업 레이어 */
+						
+				.popup-overlay {
+					display: none; position: absolute;
+				  	top: 0; left: 0; width: 100%; height: 1600px;
+				   	background-color: rgba(51,51,51,0.3);
+				  	z-index: 3000;
+				} 
+				.content {
+				    width:500px; border-radius:15px; padding-bottom:40px;
+				    margin:10% auto; background:#fff;
+				}		
+				
+				.title{
+				    min-height: 40px; margin-bottom:10px; border-radius:15px 15px 0 0;
+				    color: white; background-color: #ccc; padding: 10px 15px;
+				    box-sizing: border-box; font-weight: bold; 
+				    text-align: center; position:relative; 
+				}
+					
+						.fa-x{position: absolute; top: 15px; right: 15px; cursor: pointer;}
+						/*이메일변경 CSS 시작*/
+						.nowemail {width:500px; height:50px; margin-top:30px; font-size:16px;}
+						.nowemail h3{width:500px; height:50px; text-align:center;}
+						.emailinput{width: 400px; height : 70px;margin-left:60px; border-bottom:1px solid #ccc;}
+							.emailinput input{width: 300px; height : 60px; outline:none; border:0px solid; font-size:16px;}
+							.emailpwd{background-color:white; border : 1px solid #a2a2a2; font-size:13px;
+								width : 90px; height : 25px; cursor: pointer; margin-top:10px; border-radius:5px;
+							} 
+							.hiddenmessege {color:red; width:500px; text-align:center; margin:20px 0;}
+								
+							#submitPopup {
+							    border-radius: 15px; padding: 10px 30px; margin:20px 175px 0 175px;
+							    border: 1px solid #aaa; width: 150px;
+							    color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;			    			    
+							}
+							#submitPopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
+							/*이메일변경 CSS 종료*/
+				
+				.passwordckwrap {
+					width:500px; text-align:center;
+					}
+					.passwordckwrap input{display:inline-block; width:300px; height:40px; outline:none; 
+									border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;}
+					.passwordckwrap button{border-radius: 8px; margin:10px 0 0 10px;
+							    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;	}	
+							    .passwordckwrap button:hover {color:#333; background:#fff; border:1px solid #ccc;}
+					.passwordckwrap select {width:225px; height:40px; outline:none; margin:30px 10px; border:0px solid; border-bottom:1px solid #ccc;}
+					
+					.pwdquestion {font-size:12px; margin-left:10px;}
+						.passwordckwrap>#newpassword{text-align:left;}
+						.passwordckwrap>#newpassword>input{margin-left:58px;}
+				
+				.phonewrap {
+					width:500px; text-align:left;
+				}		
+					.phonewrap input{
+						display:inline-block; width:350px; height:40px; outline:none; margin-left:50px;
+									border:0 solid; border-bottom:1px solid #ccc; margin-top:10px;
+					}
+					.phonewrap button{border-radius: 8px; margin:10px 0 0 10px;
+							    border: 1px solid #aaa; width: 70px; height:30px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;					
+					}
+						.phonewrap button:hover {color:#333; background:#fff; border:1px solid #ccc;}
+						#phonePopup {border-radius: 15px; margin:20px 0 10px 175px;
+							    border: 1px solid #aaa; width: 150px; height:40px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;				
+						}
+						#phonePopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
+						#memberPopup{border-radius: 15px; margin:20px 0 10px 175px;
+							    border: 1px solid #aaa; width: 150px; height:40px; color: white; background-color: black;
+							    font-weight: bold; cursor: pointer;}
+						#memberPopup:hover {color:#333; background:#fff; border:1px solid #ccc;}
 
 </style>
 
@@ -178,7 +254,7 @@ main {
 				</div>
 			
 			<div class="loginwindownot">
-				<button class="loginbtn"  @click="openPopup('pwdresult.do')">비밀번호 찾기</button> 
+				<button class="loginbtn"  @click="fnPwdCheck">비밀번호 찾기</button> 
 			</div>
 			<div class="logindownmenu">
 				<ul>
@@ -196,7 +272,20 @@ main {
 
 		</section>
 
-	</main>
+	</main><!-- 레이어 팝업 -->
+	<div class="popup popup-overlay" id="popupOverlay" >
+		        <div class="content">
+		        <div class="title"><h3>변경</h3><i class="fa-solid fa-x" id="closePopup"></i></div>
+			        <!-- 이메일 변경 -->
+											     		            
+		                <div class="nowemail"><h3>회원님의 비밀번호입니다</h3></div>
+		                <div class="emailinput">비밀번호 : {{userPwd}}</div>
+		                	            	 
+		    		
+		        
+		    
+	       </div>
+	        </div> <!-- 레이어 팝업 -->	
 	
 </div>
 
@@ -212,9 +301,11 @@ var app = new Vue({
 		userName : "",
 		userPwdHint : "",
 		pwdAnswer : "",
+		
+		userPwd : "",
 	},// data
 	methods : {
-		openPopup : function(url){
+		fnPwdCheck : function(){
             var self = this;
             var nparmap = {uId : self.userId, uName : self.userName, pwdHint : self.userPwdHint, pwdAnswer : self.pwdAnswer};
             $.ajax({
@@ -225,10 +316,9 @@ var app = new Vue({
                 success : function(data) { 
                 	self.info = data.info;
                 	if(data.info != "" && data.info != null){
-                		var userPwd = data.info.userPwd;
+                		self.userPwd = data.info.userPwd;
                 		
-                		var popup = window.open(url+"?userPwd="+userPwd, 'popupWindow', 'width=600,height=300,scrollbars=yes');
-                        popup.focus();
+                		self.fnpopup();
                         
                 	}else{
                 		alert("다시 확인해주세요");
@@ -236,13 +326,21 @@ var app = new Vue({
                 	
                 }
             }); 
-        }
+        },
+    	 // 레이어 팝업창 띄우기
+		fnpopup : function(){
+			var self = this;
+			document.getElementById("popupOverlay").style.display = "block";
+		},
 	}, // methods
 	created : function() {
 		var self = this;
 		
 	}// created
 });
-
+//레이어 팝업창 닫기
+document.getElementById("closePopup").addEventListener("click", function() {
+document.getElementById("popupOverlay").style.display = "none";
+});
 
 </script>
