@@ -17,7 +17,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            height: 550px;
+            height: 570px;
             overflow: hidden;
         }
 
@@ -29,15 +29,15 @@
 
         .slide {
             flex-shrink: 0; width: 100%;
-            height: 100%; background-position-y: 13%;
+            height: 100%; background-position:top;
             background-size: cover;
         }
 
             .slide h1 {
-                text-align: center; margin-top: 255px;
+                text-align: center; margin-top: 280px;
                 color: #fff; font-size: 50px;
             }
-                .innertext {animation: innertext 4s ease-in-out infinite;}
+                .innertext {animation: innertext 3.7s ease-in-out infinite;}
 
                 @keyframes innertext {
                     from {opacity: 0; font-size:40px;} to {opacity: 1; font-size:50px;}
@@ -103,66 +103,49 @@
             <button class="slide-button slide-prev">&lt;</button>
             <button class="slide-button slide-next">&gt;</button>
             <div class="slider">
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263018347-2e717a24-d0c7-47db-b892-40dd90821d46.gif');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263329143-5cccd3a7-ab4b-4f07-8373-0ff34043cebd.gif');">
                     <h1 class="innertext">
                        Get Your CrayoN
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263030471-4930e198-91cf-4610-8fd9-5e1ba7f67a8e.gif');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263001997-d91cef9e-eebf-43eb-841a-72bb0d2c6ad3.jpg');">
                     <h1 class="innertext">
-                        Luxury Item, Rare Goods!
+                        Rare Item! Limited Edition!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263016426-b1d3eaff-4eb9-4832-81c0-56bce993bd2c.gif');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263512884-3eb24e05-7174-4f3f-af55-ab4b0d6c73c4.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263013223-409c63c4-2638-42ea-a097-c57553630b4d.gif'); ">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263312984-49655cf9-4045-4408-9d2a-11c7d947bc0a.gif'); ">
                     <h1 class="innertext">
                         Hot Summer Sale Event!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263003100-bec63b61-deca-4e29-b578-24948b3006d7.jpg');">
-                    <h1 class="innertext">
-                        Luxury Item, Rare Goods!
-                    </h1>                    
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503194-2f7954e6-07e0-4280-8841-0409c9dd1bc6.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263334381-0cc3f469-0aed-4c6c-aa45-9b5d52cb118d.gif');">
                     <h1 class="innertext">
                         완벽한 당신을 위한 최고의 선택!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263003100-bec63b61-deca-4e29-b578-24948b3006d7.jpg'); ">
                     <h1 class="innertext">
                         Hot Summer Sale Event!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263535649-94d40988-a8d6-48e5-bb4f-71b17220727e.gif');">
                     <h1 class="innertext">
                         Luxury Item, Rare Goods!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503200-4cc2fda5-3399-45bc-b272-91abf534dd34.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263532273-14ec84e7-1aec-48ac-aa93-7a0be5d19893.gif'); ">
                     <h1 class="innertext">
                         Hot Summer Sale Event!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
-                    <h1 class="innertext">
-                        Luxury Item, Rare Goods!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
-                </div>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503176-7739940f-35b8-4810-9057-ff347e7202e1.jpg');">
+                </div>               
             </div>
             <div class="radio-button">
                 <input type="radio" id="slide-dot-1" name="slide-control" checked>
@@ -187,8 +170,6 @@
                 <label for="slide-dot-10"></label>
                 <input type="radio" id="slide-dot-11" name="slide-control">
                 <label for="slide-dot-11"></label>
-                <input type="radio" id="slide-dot-12" name="slide-control">
-                <label for="slide-dot-12"></label>
             </div>
         </div>
     </div>
@@ -228,7 +209,7 @@
 
     // 이미지 슬라이더 스크립트
     let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 3700);
+    let slideInterval = setInterval(nextSlide, 3800);
 
     function moveToSlide(index) {
         if (index < 0) {
@@ -254,7 +235,7 @@
 
     function startSlideInterval() {
         pauseSlideInterval();
-        slideInterval = setInterval(nextSlide, 3700);
+        slideInterval = setInterval(nextSlide, 3800);
     }
     $('.slide-prev').on('click', function () {
         moveToSlide(currentSlide - 1);

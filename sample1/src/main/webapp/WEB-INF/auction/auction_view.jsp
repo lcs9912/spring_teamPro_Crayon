@@ -755,7 +755,6 @@ var app = new Vue({
 		 self.fnGetList();
 		 self.fnGetJoinList();
 		 window.addEventListener('scroll', this.handleScroll);
-		
 	}// created
 });
 function openPopup(url) {
