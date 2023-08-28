@@ -29,7 +29,7 @@
 
         .slide {
             flex-shrink: 0; width: 100%;
-            height: 100%; background-position:top;
+            height: 100%; background-position-y:-3%;
             background-size: cover;
         }
 
@@ -139,12 +139,12 @@
                 </div>
                 <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503200-4cc2fda5-3399-45bc-b272-91abf534dd34.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263532273-14ec84e7-1aec-48ac-aa93-7a0be5d19893.gif'); ">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263534154-86293341-9ad3-453f-8020-4617c07e018c.gif'); ">
                     <h1 class="innertext">
                         Hot Summer Sale Event!
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503176-7739940f-35b8-4810-9057-ff347e7202e1.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503210-0daae4e1-2773-4335-bfcf-f2eacdfe34c1.jpg');">
                 </div>               
             </div>
             <div class="radio-button">

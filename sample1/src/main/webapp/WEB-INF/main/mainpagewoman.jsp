@@ -12,12 +12,12 @@
         
         /* 슬라이드 이미지 CSS 추가 */
         .slider-wrap {
-            position: absolute;
+           position: absolute;
             top: 355px;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            height: 550px;
+            height: 570px;
             overflow: hidden;
         }
 
@@ -29,12 +29,12 @@
 
         .slide {
             flex-shrink: 0; width: 100%;
-            height: 100%; background-position: center;
+            height: 100%; background-position-y:-43%;
             background-size: cover;
         }
 
             .slide h1 {
-                text-align: center; margin-top: 255px;
+                text-align: center; margin-top: 280px;
                 color: #fff; font-size: 50px;
             }
                 .innertext {animation: innertext 3.7s ease-in-out infinite;}
@@ -103,65 +103,16 @@
             <button class="slide-button slide-prev">&lt;</button>
             <button class="slide-button slide-next">&gt;</button>
             <div class="slider">
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617476-52258cff-0aeb-4299-b0d3-82a1bb2c8f1f.jpg');">
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263309765-db876c28-a027-4e7e-a78d-1b220decaa36.gif');">
                     <h1 class="innertext">
                         Limited Edition 경매로 입찰
                     </h1>
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
-                    <h1 class="innertext">
-                        Luxury Item, Rare Goods!
-                    </h1>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503139-505dafdd-df24-46ac-bf7a-b0e442716ff5.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503194-2f7954e6-07e0-4280-8841-0409c9dd1bc6.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
-                    <h1 class="innertext">
-                        Hot Summer Sale Event!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
-                    <h1 class="innertext">
-                        Luxury Item, Rare Goods!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
-                    <h1 class="innertext">
-                        Hot Summer Sale Event!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
-                    <h1 class="innertext">
-                        Luxury Item, Rare Goods!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
-                    <h1 class="innertext">
-                        Hot Summer Sale Event!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258590474-952bb211-2163-4e47-b8d7-40d451dacb87.jpg');">
-                    <h1 class="innertext">
-                        Luxury Item, Rare Goods!
-                    </h1>
-                </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258589692-fb26706c-1058-430d-85cd-de30918bd7ab.jpg');">
-                    <h1 class="innertext">
-                        완벽한 당신을 위한 최고의 선택!
-                    </h1>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503200-4cc2fda5-3399-45bc-b272-91abf534dd34.jpg'); ">
                 </div>
             </div>
             <div class="radio-button">
@@ -173,22 +124,6 @@
                 <label for="slide-dot-3"></label>
                 <input type="radio" id="slide-dot-4" name="slide-control">
                 <label for="slide-dot-4"></label>
-                <input type="radio" id="slide-dot-5" name="slide-control">
-                <label for="slide-dot-5"></label>
-                <input type="radio" id="slide-dot-6" name="slide-control">
-                <label for="slide-dot-6"></label>
-                <input type="radio" id="slide-dot-7" name="slide-control">
-                <label for="slide-dot-7"></label>
-                <input type="radio" id="slide-dot-8" name="slide-control">
-                <label for="slide-dot-8"></label>
-                <input type="radio" id="slide-dot-9" name="slide-control">
-                <label for="slide-dot-9"></label>
-                <input type="radio" id="slide-dot-10" name="slide-control">
-                <label for="slide-dot-10"></label>
-                <input type="radio" id="slide-dot-11" name="slide-control">
-                <label for="slide-dot-11"></label>
-                <input type="radio" id="slide-dot-12" name="slide-control">
-                <label for="slide-dot-12"></label>
             </div>
         </div>
     </div>
@@ -225,7 +160,7 @@
 
     // 이미지 슬라이더 스크립트
     let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 3700);
+    let slideInterval = setInterval(nextSlide, 3800);
 
     function moveToSlide(index) {
         if (index < 0) {
@@ -251,7 +186,7 @@
 
     function startSlideInterval() {
         pauseSlideInterval();
-        slideInterval = setInterval(nextSlide, 3700);
+        slideInterval = setInterval(nextSlide, 3800);
     }
     $('.slide-prev').on('click', function () {
         moveToSlide(currentSlide - 1);
