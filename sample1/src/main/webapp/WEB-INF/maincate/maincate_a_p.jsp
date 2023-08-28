@@ -213,6 +213,10 @@
                         }
                     });
             },
+            fnProInfo : function(productModel){
+            	var self = this;        
+            	window.location.href = "/product.do?modelNum=" + encodeURIComponent(productModel);
+            },
             
         }, // methods
         created: function () {
