@@ -147,13 +147,13 @@
             height: 401px;
             margin-bottom:50px;
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 가로로 4개씩 나열 */
-            gap: 5px; /* 각 상품 사이의 간격 */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
         }
 		.goodsblock {
 		    display: flex;
 		    flex-wrap: wrap;
-		    gap: 5px;
+		    justify-content:space-between;
 		}
             .goodsblock article {
                 width: 230px;
@@ -368,7 +368,7 @@
 	                        <article>  <!-- v-for 시작  -->
 	                            <a @click="fnProInfo(item.productModel)"> 
 	                                <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
-	                                <picture >
+	                                <picture>
 	                                    <!-- 업로드 된 이미지 파일 추가되는 태그-->
 	                                    
 	                                    <img :src="item.pImgPath">
@@ -389,7 +389,6 @@
 	                            </a>
 	                        </article>
                         </div>
-                       
                     </div><!-- 한줄에 4개씩 상품전시 영역 아티클 태그 종료-->
                 </div><!--상품전시 영역 종료-->
             </div><!--세로 상세품목 선택영역, 상품전시 영역 시작-->
