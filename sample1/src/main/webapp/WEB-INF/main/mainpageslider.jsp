@@ -172,13 +172,16 @@
                 <input type="radio" id="slide-dot-11" name="slide-control">
                 <label for="slide-dot-11"></label>
             </div>
-        </div>
+        </div>    
     </div>
+    <div style="margin-top:670px;">
+    	<%@ include file="../maincate/maincate_m.jsp"%>    	
+		<%@ include file="../maincate/maincate_w.jsp"%>
+		<%@ include file="../maincate/maincate_s.jsp"%>
+		<%@ include file="../maincate/maincate_a.jsp"%>
+    </div>   
 </body>
-<%@ include file="../maincate/maincate_m.jsp"%>
-<%@ include file="../maincate/maincate_w.jsp"%>
-<%@ include file="../maincate/maincate_s.jsp"%>
-<%@ include file="../maincate/maincate_a.jsp"%>
+
 </html>
 
 <script>

@@ -122,9 +122,11 @@
             </div>
         </div>
     </div>
+    <div style="margin-top:670px;">
+    	<%@ include file="../maincate/maincate_a.jsp"%>
+		<%@ include file="../maincate/maincate_a_p.jsp"%>
+    </div>
 </body>
-<%@ include file="../maincate/maincate_a.jsp"%>
-<%@ include file="../maincate/maincate_a_p.jsp"%>
 </html>
 
 <script>
