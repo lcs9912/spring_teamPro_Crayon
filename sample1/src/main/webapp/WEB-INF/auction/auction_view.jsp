@@ -37,7 +37,7 @@ position: fixed;
 
 .fixed {
 position: absolute;
-top: 650px;
+top : 1200px;
         }
 .rightcolumn{
 float : right;
@@ -607,7 +607,7 @@ color:#a2a2a2;
    </div>
 
 		
-	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 500 }">
+	<div class="leftbox" :class="{ 'fixed': scrollPosition >= 1200 }">
 		<div class="leftcolumnbox">
 		<img :src="info.pImgPath" style="max-width : 520px;">  <!-- 상품 이미지 -->
 		</div>
@@ -746,6 +746,9 @@ var app = new Vue({
         fnAuctionCheck : function(){
             var self = this;
            	$.pageChange("check.do", {auctionNumber : self.auctionNumber});    
+        },
+        handleScroll: function () {
+            this.scrollPosition = window.scrollY;
         },
         fnGetJoinList : function(){
             var self = this;
