@@ -118,5 +118,29 @@ public class ProductServiceImpl implements ProductService{
 		return productMapper.selectProBuyInfo(map);
 	}
 	
+	// 상품 SELL 리스트 출력
+	@Override
+	public List<Product> searchProductSellList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectProductSellList(map);
+	}
+	// 상품 BUY 리스트 출력
+	@Override
+	public List<Product> selectProductBuyList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectProductBuyList(map);
+	}
+	// 유저 즉시구매 
+	@Override
+	public int userProductNowBuy(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		productMapper.updateUserPoint(map); // 구매시 유저 포인트 차감
+		productMapper.updateProductDelyn(map); // 상품 구매완료 처리
+		productMapper.insertUserPointTbl(map); // 유저 포인트 내역 입력
+		productMapper.insertTransaction(map);  // 구매완료 테이블 입력
+		
+		return 0;
+	}
+	
 	
 }

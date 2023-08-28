@@ -211,7 +211,7 @@ var app = new Vue({
         fnNowBuy : function(sellNum){
         	var self = this;
         	console.log(sellNum);
-        	$.pageChange("/buyagree.do", { sellNum : sellNum});
+        	$.pageChange("/buyagree.do", { proNum : sellNum});
         },
         // 관심 해제
         fnRemove : function(sellNum){

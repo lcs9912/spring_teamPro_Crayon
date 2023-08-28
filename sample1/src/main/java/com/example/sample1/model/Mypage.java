@@ -15,6 +15,7 @@ public class Mypage {
 	private String userZipno;
 	private String defaultAddr;
 	
+	
 	// T1_USER_TBL
 	private String userName;
 	

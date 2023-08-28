@@ -201,6 +201,7 @@ var app = new Vue({
 			uId : "${sessionId}"
 		},
 		proNum : "${map.proNum}", // 상품 모델 번호로 상품 정보를 호출
+		delivery : "${map.delivery}",
     },
     computed: {
     	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
@@ -238,7 +239,7 @@ var app = new Vue({
     	},
     	fnNowBuy : function(){
     		var self = this;
-    		$.pageChange("nowbuy.do", {proNum : self.proNum});
+    		$.pageChange("nowbuy.do", {proNum : self.proNum, delivery : self.delivery});
     	}
      	
     }, // methods

@@ -108,6 +108,9 @@
 		background-color: #B5B5B5;
 		float : left;
 	}
+	button{
+		cursor: pointer;
+	}
 </style>
 
 </head>
@@ -132,39 +135,33 @@
 				
 			</div>
 	
-			<div class="productdetailsizarea" >
-			  <button v-for="sItem in computedSizeOptions" 
-			  		  :key="sItem.productSize"
-			          :class="['custom-button', { selected: selectedSize === sItem.productSize }]"
-			          @click="handleSizeButtonClick(sItem.productSize)">
+			<div class="productdetailsizarea">
+			  <button v-for="item in proList" :key="item.productSize"
+			          :class="['custom-button', { selected: selectedSize === item.productSize }]"
+			          @click="selectSize(item.productSellNumber)" >
 			    <!-- 사이즈+가격 출력 \\ 재고 없으면 구매입찰 출력 -->
-			    <div>{{ sItem.size }}</div>
-			    <div>가격</div>
+			    <div>{{ item.size }}</div>
+			    <div>{{item.productPrice}}</div>
 			  </button>
 			</div>
 			
-			<div v-if="selectedSize"  class="buyboxarea1">
+			<div class="buyboxarea1" >
 				<!-- 구매입찰이 아닌경우 -->
-				<div v-if="price !== '구매입찰'">
-					<a href="buyagree.do">
-						<button class="buy-button" disabled>
+				<div >
+					<a >
+						<button class="buy-button" @click="fnBuyFire(selectedSize)">
 							<strong>가격</storng>
-							<p>불꽃배송(1~2일소요)</p>	
+							<p>불꽃배송(1~2일소요)</p>
 						</button>
 					</a>
-					<a href="buyagree.do">
-						<button class="buy-button" disabled>
+					<a>
+						<button class="buy-button" @click="fnBuy(selectedSize)">
 							<strong>가격</storng>
 							<p>일반배송(5~7일소요)</p>
 						</button>
 					</a>
 				</div>
-				<!-- 구매입찰이 필요한 경우 -->
-				<div v-if="price === '구매입찰'" class="buyboxarea1">
-					<a href="buyagree.do"><button class="buy-button" disabled>구매입찰</button></a>
-				</div>
-				<div v-else  class="buyboxarea1">
-				</div>
+			
 			</div>
 			
 			
@@ -181,60 +178,27 @@ var app = new Vue({
 		
 		modelNum : "${map.modelNum}", // 상품 상세 페이지에서 구매 클릭시 넘어 오는 값 (모델번호)
 		
-		selectedSize: null,
+		selectedSize: "",
 		sList : [], // size 호출 시 
 		proInfo : {}, // 상품상세정보 호출
 		proList : [],
-		product :{
-			pName : "",
-			pModel : "",
-			pColor : "",
-			pPrice : "",
-			kName : "",
-			launch : "",
-			endDate : "",
-			pCategorie1 : "0",
-			pCategorie2 : "4", // 카테고리2 데이터값에 맞는 size 데이터 호출
-			brand : "100",
-			sellBuy : "",
-			uId : "${sessionId}" // TRANSACTION 테이블에 거래내역 입력시 USER_ID 데이터 필요함
-		},
-		
-		
 	},// data
-	//카테고리 선택 값에 따라 다르게 사이즈 선택 적용
-	computed: {
-	    computedSizeOptions() {
-	      if (this.product.pCategorie2 === '1' || this.product.pCategorie2 === '3') {
-	        return this.sList.slice(1, 8); // 상의,아우터 카테고리인 경우 1(XXS)부터 8(XXL)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '4'|| this.product.pCategorie2 === '5'|| this.product.pCategorie2 === '6'|| this.product.pCategorie2 === '7') {
-	        return this.sList.slice(18,32); // 신발 카테고리인 경우 18(220)부터 32(290)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '2'){
-	        return this.sList.slice(9,17); // 하의 카테고리에 경우 9(28)부터 17(36)까지만 보여주도록 처리
-	      } else if (this.product.pCategorie2 === '8' || this.product.pCategorie2 === '9' || this.product.pCategorie2 === '10'|| this.product.pCategorie2 === '11'){
-	        return this.sList.slice(32,34); // 이외의 카테고리에 경우 나머지를 보여주도록 처리
-	      }
-	    }, 
-	    isBuyButtonEnabled() {
-		      return this.selectedSize !== null;	
-		    },
-	  },
+	
+	
 	methods : { // 사이즈값 선택시 선택값에 따른 결제 버튼 활성화
-		 handleSizeButtonClick(productSize) {
-		      this.selectedSize = this.selectedSize === productSize ? null : productSize;
-		    },
+		 
 		//상품 정보 불러오기
 		fnProList : function(){
     		var self = this; 
             var nparmap = {modelNum : self.modelNum};
              $.ajax({
-                 url : "/productList.dox",
+                 url : "/productSellList.dox",
                  dataType:"json",	
                  type : "POST", 
                  data : nparmap,
                  success : function(data) { 
-                 	self.proList = data.proList;
-                 	self.proInfo = data.proList[0];
+                 	self.proList = data.sellList;
+                 	self.proInfo = data.sellList[0];
                  	
                  	console.log(self.proList);
                  	console.log(self.proInfo);
@@ -257,6 +221,25 @@ var app = new Vue({
 				}
 			})
 		},
+		// 사이즈 버튼 클릭
+		selectSize : function(proNum) {
+			var self = this;
+			self.selectedSize = proNum;
+       		console.log(self.selectedSize);
+   		},
+		// 일반 배송 클릭
+    	fnBuy : function(proNum) {
+        	var delivery = 3000;
+        	
+        	$.pageChange("/buyagree.do", {proNum : proNum, delivery : delivery});
+        	
+    	},
+    	// 불꽃 배송 클릭
+    	fnBuyFire : function(proNum){
+    		var delivery = 7000;
+    		
+    		$.pageChange("/buyagree.do", {proNum : proNum, delivery : delivery});
+    	}
 	}, // methods
 	created : function() {
 		var self = this;

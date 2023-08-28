@@ -139,7 +139,7 @@
    <!-- 유저주소 출력 -->
    <select id="selectUserAddr" parameterType="hashmap"
    		resultType="com.example.sample1.model.Mypage">
-   			SELECT A.USER_ADDR, A.USER_DETAIL_ADDR, A.USER_ZIPNO, U.USER_NAME
+   			SELECT A.USER_ADDR, A.USER_DETAIL_ADDR, A.USER_ZIPNO, U.USER_NAME, A.DEFAULT_ADDR
 			FROM T1_USER_TBL U
 			INNER JOIN T1_USER_ADDR A
 			ON U.USER_ID = A.USER_ID
@@ -167,7 +167,6 @@
 		resultType="com.example.sample1.model.User">
 			SELECT * 
 			FROM T1_USER_TBL U
-			
 	</select>
 	
 </mapper>

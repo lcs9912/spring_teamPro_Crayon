@@ -221,7 +221,7 @@ public class UserController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	// 유저 주소 출력
+	// 유저 사이즈 변경
 	@RequestMapping(value = "/user/editUserSize.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String editUserSize(Model model, @RequestParam HashMap<String, Object> map) throws Exception {

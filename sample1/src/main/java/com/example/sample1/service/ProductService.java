@@ -31,7 +31,12 @@ public interface ProductService {
 	int removeInterest(HashMap<String, Object> map);
 	// 상품 상세정보 pk
 	List<Product> searchProBuyInfo(HashMap<String, Object> map);
-	
+	// 상품 SELL 리스트 출력
+	List<Product> searchProductSellList(HashMap<String, Object> map);
+	// 상품 BUY 리스트 출력
+	List<Product> selectProductBuyList(HashMap<String, Object> map);
+	// 유저 상품 즉시구매
+	int userProductNowBuy(HashMap<String, Object> map);
 	
 
 }

@@ -115,6 +115,7 @@ border:none;
 border-bottom:2px solid #eee;
 height:50px;
 font-size:20px;
+margin-left: 222px;
 }
 .paydayarea{
 width:100%;
@@ -223,19 +224,27 @@ display:none;
 		
 	<div style="background-color:white; padding:35px;">
 		<div class="buytabarea">
-			<button class="leftbuybtnarea" id="leftbtnjava">구매 입찰</button>
-			<button class="rightbuybtnarea" id="rightbtnjava">즉시 구매</button>
+			<button class="leftbuybtnarea" id="leftbtnjava" @click="payFlg = false">구매 입찰</button>
+			<button class="rightbuybtnarea" id="rightbtnjava" @click="payFlg = true">즉시 구매</button>
 		</div>
 	</div>
 	
 	
 	
-	<div class="wantpay">
+	<div class="wantpay" v-if="!payFlg">
 		<div class="wantpaytitle">구매희망가</div>
 		<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
 		<span style="font-size:25px;">P</span>
 		</div>
 		<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
+	</div>
+	
+	<div class="wantpay" v-else>
+		<div class="wantpaytitle">즉시구매가</div>
+		<div style="text-align:right;" class="wantpaynum" >{{proInfo.productPrice}}
+		<span style="font-size:25px;">P</span>
+		</div>
+		
 	</div>
 	
 	<div class="paydayarea">
@@ -280,6 +289,8 @@ var app = new Vue({
 	data : {
 		proInfo : {},
 		proNum : "${map.proNum}",
+		delivery : "${map.delivery}",
+		payFlg : false,
 	},// data
 	methods : {
 		fnGetInfo : function(){
@@ -299,7 +310,7 @@ var app = new Vue({
         // 마지막 결제 가보자..
         fnListBuy : function(){
         	var self = this;
-        	$.pageChange("/payandpackage.do", {proNum : self.proNum});
+        	$.pageChange("/payandpackage.do", {proNum : self.proNum, delivery : self.delivery});
         }
 	}, // methods
 	created : function() {

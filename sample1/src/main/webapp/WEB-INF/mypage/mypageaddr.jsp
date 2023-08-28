@@ -206,7 +206,7 @@ a {	text-decoration:none;
 	<div class="popup popup-overlay" id="popupOverlay" >
         <div class="title">새 주소 추가<i class="fa-solid fa-x" id="closePopup"></i></div>
         <div class="content">
-        <!-- 이메일 변경 -->
+        <!-- 주소 추가 -->
      	<div class="addrInput">
          	<label for="addrnum">우편번호</label><input v-model="zipNo" id="addrnum"><button @click="fnSearchAddr" >상세주소 찾기</button>
             <label for="addrspot">주소</label><input v-model="addr" id="addrspot">

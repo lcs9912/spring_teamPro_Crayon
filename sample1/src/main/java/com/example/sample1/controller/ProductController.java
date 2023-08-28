@@ -56,13 +56,6 @@ public class ProductController {
 		return "/pay/buyforsize";
 	}
 	
-		// 구매전 상의 페이지 이찬신!@#@!#@!#!@$
-		@RequestMapping("/buyforsizeLCS.do") 
-		public String buyforsizeLCS(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-			request.setAttribute("map", map);
-			return "/pay/buyforsize_LCS";
-		}
-	
 	// 판매전 상의 페이지
 	@RequestMapping("/sellbeforewear.do") 
 	public String sellbeforewear(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -273,7 +266,35 @@ public class ProductController {
 
    		return new Gson().toJson(resultMap);
    	}
+   	// 상품 SELL 리스트 출력
+   	@RequestMapping(value = "/productSellList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String productSellList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		List<Product> sellList = productService.searchProductSellList(map);
+   		resultMap.put("sellList", sellList);
+   		return new Gson().toJson(resultMap);
+   	}
+   	
+   	// 상품 BUY 리스트 출력
+   	@RequestMapping(value = "/productBuyList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String productBuyList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		List<Product> buyList = productService.selectProductBuyList(map);
+   		resultMap.put("buyList", buyList);
+   		return new Gson().toJson(resultMap);
+   	}
 
+   	// 유저 즉시구매
+   	@RequestMapping(value = "/payandpackage.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String payandpackage(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		productService.userProductNowBuy(map);
+   		
+   		return new Gson().toJson(resultMap);
+   	}
    
  	
 }

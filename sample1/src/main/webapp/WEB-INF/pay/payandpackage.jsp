@@ -178,12 +178,105 @@
 		font-size:25px;
 		margin-top:10px;
 	}
+	table{
+		border: 1px solid;
+		width: 80%;
+		text-align: center;
+	}
+	td, th{
+		border: 1px solid;
+	}
+	a{
+		cursor: pointer;
+	}
+	
+	/* 팝업 레이어 */
+			.popup-overlay {
+				display: none;
+			   	position: fixed;
+			  	top: 0;	left: 0;
+			  	width: 50%; height: 50%;
+			   	background-color: rgba(0, 0, 0, 0.5);
+			  	z-index: 1000;
+			} 
+			
+			.popup-content {
+			    position: absolute;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%, -50%);
+			    background-color: #fff;
+			    padding: 20px; border-radius: 10px;
+			    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			}	
+						
+			
+			body{
+			    /* background-image: url('./bg.jpg'); */ /* 배경이미지 */
+			    background-repeat: no-repeat; background-size: cover;
+			    background-position: center;		    
+			}
+		
+			.popup {
+			    z-index: 1; position: fixed;
+			    top: 50%; left: 50%;
+			    transform: translate(-50%,-50%);
+			    min-width: 300px; max-width: 600px;
+			    background-color: #fff; border-radius: 15px;
+			    box-shadow: 0 2px 55px -25px rgb(0 0 0 / 100%);		    
+			 }
+			.popup > .title{
+				border-radius: 15px 15px 0 0;
+			    min-height: 40px; color: white;
+			    background-color: #ccc; padding: 10px 15px;
+			    box-sizing: border-box; font-weight: bold;			    
+			}
+			.popup > .content {
+			    padding: 20px; box-sizing: border-box;
+			}
+			
+				.addrInput input{
+					width:360px; height:30px; border:0px solid; border-bottom:1px solid #ccc; outline:none; 
+				}
+				.addrInput #addrspot{margin-right:50px;}
+				.addrInput label {display:inline-block; width:80px; margin:20px 0 20px 10px;}
+				.addrInput button {margin-left:2px; background:black; color:#fff; padding:4px 3px; border-radius:10px; font-weight:bold;}
+				.addrInput #addrdetail{margin-right:100px;}
+				.addrInput #addrcheckbox{display:inline-block; width:18px; height:18px; margin:30px 0 0 190px; line-height:-20px; padding:10px;}
+				.addrInput #addrchecklabel{display:inline-block; width:310px; margin-top:0; font-size:18px; font-weight:bold; }
+				.addrInput button:hover {color:#000; background-color: #fff; border-color: #ccc;}	
+				.addrInput .cmd {
+				    bottom: 0; min-height: 40px;
+				    padding: 20px 20px; box-sizing: border-box;
+				    border-radius: 0 0 15px 15px; margin-top:20px;
+				    min-height: 40px; width: 100%; 
+				} 
+				.cmd button {
+				    border-radius: 8px; padding: 10px 30px; margin:0 auto;
+				    border: 1px solid #aaa; width: 120px; display:block;
+				    color: white; background-color: black;
+				    font-weight: bold; cursor: pointer;				    
+				}
+				.cmd button:hover {
+				     color: #000; background-color: #fff; border-color: #ccc;
+				}
+				.title i{
+					cursor: pointer; position: absolute; top: 15px; right: 15px;
+				}
+				#addrPopTable table{
+					font-size: 14px;
+					height: 40%;
+					
+				}
+				
+				tbale button{
+					margin: 1px; auto;
+				}
 </style>
 
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body> 
-	<div id="app" style="margin-top : 100px; background-color:#fafafa;">
+<div id="app" style="margin-top : 100px; background-color:#fafafa;">
 	
 	<div class="contentsarea">
 		<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
@@ -203,12 +296,25 @@
 			
 		<div class="addrsearch">
 			<h3 style="width:80%; display:inline-block;">배송 주소</h3>
-			<a href="#" style="float:right; color: rgba(34,34,34,.5);
+			<a @click="fnPopup('add')" style="float:right; color: rgba(34,34,34,.5);
 		    font-size: 13px;">+ 새 주소 추가</a> <!-- 마이페이지 주소 추가 api 팝업 복사해서 가져오기 -->
     
     		<div class="addradd">
     			<!-- 주소테이블에 정보가 없으면 주소를 추가해수세요 정보가 있으면 출력 -->
-    			<div><button style="background-color:#fafafa; color: rgba(34,34,34,.5);">주소를 추가해주세요.</button></div>
+    			<div v-if="!addrFlg"><button style="background-color:#fafafa; color: rgba(34,34,34,.5);" @click="fnPopup('add')">주소를 추가해주세요.</button></div>
+    			<table v-if="addrFlg" style="float: left;">
+    				<tr>
+    					<th>우편번호</th>
+    					<th>주소</th>
+    					<th>상세주소</th>
+    				</tr>
+    				<tr v-for="addrItem in addrList" v-if='addrItem.defaultAddr == "Y"'>
+    					<td>{{addrItem.userZipno}}</td>
+    					<td>{{addrItem.userAddr}}</td>
+    					<td>{{addrItem.userDetailAddr}}</td>
+    				</tr>
+    			</table>
+    			<span><button style="width:47px; height:38px; float: right; margin-right: 25px;" @click="fnPopup('edit')">변경</button></span>
     			<div>
 				    <button style="line-height: 30px;">요청사항 없음
 				    <i class="fa-solid fa-chevron-right" style="float:right; padding-right:15px; line-height: 30px;"></i></button>
@@ -250,13 +356,23 @@
 				<div>
 				<h3>포인트</h3>
 				</div>
+			<div style="color: rgba(34,34,34,.5);line-height: 17px; padding-top:10px;">
+			보유 포인트 <span style="color:black;">{{userInfo.userPoint}}P</span>
+			</div>
 			<div class="pointnum">
-			<input type="text" value="0"><button>모두 사용</button>
+			<input type="text" v-model="payPoint"><button>모두 사용</button>
 			</div>
 			
-			<div style="color: rgba(34,34,34,.5);line-height: 17px; padding-top:10px;">
-			보유 포인트 <span style="color:black;">0P</span>
+			<div v-if="!lastPointFlg" style="color: rgba(34,34,34,.5);line-height: 17px; padding-top:10px; font-size: 14px;">
+			결제후 잔여 포인트 <span style="color:blue; font-size: 12px;">{{lastPoint}}P</span> <!-- 유저 포인트 - 총 결제 금액 -->
 			</div>
+			
+			<div v-else style="color: rgba(34,34,34,.5);line-height: 17px; padding-top:10px; font-size: 12px;">
+			결제후 잔여 포인트 <span style="color:red; font-size: 12px;">{{lastPoint}}P</span> <!-- 결제후 잔액이 음수 인 경우 -->
+				<div><a style="text-decoration: underline; color: black" href="/mypageaddpoint.do">충전하기</a></div>
+			</div>
+			
+		
 			
 			</div>
 			
@@ -267,24 +383,19 @@
 			<div class="allpayinfo">
 			총 결제금액
 			<div style="float:right; font-size:20px; line-height:10px;">
-			-
+			{{lastPay}} <!-- 상품 가격 + 배송 비 -->
 			</div>
 			</div>
 			
 			<div class="priceinfo">
 			<div>
 			<div style="font-size: 13px;">즉시구매가
-			<div style="float:right; color: #222; font-size: 14px; font-weight:bold;"> -P			
+			<div style="float:right; color: #222; font-size: 14px; font-weight:bold;"> {{proInfo.productPrice}}P			
 			</div>
 			</div>
 			</div>
 			
-			<div class="priceinfosubtitle">
-			<div style="font-size: 13px;">포인트
-			<div style="float:right; color: #222; font-size: 14px;"> -P			
-			</div>
-			</div>
-			</div>
+			
 			
 			<div class="priceinfosubtitle">
 			<div style="font-size: 13px;">검수비
@@ -293,16 +404,11 @@
 			</div>
 			</div>
 			
-			<div class="priceinfosubtitle">
-			<div style="font-size: 13px;">수수료
-			<div style="float:right; color: #222; font-size: 14px;"> 0P		
-			</div>
-			</div>
-			</div>
+			
 			
 			<div class="priceinfosubtitle">
 			<div style="font-size: 13px;">배송비
-			<div style="float:right; color: #222; font-size: 14px;"> 0P			
+			<div style="float:right; color: #222; font-size: 14px;"> {{delivery}}P			
 			</div>
 			</div>
 			</div>
@@ -348,7 +454,8 @@
 
 </div>
 <div class="lastpaybtn" style="width:100%; text-align:center;">
-<button>결제하기</button>
+<button v-if="payFlg" @click="fnLastBuy">결제하기</button>
+<button v-else>결제하기</button>
 </div>
 
 
@@ -356,31 +463,88 @@
 			
 			
 		</div>
-		</div>
-
-
+			<!-- 레이어 팝업 -->
+			<div class="popup popup-overlay" id="popupOverlay" >
+		        <div class="title">새 주소 추가<i class="fa-solid fa-x" id="closePopup"></i></div>
+		        <div class="content">
+		        <!-- 주소추가 -->
+		        <template v-if="keyword == 'add'">
+		     	<div class="addrInput">
+		         	<label for="addrnum">우편번호</label><input v-model="zipNo" id="addrnum"><button @click="fnSearchAddr" >상세주소 찾기</button>
+		            <label for="addrspot">주소</label><input v-model="addr" id="addrspot">
+		            <label for="addrdetail">상세주소</label><input v-model="detailAddr" id="addrdetail">
+		            <input type="checkbox" id="addrcheckbox"><label for="addrcheckbox" id="addrchecklabel">기본 배송지로 설정</label>
+		            <div class="cmd">
+		       			<button id="submitPopup" @click="fnAddrAdd">제출</button>          
+		        	</div>
+		        </div>
+		        </template>
+		        <!-- 기본주소 변경 -->
+		        <template v-if="keyword == 'edit'">
+		     	<div class="addrInput">
+		     		<div id="addrPopTable">
+			         	<table style="float: left;">
+		    				<tr>
+		    					<th>우편번호</th>
+		    					<th>주소</th>
+		    					<th>상세주소</th>
+		    					<th></th>
+		    				</tr>
+		    				<tr v-for="addrItem in addrList">
+		    					<td>{{addrItem.userZipno}}</td>
+		    					<td>{{addrItem.userAddr}}</td>
+		    					<td>{{addrItem.userDetailAddr}}</td>
+		    					<td><button v-if="addrItem.defaultAddr == 'N'">변경</button></td>
+		    				</tr>
+	    				</table>
+    				</div>
+		            <div class="cmd">
+		       			<button id="submitPopup" @click="fnAddrEdit">제출</button>          
+		        	</div>
+		        </div>
+		        </template>	
+		        </div>
+			</div>
+		  
+</div>
 </body>
 
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+	app.fnResult(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo);
+} 
 var app = new Vue({
 	el : '#app',
 	data : {
-		size : "",
-		sizel : [
-			{size : ""}
-		],
-		img : {},
 		proNum : "${map.proNum}",
-	
-		proInfo : {
-			
-		},	
-		proInfo1 : {},
-		modelNum : "",
+		delivery : "${map.delivery}",
+		proInfo : {},	
+		userInfo : {},
 		uId : "${sessionId}",
-		uName : "${sessionName}"
+		
+		addrFlg : false, // 
+		lastPointFlg : false, // 결제후 잔여 포인트(음수인지 양수인지)
+		payFlg : false,
+		
+		// 주소추가 변수
+		zipNo : "", // 우편번호
+		addr : "", // 기본 주소
+		detailAddr : "", //상세주소
+		
+		lastPay : "", // 총 결제 가격
+		lastPoint : "", //결제후 잔여 포인트
+		
+		keyword : "", // 팝업 키워드
+		
+		// 결제 
+		
+			payPoint : "", // 결제포인트
+			lastPay : "",
+		
+		
+		
 	},// data
 	methods : {
 		//상품 정보 불러오기
@@ -394,21 +558,162 @@ var app = new Vue({
                  data : nparmap,
                  success : function(data) { 
                  	self.proInfo = data.info[0];
-                 	
-                 	
-                 	
                  	console.log(self.proInfo);
                  	
                  	
-                 
+                 	// 500000원 이상 결제시 불꽃배송 비용 3000원
+                 	if(self.delivery == 7000 && self.proInfo.productPrice > 500000){
+                 		self.delivery = 3000;
+                 	}
+                   self.lastPay =  parseInt(self.proInfo.productPrice) + parseInt(self.delivery); // 총 결제 금액 
+                  
+                   
+                   self.fnUserInfo();
+                   
+
                  }
              }); 
     	},
+    	// 유저 주소 리스트 출력
+    	fnUserAddrList : function(){ 
+    		var self = this;
+    		var nparmap = {uId : self.uId};
+            $.ajax({
+                url : "/user/searchAddr.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.addrList = data.addrList;
+                	if(self.addrList != "" && self.addrList != null){
+                		self.addrFlg = true;
+                	}else{
+                		self.addrFlg = false;
+                	}
+                	console.log(self.addrList);
+                }
+            }); 
+    		
+    	},
+    	// 유저 정보 
+    	fnUserInfo : function(){
+    		var self = this;
+			var nparmap = {uId : self.uId};
+			
+			$.ajax({
+                url : "/user/selectId.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.userInfo = data.info;
+                	console.log(self.userInfo.userPoint);
+                	
+                	self.lastPoint = parseInt(self.userInfo.userPoint) - parseInt(self.lastPay); // 결제후 잔여 포인트
+                	console.log("결제후 잔여포인트"+self.lastPoint);
+                	//self.lastPoint = -15;
+                	if(self.lastPoint < 0){
+                		self.lastPointFlg = true;
+                		self.payFlg = false;
+                	}else{
+                		self.lastPointFlg = false;
+                		self.payFlg = true;
+                	}
+                 	
+                }
+            });
+    	},
+    	// 최종 결제 
+    	fnLastBuy : function(){
+    		var self = this;
+			var nparmap = {proNum : self.proNum, uId : self.uId, suser : self.proInfo.userId, payPoint : self.payPoint, lastPay : self.lastPay, type : 'M'}
+			console.log(nparmap);
+			if(self.payPoint < self.lastPay ){
+				console.log("금액이 모자릅니다.");
+				return;
+			}
+			
+			$.ajax({
+                url : "/payandpackage.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	alert("완료되었습니다.");
+                	location.href ="/mypagebuylist.do";
+                 	
+                }
+            });
+    	},
+    	// 새주소 추가
+    	fnAddrAdd : function(){
+    		var self = this;
+			var param = {uId : self.uId, addr : self.addr, detailAddr : self.detailAddr, zipNo : self.zipNo};
+			$.ajax({
+				url : "/user/insertAddr.dox",
+				dataType : "json",
+				type : "POST",
+				data : param,
+				success : function(data) {
+					alert("완료!");
+					location.reload();
+				}
+			});
+    	},
+    	// 기본 배송지 변경
+    	fnAddrEdit : function(){
+    		var self = this;
+			var param = {uId : self.uId, addr : self.addr, detailAddr : self.detailAddr, zipNo : self.zipNo};
+			$.ajax({
+				url : "/user/insertAddr.dox",
+				dataType : "json", 
+				type : "POST",
+				data : param,
+				success : function(data) {
+					alert("완료!");
+					location.reload();
+				}
+			});
+    	},
+    	// 팝업창 띄우기
+    	fnPopup : function(keyword){
+    		var self = this;
+			self.keyword = keyword;
+			self.pwdFlg = false;
+			document.getElementById("popupOverlay").style.display = "block";
+    		
+    	},
+    	// 주소 팝업 입력
+		fnSearchAddr : function(){
+			var self = this;
+    		var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+    		window.open("addr.do", "test", option);
+		},
+		// 주소 팝업 돌아오는 곳
+		fnResult : function(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+    		var self = this;
+    		self.addr = roadAddrPart1; // 도로명 주소
+    		self.detailAddr = addrDetail; // 상세주소 
+    		self.zipNo = zipNo;
+    		console.log(self.addr); 
+    		console.log(self.zipNo);
+    		
+    		// 콘솔 통해 각 변수 값 찍어보고 필요한거 가져다 쓰면 됩니다.
+    		// console.log(roadAddrPart2); // 전체 주소
+    		//console.log(roadAddrPart1); // 도로명 주소
+    		//console.log(addrDetail); // 상세주소
+    		//console.log(engAddr);   // 영어주소
+    		
+    		
+    		
+    	},
+    	
         
 	}, // methods
 	created : function() {
 		var self = this;
 		self.fnProInfo();
+		self.fnUserAddrList();
 		
 		
 		
@@ -417,5 +722,9 @@ var app = new Vue({
 	    var self = this;
 	     // 데이터 로딩 후 fnGetSize 호출
 	}
+});
+// 레이어 팝업창 닫기
+document.getElementById("closePopup").addEventListener("click", function() {
+	document.getElementById("popupOverlay").style.display = "none";
 });
 </script>

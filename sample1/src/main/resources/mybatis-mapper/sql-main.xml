@@ -84,7 +84,8 @@
 		<if test="kind = 'p'">
 		ORDER BY PRODUCT_INTEREST DESC
 		</if>
-		
 	</select>
+	
+	
 
 </mapper>

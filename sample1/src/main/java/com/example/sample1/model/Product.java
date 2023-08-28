@@ -9,7 +9,7 @@ public class Product {
 	private String productName; // 상품이름
 	private String productKname; //상품한글이름
 	private String productSize; // 상품사이즈
-	private String productPrice; // 상품가격
+	private int productPrice; // 상품가격
 	private String productUpdate; // 등록일
 	private String productConfirmdate; // 확정일
 	private String productEnddate; // 마감일

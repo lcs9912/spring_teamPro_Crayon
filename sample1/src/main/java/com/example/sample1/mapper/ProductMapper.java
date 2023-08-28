@@ -45,4 +45,17 @@ public interface ProductMapper {
 	Product selectProMindate(HashMap<String, Object> map);
 	// 상품 상세 정보 pk 
 	List<Product>selectProBuyInfo(HashMap<String, Object> map);
+	// 상품 SELL 리스트
+	List<Product> selectProductSellList(HashMap<String, Object> map);
+	// 상품 BUY 리스트
+	List<Product> selectProductBuyList(HashMap<String, Object> map);
+	
+	// 구매시 유저 포인트 차감
+	int updateUserPoint(HashMap<String, Object> map);
+	// 상품 구매완료 처리
+	int updateProductDelyn(HashMap<String, Object> map);
+	// 유저 포인트 내역 입력
+	int insertUserPointTbl(HashMap<String, Object> map);
+	// 구매완료 테이블 입력
+	int insertTransaction(HashMap<String, Object> map);
 }

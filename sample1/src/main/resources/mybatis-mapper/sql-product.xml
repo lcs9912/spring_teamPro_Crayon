@@ -69,6 +69,33 @@
 		GROUP BY SIZE
 	</select>
 	
+	<!-- 상품 BUY 리스트 출력 -->
+	<select id="selectProductBuyList" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT * FROM T1_PRODUCT_UPDATE U 
+		INNER JOIN T1_PRODUCT_BRAND B
+		ON U.PRODUCT_BRAND = B.PRODUCT_BRAND
+		INNER JOIN T1_PRODUCT_IMG I
+		ON I.PRODUCT_NAME = U.PRODUCT_NAME
+		INNER JOIN T1_PRODUCT_SIZE S
+		ON S.PRODUCT_SIZE = U.PRODUCT_SIZE
+		WHERE U.PRODUCT_MODEL = #{modelNum} AND U.SELLBUY = 'B'
+		GROUP BY SIZE
+	</select>
+	
+	<!-- 상품 SELL 리스트 출력 -->
+	<select id="selectProductSellList" parameterType="hashmap"
+		resultType="com.example.sample1.model.Product">
+		SELECT * FROM T1_PRODUCT_UPDATE U 
+		INNER JOIN T1_PRODUCT_BRAND B
+		ON U.PRODUCT_BRAND = B.PRODUCT_BRAND
+		INNER JOIN T1_PRODUCT_IMG I
+		ON I.PRODUCT_NAME = U.PRODUCT_NAME
+		INNER JOIN T1_PRODUCT_SIZE S
+		ON S.PRODUCT_SIZE = U.PRODUCT_SIZE
+		WHERE U.PRODUCT_MODEL = #{modelNum} AND U.SELLBUY = 'S'
+		GROUP BY SIZE
+	</select>
 	<!-- 즉시  판매가 -->
 	<select id="selectSellMinPrice" parameterType="hashmap"
 		resultType="com.example.sample1.model.Product">
@@ -149,4 +176,31 @@
 		WHERE U.PRODUCT_SELL_NUMBER = #{proNum}
 	</select>
 	
+	<!-- 상품 즉시구매 -->
+	<update id="updateUserPoint" parameterType="hashmap">
+		UPDATE T1_USER_TBL
+		SET
+			USER_POINT = USER_POINT - #{lastPay}
+		WHERE USER_ID = #{uId};
+	</update>
+	
+	<!-- 상품 구매완료 처리 -->
+	<update id="updateProductDelyn" parameterType="hashmap">
+		UPDATE T1_PRODUCT_UPDATE
+		SET
+			PRODUCT_DELYN = 'Y'
+		WHERE PRODUCT_SELL_NUMBER = #{proNum}
+	</update>
+	
+	<!-- 유저 포인트 내역 입력 -->
+	<insert id="insertUserPointTbl" parameterType="hashmap">
+		INSERT INTO T1_USER_POINT
+		VALUES (#{uId}, #{type}, #{lastPay}, NOW())
+	</insert>
+	
+	<!-- 구매완료 테이블 입력 -->
+	<insert id="insertTransaction" parameterType="hashmap">
+		INSERT INTO T1_TRANSACTION
+		VALUES (null, #{proNum}, #{uId}, #{suser}, NOW(), #{payPoint}, 'N')
+	</insert>
 </mapper>
