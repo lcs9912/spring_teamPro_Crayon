@@ -11,34 +11,32 @@
 * {margin:0; padding:0;}
 
 table {
-margin-top : 10px;
-	width : 800px;
-	border: 1px solid #a2a2a2;
+	margin-top :30px;
+	width : 1000px;
+	border: 1px solid #black;
 	border-collapse: collapse;
 	text-align: center;
 }
 
 th, td {
 	border: 1px solid #eee;
-	padding: 10px 5px;
-
+	padding: 20px 10px;
+}
+td{
+color : #a2a2a2;
 }
 
-
-
 .customerwrap {
-	width:1200px; margin:0 auto;
-	padding-top:70px;
+	width:100%; height:600px;
 	}
 	
-.customernav {
-	float:left; width:150px; color:#000;
+customernav {
+	float:left; width:200px; color:#000;
 	}
 
 
 .customernav{
-padding-bottom: 20px;
-margin-left: 50px;
+width:1200px; margin:50px auto;
 }
 .customernav ul li a{
 padding-top : 20px;
@@ -52,6 +50,7 @@ text-decoration:none;
 color : black;
 font-weight: bold;
 }
+
 	
 .customernav ul li{
 list-style : none;
@@ -60,112 +59,40 @@ padding-top : 20px;
 
 
 .contentsarea{
-width : 800px;
+width : 1000px;
+float:left; 
+padding-bottom : 10px;
+
+}
+.contentsarea h3{
+	border-bottom: 3px solid #222; padding-bottom:15px;
+}
+.dropdownlist{
+width : 1000px;
 margin-left : 200px;
 padding-bottom : 10px;
 border-bottom: 3px solid #222;
 }
 
-.dropdownlist li{
-width: 1200px;
-list-style : none;
-padding-top : 10px;
-padding-bottom : 10px;
-border-bottom : 1px solid #eee;
-margin-left : 200px;
-margin-right : 200px;
+a{
+text-decoration : none;
 }
-.onetooneEditbtn {
-background-color : white;
-border : 1px solid #A2A2A2;
-padding : 5px;
-font-weight: bold;
-margin-top : 5px;
-cursor: pointer;
+.qnacontents{
+width:1000px;
 }
-.qnadeletbtn {
-background-color : white;
-border : 1px solid #A2A2A2;
-padding : 5px;
-font-weight: bold;
-margin-top : 5px;
-cursor: pointer;
-margin-right : 1px;
-}
-.qnaallselect{
-background-color : white;
-border : 1px solid #A2A2A2;
-padding : 5px;
-font-weight: bold;
-margin-top : 5px;
-cursor: pointer;
-margin-right : 1px;
+.qnacontents tr td{
+color : black;
+border: 1px solid white;
+border-bottom: 1px solid #eee;
 }
 
-.qnaallselectnot{
-background-color : white;
-border : 1px solid #A2A2A2;
-padding : 5px;
-font-weight: bold;
-margin-top : 5px;
-cursor: pointer;
-margin-right : 1px;
-}
-
-
-.qnaeditbtn{
-background-color : white;
-border : 1px solid #A2A2A2;
-padding : 5px;
-font-weight: bold;
-margin-top : 5px;
-cursor: pointer;
-margin-right : 1px;
-}
-
-td a:link {
-  color : black;
-  text-decoration: none;
-}
-td a:visited {
-  color : black;
-  text-decoration: none;
-}
-td a:hover {
-  color : black;
-  text-decoration: underline;
-}
-td a:active {
-  color : black;
-  text-decoration: none;
-}
-.movebtn {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-.movebtn button{
-width : 40px;
+.morebtn {
+color : black;
+width: 80px;
 height: 30px;
-background-color : white;
-font-weight: bold;
-cursor: pointer;
-border : 1px solid #eee;
+background-color:white;
+border:1px solid #eee;
 }
-.onetoonehead{
-background-color : #eee;
-}
-
-
-.selectpagebtn:hover {
-  background-color: #808080;;
-  border: 1px solid black;
-}
-
-.selectpagebtn:hover .selectpagenum {
-  color: #eee;
-}
-
 
 </style>
 </head>
@@ -173,22 +100,37 @@ background-color : #eee;
 <body>
 <div id="app">
 <div class="customerwrap">
-	<nav>
 		<div class="customernav">
+			<customernav>
 			<h2>고객센터</h2>
 			<ul>
-				<li><a href="../faq.do" style="color: black;">자주 묻는 질문</a></li>
+				<li><a href="../faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
 				<li><a href="onetoone.do" style="color: black; font-weight: bold;">1:1 문의 게시판</a></li>
 			</ul>
-		</div>
-		</nav>
+		</customernav>
 		
-				<div class="contentsarea"><h3>1:1 문의 게시판</h3></div>
+		
+				<div class="contentsarea"><h3>자주 묻는 질문</h3>
+		<table>
+
+				<tbody>
+				<tr>
+				<td style="cursor:pointer; font-weight: bold; color:black">전체</td>
+				<td style="cursor:pointer">공지사항</td>
+				<td style="cursor:pointer">자주묻는 질문</td>
+				</tr>
+				
+				<tr class="onetooneselect">
+				<td style="cursor:pointer"><a href="onetoone.do" style="color : #A2A2A2;">1:1문의</a></td>
+				<td></td>
+				<td></td>
+				</tr>
+				</tbody>
+		</table>
 	
 	<table>
 		<tbody>
-				<button class="qnaallselect">전체선택</button>
-				<button class="qnaallselectnot">선택해제</button>
+				
 				<tbody>
 				
 		<tr class="onetoonehead">
@@ -218,11 +160,14 @@ background-color : #eee;
 		
 		
 	</table>
+	<div align="left" style="width:1000px;">
+		<button class="qnaallselect">전체선택</button>
+			<button class="qnaallselectnot">선택해제</button>
+	</div>	
 	<div align="right" style="width:1000px;">
 	<button class="onetooneEditbtn" @click="fnQnaAdd()"> 게시물 작성</button>
 	<button class="qnadeletbtn" @click="fnQnaRemove()"> 게시물 삭제</button>
 	</div>
-	
 	<div class="movebtn">
 				  <button @click="changePage(-1)">
 				    <i class="fa-solid fa-chevron-left"></i>
@@ -239,9 +184,14 @@ background-color : #eee;
 				   <i class="fa-solid fa-chevron-right"></i>
 				 </button>
 		</div>
+	
 
-
+	</div>
+	
+	</div>
+	
 </div>
+
 </div>
 </body>
 </html>

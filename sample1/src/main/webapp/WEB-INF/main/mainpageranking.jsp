@@ -203,7 +203,7 @@ var headerApp = new Vue({
 	}, // methods
 	created : function() {
 		var self = this;
-		
+		 hApp.fnActive("1");
 	}// created
 });
 

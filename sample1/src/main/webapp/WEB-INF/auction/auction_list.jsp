@@ -250,7 +250,7 @@ var app = new Vue({
 	created : function() {
 		var self = this;
 		self.fnGetList();
-		
+		 hApp.fnActive("6");
 	}// created
 });
 </script>
