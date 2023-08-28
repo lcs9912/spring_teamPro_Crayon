@@ -154,13 +154,15 @@
 	                               </div>
 	                           </a>
                 </article>
+                
+                
                  </div>
-     
-        </div><!--상품전시 영역 종료-->
-         <div class="dropdownbtn" v-if="showMoreButton">
+        <div class="dropdownbtn" v-if="showMoreButton">
         <button @click="showMoreItems">더보기</button>
     		</div>
  
+        </div><!--상품전시 영역 종료-->
+      
         </div>   
     </div>
      </div>
