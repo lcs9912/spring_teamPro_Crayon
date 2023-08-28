@@ -154,12 +154,10 @@
 	                               </div>
 	                           </a>
                 </article>
-                 </div>
+                </div>
      
-        </div><!--상품전시 영역 종료-->
+         </div><!--상품전시 영역 종료-->
          <div class="dropdownbtn"><button>더보기</button></div>
-        
- 
         </div>   
     </div>
      </div>
