@@ -172,8 +172,8 @@
 				</button>
 				<div class="delete" @click="fnRemove(item.productSellNumber)">삭제</div>
 				</li>
-	</ul>
-				</div>
+			</ul>
+		</div>
 				
 		</div>
 	</div>

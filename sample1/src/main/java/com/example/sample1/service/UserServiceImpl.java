@@ -143,13 +143,13 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userMapper.selectUserList(map);
 	}
-
+	// 아이디찾기
 	@Override
 	public User searchUserId(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return userMapper.selectIdSearch(map);
 	}
-
+	// 비밀번호 찾기
 	@Override
 	public User searchUserPwd(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub

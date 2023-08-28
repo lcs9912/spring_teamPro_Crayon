@@ -200,17 +200,17 @@ a {	text-decoration:none;
 			<div class="mylist">
 				<div class="listhead">
 				<h2>구매내역</h2>
-				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
+				<span><a href="mypagebuylist.do">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
 				</div>
 				<div class="viewdv">
 				<ul class="listul">
 					<li>
 						<p>전체</p>
-						<p>0</p>
+						<p>{{resultBuyCnt}}</p>
 					</li>
 					<li>
 						<p>입찰 중</p>
-						<p>0</p>
+						<p>{{buy}}</p>
 					</li>
 					<li>
 						<p>진행 중</p>
@@ -218,28 +218,44 @@ a {	text-decoration:none;
 					</li>
 					<li>
 						<p>종료</p>
-						<p>0</p>
+						<p>{{buyCom}}</p>
 					</li>
 				</ul>
 				</div>
-				<div class="listdv">
+				<table v-if="buyFlg">
+                    	<tr>
+                    		<th></th>
+                    		<th>상품이름</th>
+                    		<th>사이즈</th>
+                    		<th>가격</th>
+                    		<th>날짜</th>
+                    	</tr>
+                    	<tr v-for="item in buyList">
+                    		<td></td>
+                    		<td>{{item.productName}}</td>
+                    		<td>{{item.size}}</td>
+                    		<td>{{item.transactionPrice}}</td>
+                    		<td>{{item.transactionDate}}</td>
+                    	</tr>
+                    </table>
+				<div v-if="!buyFlg" class="listdv">
 					<p>거래내역이 없습니다</p>
 				</div>
 			</div>
 			<div class="mylist">
 				<div class="listhead">
 				<h2>판매내역</h2>
-				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
+				<span><a href="mypageselllist.do">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
 				</div>
 				<div class="viewdv">
 				<ul class="listul">
 					<li>
 						<p>전체</p>
-						<p>0</p>
+						<p>{{resultSellCnt}}</p>
 					</li>
 					<li>
 						<p>입찰 중</p>
-						<p>0</p>
+						<p>{{sell}}</p>
 					</li>
 					<li>
 						<p>진행 중</p>
@@ -247,24 +263,31 @@ a {	text-decoration:none;
 					</li>
 					<li>
 						<p>종료</p>
-						<p>0</p>
+						<p>{{sellCom}}</p>
 					</li>
 				</ul>
 				</div>
-				<div class="listdv">
+				<table v-if="sellFlg">
+                    	<tr>
+                    		<th></th>
+                    		<th>상품이름</th>
+                    		<th>사이즈</th>
+                    		<th>가격</th>
+                    		<th>날짜</th>
+                    	</tr>
+                    	<tr v-for="item2 in sellList">
+                    		<td></td>
+                    		<td>{{item2.productName}}</td>
+                    		<td>{{item2.size}}</td>
+                    		<td>{{item2.transactionPrice}}</td>
+                    		<td>{{item2.transactionDate}}</td>
+                    	</tr>
+                    </table>
+				<div v-if="!sellFlg" class="listdv">
 					<p>거래내역이 없습니다</p>
 				</div>
 			</div>
-			<div class="mylist">
-				<div class="listhead">
-				<h2>관심상품</h2>
-				<span><a href="#">더보기 <i class="fa-solid fa-chevron-right"></i></a></span>
-				</div>
-				<div class="joygooddv">
-					<p>추가하신 관심상품이 없습니다.</p>
-					<button><a href="mainpageshopping.do">shop 바로가기</a></button>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 	</div>
@@ -278,7 +301,23 @@ a {	text-decoration:none;
 		data : {
 			info : {},
 			imgInfo : {},
-			sessionId : "${sessionId}"
+			
+			sessionId : "${sessionId}",
+			
+			buy : "",  // 구매입찰 횟수
+			buyCom : "", // 구매완료 횟수
+			sell : "", // 판매입찰 횟수
+			sellCom : "", // 판매완료 횟수
+			
+			resultBuyCnt : "", // 총 구매내역 횟수
+			resultSellCnt : "",  // 총 판매내역 횟수
+			
+			buyList : [],
+			sellList : [],
+			
+			buyFlg : false,
+			sellFlg : false,
+			
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -312,12 +351,63 @@ a {	text-decoration:none;
 					}
 				});
 			},
+			fnBuyCount : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/sellBuyCount.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.buy = data.buy; // 유저 구매입찰 갯수
+						self.sell = data.sell; // 유저 판매입찰 갯수
+						self.buyCom = data.buyCom; // 유저 구매완료
+						self.sellCom = data.sellCom; // 유저 판매완료
+						self.resultBuyCnt = data.resultBuyCnt;
+						self.resultSellCnt = data.resultSellCnt;
+						
+						if(self.buy > 0){
+							self.buyFlg = true;
+						} else{
+							self.buyFlg = false;
+						}		
+						if(self.sell > 0){
+							self.sellFlg = true;
+						} else{
+							self.sellFlg = false;
+						}		
+					}
+				});
+			},
+			// 구매 판매 리스트
+			fnBuyList : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/buyAndSell.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.buyList = data.buyList.slice(0,5);
+						self.sellList = data.sellList.slice(0,5);
+						console.log(self.buyList);
+						
+						
+					}
+				});
+			},
+			
 
 		}, // methods
 		created : function() {
 			var self = this;
 			if(self.sessionId !=""){
 				self.fnGetInfo();
+				self.fnBuyCount();
+				self.fnBuyList();
+				
 			}else{
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";

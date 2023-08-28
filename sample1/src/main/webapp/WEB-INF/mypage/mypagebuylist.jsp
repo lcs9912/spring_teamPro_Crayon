@@ -12,6 +12,7 @@
 		border: 1px solid black;
 		border-collapse: collapse;
 		text-align: center;
+		width: 100%;
 	}
 	
 	th, td {
@@ -234,23 +235,40 @@
                         <option>입찰중</option>
                         <option>기한만료</option>
                     </select>
-                    <input type="number" placeholder="만료일" class="buylistinput">
-                    <input type="number" placeholder="구매희망가" class="buylistinput">
+                   
                     </div>                
                     <table v-if="buyFlg">
                     	<tr>
+                    		<th></th>
                     		<th>상품이름</th>
                     		<th>사이즈</th>
                     		<th>가격</th>
-                    		<th>거래 날짜</th>
+                    		<th>날짜</th>
                     	</tr>
                     	<tr v-for="item in buyList">
+                    		<td></td>
                     		<td>{{item.productName}}</td>
                     		<td>{{item.size}}</td>
                     		<td>{{item.transactionPrice}}</td>
                     		<td>{{item.transactionDate}}</td>
                     	</tr>
                     </table>
+                    <div class="movebtn">
+						<button @click="changePage(-1)">
+							<i class="fa-solid fa-chevron-left"></i>
+						</button>
+							  
+						<button class="selectpagebtn"
+							v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
+							:class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+							:style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
+							{{ pageNumber }}
+						</button>
+							
+						<button @click="changePage(1)">
+							<i class="fa-solid fa-chevron-right"></i>
+						</button>
+					</div>
                     <div v-if="!buyFlg" class="buygooddv">
                         <p>구매입찰 목록이 없습니다.</p>
                         <button><a href="mainpageshopping.do">SHOP 바로가기</a></button>
@@ -276,6 +294,10 @@
 			sessionId : "${sessionId}",
 			
 			buyFlg : false,
+			
+			// 페이징
+			currentPage: 1,
+		    itemsPerPage: 5,
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -329,7 +351,31 @@
 						
 					}
 				});
-			}
+			},
+			
+			changePage: function (offset) {
+			      this.currentPage += offset;
+			      if (this.currentPage < 1) {
+			        this.currentPage = 1;
+			      } else if (this.currentPage > this.totalPages) {
+			        this.currentPage = this.totalPages;
+			      }
+			      this.fnBuyList();
+			    },
+			    goToPage: function (pageNumber) {
+			      this.currentPage = pageNumber;
+			      this.fnBuyList();
+			    },
+			  },
+			  computed: {
+			    totalPages: function () {
+			      return Math.ceil(this.buyList.length / this.itemsPerPage);
+			    },
+			    paginatedList: function () {
+			      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+			      const endIndex = startIndex + this.itemsPerPage;
+			      return this.buyList.slice(startIndex, endIndex);
+			    },
 
 		}, // methods
 		created : function() {
