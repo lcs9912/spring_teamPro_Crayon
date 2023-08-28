@@ -168,7 +168,7 @@
         data: {
             loginOut: "${sessionId}",
             list : [],
-            maingate : "1",
+            maingate : "2maincate_m_p.jsp",
             kind : "p"
         },// data
         computed: {

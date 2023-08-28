@@ -194,6 +194,7 @@
     </div>
 </body>
 <%@ include file="../maincate/maincate_a.jsp"%>
+<%@ include file="../maincate/maincate_a_p.jsp"%>
 </html>
 
 <script>

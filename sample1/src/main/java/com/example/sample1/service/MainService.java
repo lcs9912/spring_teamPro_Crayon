@@ -16,4 +16,6 @@ public interface MainService {
 	//main cate man
 	List<Main> seachMain(HashMap<String, Object> map);
 	
+	List<Main> seachPMain(HashMap<String, Object> map);
+	
 }

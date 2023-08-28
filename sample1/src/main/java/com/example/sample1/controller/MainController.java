@@ -117,7 +117,15 @@ public class MainController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
-	
+	//maincate리스트 출력
+		@RequestMapping(value = "/shopmanPList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String mainPList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			List<Main> list =mainService.seachPMain(map);
+			resultMap.put("list", list);
+			return new Gson().toJson(resultMap);
+		}
 	 
 	
 	

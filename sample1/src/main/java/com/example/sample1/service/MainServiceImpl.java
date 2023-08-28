@@ -40,6 +40,12 @@ public class MainServiceImpl implements MainService{
 		// TODO Auto-generated method stub
 		return mainMapper.selectTmain(map);
 	}
+
+	@Override
+	public List<Main> seachPMain(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mainMapper.selectPmain(map);
+	}
 	
 	
 

@@ -72,11 +72,19 @@
 		INNER JOIN T1_PRODUCT_IMG I ON P.PRODUCT_NAME=I.PRODUCT_NAME
 		WHERE P.PRODUCT_CATEGORIE1 = #{cate1Num}
 		GROUP BY P.PRODUCT_MODEL
-		<if test="kind == 'p'">
+
+	</select>
+		<!-- 남자메인테스트   -->
+	<select id="selectPmain" parameterType="hashmap" resultType="com.example.sample1.model.Main">
+		SELECT * 
+		FROM T1_PRODUCT_UPDATE P
+		INNER JOIN T1_PRODUCT_IMG I ON P.PRODUCT_NAME=I.PRODUCT_NAME
+		WHERE P.PRODUCT_CATEGORIE1 = #{cate1Num}
+		GROUP BY P.PRODUCT_MODEL
+		<if test="kind = 'p'">
 		ORDER BY PRODUCT_INTEREST DESC
 		</if>
 		
 	</select>
-	
 
 </mapper>

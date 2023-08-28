@@ -128,7 +128,8 @@
         </div>
     </div>
 </body>
-<%@ include file="mainwomancate.jsp"%>
+<%@ include file="../maincate/maincate_w.jsp"%>
+<%@ include file="../maincate/maincate_w_p.jsp"%>
 </html>
 
 <script>

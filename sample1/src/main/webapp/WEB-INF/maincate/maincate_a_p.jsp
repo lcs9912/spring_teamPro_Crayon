@@ -168,7 +168,7 @@
         data: {
             loginOut: "${sessionId}",
             list : [],
-            maingate : "1",
+            maingate : "4",
             kind : "p"
         },// data
         computed: {

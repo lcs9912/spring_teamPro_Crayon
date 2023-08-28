@@ -21,4 +21,6 @@ public interface MainMapper {
 	
 	// 메인cate 
 	List<Main>selectTmain(HashMap<String, Object> map);
+	
+	List<Main>selectPmain(HashMap<String, Object> map);
 }
