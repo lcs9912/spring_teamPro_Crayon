@@ -144,20 +144,20 @@ main {
 					아이디
 				</div>
 				<div class="input-container">
-					<input type="text" id="id"  autofocus @keyup.enter="fnEnter"  placeholder="아이디" ref="idInput">
+					<input type="text" id="id"  autofocus v-model="userId"  placeholder="아이디" ref="idInput">
 				</div>
 				<div>
 					<div class="emailpwdwhere">
 						이름
 					</div>
 					<div class="input-container">
-					<input type="text" id="name" autofocus @keyup.enter="fnEnter"  placeholder="이름" ref="idInput">
+					<input type="text" id="name" autofocus v-model="userName"  placeholder="이름" ref="idInput">
 
 				</div>
 				<div>
 					<div class="emailpwdwhere">
 						비밀번호찾기 질문
-						<select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
+						<select name="language" id="pwdhint" class="passwordhint" name="passwordhint" v-model="userPwdHint">
 							<option disabled selected>비밀번호 찾기 질문</option>
 					  		<option value="1">가장 좋아하는 동물은?</option>
 					  		<option value="2">가장 좋아하는 음식은?</option>
@@ -171,14 +171,14 @@ main {
 						</select>
 					</div>
 					<div class="input-container">
-					<input type="text" id="birth" autofocus @keyup.enter="fnEnter"  placeholder="비밀번호찾기 정답" ref="idInput">
+					<input type="text" id="birth" autofocus v-model="pwdAnswer"  placeholder="비밀번호찾기 정답" ref="idInput">
 
 				</div>
 
 				</div>
 			
 			<div class="loginwindownot">
-				<button class="loginbtn" @keyup.enter="fnEnter" onclick="openPopup('pwdresult.do')">비밀번호 찾기</button> 
+				<button class="loginbtn"  @click="openPopup('pwdresult.do')">비밀번호 찾기</button> 
 			</div>
 			<div class="logindownmenu">
 				<ul>
@@ -204,12 +204,45 @@ main {
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-function openPopup(url) {
-    const popup = window.open(url, 'popupWindow', 'width=600,height=300,scrollbars=yes');
-    popup.focus();
-}
-document.addEventListener("DOMContentLoaded", function() {
-    const pwdHintSelect = document.getElementById("pwdhint");
-    pwdHintSelect.selectedIndex = 0;
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],
+		userId : "",
+		userName : "",
+		userPwdHint : "",
+		pwdAnswer : "",
+	},// data
+	methods : {
+		openPopup : function(url){
+            var self = this;
+            var nparmap = {uId : self.userId, uName : self.userName, pwdHint : self.userPwdHint, pwdAnswer : self.pwdAnswer};
+            $.ajax({
+                url : "/userPwdSearch.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.info = data.info;
+                	if(data.info != "" && data.info != null){
+                		var userPwd = data.info.userPwd;
+                		
+                		var popup = window.open(url+"?userPwd="+userPwd, 'popupWindow', 'width=600,height=300,scrollbars=yes');
+                        popup.focus();
+                        
+                	}else{
+                		alert("다시 확인해주세요");
+                	};
+                	
+                }
+            }); 
+        }
+	}, // methods
+	created : function() {
+		var self = this;
+		
+	}// created
 });
+
+
 </script>

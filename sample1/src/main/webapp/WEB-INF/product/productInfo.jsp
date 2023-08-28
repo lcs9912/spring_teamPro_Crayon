@@ -641,16 +641,16 @@ var app = new Vue({
                  success : function(data) { 
                  	self.proList = data.proList; // 모델 번호 상품 리스트 
                  	self.proInfo = data.proList[0]; // 상품 리스트의 0번째 값 
-                 	self.minSell = data.minSell; // 최근 판매가
-                 	self.minBuy = data.minBuy; // 최근 구매가
+                 	self.minSell = data.minSell; // 즉시 판매가
+                 	self.minBuy = data.minBuy; // 즉시 구매가
                  	self.minDate = data.minDate; // 출시일
                  	self.resent = data.resent; // 최근거래가
                  	
                  	
                  	console.log(self.resent); // 최근거래가
                  	console.log(self.minDate.mindate); // 출시일
-                 	console.log(self.minSell); // 최근 판매가
-                 	console.log(self.minBuy); // 최근 구매가
+                 	console.log(self.minSell); // 즉시 판매가
+                 	console.log(self.minBuy); // 즉시 구매가
                  	console.log(self.proList); // 모델 번호 상품 리스트 
                  	console.log(self.proInfo); // 상품 리스트의 0번째 값  
                  	if(self.resent != "" && self.resent != null){

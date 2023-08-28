@@ -35,9 +35,13 @@ text-align:center;
 <span style="text-align: center;">회원님의 아이디 입니다.</span>
 
 
+
 </table>
 </section>
 
 </div>
 </body>
 </html>
+<script>
+
+</script>

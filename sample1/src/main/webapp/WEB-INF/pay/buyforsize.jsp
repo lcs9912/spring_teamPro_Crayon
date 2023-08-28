@@ -121,13 +121,13 @@
 <%@ include file="../header/shopheader.jsp"%>
 <body> 
 <div id="app" style="margin-top : 100px; background-color:#fafafa;;">
-	<div class="contentsarea">
+	<div v-if="sellFlg" class="contentsarea">
 		<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
 			<div class="productcontents">
 				<div class="productheader" style="display: flex; align-items: center;">
 				    <div class="productinfo">
 				    	<!-- 상품이미지 출력 -->
-				        <img :src="proInfo.pImgPath" style="max-width : 80px"> 
+				        <img :src="proInfo.pImgPath" style="max-width : 80px">  
 				    </div>
 				    <div style="margin-left: 10px;">
 				    	<!-- 모델번호,상품명,한글명 출력 -->
@@ -171,6 +171,10 @@
 			
 		</div>
 	</div>
+	<div v-if="!sellFlg" class="contentsarea">
+		즉시 구매 상품이 없습니다. 구매입찰 페이지로 넘어갑니다... 람쥐
+	
+	</div>
 </div>
 </body>
 <%@ include file="../header/footer.jsp"%>
@@ -186,6 +190,8 @@ var app = new Vue({
 		sList : [], // size 호출 시 
 		proInfo : {}, // 상품상세정보 호출
 		proList : [],
+		
+		sellFlg : false,
 	},// data
 	
 	
@@ -203,7 +209,15 @@ var app = new Vue({
                  success : function(data) { 
                  	self.proList = data.sellList;
                  	self.proInfo = data.sellList[0];
-                 	
+                 	if(data.sellList != "" &&  data.sellList != null){
+                 		self.sellFlg = true;
+                 	}else{
+                 		self.sellFlg = false;
+                 		alert("즉시 구매 상품이 없습니다. \n구매입찰 페이지로 이동합니다.");
+                 			
+                 		
+                 		location.href = "/productRegister.do";
+                 	}
                  	console.log(self.proList);
                  	console.log(self.proInfo);
                  	

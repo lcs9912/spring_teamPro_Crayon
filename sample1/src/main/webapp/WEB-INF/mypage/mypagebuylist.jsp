@@ -237,11 +237,18 @@
                     <input type="number" placeholder="만료일" class="buylistinput">
                     <input type="number" placeholder="구매희망가" class="buylistinput">
                     </div>                
-                    <table>
+                    <table v-if="buyFlg">
                     	<tr>
-                    		<th></th>
-                    		<th></th>
-                    		<th></th>
+                    		<th>상품이름</th>
+                    		<th>사이즈</th>
+                    		<th>가격</th>
+                    		<th>거래 날짜</th>
+                    	</tr>
+                    	<tr v-for="item in buyList">
+                    		<td>{{item.productName}}</td>
+                    		<td>{{item.size}}</td>
+                    		<td>{{item.transactionPrice}}</td>
+                    		<td>{{item.transactionDate}}</td>
                     	</tr>
                     </table>
                     <div v-if="!buyFlg" class="buygooddv">
@@ -265,6 +272,7 @@
 			info : {},
 			buy : {},
 			buyCom : {},
+			buyList : [],
 			sessionId : "${sessionId}",
 			
 			buyFlg : false,
@@ -302,8 +310,22 @@
 							self.buyFlg = true;
 						} else{
 							self.buyFlg = false;
-						}
-						
+						}		
+					}
+				});
+			},
+			// 유저 구매, 판매 리스트
+			fnBuyList : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/buyAndSell.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.buyList = data.buyList;
+						console.log(self.buyList);
 						
 					}
 				});
@@ -315,6 +337,7 @@
 			if(self.sessionId !=""){
 				self.fnGetInfo();
 				self.fnBuyCount();
+				self.fnBuyList();
 			}else{
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";

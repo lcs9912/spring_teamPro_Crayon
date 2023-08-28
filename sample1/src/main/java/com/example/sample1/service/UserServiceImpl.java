@@ -144,4 +144,16 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectUserList(map);
 	}
 
+	@Override
+	public User searchUserId(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectIdSearch(map);
+	}
+
+	@Override
+	public User searchUserPwd(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return userMapper.selectPwdSearch(map);
+	}
+
 }

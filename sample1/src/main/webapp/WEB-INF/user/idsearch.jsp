@@ -141,18 +141,18 @@ main {
 					이메일
 				</div>
 				<div class="input-container">
-					<input type="text" id="email"  placeholder="이메일" ref="idInput">
+					<input type="text" id="email" v-model="uEmail" placeholder="이메일" ref="idInput">
 				</div>
 				<div>
 					<div class="emailpwdwhere">
 						이름
 					</div>
 					<div class="input-container">
-					<input type="text" id="name"   placeholder="이름" ref="idInput">
+					<input type="text" id="name"  v-model="uName" placeholder="이름" ref="idInput">
 				</div>
 				</div>
 			<div class="loginwindownot">
-				<button class="loginbtn"  onclick="openPopup('idresult.do')" >아이디 찾기</button> 
+				<button class="loginbtn"  @click="openPopup('idresult.do')" >아이디 찾기</button> 
 			</div>
 			<div class="logindownmenu">
 				<p>
@@ -176,8 +176,47 @@ main {
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [],
+		uEmail : "",
+		uName : "",
+	},// data
+	methods : {
+		openPopup : function(url){
+            var self = this;
+            var nparmap = {uEmail : self.uEmail, uName : self.uName};
+            $.ajax({
+                url : "/userIdSearch.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	if(data.info != "" && data.info != null){
+                		var userId = data.info.userId;
+                		
+                		var popup = window.open(url+"?userId="+userId, 'popupWindow', 'width=600,height=300,scrollbars=yes');
+                        popup.focus();
+                        
+                	}else{
+                		alert("다시 확인해주세요");
+                	};
+                	
+                	
+                }
+            });
+            
+            
+        }
+	}, // methods
+	created : function() {
+		var self = this;
+		
+	}// created
+});
 function openPopup(url) {
-    const popup = window.open(url, 'popupWindow', 'width=600,height=300,scrollbars=yes');
+    var popup = window.open(url, 'popupWindow', 'width=600,height=300,scrollbars=yes');
     popup.focus();
 }
 </script>

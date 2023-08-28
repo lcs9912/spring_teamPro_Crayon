@@ -243,14 +243,34 @@ public class UserController {
 	}
 	
 	//Aution 상세정보 출력
-			@RequestMapping(value = "/manager/userList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-			@ResponseBody
-			public String searchUserList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-				HashMap<String, Object> resultMap = new HashMap<String, Object>();
-				List<User> uList =  userService.searchUserList(map);
-				resultMap.put("uList", uList);
+	@RequestMapping(value = "/manager/userList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchUserList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<User> uList =  userService.searchUserList(map);
+		resultMap.put("uList", uList);
 											
-				return new Gson().toJson(resultMap);
-			}
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 유저 아이디 찾기
+	@RequestMapping(value = "/userIdSearch.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String userIdSearch(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		User info = userService.searchUserId(map);
+		resultMap.put("info", info);
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 유저 비밀번호 찾기
+	@RequestMapping(value = "/userPwdSearch.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String userPwdSearch(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		User info = userService.searchUserPwd(map);
+		resultMap.put("info", info);
+		return new Gson().toJson(resultMap);
+	}
 	
 }

@@ -35,6 +35,10 @@ public interface UserService {
 	User searchUserJoinSize(HashMap<String, Object> map);
 	//관리자 페이지 유저 리스트 
 	List <User> searchUserList(HashMap<String, Object> map);
+	// 유저 아이디 찾기
+	User searchUserId(HashMap<String, Object> map);
+	// 유저 비밀번호 찾기
+	User searchUserPwd(HashMap<String, Object> map);
 	
 	
 	

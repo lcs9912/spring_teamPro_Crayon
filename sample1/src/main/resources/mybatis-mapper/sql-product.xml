@@ -101,7 +101,7 @@
 		resultType="com.example.sample1.model.Product">
 		SELECT MIN(PRODUCT_PRICE) AS SELLMINPRICE
 		FROM T1_PRODUCT_UPDATE 
-		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'S'
+		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'B'
 	</select>
 	
 	<!-- 즉시 구매가 -->
@@ -109,7 +109,7 @@
 		resultType="com.example.sample1.model.Product">
 		SELECT MIN(PRODUCT_PRICE) AS BUYMINPRICE
 		FROM T1_PRODUCT_UPDATE 
-		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'B'
+		WHERE PRODUCT_MODEL = #{modelNum} AND SELLBUY = 'S'
 	</select>
 	
 	<!-- 최근 거래가 -->

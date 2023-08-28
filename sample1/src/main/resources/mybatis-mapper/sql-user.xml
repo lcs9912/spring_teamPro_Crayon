@@ -169,4 +169,21 @@
 			FROM T1_USER_TBL U
 	</select>
 	
+	<!-- 아이디 찾기 -->
+	<select id="selectIdSearch"  parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+			SELECT * 
+			FROM T1_USER_TBL
+			WHERE USER_EMAIL = #{uEmail} AND USER_NAME = #{uName}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPwdSearch" parameterType="hashmap"
+		resultType="com.example.sample1.model.User">
+			SELECT *
+			FROM T1_USER_TBL U
+			INNER JOIN T1_USER_HINT_TBL H
+			ON H.PWD_HINT = U.PWD_HINT
+			WHERE U.USER_ID = #{uId} AND U.USER_NAME = #{uName} AND U.PWD_HINT = #{pwdHint} AND PWD_ANSWER = #{pwdAnswer}
+	</select>
 </mapper>

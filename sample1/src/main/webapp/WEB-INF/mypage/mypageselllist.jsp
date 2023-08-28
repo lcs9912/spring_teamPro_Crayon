@@ -7,6 +7,16 @@
 
 <style>
 	* {margin:0; padding:0;}
+	table {
+		border: 1px solid black;
+		border-collapse: collapse;
+		text-align: center;
+	}
+	
+	th, td {
+		border: 1px solid black;
+		padding: 5px 10px;
+	}
 	
 	li {
 		list-style:none;
@@ -225,8 +235,22 @@
                     </select>
                     <input type="number" placeholder="만료일" class="buylistinput">
                     <input type="number" placeholder="구매희망가" class="buylistinput">
-                    </div>                
-                    <div class="buygooddv">
+                    </div>   
+                    <table v-if="sellFlg">
+                    	<tr>
+                    		<th>상품이름</th>
+                    		<th>사이즈</th>
+                    		<th>가격</th>
+                    		<th>거래 날짜</th>
+                    	</tr>
+                    	<tr v-for="item in sellList">
+                    		<td>{{item.productName}}</td>
+                    		<td>{{item.size}}</td>
+                    		<td>{{item.transactionPrice}}</td>
+                    		<td>{{item.transactionDate}}</td>
+                    	</tr>
+                    </table>             
+                    <div class="buygooddv" v-if="!sellFlg">
                         <p>판매입찰 목록이 없습니다.</p>
                         <button><a href="mainpageshopping.do">SHOP 바로가기</a></button>
                     </div>
@@ -248,6 +272,8 @@
 			sessionId : "${sessionId}",
 			sell : {},
 			sellCom : {},
+			sellFlg : false,
+			sellList : [],
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -274,11 +300,31 @@
 					type : "POST",
 					data : param,
 					success : function(data) {
-						self.buy = data.buy; // 유저 구매입찰 갯수
-						self.sell = data.sell; // 유저 판매입찰 갯수
-						self.buyCom = data.buyCom; // 유저 구매완료
-						self.sellCom = data.sellCom; // 유저 판매완료
 						
+						self.sell = data.sell; // 유저 판매입찰 갯수
+						
+						self.sellCom = data.sellCom; // 유저 판매완료
+						if(self.sell > 0){
+							self.sellFlg = true;
+						} else{
+							self.sellFlg = false;
+						}
+						
+					}
+				});
+			},
+			// 유저 판매리스트
+			fnSellList : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/buyAndSell.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.sellList = data.sellList;
+						console.log(self.sellList);
 						
 					}
 				});
@@ -290,6 +336,7 @@
 			if(self.sessionId !=""){
 				self.fnGetInfo();
 				self.fnBuyCount();
+				self.fnSellList();
 			}else{
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";

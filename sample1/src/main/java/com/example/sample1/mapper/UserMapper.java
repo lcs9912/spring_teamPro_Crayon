@@ -47,6 +47,10 @@ public interface UserMapper {
 	User selectUserJoinSize(HashMap<String, Object> map);
 	//관리자 유저 정보 리스트 불러오기 
 	List <User>selectUserList(HashMap<String, Object> map);
+	// 유저 아이디 찾기
+	User selectIdSearch(HashMap<String, Object> map);
+	// 유저 비밀번호 찾기
+	User selectPwdSearch(HashMap<String, Object> map);
 	
 	
 }

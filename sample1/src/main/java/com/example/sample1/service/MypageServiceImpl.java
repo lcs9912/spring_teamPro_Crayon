@@ -67,5 +67,16 @@ public class MypageServiceImpl implements MypageService{
 		resultMap.put("sellCom", sellCom);
 		return resultMap;
 	}
+	// 유저의 구매, 판매 리스트
+	@Override
+	public HashMap<String, Object> searchUserBuyAndSellList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Product> buyList = mypageMapper.selectUserBuyList(map); // 유저 구매리스트
+		List<Product> sellList = mypageMapper.selectUserSellList(map); // 유저 판매리스트
+		resultMap.put("buyList", buyList);
+		resultMap.put("sellList", sellList);
+		return resultMap;
+	}
 
 }

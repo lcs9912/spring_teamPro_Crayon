@@ -21,6 +21,8 @@ public interface MypageService {
 	List<Product> searchUserLikeList(HashMap<String, Object> map);
 	// 유저 구매 판매 count 출력
 	HashMap<String, Object> countUserBuyAndSell(HashMap<String, Object> map);
+	// 유저 구매, 판매, 리스트
+	HashMap<String, Object> searchUserBuyAndSellList(HashMap<String, Object> map);
 	
 	
 }
