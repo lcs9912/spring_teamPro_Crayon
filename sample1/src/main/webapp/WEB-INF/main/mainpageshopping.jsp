@@ -28,6 +28,11 @@
             z-index:90;                
         }
         
+        .inputflgbox {width:1200px; margin:20px 0 40px 0; text-align:center;} /*검색창 이후 플래그로 활성화 되는 검색바*/
+        	.inputflgbox input{width: 450px; height:70px; border:0px solid #fff; border-bottom:2px solid #333; margin:0 auto; outline:none;
+        					font-size:25px; font-weight:bold; display:inline-block;
+        	}
+        
         /*nav메뉴 CSS*/
         .navmenu > ul > li {
             display: inline-block; float: left; 
@@ -217,10 +222,10 @@
         <div class="shopwrap">
             <!-- 쇼핑 페이지 전체감싸기 태그.  쇼핑 메뉴, 슬라이드 브랜드 선택 영역, 세로 상세품목 선택영역, 상품전시 영역 시작 -->
             <h1 v-if="!searchFlg">SHOP</h1>
-            
-            <input v-if="searchFlg" v-model="searchName" @keyup.enter="fnGetList(searchName)"><i class="fa-solid fa-xmark" v-if="searchFlg" @click="fnInputFlg"></i>
-            
-            <nav class="shopnav">
+            <div class="inputflgbox" v-if="searchFlg">
+            	<input v-model="searchName" @keyup.enter="fnGetList(searchName)"><i class="fa-solid fa-xmark" @click="fnInputFlg"></i>
+            </div>
+            <nav class="shopnav" v-if="!searchFlg">
                 <!--쇼핑메뉴 시작-->
                 <div class="navmenu">
                     <ul>
