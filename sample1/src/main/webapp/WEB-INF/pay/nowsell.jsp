@@ -188,96 +188,118 @@ display:none;
 </head>
 <%@ include file="../header/shopheader.jsp"%>
 <body> 
-	<div id="app" style="margin-top : 100px; background-color:#fafafa;">
-	
+<div id="app" style="margin-top : 100px; background-color:#fafafa;">
 	<div class="contentsarea">
 		<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,.1);">
-	
 			<div class="productcontents">
-		<div class="productheader" style="display: flex; align-items: center;">
-	   				 <div class="productinfo">
-	        			사진데이터
-	    			</div>
-	    			
-		    <div style="margin-left: 10px;">
-		        <div class="productdetailhead">ID</div>
-		        <div class="productdetailname">NAME</div>
-		        <div class="productdetailtransname">TRANSNAME</div>
-		    </div>
-	    
-		</div>
+				<div class="productheader" style="display: flex; align-items: center;">
+			   		<div class="productinfo">
+			   			<img :src="proInfo.pImgPath">
+			   		</div>
+				    <div style="margin-left: 10px;">
+				        <div class="productdetailhead">{{proInfo.brandName}}</div>
+				        <div class="productdetailname">{{proInfo.productName}}</div>
+				        <div class="productdetailtransname">{{proInfo.productKname}}</div>
+				    </div>
+				</div>
 			</div>
 	
-		<div class="nowbuyarea">
+			<div class="nowbuyarea">
 				<div>
 					<div class="leftnow" style="border-right:1px solid #eee;">
-					즉시구매가
-					<div class="paynowbuy">000.000P
+						즉시구매가
+						<div class="paynowbuy">{{proInfo.productPrice}}P</div>
 					</div>
-					</div>
-				
-					<div class="rightnow">즉시판매가
-					<div class="paynowbuy">000.000P
-					</div>
-					</div>
-				
 				</div>
-		</div>
+			</div>
 		
-	<div style="background-color:white; padding:35px;">
-		<div class="buytabarea">
-			<button class="leftbuybtnarea" id="leftbtnjava">판매 입찰</button>
-			<button class="rightbuybtnarea" id="rightbtnjava">즉시 판매</button>
-		</div>
-	</div>
-	
-	
-	
-	<div class="wantpay">
-		<div class="wantpaytitle">판매희망가</div>
-		<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
-		<span style="font-size:25px;">P</span>
-		</div>
-		<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
-	</div>
-	
-	<div class="paydayarea">
-	
-		<div class="paydaytitle">입찰 마감기한</div>
-		
-		<div class="whatday">val일 (val.day 마감)</div>
-	
-			<div class="paydaybtn">
-			<button >1일</button>
-			<button>3일</button>
-			<button>7일</button>
-			<button>30일</button>
-			<button>60일</button>
+			<div style="background-color:white; padding:35px;">
+				<div class="buytabarea">
+					<button class="leftbuybtnarea" id="leftbtnjava">판매 입찰</button>
+					<button class="rightbuybtnarea" id="rightbtnjava">즉시 판매</button>
+				</div>
+			</div>
+			
+			<div class="wantpay" v-if="!payFlg">
+				<div class="wantpaytitle">판매희망가</div>
+				<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
+				<span style="font-size:25px;">P</span>
+				</div>
+				<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
 			</div>
 	
-	
+			<div class="wantpay" v-else>
+				<div class="wantpaytitle">즉시판매가</div>
+				<div style="text-align:right;" class="wantpaynum" >{{proInfo.productPrice}}
+				<span style="font-size:25px;">P</span>
+			</div>
+		
 	</div>
 	
+			<div class="paydayarea">
+				<div class="paydaytitle">입찰 마감기한</div>
+				<div class="whatday">val일 (val.day 마감)</div>
+				<div class="paydaybtn">
+					<button >1일</button>
+					<button>3일</button>
+					<button>7일</button>
+					<button>30일</button>
+					<button>60일</button>
+				</div>
+			</div>
+	
 			<div class="paydaycontinuearea">
-					<div class="paydaycontinue" style="font-size:13px; text-align:center;">
+				<div class="paydaycontinue" style="font-size:13px; text-align:center;">
 					총결제금액 다음화면에서 확인
-					</div>
-				
-					<div class="allpaybtnarea">
-					<a href="orderandsettle.do"><button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button></a>
-					<a href="orderandsettle.do"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button></a>
-					</div>
+				</div>
+				<div class="allpaybtnarea">
+					<a href="orderandsettle.do"><button class="leftallpaybtn" id="buycontinuebtn">판매입찰계속</button></a>
+					<a href="orderandsettle.do"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시판매계속</button></a>
+				</div>
 			</div>
 			
 		</div>
-		</div>
 	</div>
+</div>
 </body>
 
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
+var app = new Vue({
+	el : '#app',
+	data : {
+		proInfo : {},
+		proNum : "${map.proNum}",
+		delivery : "${map.delivery}",
+		payFlg : false,
+	},// data
+	methods : {
+		fnGetInfo : function(){
+            var self = this;
+            var nparmap = {proNum : self.proNum};
+            $.ajax({
+                url : "/productInfo.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) { 
+                	self.proInfo = data.info[0];
+                	console.log(self.proInfo);
+                }
+            }); 
+        },
+        // 마지막 결제 가보자..
+        fnListBuy : function(){
+        	var self = this;
+        	$.pageChange("/payandpackage.do", {proNum : self.proNum, delivery : self.delivery});
+        }
+	}, // methods
+	created : function() {
+		var self = this;
+		self.fnGetInfo();
+	}// created
+});
 /* 구매희망가 자동반점 */
 
 const input = document.querySelector('#number');
@@ -305,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function() {
         leftAllPayBtn.style.display = "none";
         rightAllPayBtn.style.display = "block";
         
-        rightBuyBtn.style.backgroundColor = 'limegreen';
+        rightBuyBtn.style.backgroundColor = '#FF5E3D';
         leftBuyBtn.style.backgroundColor = '#ebebeb';
 
     });
@@ -316,10 +338,8 @@ document.addEventListener("DOMContentLoaded", function() {
         rightAllPayBtn.style.display = "none";
         
         rightBuyBtn.style.backgroundColor = '#ebebeb';
-        leftBuyBtn.style.backgroundColor = 'limegreen';
+        leftBuyBtn.style.backgroundColor = '#FF5E3D';
 
     });
 });
-
-
 </script>
