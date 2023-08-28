@@ -217,7 +217,7 @@
                         	console.log(self.list);
                         
                         	
-    						
+    						 
                         }
                     });
             },

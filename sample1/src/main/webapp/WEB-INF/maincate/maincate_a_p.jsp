@@ -220,7 +220,7 @@
                         	console.log(self.list);
                         
                         	
-    						 
+    					
                         }
                     });
             },
