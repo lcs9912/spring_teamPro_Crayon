@@ -290,7 +290,6 @@ var headerApp = new Vue({
 	                type : "POST",  
 	                data : nparmap, 
 	                success : function(data) {  
-						
 	                }
 	            });  
 		},
