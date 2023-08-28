@@ -52,5 +52,20 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		return mypageMapper.selectUserLikeList(map);
 	}
+	@Override
+	public HashMap<String, Object> countUserBuyAndSell(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		int buy = mypageMapper.selectUserBuyCount(map); // 유저 구매입찰 갯수
+		int sell = mypageMapper.selectUserSellCount(map); // 유저 판매입찰 갯수
+		int buyCom = mypageMapper.selectUserBuyCommitCount(map); // 유저 구매완료
+		int sellCom = mypageMapper.selectUserSellCommitCount(map); // 유저 판매완료
+		
+		resultMap.put("buy", buy);
+		resultMap.put("sell", sell);
+		resultMap.put("buyCom", buyCom);
+		resultMap.put("sellCom", sellCom);
+		return resultMap;
+	}
 
 }

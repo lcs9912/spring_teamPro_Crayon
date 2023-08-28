@@ -233,7 +233,7 @@ display:none;
 	
 	<div class="wantpay" v-if="!payFlg">
 		<div class="wantpaytitle">구매희망가</div>
-		<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
+		<div style="text-align:center;"><input type="text" id="number" v-model="buyPay" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
 		<span style="font-size:25px;">P</span>
 		</div>
 		<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
@@ -270,7 +270,7 @@ display:none;
 					</div>
 				
 					<div class="allpaybtnarea">
-					<a href="payandpackage.do"><button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button></a>
+					<a @click="fnBuyRegister"><button class="leftallpaybtn" id="buycontinuebtn">구매입찰계속</button></a>
 					<a @click="fnListBuy"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시구매계속</button></a>
 					</div>
 			</div>
@@ -291,6 +291,8 @@ var app = new Vue({
 		proNum : "${map.proNum}",
 		delivery : "${map.delivery}",
 		payFlg : false,
+		
+		buyPay : "",
 	},// data
 	methods : {
 		fnGetInfo : function(){
@@ -311,26 +313,23 @@ var app = new Vue({
         fnListBuy : function(){
         	var self = this;
         	$.pageChange("/payandpackage.do", {proNum : self.proNum, delivery : self.delivery});
-        }
+        },
+        // 구매입찰 페이지
+        fnBuyRegister : function(){
+        	var self = this;
+        	console.log(self.buyPay);
+    		$.pageChange("/productRegister.do", {proNum : self.proNum, buyPay : self.buyPay});
+   	
+        },
+       
 	}, // methods
 	created : function() {
 		var self = this;
 		self.fnGetInfo();
 	}// created
 });
-/* 구매희망가 자동반점 */
 
-const input = document.querySelector('#number');
-input.addEventListener('keyup', function(e) {
-  let value = e.target.value;
-  value = Number(value.replaceAll(',', ''));
-  if(isNaN(value)) {
-    input.value = 0;
-  }else {
-    const formatValue = value.toLocaleString('ko-KR');
-    input.value = formatValue;
-  }
-})
+
 
 /* 구매입찰버튼,즉시구매버튼 누르면 마감기한,구매버튼none/block */
 document.addEventListener("DOMContentLoaded", function() {

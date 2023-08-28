@@ -164,6 +164,7 @@
 		WHERE PRODUCT_SELL_NUMBER = #{proNum}	
 	</update>
 	
+	<!-- pk -->
 	<select id="selectProBuyInfo" parameterType="hashmap"
 		resultType="com.example.sample1.model.Product">
 		SELECT * FROM T1_PRODUCT_UPDATE U

@@ -23,5 +23,17 @@ public interface MypageMapper {
 	int insertUserAccount(HashMap<String, Object> map);
 	// 우저 관심 리스트
 	List<Product> selectUserLikeList(HashMap<String, Object> map);
+	// 유저 구매입찰 갯수
+	int selectUserBuyCount(HashMap<String, Object> map);
+	// 유저 판매입찰 갯수
+	int selectUserSellCount(HashMap<String, Object> map);
+	// 유저 구매완료
+	int selectUserBuyCommitCount(HashMap<String, Object> map);
+	// 유저 판매완료
+	int selectUserSellCommitCount(HashMap<String, Object> map);
+	// 유저의 구매 리스트
+	List<Product> selectUserBuyList(HashMap<String, Object> map);
+	// 유저의 판매 리스트
+	List<Product> selectUserSellList(HashMap<String, Object> map);
 
 }

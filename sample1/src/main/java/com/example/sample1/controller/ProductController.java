@@ -35,7 +35,8 @@ public class ProductController {
 	// 상품등록 페이지
 	@RequestMapping("/productRegister.do") 
     public String register(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-        return "/product/productRegister";
+		request.setAttribute("map", map);
+		return "/product/productRegister";
     }
 	
 	// 구매전 신발 페이지

@@ -66,4 +66,56 @@
 			GROUP BY L.PRODUCT_MODEL	
    	</select>
    	
+   	
+   	
+   	<!-- 유저 구매입찰 갯수 -->
+   	<select id="selectUserBuyCount"  parameterType="hashmap" resultType="int" >
+   			SELECT COUNT(*) 
+			FROM T1_PRODUCT_UPDATE 
+			WHERE USER_ID = #{uId} AND SELLBUY = 'B' 
+   	</select>
+   	
+   	<!-- 유저 판매입찰 갯수 -->
+   	<select id="selectUserSellCount"  parameterType="hashmap" resultType="int">
+   			SELECT COUNT(*) 
+			FROM T1_PRODUCT_UPDATE 
+			WHERE USER_ID = #{uId} AND SELLBUY = 'S'
+   	</select>
+   	
+   	<!-- 유저 구매완료 -->
+   	<select id="selectUserBuyCommitCount"  parameterType="hashmap" resultType="int">
+   			SELECT COUNT(*)
+			FROM T1_TRANSACTION 
+			WHERE BUSER = #{uId}
+   	</select>
+   	
+   	<!-- 유저 판매완료 -->
+   	<select id="selectUserSellCommitCount"  parameterType="hashmap" resultType="int">
+   			SELECT COUNT(*)
+			FROM T1_TRANSACTION 
+			WHERE SUSER = #{uId}
+   	</select>
+   
+    <!-- 유저의 구매 리스트  -->
+    <select id="selectUserBuyList" parameterType="hashmap"
+   		resultType="com.example.sample1.model.Product">
+   			SELECT * 
+			FROM T1_TRANSACTION T
+			INNER JOIN T1_PRODUCT_UPDATE U
+			ON T.PRODUCT_SELL_NUMBER = U.PRODUCT_SELL_NUMBER
+			WHERE T.BUSER = #{uId}
+   	</select>
+   	
+   	
+   	<!-- 유저의 판매 리스트  -->
+   	<select id="selectUserSellList" parameterType="hashmap"
+   		resultType="com.example.sample1.model.Product">
+   			SELECT * 
+			FROM T1_TRANSACTION T
+			INNER JOIN T1_PRODUCT_UPDATE U
+			ON T.PRODUCT_SELL_NUMBER = U.PRODUCT_SELL_NUMBER
+			WHERE T.SUSER = #{uId}	
+   	</select>
+   	
+   	
 </mapper>

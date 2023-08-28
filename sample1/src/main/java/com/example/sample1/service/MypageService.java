@@ -19,6 +19,8 @@ public interface MypageService {
 	int addUserAccount(HashMap<String, Object> map);
 	// 유저 관심 리스트
 	List<Product> searchUserLikeList(HashMap<String, Object> map);
+	// 유저 구매 판매 count 출력
+	HashMap<String, Object> countUserBuyAndSell(HashMap<String, Object> map);
 	
 	
 }

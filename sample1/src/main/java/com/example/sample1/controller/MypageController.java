@@ -165,6 +165,17 @@ public class MypageController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	// 유저 구매 판매 내역 출력
+	@RequestMapping(value = "/sellBuyCount.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String sellBuyCount(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = mypageService.countUserBuyAndSell(map);
+			
+									
+		return new Gson().toJson(resultMap);
+	}
+		
 	// 유저 프로필 사진 변경
 	@RequestMapping(value = "/editUserImg.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

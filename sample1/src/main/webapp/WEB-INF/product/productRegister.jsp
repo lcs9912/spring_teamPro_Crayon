@@ -165,6 +165,8 @@
 					<p>이미지 파일선택</p>
 					<label for="file1" class="fileupload">파일선택</label>
 					<div class="selectfilearea">
+						
+						
 						<img id="uploaded-image" src="" alt="">
 						<input type="file" id="file1" name="file1" accept=".gif, .jpg, .png">
 					</div>
@@ -177,12 +179,15 @@
 <%@ include file="../header/footer.jsp"%>
 </html>
 <script>
-
 var app = new Vue({
 	el : '#app',
 	data : {
 		list : [],
 		sList : [],
+		info : {}, // 불러온 pk 상품 리스트
+		proNum : "${map.proNum}",
+		buyPay : "${map.buyPay}",
+		proFlg : false,
 		product :{
 			pName : "",
 			pModel : "",
@@ -298,7 +303,7 @@ var app = new Vue({
 		        data: form,
 		        success:function(response) { 
 		        	   
-		           }
+		        }
 		    });
 		},
 		// 사이즈 조회
@@ -331,6 +336,8 @@ var app = new Vue({
 					self.fnGetBrandName();
 					self.directInputBrand = '';
 					self.showDirectInput = false;
+					
+					
 				}
 			});
 		},
@@ -348,6 +355,32 @@ var app = new Vue({
 					console.log(self.list);
 				}
 			});
+		},
+		// nowBuy 페이지에서 받아서 값 출력
+		fnGetList : function(){
+			var self = this;
+			var nparmap = {proNum : self.proNum};
+			$.ajax({
+				url : "/productInfo.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data){
+					self.info = data.info[0];
+					console.log(self.info);
+					self.product.pName = self.info.productName;
+					self.product.pModel = self.info.productModel;
+					self.product.pSize = self.info.productSize;
+					self.product.pColor = self.info.productColor;
+					self.product.pPrice = self.info.productPrice;
+					self.product.kName = self.info.productKname;
+					self.product.launch = self.info.productLaunchPrice;
+					self.product.pCategorie1 = self.info.productCategorie1;
+					self.product.pCategorie2 = self.info.productCategorie2;
+					self.product.brand =  self.info.productBrand;
+					self.product.sellBuy = 'B';
+				}
+			});
 		}
 	}, // methods
 	created : function() {
@@ -355,6 +388,13 @@ var app = new Vue({
 		self.fnGetSize();
 		self.fnGetBrandName();
 		console.log(self.product);
+		
+		if(self.proNum != "" && self.proNum != null){
+			self.fnGetList();
+			self.proFlg = true;
+		}
+		
+		
 	}// created
 });
 

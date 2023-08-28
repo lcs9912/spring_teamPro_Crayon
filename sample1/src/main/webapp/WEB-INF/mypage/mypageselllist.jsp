@@ -188,15 +188,15 @@
 				<div class="viewdv">
 				<ul class="listul">
 					<li>
-						<p>0</p>
-						<p>구매 입찰</p>
+						<p>{{sell}}</p>
+						<p>판매 입찰</p>
 					</li>
 					<li>
 						<p>0</p>
 						<p>진행 중</p>
 					</li>
 					<li>
-						<p>0</p>
+						<p>{{sellCom}}</p>
 						<p>종료</p>
 					</li>
 				</ul>
@@ -246,6 +246,8 @@
 		data : {
 			info : {},
 			sessionId : "${sessionId}",
+			sell : {},
+			sellCom : {},
 		},// data
 		methods : {
 			fnGetInfo : function() {
@@ -261,6 +263,25 @@
 						console.log(self.info);
 					}
 				});
+			},
+			// 판매 count
+			fnBuyCount : function(){
+				var self = this;
+				var param = {uId : self.sessionId};
+				$.ajax({
+					url : "/sellBuyCount.dox",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data) {
+						self.buy = data.buy; // 유저 구매입찰 갯수
+						self.sell = data.sell; // 유저 판매입찰 갯수
+						self.buyCom = data.buyCom; // 유저 구매완료
+						self.sellCom = data.sellCom; // 유저 판매완료
+						
+						
+					}
+				});
 			}
 
 		}, // methods
@@ -268,6 +289,7 @@
 			var self = this;
 			if(self.sessionId !=""){
 				self.fnGetInfo();
+				self.fnBuyCount();
 			}else{
 				alert("로그인 이후 이용이 가능합니다");
 				location.href="login.do";
