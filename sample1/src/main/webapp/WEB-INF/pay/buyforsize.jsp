@@ -90,6 +90,10 @@
 		font-weight: bold;
 		font-size:15px;
 		background-color: #B5B5B5;
+		margin-top :10px;
+	}
+	.buyboxarea1 button:hover{
+	background-color:black;
 	}
 	.buyboxarea2{
 		width:100%;
