@@ -351,7 +351,7 @@ color:#a2a2a2;
 				<p>{{proInfo.productKname}}</p>
 				</div>
 				<div class="sizeandrecent" v-if="resentFlg">
-					<div class="recentsell" style="border: none;"  >
+					<div class="recentsell" style="border: none;">
 					<span style="color: #646363; font-size: 13px;">최근 거래가</span>
 					<span class="recentsellpay" style="font-weight: bold; font-size:20px;">{{resent.transactionPrice}} 원</span>
 					</div>
