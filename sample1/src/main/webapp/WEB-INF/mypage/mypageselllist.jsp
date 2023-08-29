@@ -8,16 +8,34 @@
 <style>
 	* {margin:0; padding:0;}
 	table {
-		border: 1px solid black;
-		border-collapse: collapse;
-		text-align: center;
-		width: 100%;
-	}
-	
-	th, td {
-		border: 1px solid black;
-		padding: 5px 10px;
-	}
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+/* Add hover effect */
+tr:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
 	
 	li {
 		list-style:none;

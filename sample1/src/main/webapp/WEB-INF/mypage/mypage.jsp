@@ -10,16 +10,34 @@
 * {margin:0; padding:0; box-sizing : border-box;}
 
 table {
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th, td {
-	border: 1px solid black;
-	padding: 5px 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+/* Add hover effect */
+tr:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
 li {
 	list-style:none;
 	}
@@ -142,6 +160,9 @@ a {	text-decoration:none;
 				border-radius: 70%;
 				overflow: hidden;
 			}
+			
+			
+			
 
 </style>
 
@@ -222,6 +243,7 @@ a {	text-decoration:none;
 					</li>
 				</ul>
 				</div>
+				<div>구매완료</div>
 				<table v-if="buyFlg">
                     	<tr>
                     		<th></th>
@@ -238,6 +260,7 @@ a {	text-decoration:none;
                     		<td>{{item.transactionDate}}</td>
                     	</tr>
                     </table>
+                 <div>입찰중</div>
 				<div v-if="!buyFlg" class="listdv">
 					<p>거래내역이 없습니다</p>
 				</div>
