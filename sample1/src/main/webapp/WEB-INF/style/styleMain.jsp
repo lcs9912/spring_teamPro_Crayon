@@ -76,7 +76,7 @@ img {
 	border-radius : 10px;
 }
 /*  */
-.header {
+.header1 {
 	margin : 0 auto;
 	padding : 0;
 	margin-top : 80px;
@@ -101,7 +101,7 @@ img {
 </head>
 <body>
 <div id="app">
-<div class="header">
+<div class="header1">
 <h1>STYLE</h1>
 </div>
 <div class="header-inner">
@@ -220,15 +220,18 @@ var app = new Vue({
 var modal = document.querySelector(".modal");
 var modalImage = document.getElementById("modal-image");
 var closeBtn = document.querySelector(".close");
+var headerWrap = document.querySelector(".headerwrap");
 
 document.querySelectorAll(".grid-item img").forEach(function(img) {
   img.addEventListener("click", function() {
     modal.style.display = "block";
     modalImage.src = img.src;
+    headerWrap.style.display="none";
   });
 });
 
 closeBtn.addEventListener("click", function() {
   modal.style.display = "none";
+  headerWrap.style.display="flex";
 });
 </script>
