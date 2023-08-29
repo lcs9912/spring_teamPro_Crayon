@@ -130,7 +130,7 @@
             <div class="ranktitle">
                 <p>여성 인기 품목</p>		
             </div>
-            <div class="goodsblock" style="display:inline-block;">
+            <div class="goodsblock">
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
                 <div class="goodsitem" v-for="(item , index) in visibleItems" :key="index">
                 <article>
@@ -227,7 +227,10 @@
             },
          // 더보기 버튼을 눌렀을 때 호출되는 메서드
             showMoreItems() {
-                this.visibleItemIndex += this.visibleItemCount;
+            	 this.visibleItemIndex += this.visibleItemCount;
+                 var objBtn = document.getElementById("dropdownbtn");
+                 var marginBtn = (this.visibleItemIndex / 4 * 500) + "px";
+                 objBtn.style.marginTop = marginBtn;
             },
             
         }, // methods
