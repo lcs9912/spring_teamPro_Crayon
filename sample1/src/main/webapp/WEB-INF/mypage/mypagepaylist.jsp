@@ -12,14 +12,28 @@
 	
 		/* 결제 정보영역 CSS 시작*/
 		
-		table{
-			border: 1px solid;
-			border-collapse: collapse;
-			margin:0 auto;
+		table {
+		  border: 1px solid #ccc;
+		  border-collapse: collapse;
+		  width: 100%;
 		}
-		tr,th,td{
-			border: 1px solid; width:200px;
-			
+		
+		th, td {
+		  border: 1px solid #ccc;
+		  padding: 10px;
+		}
+		
+		th {
+		  background-color: #f2f2f2;
+		  font-weight: bold;
+		}
+		
+		td {
+		  text-align: center;
+		}
+		
+		tr:nth-child(even) {
+		  background-color: #f5f5f5;
 		}
 		.mypaylistwrap {
 			width:1200px; margin:50px auto;
@@ -53,7 +67,7 @@
 		     	.paylisthead .paylistbtn {float:right; border:1px solid #333;}
 		     	.paylist {
 		     		clear:both;
-					height:490px; margin:0; text-align:center; 
+					height:550px; margin:0; text-align:center; 
 					background:#f5f5f5; border-top:3px solid #333;
 				}
 				

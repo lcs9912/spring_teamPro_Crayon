@@ -243,24 +243,24 @@ a {	text-decoration:none;
 					</li>
 				</ul>
 				</div>
-				<div>구매완료</div>
+				<div>구매 완료</div>
 				<table v-if="buyFlg">
                     	<tr>
-                    		<th></th>
+                    	
                     		<th>상품이름</th>
                     		<th>사이즈</th>
                     		<th>가격</th>
                     		<th>날짜</th>
                     	</tr>
                     	<tr v-for="item in buyList">
-                    		<td></td>
+                    		
                     		<td>{{item.productName}}</td>
                     		<td>{{item.size}}</td>
                     		<td>{{item.transactionPrice}}</td>
                     		<td>{{item.transactionDate}}</td>
                     	</tr>
                     </table>
-                 <div>입찰중</div>
+                 <div>입찰 중</div>
 				<div v-if="!buyFlg" class="listdv">
 					<p>거래내역이 없습니다</p>
 				</div>
@@ -292,14 +292,14 @@ a {	text-decoration:none;
 				</div>
 				<table v-if="sellFlg">
                     	<tr>
-                    		<th></th>
+                    		
                     		<th>상품이름</th>
                     		<th>사이즈</th>
                     		<th>가격</th>
                     		<th>날짜</th>
                     	</tr>
                     	<tr v-for="item2 in sellList">
-                    		<td></td>
+                    		
                     		<td>{{item2.productName}}</td>
                     		<td>{{item2.size}}</td>
                     		<td>{{item2.transactionPrice}}</td>

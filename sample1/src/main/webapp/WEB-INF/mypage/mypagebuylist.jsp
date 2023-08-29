@@ -257,14 +257,12 @@ tr:hover {
                     </div>                
                     <table v-if="buyFlg">
                     	<tr>
-                    		<th></th>
                     		<th>상품이름</th>
                     		<th>사이즈</th>
                     		<th>가격</th>
                     		<th>날짜</th>
                     	</tr>
                     	<tr v-for="item in buyList">
-                    		<td></td>
                     		<td>{{item.productName}}</td>
                     		<td>{{item.size}}</td>
                     		<td>{{item.transactionPrice}}</td>
