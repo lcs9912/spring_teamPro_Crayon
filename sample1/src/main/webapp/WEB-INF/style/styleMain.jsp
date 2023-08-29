@@ -108,67 +108,11 @@ img {
 </div>
 <div class="header-li">
 <ul>
-<li>1</li>	
+<li>Preparing service..</li>	
 </ul>
 </div>
 	<div class="style-contents">
 		<ul class="image-grid">
-		<div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_1.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_2.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_3.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_4.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_5.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_6.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_7.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
-	     <div>
-		    <li class="grid-item">
-		      <img src="../img/style/style_8.jpg"></img>
-		    </li>
-			<strong>닉네임</strong>
-		 	<p>contents</p>
-	     </div>
 	     <div v-for="item in list">
 		    <li class="grid-item">
 		      <img :src="item.sImgPath"></img>

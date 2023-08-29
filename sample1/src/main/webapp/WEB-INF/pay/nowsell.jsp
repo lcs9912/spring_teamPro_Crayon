@@ -246,7 +246,7 @@ text-align:center
 	
 			<div class="paydayarea">
 				<div class="paydaytitle">입찰 마감기한</div>
-				<div class="whatday">val일 (val.day 마감)</div>
+				<div class="whatday"><!-- val일 (val.day 마감) --></div>
 				
 				<div class="paydaybtn">
 			<input type="date" @input="checkDateValidity">
@@ -305,7 +305,7 @@ var app = new Vue({
         },
         fnSellRegister : function() {
         	var self = this;
-        	console.log.(self.sellPay);
+        	console.log(self.sellPay);
         	$.pageChange("/productRegister.do", {proNum : self.proNum, sellPay : self.sellPay});
         },
         checkDateValidity: function () {

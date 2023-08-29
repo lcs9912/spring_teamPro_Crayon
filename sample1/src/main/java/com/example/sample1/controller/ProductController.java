@@ -135,6 +135,7 @@ public class ProductController {
 	// 판매동의 페이지
 	@RequestMapping("/sellagree.do") 
 	public String sellagree(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
 		if(sessionId != "" && sessionId != null) {
 			return "/pay/sellagree";
@@ -184,6 +185,7 @@ public class ProductController {
 	//
 	@RequestMapping("/nowsell.do") 
 	public String sellBuy(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		request.setAttribute("map", map);
 		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
 		if(sessionId != "" && sessionId != null) {
 			return "/pay/nowsell";

@@ -136,7 +136,7 @@ a {
 							<article> 
 	                            <a @click="fnProInfo(item.productModel)" type="button"> 
 	                                <picture>
-	                                    <img src="{{item.sImgPath}}">
+	                                    <img :src="item.sImgPath">
 	                                </picture>
 	                                <h5>{{item.userNickname}}</h5>
 	                                <p style="font-size : 12px;">{{item.contents}}</p>

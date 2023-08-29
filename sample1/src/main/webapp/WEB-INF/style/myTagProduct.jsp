@@ -132,7 +132,7 @@ a {
 			<div class="mylist">
 				
 				<div class="listdv">
-					<div v-for="item in list">
+					<!-- <div v-for="item in list">
 						<article> 
 	                        <a @click="fnProInfo(item.productModel)" type="button"> 
 	                            <picture>
@@ -142,8 +142,9 @@ a {
 	                            <p style="font-size : 12px; color : rgba(34,34,34,.8);">나이키 덩크 로우 레트로 발레리안 블루</p>
 	                        </a>
 	                    </article>
-					</div>
-					<div v-if="list.length == 0" style="margin-top : 100px;" class="listdv-else">
+					</div> -->
+				<!-- 	v-if="list.length == 0"  -->
+					<div style="margin-top : 100px;" class="listdv-else">
 						<p style="color : rgba(34,34,34,.8); font-size : 13px;">태그하신 상품이 없습니다.</p>
 						<a class="else-btn" href="addstyle.do" type="button" style="color : rgba(34,34,34,.8);">게시글 업로드</a>
 					</div>
