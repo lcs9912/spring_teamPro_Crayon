@@ -12,46 +12,134 @@
 	a{
 		text-decoration: none;
 	}
+	
+
+
+.customerwrap {
+	width:100%;
+	}
+	
+.customernav {
+	width:1200px; margin:50px auto;
+	}
+customernav{
+		float:left; width:200px; color:#000;
+}
+
+
+.customernav ul li a{
+padding-top : 20px;
+text-decoration:none;
+color : #A2A2A2;
+}
+
+.customernav ul li a:hover{
+padding-top : 20px;
+text-decoration:none;
+color : black;
+font-weight: bold;
+}
+	
+.customernav ul li{
+list-style : none;
+padding-top : 20px;
+}
+.table1{
+width:100%;
+}
+.table1 th,td{
+text-align:center;
+}
+.contentsarea{
+width:1000px;
+float:left;
+font-size:18px;
+margin-bottom:100px;
+}
+.contentsarea span{
+background-color:#eee;
+}
+.contentsarea1{
+border:1px solid #a2a2a2;
+border-radius:20px;
+padding:30px;
+}
+.managerarea{
+border:1px solid #a2a2a2;
+border-radius:20px;
+padding:30px;
+}
+button{
+background-color:white;
+width:80px;
+height:40px;
+border-radius:20px;
+float:right;
+}
+button:hover{
+background-color:#eee;
+}
+.managetextarea{
+text-align:center;
+
+}
 </style>
+
 </head>
+<%@ include file="../header/shopheader.jsp"%>
 <body>
 <div id="app">
-	<div>번호 : {{info.qnaNumber}}</div>
-	<div>제목 : {{info.qnaTitle}}</div>
-	<div>내용 :<pre v-html="info.qnaContents"></pre></div>
-	<div>작성자 : {{info.userId}}</div>
-	<div>작성일 : {{info.qnaDate}}</div>
-	<div>수정일 : {{info.qnaUpdate}}</div>
-	<div>조회수 : {{info.qnaCnt}}</div>
-	
+<div class="customernav">
+			<customernav>
+			<h2>고객센터</h2>
+			<ul>
+				<li><a href="../faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
+				<li><a href="onetoone.do" style="color: black; font-weight: bold;">1:1 문의 게시판</a></li>
+			</ul>
+		</customernav>
+		</div>
+		<div class="contentsarea">
+		<h3>질문입니다.</h3>
+		<div class="contentsarea1">
+	<div><span>번호</span> : {{info.qnaNumber}}</div>
+	<div><span>제목</span> : {{info.qnaTitle}}</div>
+	<div><span>내용</span> :<pre v-html="info.qnaContents" style="display:inline-block;"></pre></div>
+	<div><span>작성자</span> : {{info.userId}}</div>
+	<div><span>작성일</span> : {{info.qnaDate}}</div>
+	<div><span>수정일</span> : {{info.qnaUpdate}}</div>
+	<div><span>조회수</span> : {{info.qnaCnt}}</div>
+	</div>
+	<h3 style="margin-top:30px;">답변입니다.</h3>
+	<div class="managerarea">
 	<div v-if="info.userId==uId">
 	<button @click="fnQnaEdit()">수정하기</button> 
 	<button @click="fnQnaRemove()">삭제하기</button> 
 	</div>
 	
 	<div>
-	<hr>
-	<hr>
-	<table >
+	<table>
 		<tr v-for="item in list">
 		<td v-if=" status == 'A'" ><input type="checkbox" :value="item.cNo" v-model="selectItem"></td>
-			<td>아이디: {{item.cuserId}} : </td>
-			<td>댓글 내용 : {{item.commentContents}} </td>
-			<td>수정일 : {{item.commentUpdate}} <a @click="fnCommRemove(item)" href="javascript:;" v-if="item.cuserId==uId || status == 'A' ">
+			<td style="width:15%">아이디: {{item.cuserId}} : </td>
+			<td style="width:60%">댓글 내용 : {{item.commentContents}} </td>
+			<td style="width:24%">수정일 : {{item.commentUpdate}} <a @click="fnCommRemove(item)" href="javascript:;" v-if="item.cuserId==uId || status == 'A' ">
 			<i class="fa-solid fa-skull" style="color: #f24a2c;"></i></a></td>
 			
 		</tr>
 		
 	</table> 
-	<button v-if="status == 'A'" @click="fnRemoveComm">댓글삭제</button>
-	<hr>
-	<hr>
-	<textarea rows="3" cols="40" v-model="text"></textarea>
-	<button @click="fnQnaCommAdd()">댓글등록</button>
+
+	</div>
 	</div> 
-	
+	<div class="managetextarea">
+	<h3 style="margin-top:10px;">답변하기</h3><textarea rows="3" cols="40" v-model="text" style="margin-top:5px; font-size:18px;"></textarea>
+	</div>
+	<button v-if="status == 'A'" @click="fnRemoveComm">답변삭제</button>
+	<button @click="fnQnaCommAdd()">답변등록</button>
+	</div>
 </div>
 </body>
+<%@ include file="../header/footer.jsp"%>
 </html>
 <script>
 var app = new Vue({
