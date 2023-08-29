@@ -260,7 +260,7 @@ a {	text-decoration:none;
                     		<td>{{item.transactionDate}}</td>
                     	</tr>
                     </table>
-                 <div>입찰 중</div>
+                 
 				<div v-if="!buyFlg" class="listdv">
 					<p>거래내역이 없습니다</p>
 				</div>
