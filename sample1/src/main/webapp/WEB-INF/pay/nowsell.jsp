@@ -215,7 +215,7 @@ text-align:center
 			<div class="nowbuyarea">
 				<div>
 					<div class="leftnow" style="border-right:1px solid #eee;">
-						즉시구매가
+						즉시판매가
 						<div class="paynowbuy">{{proInfo.productPrice}}P</div>
 					</div>
 				</div>
@@ -223,14 +223,14 @@ text-align:center
 		
 			<div style="background-color:white; padding:35px;">
 				<div class="buytabarea">
-					<button class="leftbuybtnarea" id="leftbtnjava">판매 입찰</button>
-					<button class="rightbuybtnarea" id="rightbtnjava">즉시 판매</button>
+					<button class="leftbuybtnarea" id="leftbtnjava" @click="payFlg = flase">판매 입찰</button>
+					<button class="rightbuybtnarea" id="rightbtnjava" @click="payFlg = true">즉시 판매</button>
 				</div>
 			</div>
 			
 			<div class="wantpay" v-if="!payFlg">
 				<div class="wantpaytitle">판매희망가</div>
-				<div style="text-align:center;"><input type="text" id="number" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
+				<div style="text-align:center;"><input type="text" id="number" v-model="sellPay" class="wantpaynum" style="text-align:right;" placeholder="희망가 입력">
 				<span style="font-size:25px;">P</span>
 				</div>
 				<div style="padding-top:15px; color: rgba(34,34,34,.5); font-size:14px;">최종금액은 다음페이지에서 총 정산됩니다.</div>
@@ -260,8 +260,8 @@ text-align:center
 					총결제금액 다음화면에서 확인
 				</div>
 				<div class="allpaybtnarea">
-					<a href="orderandsettle.do"><button class="leftallpaybtn" id="buycontinuebtn" disabled>판매입찰계속</button></a>
-					<a href="orderandsettle.do"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시판매계속</button></a>
+					<a @click="fnSellRegister"><button class="leftallpaybtn" id="buycontinuebtn" disabled>판매입찰계속</button></a>
+					<a @click="fnListSell"><button class="rightallpaybtn" id="nowbuycontinuebtn">즉시판매계속</button></a>
 				</div>
 			</div>
 			
@@ -281,6 +281,7 @@ var app = new Vue({
 		delivery : "${map.delivery}",
 		payFlg : false,
 		selectedDate: "", // 날짜저장데이터
+		sellPay : "",
 	},// data
 	methods : {
 		fnGetInfo : function(){
@@ -298,9 +299,14 @@ var app = new Vue({
             }); 
         },
         // 마지막 결제 가보자..
-        fnListBuy : function(){
+        fnListSell : function(){
         	var self = this;
         	$.pageChange("/payandpackage.do", {proNum : self.proNum, delivery : self.delivery});
+        },
+        fnSellRegister : function() {
+        	var self = this;
+        	console.log.(self.sellPay);
+        	$.pageChange("/productRegister.do", {proNum : self.proNum, sellPay : self.sellPay});
         },
         checkDateValidity: function () {
             // 유효한 날짜인지 확인

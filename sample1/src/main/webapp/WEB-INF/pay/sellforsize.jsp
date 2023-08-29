@@ -143,7 +143,7 @@
 			</div>
 			
 			<div class="buyboxarea1">
-				<!-- 구매입찰이 아닌경우 -->
+				<!-- 판매입찰이 아닌경우 -->
 				<div>
 					<a>
 						<button class="buy-button" @click="fnSellFire(selectedSize)">
@@ -166,7 +166,7 @@
 		</div>
 	</div>
 	<div v-if="!buyFlg" class="contentsarea">
-		즉시 구매 상품이 없습니다. 구매입찰 페이지로 넘어갑니다... 람쥐
+		즉시 구매 상품이 없습니다. 판매입찰 페이지로 넘어갑니다
 	
 	</div>
 </div>
@@ -185,7 +185,7 @@ var app = new Vue({
 		buyFlg : false,
 	},// data
 	
-	  methods : { // 사이즈값 선택시 선택값에 따른 결제 버튼 활성화
+	  methods : { 
 			 
 		//상품 정보 불러오기
 			fnProList : function(){
@@ -203,9 +203,8 @@ var app = new Vue({
 	                 		self.buyFlg = true;
 	                 	}else{
 	                 		self.buyFlg = false;
-	                 		alert("즉시 판매 상품이 없습니다. \n판매입찰 페이지로 이동합니다.");
-	                 			
 	                 		
+	                 		alert("즉시 판매 상품이 없습니다. \n판매입찰 페이지로 이동합니다.");
 	                 		location.href = "/productRegister.do";
 	                 	}
 	                 	console.log(self.proList);
