@@ -160,10 +160,11 @@
      
          </div><!--상품전시 영역 종료-->
          </div>
-         <div class="dropdownbtn" v-if="showMoreButton">
-         <button @click="showMoreItems">더보기</button>
-       
-        </div>   
+         <div class="dropdownbtnS">
+        	 <div class="dropdownbtn" v-if="showMoreButton">
+         		<button @click="showMoreItems">더보기</button>
+       	 	</div>
+         </div>   
     </div>
      </div>
 </body>
@@ -228,7 +229,7 @@
          // 더보기 버튼을 눌렀을 때 호출되는 메서드
             showMoreItems() {
             	 this.visibleItemIndex += this.visibleItemCount;
-                 var objBtn = document.getElementById("dropdownbtn");
+                 var objBtn = document.getElementById("dropdownbtnS");
                  var marginBtn = (this.visibleItemIndex / 4 * 500) + "px";
                  objBtn.style.marginTop = marginBtn;
             },

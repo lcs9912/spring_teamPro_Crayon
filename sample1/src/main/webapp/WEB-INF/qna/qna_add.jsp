@@ -149,7 +149,7 @@ background-color : #eee;
 }
 .qnatitlebar {height:50px; font-size:20px; margin:20px 0;}
 .qnatitlebar label{width:80px; display:inline-block;}
-.qnatitlebar input{border:0px solid #ccc; outline:none; width:700px; font-size:}
+.qnatitlebar input{border:0px solid #ccc; outline:none; width:700px; font-size:20px; color:#555;}
 
 </style>
 </head>
@@ -170,7 +170,7 @@ background-color : #eee;
 					</div>
 				<!-- </customernav> -->
 			</customernav>
-				<div class="contentsarea"><h3>1:1 문의 작성</h3>
+				<div class="contentsarea"><h3>자주 묻는 질문 작성</h3>
 					<div class="qnatitlebar"><!-- 제목작성 영역 div 클래스 -->
 						<label for="qnatitle">제목 : </label><input v-model="info.qnaTitle" id="qnatitle">
 					</div>
