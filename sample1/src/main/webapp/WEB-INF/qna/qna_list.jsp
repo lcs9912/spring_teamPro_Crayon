@@ -225,7 +225,7 @@ var app = new Vue({
         },
         fnQnaAdd : function(){
         	var self =this;
-        	location.href ="/qna/add.do"
+        	location.href ="/qnaadd.do"
         },
         fnlistView : function(item){
         	var self = this;

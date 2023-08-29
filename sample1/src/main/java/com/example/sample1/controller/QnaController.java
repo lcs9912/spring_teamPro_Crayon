@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class QnaController {
@@ -25,6 +26,8 @@ public class QnaController {
 	@Autowired
 	QnaService qnaService;
 	
+	@Autowired
+	HttpSession session;
 	// Qna 리스트 출력
 	@RequestMapping("/qnalist.do") 
     public String QnaList(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -43,7 +46,11 @@ public class QnaController {
 		request.setAttribute("map", map);
 	     return "/qna/qna_view";
 	 }
-	
+	// 1:1 문의 리스트 출력
+	@RequestMapping("/onetoone.do") 
+    public String onetoone(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		return "/qna/onetoone";
+    }
 	
 	// Qna 리스트 출력
 	@RequestMapping(value = "/qna/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -56,7 +63,7 @@ public class QnaController {
 	}
 	
 	// Qna등록
-		@RequestMapping(value = "/qna/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@RequestMapping(value = "/qnaadd.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String qnaAdd(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();

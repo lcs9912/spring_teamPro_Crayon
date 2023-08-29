@@ -87,7 +87,7 @@
 			<p>이미지 파일선택</p>
 			<label for="file1" class="fileupload">파일선택</label>
 			<div class="selectfilearea">
-				<img id="uploaded-image" src="" alt="">
+				<img id="uploaded-image" src="../img/style/ic_loading_img.gif" alt="">
 				<input type="file" id="file1" name="file1" accept=".gif, .jpg, .png">
 			</div>
 		</div>
@@ -145,5 +145,19 @@ var app = new Vue({
 	created : function() {
 		var self = this;
 	}// created
+});
+//
+const inputFile = document.getElementById('file1');
+const uploadedImage = document.getElementById('uploaded-image');
+
+
+inputFile.addEventListener('change', function () {
+const fileReader = new FileReader();
+fileReader.onloadend = function () {
+	uploadedImage.src = fileReader.result;
+};
+if (this.files[0]) {
+	fileReader.readAsDataURL(this.files[0]);
+}
 });
 </script>
