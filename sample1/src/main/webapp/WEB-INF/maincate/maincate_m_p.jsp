@@ -156,10 +156,10 @@
                  </div>
      
         </div><!--상품전시 영역 종료-->
-         <div class="dropdownbtn" v-if="showMoreButton">
-         <button @click="showMoreItems">더보기</button></div>
-        
- 
+        <div id="dropdownbtnMP">
+         	<div class="dropdownbtn" v-if="showMoreButton">
+         		<button @click="showMoreItems">더보기</button></div>
+        	</div>
         </div>   
     </div>
      </div>
@@ -226,7 +226,7 @@
             },
             showMoreItems() {
             	 this.visibleItemIndex += this.visibleItemCount;
-                 var objBtn = document.getElementById("dropdownbtn");
+                 var objBtn = document.getElementById("dropdownbtnMP");
                  var marginBtn = (this.visibleItemIndex / 4 * 500) + "px";
                  objBtn.style.marginTop = marginBtn;
             },
