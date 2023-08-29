@@ -35,10 +35,16 @@ public class UserServiceImpl implements UserService{
 				 resultMap.put("success", false);
 				 resultMap.put("message", "비밀번호를 5회 이상 틀림 관리자한테 문의ㄱ");
 				} else {
-				resultMap.put("success", true);
-				resultMap.put("message", "환영합니다.");
-				resultMap.put("user", user); // 로그인에 성공하면 키값에다가 불러온 값을 저장한다
-				userMapper.updateUserLoginCntReset(map); // cnt 초기화
+					if(user.getUserBanyn().equals("Y") ) {
+						resultMap.put("success", false);
+						resultMap.put("message", "탈퇴 상태이거나 정지된 계정입니다.\n관리자에게 문의하세요");
+					}else {
+						resultMap.put("success", true);
+						resultMap.put("message", "환영합니다.");
+						resultMap.put("user", user); // 로그인에 성공하면 키값에다가 불러온 값을 저장한다
+						userMapper.updateUserLoginCntReset(map); // cnt 초기화
+					}
+				
 				}
 		} else {
 			resultMap.put("success", false);

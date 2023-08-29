@@ -20,7 +20,7 @@ public class User {
 	private String userUpdate; // 회원 수정날짜
 	private String userLeavedate; // 회원 탈퇴날자
 	private String userState; // 회원 회원등급
-	private String userBantn; // 회원 관리자용 유저제한
+	private String userBanyn; // 회원 관리자용 유저제한
 	
 	private String receiveApp; // 앱푸쉬동의
 	private String receiveMessage; // 메세지 푸쉬 동의
@@ -122,11 +122,11 @@ public class User {
 	public void setUserState(String userState) {
 		this.userState = userState;
 	}
-	public String getUserBantn() {
-		return userBantn;
+	public String getUserBanyn() {
+		return userBanyn;
 	}
-	public void setUserBantn(String userBantn) {
-		this.userBantn = userBantn;
+	public void setUserBanyn(String userBanyn) {
+		this.userBanyn = userBanyn;
 	}
 	public String getUserJumain() {
 		return userJumain;

@@ -216,6 +216,7 @@ var app = new Vue({
                 success : function(data) { 
                 	if(data.success){ 
                 		alert(data.message);
+                		
                 		location.href ="/mainslider.do";
                 	} else {
                 		alert(data.message);
