@@ -45,6 +45,8 @@
    	
    	<!-- 유저 계좌 입력 -->
    	<insert id="insertUserAccount" parameterType="hashmap">
+   			INSERT INTO T1_USER_ACCOUNT
+   			VALUES (#{uId}, #{uBank}, #{uAccount}, #{aName})
    			
    	</insert>
    	 

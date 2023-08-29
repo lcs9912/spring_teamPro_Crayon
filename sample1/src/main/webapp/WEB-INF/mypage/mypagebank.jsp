@@ -122,6 +122,10 @@ var app = new Vue({
 		// 계좌 등록
 		fnSubmit : function(){
 			var self = this;
+			var numericRegex = /^[0-9]+$/;
+			if(!numericRegex.test(self.uAccount)){
+				alert("계좌형식에 맞게 입력하시오");
+			}
 			var nparmap = {uId : self.uId, uBank : self.uBank, uAccount : self.uAccount, aName : self.aName};			 
 			  $.ajax({
 	                url:"/addUserAcc.dox", 
@@ -132,7 +136,8 @@ var app = new Vue({
 						alert("성공!");
 	                }
 	            }); 
-			}
+			},
+			
 	}, // methods
 	created : function() {
 		var self = this;
