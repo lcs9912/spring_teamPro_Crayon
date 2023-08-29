@@ -204,6 +204,17 @@ background-color : #eee;
 console.log(Vue);
 Vue.use(Vue2Editor);
 const VueEditor = Vue2Editor.VueEditor;
+Vue.component('customernav', {
+	  template: `
+	    <div class="customernavarea" style="display:inline-block; float:left; margin-right:25px">
+	      <h1>고객센터</h1>
+	      <ul>
+	        <li><a href="faq.do" style="color: black; font-weight: bold;">자주 묻는 질문</a></li>
+	        <li><a href="onetoone.do" style="color: black;">1:1 문의 게시판</a></li>
+	      </ul>
+	    </div>
+	  `
+	});
 var app = new Vue({
 	el : '#app',
 	data : {
