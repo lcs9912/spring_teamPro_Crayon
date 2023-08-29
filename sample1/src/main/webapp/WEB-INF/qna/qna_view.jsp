@@ -120,7 +120,7 @@ text-align:center;
 	<table>
 		<tr v-for="item in list">
 		<td v-if=" status == 'A'" ><input type="checkbox" :value="item.cNo" v-model="selectItem"></td>
-			<td style="width:15%">아이디: {{item.cuserId}} : </td>
+			<td style="width:15%">아이디: {{item.cuserId}}  </td>
 			<td style="width:60%">댓글 내용 : {{item.commentContents}} </td>
 			<td style="width:24%">수정일 : {{item.commentUpdate}} <a @click="fnCommRemove(item)" href="javascript:;" v-if="item.cuserId==uId || status == 'A' ">
 			<i class="fa-solid fa-skull" style="color: #f24a2c;"></i></a></td>
