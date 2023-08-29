@@ -112,10 +112,7 @@
                 </div>
                 <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503150-a342e50f-6be1-4fce-9db6-7eb7db57392f.jpg');">
                 </div>
-                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/258617951-80105c21-50aa-4e33-b488-2242a4055e61.jpg'); ">
-                    <h1 class="innertext">
-                        Hot Summer Sale Event!
-                    </h1>
+                <div class="slide" style="background-image: url('https://user-images.githubusercontent.com/137017779/263503176-7739940f-35b8-4810-9057-ff347e7202e1.jpg'); ">
                 </div>             
             </div>
             <div class="radio-button">

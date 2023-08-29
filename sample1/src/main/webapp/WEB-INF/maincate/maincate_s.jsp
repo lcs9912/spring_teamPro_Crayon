@@ -131,7 +131,7 @@
             <div class="ranktitle">
                 <p>신발 인기 품목</p>		
             </div>
-            <div class="goodsblock" style="display:inline-block;">
+            <div class="goodsblock">
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
                 <div class="goodsitem" v-for="(item , index) in visibleItems" :key="index">
                 <article>
