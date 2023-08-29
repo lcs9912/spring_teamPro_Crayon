@@ -217,7 +217,7 @@ background-color : #eee;
 				<div align="right" style="width:1000px;">
 					<button class="qnaeditbtn">수정</button>
 					<button class="qnadeletbtn">삭제</button>
-					<button href="qnaadd.do"class="onetooneEditbtn">글쓰기</button>
+					<button href="qnaadd.do" class="onetooneEditbtn">글쓰기</button>
 				</div>
 				
 			<div class="movebtn">
