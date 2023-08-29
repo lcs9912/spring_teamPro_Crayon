@@ -81,7 +81,7 @@
 		border-top:1px solid #e1e1e1;
 		text-align:center;
 	}
-	.buyboxarea1 button{
+		.buyboxarea1 button{
 		width: 100%;
 		height:60px;
 		border-radius:10px;
@@ -90,6 +90,13 @@
 		font-weight: bold;
 		font-size:15px;
 		background-color: #B5B5B5;
+		margin-top :10px;
+	}
+	button{
+		cursor: pointer;
+	}
+	.buyboxarea1 button:hover{
+	background-color:black;
 	}
 	.buyboxarea2{
 		width:100%;
@@ -108,6 +115,11 @@
 		background-color: #B5B5B5;
 		float : left;
 	}
+	.selected {
+			background-color: #eee;
+			border: 2px solid black; /* 선택 시 테두리 색상 변경 */
+			color: red;
+		}
 </style>
 
 </head>
@@ -134,7 +146,7 @@
 	
 			<div class="productdetailsizarea">
 			  <button v-for="item in proList" :key="item.productSize"
-			          :class="['custom-button', { selected: selectedSize === item.productSize }]"
+			          :class="['custom-button', { selected: selectedSize === item.productSellNumber }]"
 			          @click="selectSize(item.productSellNumber)" >
 			    <!-- 사이즈+가격 출력 \\ 재고 없으면 구매입찰 출력 -->
 			    <div>{{ item.size }}</div>
@@ -251,5 +263,14 @@ var app = new Vue({
 			self.fnGetSize();
 			self.fnProList();
 		}// created
+	});
+$(document).ready(function () {
+	  $('.custom-button').click(function () {
+	    $('.custom-button').removeClass('selected');
+	    $(this).addClass('selected');
+	    $('.buy-button').css('background-color', 'black');
+	    $('.buy-button').css('cursor', 'pointer');
+	    $('.buy-button').prop('disabled', false);
+	  });
 	});
 </script>

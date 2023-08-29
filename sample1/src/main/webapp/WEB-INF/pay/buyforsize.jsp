@@ -115,6 +115,11 @@
 	button{
 		cursor: pointer;
 	}
+	.selected {
+			background-color: #eee;
+			border: 2px solid black; /* 선택 시 테두리 색상 변경 */
+			color: red;
+		}
 </style>
 
 </head>
@@ -140,9 +145,12 @@
 			</div>
 	
 			<div class="productdetailsizarea">
-			  <button v-for="item in proList" :key="item.productSize"
-			          :class="['custom-button', { selected: selectedSize === item.productSize }]"
-			          @click="selectSize(item.productSellNumber)" >
+			 <button
+			  v-for="item in proList"
+			  :key="item.productSize"
+			  :class="['custom-button', { selected: selectedSize === item.productSellNumber }]"
+			  @click="selectSize(item.productSellNumber)">
+			  
 			    <!-- 사이즈+가격 출력 \\ 재고 없으면 구매입찰 출력 -->
 			    <div>{{ item.size }}</div>
 			    <div>{{item.productPrice}}</div>
@@ -266,4 +274,13 @@ var app = new Vue({
 		self.fnProList();
 	}// created
 });
+$(document).ready(function () {
+	  $('.custom-button').click(function () {
+	    $('.custom-button').removeClass('selected');
+	    $(this).addClass('selected');
+	    $('.buy-button').css('background-color', 'black');
+	    $('.buy-button').css('cursor', 'pointer');
+	    $('.buy-button').prop('disabled', false);
+	  });
+	});
 </script>
