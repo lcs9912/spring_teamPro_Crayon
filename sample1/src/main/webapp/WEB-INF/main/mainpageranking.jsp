@@ -10,58 +10,10 @@
 <script src="https://kit.fontawesome.com/15a79bdff8.js" crossorigin="anonymous"></script>
 <title>CrayoN 헤더 인클루드 수정페이지</title>
 <style>
- .slider-wrap {
-            position: absolute;
-            top: 355px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 450px;
-            overflow: hidden;
-        }
-
-        .slider {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide {
-            flex-shrink: 0; width: 100%;
-            height: 100%; background-position: center;
-            background-size: cover;
-        }
-
-            .slide h1 {
-                text-align: center; margin-top: 255px;
-                color: #fff; font-size: 50px;
-            }
-                .innertext {animation: innertext 3.7s ease-in-out infinite;}
-
-                @keyframes innertext {
-                    from {opacity: 0; font-size:40px;} to {opacity: 1; font-size:50px;}
-                }
-
-        .slide-button {
-            position: absolute; top: 55%;
-            transform: translateY(-50%);
-            font-size: 80px; color: #fff;
-            z-index: 1; background: transparent;
-            border: none; outline: none;
-            opacity: 0.5;
-        }
-
-        .slide-prev {
-            left: 15px;
-        }
-
-        .slide-next {
-            right: 15px;
-        }
 
 		 /*상품 품목별 전시영역 시작*/ 
 
-	 	.rankwrap {width:1200px; margin:170px auto;}
+	 	.mancatewrap {width:1200px; margin:0 auto;}
 	 	.goodsdisplay { /*상품 품목별 4개씩 분류 전시 영역*/
             width: 1200px; margin-bottom:30px; 
         }

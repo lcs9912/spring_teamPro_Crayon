@@ -31,11 +31,10 @@
             }         
 
         .goodsblock {
-        display:inline-block;
-            width: 24%;
+            width: 100%;
             height: 401px;
             margin-bottom:50px;
-           
+            display: grid;
             grid-template-columns: repeat(4, 1fr); /* 가로로 4개씩 나열 */
             gap: 5px; /* 각 상품 사이의 간격 */
         }
@@ -109,15 +108,15 @@
 				}
 
 				.dropdownbtn button{border:1px solid #ccc; font-size:16px; background:#fff;
-					width:100px; height:50px; border-radius: 15px; cursor:pointer;
+					width:100px; height:50px; border-radius: 15px;
 				}
             /*상품 품목별 전시영역 종료*/    
     .goodsitem{
     cursor:pointer;
-    display:inline-block;
-    margin-right:5px;
     }
-
+    .dropdownbtn button{
+    cursor:pointer;
+    }
     
     </style>
 </head>
@@ -130,9 +129,9 @@
             <div class="ranktitle">
                 <p>남성 인기 품목</p>		
             </div>
-            <div class="goodsblock" style="display:inline-block;">
+            <div class="goodsblock" >
                 <!--상품전시  4개 한줄 영역 아티클 태그 시작-->
-                <div class="goodsitem" v-for="(item , index) in visibleItems" :key="index">
+                <div v-for="(item , index) in visibleItems" :key="index"  class="goodsitem">
                 <article>
                     <a @click="fnProInfo(item.productModel)"> 
                         <!-- 링크로 상품 상세 구매판매 페이지로 전환-->
@@ -158,12 +157,11 @@
                  </div>
      
         </div><!--상품전시 영역 종료-->
-
- 
-        </div>  
-                 <div class="dropdownbtn" v-if="showMoreButton">
+         <div class="dropdownbtn" v-if="showMoreButton">
         <button @click="showMoreItems">더보기</button>
-    		</div> 
+    		</div>
+ 
+        </div>   
     </div>
      </div>
 </body>
@@ -215,7 +213,7 @@
                         success : function(data) {
                         	self.list = data.list;
                         	console.log(self.list);
-                         
+                        
                         	
     						
                         }
