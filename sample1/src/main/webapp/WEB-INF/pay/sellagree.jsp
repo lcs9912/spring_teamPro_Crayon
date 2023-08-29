@@ -179,7 +179,7 @@ margin-top:10px;
 					</div>
 				</div>
 				<div class="continuebtn" style="width:100%; text-align:center;">
-					<a href="nowsell.do"><button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">판매 계속</button></a> <!-- orderandsettle.do 다음 링크 -->
+					<a @click="fnNowSell"><button :class="{ 'continuebtn-active': allCheck }" :disabled="!allCheck">판매 계속</button></a> <!-- orderandsettle.do 다음 링크 -->
 				</div>
 			</div>
 		</div>

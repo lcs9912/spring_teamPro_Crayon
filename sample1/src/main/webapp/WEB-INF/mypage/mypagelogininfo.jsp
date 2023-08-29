@@ -523,6 +523,11 @@
 			// 연락처 수정
 			fnSubmitPhoneEdit : function(){
 				var self = this;
+				var regPhone = /^\d{3}\d{4}\d{4}$/; // 전화번호 : 숫자만 11자리 정규식
+				if(!regPhone.test(self.editPhone)){
+					alert("전화번호 숫자만 11자리 입력하시오");
+					return;
+				}
 				if(!self.pwdFlg){
 					alert("비밀번호를 확인하시오");
 					return;

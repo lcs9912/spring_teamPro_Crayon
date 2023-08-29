@@ -162,7 +162,7 @@
  
         </div><!--상품전시 영역 종료-->
         </div>   
-        <div class="dropdownbtnA">
+        <div id="dropdownbtnA">
       		<div class="dropdownbtn" v-if="showMoreButton">
         		<button @click="showMoreItems">더보기</button>
     		</div>
@@ -235,7 +235,7 @@
             showMoreItems() {
             	 this.visibleItemIndex += this.visibleItemCount;
                  var objBtn = document.getElementById("dropdownbtnA");
-                 var marginBtn = (this.visibleItemIndex / 4 * 500) + "px";
+                 var marginBtn = (this.visibleItemIndex / 4 * 550) + "px";
                  objBtn.style.marginTop = marginBtn;
             },
         }, // methods

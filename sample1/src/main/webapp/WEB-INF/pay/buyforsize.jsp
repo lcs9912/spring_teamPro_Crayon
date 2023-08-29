@@ -180,7 +180,7 @@
 		</div>
 	</div>
 	<div v-if="!sellFlg" class="contentsarea">
-		즉시 구매 상품이 없습니다. 구매입찰 페이지로 넘어갑니다... 람쥐
+		<img style="width: 500px;" src="../img/product/productReady.jpg">
 	
 	</div>
 </div>

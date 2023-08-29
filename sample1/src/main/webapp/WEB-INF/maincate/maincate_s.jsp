@@ -160,7 +160,7 @@
      
          </div><!--상품전시 영역 종료-->
          </div>
-         <div class="dropdownbtnS">
+         <div id="dropdownbtnS">
         	 <div class="dropdownbtn" v-if="showMoreButton">
          		<button @click="showMoreItems">더보기</button>
        	 	</div>
