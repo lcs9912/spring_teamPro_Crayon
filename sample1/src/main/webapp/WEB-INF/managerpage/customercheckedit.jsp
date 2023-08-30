@@ -48,7 +48,6 @@ a {	text-decoration:none;
 	.mypagewrap {
 		width:1200px; margin:50px auto;
 		clear:both; 
-		height:600px;
 		} 
  	.mypagenav {
 		float:left; width:200px; color:#000;
@@ -87,6 +86,7 @@ a {	text-decoration:none;
   text-align: center;
   display: flex;
   justify-content: center;
+  margin-left:200px;
 }
 .movebtn button{
 width : 40px;
@@ -125,19 +125,20 @@ border : 1px solid #eee;
 		<div class="sailcontainer">
 		<div>
 		<h3 style="margin-bottom:15px;">회원목록</h3><h4 style="float:right;">총 : {{ulist.length}} 명</h4>
+		<div>
 		<table>
 		<tr>
 		<th>선택</th>
 		<th>아이디</th>
 		<th>이름</th>
 		<th>성별</th>
-		<th>상태</th>
+		<th>권한</th>
 		<th>포인트</th>
 		<th>가입일</th>
 		
 		</tr>
 		
-		<tr v-for="item in ulist">
+		<tr v-for="item in paginatedList" :key="item.userId">
 		<td><input type="checkbox" :value="item.userId"></td>
 		<td>{{item.userId}}</td>
 		<td>{{item.userName}}</td>
@@ -170,7 +171,10 @@ border : 1px solid #eee;
 				  
 				  <button class="selectpagebtn"
 				  v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)"
-				  :class="{ 'selected': pageNumber === currentPage, 'bold-page-number': pageNumber === currentPage }"
+				  :class="{
+					          selected: pageNumber === currentPage,
+					          'bold-page-number': pageNumber === currentPage
+					        }"
 				  :style="{ backgroundColor: pageNumber === currentPage ? '#eee' : 'inherit' }">
 				  {{ pageNumber }}
 				 </button>
@@ -181,7 +185,7 @@ border : 1px solid #eee;
 		</div>
 	</div>
 	</div>
-
+</div>
 </body>
 	<%@ include file="../header/footer.jsp"%>
 </html>
@@ -192,7 +196,7 @@ var app = new Vue({
 		 list : [],
 	    ulist: [],
 	    currentPage: 1,
-	    itemsPerPage: 10,
+	    itemsPerPage: 15,
 	  },
 	  methods: {
 	    fnGetList: function () {
@@ -216,7 +220,7 @@ var app = new Vue({
 	      } else if (this.currentPage > this.totalPages) {
 	        this.currentPage = this.totalPages;
 	      }
-	      this.fnGetList();
+	   
 	    },
 	    goToPage: function (pageNumber) {
 	      this.currentPage = pageNumber;
@@ -225,13 +229,13 @@ var app = new Vue({
 	  }, // methods end
 	  computed: {
 	    totalPages: function () {
-	      return Math.ceil(this.list.length / this.itemsPerPage);
+	      return Math.ceil(this.ulist.length / this.itemsPerPage);
 	    },
 	    paginatedList: function () {
 	      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
 	      const endIndex = startIndex + this.itemsPerPage;
-	      return this.list.slice(startIndex, endIndex);
-	    },
+	      return this.ulist.slice(startIndex, endIndex);
+	    }
 	  },
 	  created: function () {
 	    var self = this;
