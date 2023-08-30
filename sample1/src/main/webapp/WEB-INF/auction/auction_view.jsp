@@ -461,7 +461,7 @@ color:#a2a2a2;
 		
 		
 		<div class="btnaction" v-if="info.duplicateStatus=='Y'||info.duplicateStatus==null">	
-		<button class="buyaction" @click="fnAuctionJoin()" onclick="openPopup('auctionjoin.do')">
+		<button class="buyaction" @click="fnAuctionJoin()">
 		<strong class="nowbuy" style='box-shadow:1px px 0px px'>입찰하기</strong>
 		</button>
 		</div>
@@ -741,7 +741,7 @@ var app = new Vue({
    
         fnAuctionJoin: function() {
             var self = this;
-            window.open("join.do?auctionNumber=" + self.auctionNumber, "_blank", "width=800,height=600");
+            window.open("auctionjoin.do?auctionNumber=" + self.auctionNumber, "_blank", "width=800,height=600");
         },
         fnAuctionCheck : function(){
             var self = this;

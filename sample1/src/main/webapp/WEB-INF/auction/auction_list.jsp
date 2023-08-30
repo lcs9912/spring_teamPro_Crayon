@@ -89,7 +89,7 @@ font-size:20px;
 <div id="app">
 	<div class="auctionwrap">	
 		<div class="auctiontable">
-		<div style="text-align:center; margin:45px 0;"><h1>경매등록</h1></div>
+		<div style="text-align:center; margin:45px 0;"><h1>경매 리스트</h1></div>
 		<table>
 			<tr>
 				<th>경매번호</th>
