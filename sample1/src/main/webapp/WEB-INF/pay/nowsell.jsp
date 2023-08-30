@@ -301,12 +301,12 @@ var app = new Vue({
         // 마지막 결제 가보자..
         fnListSell : function(){
         	var self = this;
-        	$.pageChange("/payandpackage.do", {proNum : self.proNum, delivery : self.delivery});
+        	$.pageChange("/orderandsettle.do", {proNum : self.proNum, delivery : self.delivery});
         },
         fnSellRegister : function() {
         	var self = this;
         	console.log(self.sellPay);
-        	$.pageChange("/productRegister.do", {proNum : self.proNum, sellPay : self.sellPay});
+        	$.pageChange("/orderandsettle.do", {proNum : self.proNum, sellPay : self.sellPay});
         },
         checkDateValidity: function () {
             // 유효한 날짜인지 확인

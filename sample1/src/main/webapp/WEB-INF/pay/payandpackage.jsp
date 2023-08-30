@@ -275,6 +275,9 @@
             background-color: black;
             cursor:pointer;
         }
+        table th{
+        background-color:#eee;
+        }
 </style>
 
 </head>
@@ -306,7 +309,7 @@
     		<div class="addradd">
     			<!-- 주소테이블에 정보가 없으면 주소를 추가해수세요 정보가 있으면 출력 -->
     			<div v-if="!addrFlg"><button style="background-color:#fafafa; color: rgba(34,34,34,.5);" @click="fnPopup('add')">주소를 추가해주세요.</button></div>
-    			<table v-if="addrFlg" style="float: left;">
+    			<table v-if="addrFlg" style="float: left; width:88%;">
     				<tr>
     					<th>우편번호</th>
     					<th>주소</th>
