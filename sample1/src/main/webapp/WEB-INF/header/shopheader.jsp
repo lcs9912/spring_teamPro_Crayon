@@ -162,8 +162,9 @@
                 <div class="loginmenulist">
                     <ul>
                         <li class="#"><a href="faq.do">고객센터</a></li>                        
-                        <li class="#"><a href="mypageproductinter.do">관심상품</a></li>
-                        <li class="#"><a href="mypage.do">마이페이지</a></li>
+                         <li class="#" v-if="status == 'U'"><a href="mypageproductinter.do">관심상품</a></li>
+                         <li class="#" v-if='status == "A"'><a href="manager.do">관리자페이지</a></li>
+                        <li class="#" v-else><a href="mypage.do">마이페이지</a></li>
                         <li class="loginbtn" v-if="loginOut != '' "><a href="login.do">로그아웃</a></li>
                         <li class="loginbtn" v-else><a href="login.do">로그인</a></li> 
                     </ul>
@@ -194,7 +195,8 @@
     var headerApp = new Vue({
         el: '#headerApp',
         data: {
-            loginOut: "${sessionId}"
+            loginOut: "${sessionId}",
+            status : "${sessionStatus}"
         },// data
         methods: {
             fnCheck: function () {

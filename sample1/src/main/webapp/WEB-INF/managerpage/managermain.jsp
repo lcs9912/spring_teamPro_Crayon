@@ -176,15 +176,10 @@ a {	text-decoration:none;
 					<strong>{{info.userId}}</strong>
 
 					<p>{{info.userEmail}}</p> <!-- 유저이메일 -->
-					<a href="mypageprofile.do" type="button">프로필 관리</a>
-					<a href="myposts.do" type="button">내 스타일</a>
+				
 					
 				</div>
-				<div class="profileinner3">
-					<p>{{info.userPoint}}P</p> <!-- 유저포인트 -->
-					<p>포인트</p>
-					<a href="mypageaddpoint.do"><button class="pointaddbtn">포인트충전</button></a>
-				</div>
+				
 				<div class="profileinner4">
 					<p>관리자</p>
 				</div>
