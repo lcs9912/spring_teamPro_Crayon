@@ -83,5 +83,4 @@ public class MypageServiceImpl implements MypageService{
 		resultMap.put("sellList", sellList);
 		return resultMap;
 	}
-
 }

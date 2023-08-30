@@ -69,7 +69,7 @@
                        padding-bottom:20px;
             }
                 .sidecate .cateselect {
-                    width: 204px; height: 65px;
+                    width: 204px; height: 65px; 
                     display: block; font-size: 15px;
                     cursor: pointer; padding-top: 15px;                  
                 }
