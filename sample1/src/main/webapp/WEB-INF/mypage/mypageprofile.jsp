@@ -296,7 +296,7 @@
 	            <h2 style="padding-bottom:15px;">닉네임 변경</h2>
                 <div class="emailinput">
 	               	<input placeholder="대충 변경할 닉네임" v-model="nickName">
-	                <div style="color: red;">메세지</div>
+	                
 	                <input type="password" v-model="pwd" placeholder="비밀번호 확인">
 	                <button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>      
 	            </div>               	         	
@@ -310,7 +310,7 @@
 	            <h2 style="padding-bottom:15px;">이름 변경</h2>
 	            	<div style="padding-bottom:15px;"></div>
 	                <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">
-	                	<div style="color: red;">메세지</div>
+	                	
 	              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
 	              		<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>   
 	               	</div> 
