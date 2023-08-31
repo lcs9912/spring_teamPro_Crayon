@@ -234,7 +234,7 @@ var app = new Vue({
             var nparmap = self.info;
             nparmap.name = self.name;
             $.ajax({
-                url : "add.dox",
+                url : "qnaadd.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,

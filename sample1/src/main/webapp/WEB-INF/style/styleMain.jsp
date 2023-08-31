@@ -18,7 +18,7 @@
 	width:1200px;
 	clear:both;
 	margin:0 auto;
-	margin-top : 150px;
+	margin-top : 50px;
 	margin-bottom : 50px;
 }
 .image-grid {
@@ -89,12 +89,18 @@ img {
 }
 .header-li{
 	margin : 0 auto;
-	margin-top : 100px;
+	margin-top : 10px;
 	width : 1200px;
 	height : 150px;
 	border-bottom : 1px solid #ccc;
+	
 }
-
+.header-li li {
+	text-align : center;
+}
+.header-li img {
+	width : 900px;
+}
 
 </style>
 <%@ include file="../header/shopheader.jsp"%>
@@ -108,7 +114,9 @@ img {
 </div>
 <div class="header-li">
 <ul>
-<li>Preparing service..</li>	
+<li>
+	<img src="../img/style/style-list.jpg">
+</li>	
 </ul>
 </div>
 	<div class="style-contents">

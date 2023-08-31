@@ -177,12 +177,9 @@ public class MypageController {
 	// 주소입력 팝업
 	@RequestMapping("/addr.do") 
     public String addr(Model model, @RequestParam HashMap<String, Object> map, HttpServletRequest request) throws Exception{
-		String sessionId = (String) session.getAttribute("sessionId"); // 다운캐스팅
-		if(sessionId != "" && sessionId != null) {
+		
 			return "/mypage/jusoPopup";
-		} else {
-			return "redirect:/login.do";
-		}
+		
 		
     }
 		

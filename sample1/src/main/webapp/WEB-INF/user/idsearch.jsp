@@ -206,7 +206,7 @@ main {
 	
 		<section class="loginsection">
 			<div class="loginlogo">
-				<h1><a href="mainslider.do">
+				<h1><a href="login.do">
                        CrayoN
                     </a>
                 </h1>    
