@@ -230,7 +230,7 @@ margin-top : 50px;
 					<input type="password" id="password2" name="password2" v-model="user.userPwd2" placeholder="비밀번호는 영문 대소문자와 숫자 포함 8자리 이상이어야 합니다.">
 				</td>
 			</tr>
-			<tr class="hintinput">
+			<tr class="hintinput" v-show="user.pwdhint !== '비밀번호 찾기 질문'">
 				<td>
 					<select name="language" id="pwdhint"class="passwordhint" name="passwordhint" v-model="user.userPwdHint">
 				<option disabled selected>비밀번호 찾기 질문</option>
