@@ -684,7 +684,7 @@ var app = new Vue({
 				data : param,
 				success : function(data) {
 					alert("완료!");
-					location.reload();
+					//location.reload();
 				}
 			});
     	},

@@ -278,7 +278,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 					data : param,
 					success : function(data) {
 						alert("완료!");
-						location.reload();
+						//location.reload();
 					}
 				});
 			},

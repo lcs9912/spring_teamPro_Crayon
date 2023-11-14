@@ -369,7 +369,9 @@ a {	text-decoration:none;
 					data : param,
 					success : function(data) {
 						self.imgInfo = data.imgInfo;
-						console.log(self.imgInfo.userImgName);
+						self.fnGetInfo();
+						self.fnBuyCount();
+						self.fnBuyList();
 						
 					}
 				});
