@@ -295,7 +295,7 @@
 	        <template v-if="keyword == 'nick'">
 	            <h2 style="padding-bottom:15px;">닉네임 변경</h2>
                 <div class="emailinput">
-	               	<input placeholder="대충 변경할 닉네임" v-model="nickName">
+	               	<input placeholder="변경할 닉네임" v-model="nickName">
 	                
 	                <input type="password" v-model="pwd" placeholder="비밀번호 확인">
 	                <button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>      
@@ -309,7 +309,7 @@
 	        <template v-if="keyword == 'name'">
 	            <h2 style="padding-bottom:15px;">이름 변경</h2>
 	            	<div style="padding-bottom:15px;"></div>
-	                <div class="emailinput"><input placeholder="대충 변경할 이름" v-model="userName">
+	                <div class="emailinput"><input placeholder="변경할 이름" v-model="userName">
 	                	
 	              		<input type="password" v-model="pwd" placeholder="비밀번호 확인">
 	              		<button class="emailpwd" @click="fnPwdCheck">비밀번호 인증</button>   
