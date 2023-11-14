@@ -321,7 +321,7 @@
     					<td>{{addrItem.userDetailAddr}}</td>
     				</tr>
     			</table>
-    			<span><button style="width:47px; height:38px; float: right; margin-right: 25px;" @click="fnPopup('edit')">변경</button></span>
+    		
     			<div>
 				    <button style="line-height: 30px;">요청사항 없음
 				    <i class="fa-solid fa-chevron-right" style="float:right; padding-right:15px; line-height: 30px;"></i></button>
@@ -367,7 +367,7 @@
 			보유 포인트 <span style="color:black;">{{userInfo.userPoint}}P</span>
 			</div>
 			<div class="pointnum">
-			<input type="text" v-model="payPoint"><button>모두 사용</button>
+			<input type="text" v-model="payPoint"><button @click="allPay">모두 사용</button>
 			</div>
 			
 			<div v-if="!lastPointFlg" style="color: rgba(34,34,34,.5);line-height: 17px; padding-top:10px; font-size: 14px;">
@@ -604,10 +604,26 @@ var app = new Vue({
                 		self.addrFlg = false;
                 	}
                 	console.log(self.addrList);
+                	console.log(self.addrList);
                 }
-            }); 
+            }); 	
     		
     	},
+    	/* // 유저 주소 리스트 출력
+		fnUserAddrList : function(){
+			var self = this;
+			var param = {uId : self.sessionId};
+			$.ajax({
+				url : "/user/searchAddr.dox",
+				dataType : "json",
+				type : "POST",
+				data : param,
+				success : function(data) {
+					self.addrList = data.addrList;
+					console.log(self.addrList);
+				}
+			});
+		}, */
     	// 유저 정보 
     	fnUserInfo : function(){
     		var self = this;
@@ -642,7 +658,7 @@ var app = new Vue({
 			var nparmap = {proNum : self.proNum, uId : self.uId, suser : self.proInfo.userId, payPoint : self.payPoint, lastPay : self.lastPay, type : 'M'}
 			console.log(nparmap);
 			if(self.payPoint < self.lastPay ){
-				console.log("금액이 모자릅니다.");
+				alert("금액이 모자릅니다.");
 				return;
 			}
 			
@@ -653,7 +669,9 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) { 
                 	alert("완료되었습니다.");
-                	location.href ="/mypagebuylist.do";
+                	setTimeout(function () { 
+                        location.href = "/mypagebuylist.do";
+                    }, 1000);
                  	
                 }
             });
@@ -720,7 +738,11 @@ var app = new Vue({
     		
     		
     	},
-    	
+    	// 모두 사용
+    	allPay : function(){
+    		var self = this;
+    		self.payPoint = self.lastPay;
+    	}
         
 	}, // methods
 	created : function() {

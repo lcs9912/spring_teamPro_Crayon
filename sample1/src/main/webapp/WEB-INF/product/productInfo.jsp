@@ -756,6 +756,7 @@ var app = new Vue({
             var self = this;
             var nparmap = {modelNum : self.modelNum};
             console.log("차트 모델번호"+self.modelNum);
+           
             $.ajax({
                 url : "/chartlist.dox",
                 dataType:"json",	

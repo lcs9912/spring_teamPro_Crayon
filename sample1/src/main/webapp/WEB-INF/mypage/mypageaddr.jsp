@@ -277,8 +277,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 					type : "POST",
 					data : param,
 					success : function(data) {
-						alert("완료!");
-						//location.reload();
+						self.fnGetInfo();
+						setTimeout(function () {
+							document.getElementById("closePopup").click();
+			            }, 1000);
+						
 					}
 				});
 			},
