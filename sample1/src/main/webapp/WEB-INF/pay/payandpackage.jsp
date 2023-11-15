@@ -670,7 +670,7 @@ var app = new Vue({
                 success : function(data) { 
                 	alert("완료되었습니다.");
                 	setTimeout(function () { 
-                        location.href = "/mypagebuylist.do";
+                        location.href = "/mainslider.do";
                     }, 1000);
                  	
                 }
