@@ -1,3 +1,6 @@
+![crayon_logo](https://github.com/wuuuugi/shopping/assets/137017155/fff55294-d8ef-4f0b-805d-0bbda4a85ba3)
+<div style="text-align: center;"><h1>CRAYON</h1></div>
+
 # 목차
 1. [프로젝트 소개](#프로젝트-소개)
 2. [서비스 내용](#서비스-내용)
