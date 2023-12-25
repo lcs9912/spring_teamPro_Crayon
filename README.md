@@ -1,16 +1,6 @@
 ![crayon_logo](https://github.com/wuuuugi/shopping/assets/137017155/fff55294-d8ef-4f0b-805d-0bbda4a85ba3)
 <div style="text-align: center;"><h1>CRAYON</h1></div>
 
-# 목차
-1. [프로젝트 소개](#프로젝트-소개)
-2. [서비스 내용](#서비스-내용)
-3. [개발 기간](#개발-기간)
-4. [기술 스택](#기술-스택)
-5. [주요 기능](#주요-기능)
-6. [팀 소개](#팀-소개)
-7. [프로젝트 구성도](#프로젝트-구성도)
-8. [시연 화면](#시연-화면)
-<br>
 <br>
 
 # 📖프로젝트 소개
@@ -45,35 +35,6 @@
 <br>
 <br>
 
-## 💻주요 기능
-- 메인페이지 이미지 슬라이더
-  ```
-  메인페이지에서 이미지 뿐만 아니라 .gif형식의 파일도 슬라이드를 통해 사용자에 노출됩니다.
-  ```
-- 경매 물품 등록
-  ```
-  사용자가 원하는 시기에 경매를 등록하여 중고 물품 경매를 진행하는 기능을 제공하고, 누군가 입찰했을시 입찰가와 입찰자 정보는 제공되지 않고, 입찰날짜만 제공됩니다.
-  시간이 만료되었을 때 가장 높은 금액을 제시한 사용자가 중고 물품을 낙찰 받는 시스템입니다.
-  ```
-- 사용자가 지정한 조건으로 상품 검색
-  ```
-  사용자가 원하는 조건으로 필터링하여 상품을 검색할 수 있습니다.
-  ```
-- 상품 구매 및 판매 그리고 등록
-  ```
-  여러 사용자들이 등록한 상품을 구매하고 판매 할 수 있습니다.
-  상품 등록 시 구매 및 판매를 선택 할 수 있고, 결제는 플랫폼내의 포인트로 가능합니다.
-  ```
-- 주소, 결제, 차트 API
-  ```
-  사용자 마이 페이지에서 배송받을 주소를 주소 API를 통해 등록할 수 있습니다.
-  쇼핑몰내에서 결제시 사용되는 포인트를 충전 할 때 결제 API를 통해 충전 할 수 있습니다.
-  상품 상세 페이지에서 차트 API를 활용해서 사용자들에게 최근 거래기준으로 최근 거래가를 그래프로 제공합니다.
-  ```
-- 상품을 카테고리, 인기순 별 조회하기
-  ```
-  여러 사용자가 등록한 상품을 카테고리 별로 조회가 가능하며 인기순등 다양한 조건으로 상품을 검색하는 기능을 제공합니다.
-  ```
 ## 👪팀 소개
 <table>
   <tr>
@@ -119,40 +80,197 @@
   </tr>
 </table>
 
+<br>
+<br>
+
 ## 📂프로젝트 구성도
 > ERD
 > 
 ![drawio jpg](https://github.com/wuuuugi/shopping/assets/137017155/2eb4e19a-075a-4170-a5c7-095fef310907)
 
-## 👁‍🗨시연 화면
-> 메인 및 검색
-> 
-![메인](https://github.com/wuuuugi/shopping/assets/137017155/9f8aea7e-3ad8-4d59-bc6d-a58a6efc0680)
-![메인_랭킹](https://github.com/wuuuugi/shopping/assets/137017155/b0aec8e4-dba8-4e75-8179-7b6637a863a7)
-![검색창](https://github.com/wuuuugi/shopping/assets/137017155/6aee5501-efa4-41cb-9f1a-a3d9a8a39e28)
-![검색결과](https://github.com/wuuuugi/shopping/assets/137017155/fd689e38-03f4-4ee0-a395-a09556ecd1b3)
----
-> 경매
-> 
-![경매리스트](https://github.com/wuuuugi/shopping/assets/137017155/927f7c33-96ae-47b2-86c8-5b2c8a70c94d)
-![경매상품등록_3](https://github.com/wuuuugi/shopping/assets/137017155/bbd210c0-f180-4006-b9be-b2d1940b2c2e)
-![경매상품상세정보](https://github.com/wuuuugi/shopping/assets/137017155/68764c39-28fd-45af-b8f7-139bfdb2eb87)
----
-> 상품
->
-![상품등록](https://github.com/wuuuugi/shopping/assets/137017155/ead6ad49-a10a-44be-a99b-11687a4551e8)
-![상품상세정보](https://github.com/wuuuugi/shopping/assets/137017155/4d212d61-69a0-4ec6-b6f5-ec898717e49b)
-![판매 배송 및 결제](https://github.com/wuuuugi/shopping/assets/137017155/4e4f1d33-58dc-4dbe-af4c-3741310de70d)
----
-> 사용자 및 스타일
-> 
-![마이페이지](https://github.com/wuuuugi/shopping/assets/137017155/067585b3-24c9-4228-8f44-9cc5345408bd)
-![마이페이지_주소록_새 배송지 추가2](https://github.com/wuuuugi/shopping/assets/137017155/d16061f9-19db-4083-a5f7-f11b579fafd8)
-![스타일 게시글](https://github.com/wuuuugi/shopping/assets/137017155/8f1ef33e-2120-4ac9-9f6b-f164c6b7a40c)
-![스타일메인](https://github.com/wuuuugi/shopping/assets/137017155/830026e4-2ffb-4a39-9b7e-6bd6f1bec2f8)
+## 💻담당 역할
+### 상품 카테고리 (SHOP페이지)
+  <br>
+  
+  <img src="https://github.com/lcs9912/spring_teamPro_Crayon/assets/137017212/779d34c3-b321-420c-97a2-08788e83075d" alt="SHOP페이지" width="400"/>
+  <img src="https://github.com/lcs9912/spring_teamPro_Crayon/assets/137017212/da73041e-0671-49ea-9417-32b387c27750" alt="SHOP페이지카테고리" width="400"/>
 
+  카테고리별 상품과 검색 기능을 위해 CheckBox 의 VALUE 를 JSON의 문자열 형태로 변환후 @RequestMapping 으로 값을 받아 쿼리문에 적용 하였습니다.
+  <br>
+- CheckBox의 VALUE 를 JSON의 문자열 형태로 반환하는 코드입니다.
+   ```
+      fnGetList : function(){
+              var self = this;
+              var arrSize = JSON.stringify(self.sizeArr);
+              var arrCate1 = JSON.stringify(self.cate1Value);
+              var arrCate2 = JSON.stringify(self.cate2Value);
+              console.log(self.seachName);
+              var nparmap = {
+              		searchName : self.searchName,
+              		sizeArr : arrSize,
+              		cate1Value : arrCate1,
+              		cate2Value : arrCate2
+              }
+                $.ajax({
+                      url:"/shopList.dox",
+                      dataType:"json",
+                      type : "POST",
+                      data : nparmap,
+                      success : function(data) {
+                      	self.shopList = data.shopList;
+                      	console.log(self.shopList);
+                      	console.log(self.sizeArr);
+                      	if(self.searchName != "" && self.searchName != null){
+                      		self.searchFlg = true;
+                      	}else{
+                      		self.searchFlg = false;
+                      	}	
+                      }
+                  });
+          },
+   ```
+- @RequestMapping 으로 값을 받아 JSON 문자열에서 List<Object>로 변환하여 다시 map에 넣어주는 작업을 수행하는 코드입니다.
+   ```
+    	// SHOP 리스트 출력
+    	@RequestMapping(value = "/shopList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    	@ResponseBody
+    	public String ShopList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+    		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+    		
+    		// 카테고리 검색
+    	      if (map.get("sizeArr") != null) {
+    	         String json = map.get("sizeArr").toString();
+    	         ObjectMapper mapper = new ObjectMapper();
+    	         List<Object> sizeArr = mapper.readValue(json, new TypeReference<List<Object>>(){});
+    	         map.put("sizeArr", sizeArr);
+    	      }
+    	      if (map.get("cate1Value") != null) {
+    		         String json = map.get("cate1Value").toString();
+    		         ObjectMapper mapper = new ObjectMapper();
+    		         List<Object> cate1Value = mapper.readValue(json, new TypeReference<List<Object>>(){});
+    		         map.put("cate1Value", cate1Value);
+    		      }
+    	      if (map.get("cate2Value") != null) {
+    		         String json = map.get("cate2Value").toString();
+    		         ObjectMapper mapper = new ObjectMapper();
+    		         List<Object> cate2Value = mapper.readValue(json, new TypeReference<List<Object>>(){});
+    		         map.put("cate2Value", cate2Value);
+    		      }
+    	      
+    	    // 카테고리 검색  리스트 출력 
+    		List<Main> shopList = mainService.searchShopList(map);
+    		resultMap.put("shopList", shopList);
+    		return new Gson().toJson(resultMap);
+    	}
+    ```
+- 상품리스트 출력 쿼리문입니다.
+  ```
+      <!-- SHOP 리스트 출력 -->
+  	<select id="selectShopList" parameterType="hashmap"
+  		resultType="com.example.sample1.model.Main">
+  		SELECT * 
+  		FROM T1_PRODUCT_UPDATE U
+  		INNER JOIN T1_PRODUCT_IMG I
+  		ON I.PRODUCT_NAME = U.PRODUCT_NAME
+  		INNER JOIN T1_PRODUCT_BRAND B
+  		ON B.PRODUCT_BRAND = U.PRODUCT_BRAND
+  		LEFT JOIN(
+  				SELECT PRODUCT_MODEL, MIN(PRODUCT_PRICE) AS BUYMINPRICE
+  				FROM T1_PRODUCT_UPDATE 
+  				WHERE SELLBUY = 'B'
+  				GROUP BY PRODUCT_MODEL
+  		) M ON M.PRODUCT_MODEL = U.PRODUCT_MODEL
+  		WHERE 1=1
+  		<if test="searchName != '' and  searchName != null">
+  			AND (U.PRODUCT_NAME LIKE  CONCAT('%',#{searchName},'%')
+  					 OR U.PRODUCT_KNAME LIKE CONCAT('%',#{searchName},'%')
+  					 OR B.BRAND_NAME LIKE CONCAT('%',#{searchName},'%'))
+  		</if>
+  		<if test="sizeArr != null  and sizeArr.size() > 0">
+  		AND U.PRODUCT_SIZE IN
+  			<foreach item="sizeItem" index="index" open="(" close=")" separator="," collection="sizeArr">
+                 #{sizeItem}
+              </foreach>
+  		</if>
+  		<if test="cate1Value != null and cate1Value.size() > 0">
+  	    AND U.PRODUCT_CATEGORIE1 IN
+  			<foreach item="cate1Item" index="index" open="(" close=")" separator="," collection="cate1Value">
+  				#{cate1Item}
+  			</foreach>
+  		</if>
+  		<if test="cate2Value != null and cate2Value.size() > 0">
+  	    AND U.PRODUCT_CATEGORIE2 IN
+  			<foreach item="cate2Item" index="index" open="(" close=")" separator="," collection="cate2Value">
+  				#{cate2Item}
+  			</foreach>
+  		</if>
+  		<if test="priceValue != null and priceValue.size() > 0">
+  		AND U.PRODUCT_PRICE BETWEEN
+  			<foreach item="priceItem" index="index" open="(" close=")" separator="," collection="priceValue">
+  				#{priceItem}
+  			</foreach>
+  		</if>
+  		GROUP BY U.PRODUCT_MODEL
+  		ORDER BY U.PRODUCT_INTEREST DESC
+  	</select>
+  ```
+<br>
 
+### 검색기능
+<br>
 
+<img src="https://github.com/lcs9912/spring_teamPro_Crayon/assets/137017212/cdf3d24b-c0bc-457d-87ff-dd47d85f01e5" alt="검색페이지" width="400">
+<img src="https://github.com/lcs9912/spring_teamPro_Crayon/assets/137017212/3111e3a1-785e-4f6e-9e4d-bd0e41b3da4d" alt="검색완료" width="400">
 
+검색 기능을위해 검색페이지에서 검색어를 입력받아 JSON의 문자열 형태로 SHOP 페이지로 페이지전환을 합니다.
 
-
+- 검색어를 입력받고 페이지전환을 하는 코드입니다.
+   ```
+     // 검색
+		fnSearch : function(searchName){
+			var self = this;
+			var nparmap = {searchName : self.searchName, uId : self.uId};
+			   $.ajax({
+	                url:"/search.dox", 
+	                dataType:"json", 
+	                type : "POST",  
+	                data : nparmap, 
+	                success : function(data) {
+	                	self.fnSearchList();
+	            		self.fnUserSearchList();
+						$.pageChange("/mainpageshopping.do", {searchName : self.searchName});  
+	                }
+	            });   
+		},
+   ```
+- 입력 받은 검색어를 JSON 의 문자열 형태로 변환후 페이지 이동을 시켜주는 함수입니다.
+   ```
+     pageChange : function(url, param) {
+		var target = "_self";
+		if(param == undefined){
+			return;
+		}
+		var form = document.createElement("form"); 
+			form.name = "dataform";
+			form.action = url;
+			form.method = "post";
+			form.target = target;
+		for(var name in param){
+			var item = name;
+			var val = "";
+			if(param[name] instanceof Object){
+				val = JSON.stringify(param[name]);
+			} else {
+				val = param[name];
+			}
+			var input = document.createElement("input");
+			input.type = "hidden";
+			input.name = item;
+			input.value = val;
+			form.insertBefore(input, null);
+		}
+		document.body.appendChild(form);
+		form.submit();
+		document.body.removeChild(form);
+	},
+   ```
